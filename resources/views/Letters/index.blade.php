@@ -1,108 +1,244 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 	<style>
-#header{
-		 background-image: url("img/new.png");
-		 
-		  background-repeat: no-repeat;
-		  width:100%;
-		  padding-left:270px;
-	}
-	#navbar1{
-		  width:100%;
-		 padding-left:165px;
-		 padding-right:360px;
-	}
-	#navbar2{
-		  width:100px;
-		 float:right;
-	}
 	
 	</style>
 
-	<head>
-		<title>Home -{{Auth::user()->name}}</title>
-		<meta name="description" content="website description" />
-		<meta name="keywords" content="website keywords, website keywords" />
-		<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-		<link rel="stylesheet" type="text/css" href="../css/style.css" />
-		<link rel="stylesheet" type="text/css" href="../css/button.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="../img/logo.ico" />
-		<script src="https://kit.fontawesome.com/bf523026c9.js" crossorigin="anonymous"></script>
-	</head>
+    <!-- Favicon -->
+    <link href="asset4/img/favicon.ico" rel="icon">
 
-	<body>
-		<div id="main">
-		<div id="header" style="background-color:white;">
-			      <img src="img/new.png" width="85%">
-				
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="asset4/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="asset4/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="asset4/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="asset4/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
             </div>
-				<div class="profile_info">
-					
-					<div class="user_info">
-					
-					</div>
-				</div>
-				
-				<div id="navbar">
-				<div id="navbar1">
-								<nav  style="background-color:4B7BE5; padding-left:0px; margin-left:102px;">
-									<ul id="menu">
-										<li><a href="{{ URL('transfers') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">EXISTING REQUEST</a></li>
-					
-									
-										<li> <a class="#" href="{{ URL('letters1') }}" title="Send a request">Create New Request</a></li>
-										
-										<li><a href="{{ URL('letters') }}">REQUEST PROGRESS</a></li>
-										<li><a href="{{ URL('letters3') }}">REQUEST FROM TEACHER</a></li>
-										<div id="navbar2">
-										<li style="float: right;" width=100px>
-										<select id="one">
-									<figure class="user_avatar"><img src="../img/admin_profile.png" width="100%">
-										<option value="two"><strong>({{ __('Teacher') }}) </strong></option>
-											
-											<small style="font-size:15px">
-											
-											<option value="three"><i style="color: #888;"> {{Auth::user()->name}}</i></option>
-											</select>
-												<form method="POST" action="{{ route('logout') }}">
-																	@csrf
+        </div>
+        <!-- Spinner End -->
 
-																	<x-responsive-nav-link :href="route('logout')"
-																			onclick="event.preventDefault();
-																						this.closest('form').submit();">					
-																	{{ __('LogOut') }}
-															</form>
-                                             
-												</x-responsive-nav-link> 
-											
-										</figure>
-										
-                                      </div>
-										</li>
-										
-									</ul>
-								</nav>
-													
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                @role('Teacher')
+                    <h3 class="text-primary"> Teacher Dashboard</h3>
+                @endrole
+                @role('Weo')
+                    <h3 class="text-primary"> Ward_Officer</h3>
+                @endrole
+                </a>
+                <!-- no 
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    
+                    <div class="ms-3">
+                        <h6 class="mb-0">Jhon Doe</h6>
+                        <span>Admin</span>
+                    </div>
+                
                 </div>
-			<div id="site_content" class="content">
-				
-				<div id="wait"></div>
-				<div id="content">
-					
-                    @extends('layouts.layout')
+                -->
 
-@section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Request Progress</h2>
-            </div>
+                <div class="navbar-nav w-100">
+                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    @role('Teacher')
+                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
+                    @endrole
+                   
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Request</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                        @role('Teacher')  
+                        <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
+                            <a href="{{ URL('letters1') }}" class="dropdown-item">New Report</a>
+                            <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
+                            <a href="{{ URL('letters3') }}" class="dropdown-item">Request From Teacher</a>
+                        @endrole
+                        @role('Weo')
+                        <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
+                        @endrole
+                          
+                            <a href="#" class="dropdown-item">Completed Report</a>
+                        </div>
+                    </div>
+                  
+                   
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control border-0" type="search" placeholder="Search">
+                </form>
+                <!--MESSAGE-->
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-envelope me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Message</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                        
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="asset4/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            @role('Teacher')
+                            <span class="d-none d-lg-inline-flex">{{ __('Teacher') }}({{Auth::user()->name}})</span>
+                            @endrole
+                            @role('Weo')
+                            <span class="d-none d-lg-inline-flex">{{ __('WEO') }}({{Auth::user()->name}})</span>
+                            @endrole
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+							<form method="POST" action="{{ route('logout') }}">
+																	@csrf
+                            <a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();
+																						this.closest('form').submit();">	{{ __('LogOut') }}</a>
+                    	</form>    
+					</div>
+                    </div>
+                </div>
+            </nav>
+
+            <style>
+              
+                td{
+                    background-color: white;
+                    height:45px;
+                    width:145px;
+                }
+               
+               
+                h1{
+                    padding-left:50px;
+                }
+            </style>
+            <!-- Navbar End -->
+
+
+            <!-- Sale & Revenue Start -->
+           
+            
+
           
+         
+			
+					
+                   
+                    <div class="row">
+        <div class="col-lg-12 margin-tb">
+           
+            <h1>Request Onprogress</h1>
         </div>
     </div>
-    <div class="pull-left">
+
+
+  
+    
     <form action="{{ route('letters.index') }}" method="GET" role="search">
 
 
@@ -113,36 +249,25 @@
     @endif
  @foreach ($letters as $letter)
   @if($letter->author=="unknown" && $letter->name==Auth::user()->name)
-    <table  style="background-color:gray; padding-left:114px;">
+  <table style="padding-top:0px;">
         <tr>
             <th>No</th>
+            <td>{{ ++$i }}</td>
             <th>Name</th>
-            <th>current school</th>
-            <th>Transfer school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
-            <th>description</th>
-            <th>HeadMaster_Action</th>
-            <th>WEO_Action</th>
-            <th>DEO_Action</th>
-            <th>DED_Action</th>
-            
-            <th width="280px">Action</th>
+            <th>Approve_status</th>
         </tr>
-      
-        @foreach ($letters as $letter)
-            <tr style="background-color:white;">
+        <tr>
+            <th>Name</th>
+            <td>{{ $letter->name }}</td>
            
-            @if(($letter->name==Auth::user()->name || !(Auth::user()->hasRole(['Teacher'])))) 
+           
+        </tr>
+        <tr>
+            <th>current school</th>
+            <td>{{ $letter->cschool }}</td>
+            <th>HeadMaster_Action</th>
             
-                <td>{{ ++$i }}</td>
-                <td>{{ $letter->name }}</td>
-                <td>{{ $letter->cschool }}</td>
-                <td>{{ $letter->tschool }}</td>
-                <td>{{ $letter->cdistrict }}</td>
-                <td>{{ $letter->tdistrict }}</td>
-                <td>{{ $letter->description }}</td>
-                @if( $letter->Headmaster == 'REJECTED BY HEADMASTER')
+            @if( $letter->Headmaster == 'REJECTED BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
@@ -156,7 +281,19 @@
                 </div></td>
                
                 @endif
-                @if( $letter->WEO == 'REJECTED BY WEO')
+            <td>{{ $letter->H_comment }}</td>
+           
+        </tr>
+        <tr>
+            <th>Transfer school</th>
+            <td>{{ $letter->tschool }}</td>
+            
+        </tr>
+        <tr>
+            <th>current ward</th>
+            <td>{{ $letter->ward }}</td>
+            <th>WEO_Action</th>
+            @if( $letter->WEO == 'REJECTED BY WEO')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
@@ -170,7 +307,12 @@
                 </div></td>
                
                 @endif
-                @if( $letter->DEO == 'REJECTED BY District_Education_Officer')
+        </tr>
+        <tr>
+            <th>current disctrict</th>
+            <td>{{ $letter->cdistrict }}</td>
+            <th>DEO_Action</th>
+            @if( $letter->DEO == 'REJECTED BY District_Education_Officer')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
@@ -184,16 +326,20 @@
                 </div></td>
                
                 @endif
-
-                @if( $letter->DED == 'REJECTED BY District_Executive_Director')
+        </tr>
+        <tr>
+            <th>transfer district</th>
+            <td>{{ $letter->tdistrict }}</td>
+            <th>DED_Action</th>
+            @if( $letter->DED == 'REJECTED BY District_Executive_Director')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
-               @elseif( $letter->DED == 'APPROVED BY District_Executive_Director')
+            @elseif( $letter->DED == 'APPROVED BY District_Executive_Director')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                  <button type="submit" class="btn btn-primary">APPROVED</button>
                 </div></td>
-                @else
+            @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                  <button type="submit" class="btn btn-success">PENDING</button>
                 </div></td>
@@ -201,50 +347,104 @@
            
                
                 @endif
-                
-                
-                <td>
+        </tr>
+        <tr>
+            <th>description</th>
+            <td>{{ $letter->description }}</td>
+            <th width="280px">Action</th>
+            <td>
               
-                    <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+              <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                            <i class="fas fa-eye text-success  fa-lg"></i>
-                        </a>
-                        @role('Tamisemi_Director')
-                        <a href="{{ route('letters.edit', $letter->id) }}">
-                            <i class="fas fa-edit  fa-lg"></i>
+                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                      <i class="fas fa-eye text-success  fa-lg"></i>
+                  </a>
+                  @role('Tamisemi_Director')
+                  <a href="{{ route('letters.edit', $letter->id) }}">
+                      <i class="fas fa-edit  fa-lg"></i>
 
-                        </a>
-                        @endif
+                  </a>
+                  @endif
+     
+     
+                
+                  @csrf
+                  @method('DELETE')
+                  @role('Tamisemi_Director')
+                  <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                      <i class="fas fa-trash fa-lg text-danger"></i>
+
+                  </button>
+                  @endrole
+                
+              </form>
+          </td>
+       </tr>
+        <tr>
+          
            
-             @endif 
-                      
-                        @csrf
-                        @method('DELETE')
-                        @role('Tamisemi_Director')
-                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                            <i class="fas fa-trash fa-lg text-danger"></i>
-
-                        </button>
-                        @endrole
-                      
-                    </form>
-                </td>
+        </tr>
+              
+                
+                
+              
             </tr>
-        @endforeach
+          
+         
     </table>
-
     <table>
-              <th style="background-color:black;">
-                  <td>HEADMSTER RESPOND TIME TAKEN</td>
-                  <td>WEO RESPOND TIME TAKEN</td>
-                  <td>DEO RESPOND TIME TAKEN</td>
-                  <td>DED RESPOND TIME TAKEN</td>
-                  <td>RED RESPOND TIME TAKEN</td>
-              </th>
+    <tr style="border: none; background-color:blue; color:white;">
+                  <th>Description</th>
+                  <th>Number Of day To respond</th>
+            </tr>
               <tr>
-                  <td></td>
-                  <td></td>
+                  <th>LIFE TIME FOR REQUEST</th>
+                  <td>{{ abs(round((strtotime($date2)-strtotime($letter->created_at))/86400)) }}</td>
+            </tr>
+            <tr>
+                  <th>HEADMASTER RESPOND TIME TAKEN</th>
+                  @if($letter->T_date=='0000-00-00')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->T_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>WEO RESPOND TIME TAKEN</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>DEO RESPOND TIME TAKEN</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>DED RESPOND TIME TAKEN</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>RED RESPOND TIME TAKEN</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+              </tr>
+              <th>
+               
+                 
+                
                   <td></td>
                   <td></td>
                   <td></td>
@@ -253,39 +453,25 @@
     </table>
        
  @elseif($letter->name==Auth::user()->name )
-         
-    <table  style="background-color:gray; padding-left:114px;">
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>current school</th>
-            <th>Transfer school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
-            <th>description</th>
-            <th>Teacher From another school</th>
-            <th>HeadMaster From another school</th>
-            <th>HeadMaster_Action</th>
-            <th>WEO_Action</th>
-            <th>DEO_Action</th>
-            <th>DED_Action</th>
-            
-            <th width="280px">Action</th>
-        </tr>
-      
-        @foreach ($letters as $letter)
+     @foreach ($letters as $letter)
             <tr style="background-color:white;">
            
             @if(($letter->name==Auth::user()->name || !(Auth::user()->hasRole(['Teacher'])))) 
+         
+    <table style="padding-top:0px;">
+        <tr>
+            <th>No</th>
+            <td>{{ ++$i }}</td>
+            <th>Name</th>
+            <th>Approve_status</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ $letter->name }}</td>
+            <th>Teacher From another school</th>
+           
             
-                <td>{{ ++$i }}</td>
-                <td>{{ $letter->name }}</td>
-                <td>{{ $letter->cschool }}</td>
-                <td>{{ $letter->tschool }}</td>
-                <td>{{ $letter->cdistrict }}</td>
-                <td>{{ $letter->tdistrict }}</td>
-                <td>{{ $letter->description }}</td>
-                @if( $letter->Teacher_approved == 'REJECTED BY TEACHER')
+            @if( $letter->Teacher_approved == 'REJECTED BY TEACHER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
@@ -298,22 +484,15 @@
                  <button type="submit" class="btn btn-success">PENDING</button>
                 </div></td>
                 @endif
-
-                @if( $letter->Transfer_Headmaster == 'REJECTED BY HEADMASTER')
-                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
-                </div></td>
-               @elseif( $letter->Transfer_Headmaster == 'APPROVED BY HEADMASTER')
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
-                </div></td>
-                @else
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-success">PENDING</button>
-                </div></td>
-                @endif
-
-                @if( $letter->Headmaster == 'REJECTED BY HEADMASTER')
+             <td>{{ $letter->T_comment }}</td>
+           
+        </tr>
+        <tr>
+            <th>current school</th>
+            <td>{{ $letter->cschool }}</td>
+            <th>HeadMaster_Action</th>
+            
+            @if( $letter->Headmaster == 'REJECTED BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
@@ -327,7 +506,32 @@
                 </div></td>
                
                 @endif
-                @if( $letter->WEO == 'REJECTED BY WEO')
+            <td>{{ $letter->H_comment }}</td>
+           
+        </tr>
+        <tr>
+            <th>Transfer school</th>
+            <td>{{ $letter->tschool }}</td>
+            <th>HeadMaster From another school</th>         
+            @if( $letter->Transfer_Headmaster == 'REJECTED BY HEADMASTER')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                </div></td>
+               @elseif( $letter->Transfer_Headmaster == 'APPROVED BY HEADMASTER')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+                @endif
+        </tr>
+        <tr>
+            <th>current ward</th>
+            <td>{{ $letter->ward }}</td>
+            <th>WEO_Action</th>
+            @if( $letter->WEO == 'REJECTED BY WEO')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
@@ -341,7 +545,12 @@
                 </div></td>
                
                 @endif
-                @if( $letter->DEO == 'REJECTED BY District_Education_Officer')
+        </tr>
+        <tr>
+            <th>current disctrict</th>
+            <td>{{ $letter->cdistrict }}</td>
+            <th>DEO_Action</th>
+            @if( $letter->DEO == 'REJECTED BY District_Education_Officer')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
@@ -355,16 +564,20 @@
                 </div></td>
                
                 @endif
-
-                @if( $letter->DED == 'REJECTED BY District_Executive_Director')
+        </tr>
+        <tr>
+            <th>transfer district</th>
+            <td>{{ $letter->tdistrict }}</td>
+            <th>DED_Action</th>
+            @if( $letter->DED == 'REJECTED BY District_Executive_Director')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
-               @elseif( $letter->DED == 'APPROVED BY District_Executive_Director')
+            @elseif( $letter->DED == 'APPROVED BY District_Executive_Director')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                  <button type="submit" class="btn btn-primary">APPROVED</button>
                 </div></td>
-                @else
+            @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                  <button type="submit" class="btn btn-success">PENDING</button>
                 </div></td>
@@ -372,71 +585,104 @@
            
                
                 @endif
-                
-                
-                <td>
+        </tr>
+        <tr>
+            <th>description</th>
+            <td>{{ $letter->description }}</td>
+            <th width="280px">Action</th>
+            <td>
               
-                    <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+              <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                            <i class="fas fa-eye text-success  fa-lg"></i>
-                        </a>
-                        @role('Tamisemi_Director')
-                        <a href="{{ route('letters.edit', $letter->id) }}">
-                            <i class="fas fa-edit  fa-lg"></i>
+                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                      <i class="fas fa-eye text-success  fa-lg"></i>
+                  </a>
+                  @role('Tamisemi_Director')
+                  <a href="{{ route('letters.edit', $letter->id) }}">
+                      <i class="fas fa-edit  fa-lg"></i>
 
-                        </a>
-                        @endif
-           
-           
-                      
-                        @csrf
-                        @method('DELETE')
-                        @role('Tamisemi_Director')
-                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                            <i class="fas fa-trash fa-lg text-danger"></i>
-
-                        </button>
-                        @endrole
-                      
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="7"></td>
-                <td>{{ $letter->T_comment }}</td>
-                <td>{{ $letter->H_comment }}</td>
-                <td>no comment</td>
-                <td>no comment</td>
-                <td>{{ $date2 }}</td>
+                  </a>
+                  @endif
+     
+     
                 
-                <td>{{ abs(round((strtotime($date2)-strtotime($letter->created_at))/86400)) }} </td>
+                  @csrf
+                  @method('DELETE')
+                  @role('Tamisemi_Director')
+                  <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                      <i class="fas fa-trash fa-lg text-danger"></i>
 
+                  </button>
+                  @endrole
+                
+              </form>
+          </td>
+       </tr>
+        <tr>
+          
+           
+        </tr>
+              
+                
+                
+              
             </tr>
+          
          
     </table>
-    <table border='1'>
-              <th style="background-color:black;">
-                  <td style="background-color:black; color:white;">LIFE TIME FOR REQUEST</td>
-                  <td style="background-color:black; color:white;">HEADMSTER RESPOND TIME TAKEN</td>
-                  <td style="background-color:black; color:white;">WEO RESPOND TIME TAKEN</td>
-                  <td style="background-color:black; color:white;">DEO RESPOND TIME TAKEN</td>
-                  <td style="background-color:black; color:white;">DED RESPOND TIME TAKEN</td>
-                  <td style="background-color:black; color:white;">RED RESPOND TIME TAKEN</td>
-              </th>
+    <table>
+    <tr style="border: none; background-color:blue; color:white;">
+                  <th>Description</th>
+                  <th>Number Of day To respond</th>
+            </tr>
               <tr>
-               
+                  <th>LIFE TIME FOR REQUEST</th>
                   <td>{{ abs(round((strtotime($date2)-strtotime($letter->created_at))/86400)) }}</td>
+            </tr>
+            <tr>
+                  <th>HEADMSTER RESPOND TIME TAKEN</th>
                   @if($letter->Headmaster=='pending')
                   <td>not respond</td>
                   @else
                   <td>The day late to proved is {{ abs(round((strtotime($letter->T_date)-strtotime($letter->created_at))/86400)) }}</td>
                   @endif
+            </tr>
+            <tr>
+                  <th>WEO RESPOND TIME TAKEN</th>
                   @if($letter->WEO=='pending')
                   <td>not respond</td>
                   @else
                   <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
                   @endif
+            </tr>
+            <tr>
+                  <th>DEO RESPOND TIME TAKEN</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>DED RESPOND TIME TAKEN</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>RED RESPOND TIME TAKEN</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+              </tr>
+              <th>
+               
+                 
+                
                   <td></td>
                   <td></td>
                   <td></td>
@@ -455,14 +701,160 @@
 
   
 
-@endsection	
+
 
 				</div>
 			</div>
-			
-			<!-- JAVASCRIPTS -->
-			<script type="text/javascript" src="js/ajax.js"></script>
-			<script type="text/javascript" src="js/_crime.js"></script>
-	</body>
-  
+               
+            <!-- Recent Sales End -->
+
+
+            <!-- Widgets Start
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <h6 class="mb-0">Messages</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pt-3">
+                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Calender</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div id="calender"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">To Do List</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <input class="form-control bg-transparent" type="text" placeholder="Enter task">
+                                <button type="button" class="btn btn-primary ms-2">Add</button>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox" checked>
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span><del>Short task goes here...</del></span>
+                                        <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pt-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           End -->
+
+
+            <!-- Footer Start -->
+         
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="asset4/lib/chart/chart.min.js"></script>
+    <script src="asset4/lib/easing/easing.min.js"></script>
+    <script src="asset4/lib/waypoints/waypoints.min.js"></script>
+    <script src="asset4/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="asset4/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="asset4/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="asset4/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="asset4/js/main.js"></script>
+</body>
+
 </html>

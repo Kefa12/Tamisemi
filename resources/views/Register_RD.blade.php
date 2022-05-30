@@ -395,7 +395,7 @@
               
             @csrf
             <center><h1>Register Regional Director</h1>
-                             <img src="assets/img/logo2.jpg" alt="no image" width=180></center>
+                             <img src="assets3/img/logo2.jpg" alt="no image" width=180></center>
 			                     <div class="row register-form">
                              
                              

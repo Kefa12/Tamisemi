@@ -543,23 +543,9 @@
          
 
             @endrole
-            @if($letter->tschool==Auth::user()->schools)
-            @if($letter->Teacher_approved=='APPROVED BY TEACHER')
-            @if($letter->Transfer_Headmaster=='REJECTED BY HEADMASTER' || $letter->Transfer_Headmaster=='pending')
-            @role('Headmaster')
-          
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">Headmaster Approved
-                <select name="Transfer_Headmaster" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="APPROVED BY HEADMASTER">APPROVED</option>
-                        <option value="REJECTED BY HEADMASTER">REJECTED</option>
-                </select>
-                </div>
-            </div>
-            @endrole
-            @endif
-            @endif
-            @endif
+           
+
+           
             @if($letter->Headmaster=='REJECTED BY HEADMASTER' || $letter->Headmaster=='pending')
             @role('Headmaster')
           
@@ -573,7 +559,8 @@
             </div>
             @endif
             @endrole
-        
+         
+           
          
           
             @if($letter->WEO=='REJECTED BY WEO' || $letter->WEO=='pending') 

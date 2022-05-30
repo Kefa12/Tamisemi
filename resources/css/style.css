@@ -83,11 +83,7 @@ html {
   box-sizing: border-box;
 }
 
-header {
-  position: relative;
 
-  height: auto;
-}
 
 
 body {
@@ -131,45 +127,19 @@ a.logo_colour:hover {
   padding-top: 60px;
 }
 
-ul#menu {
-  list-style-type: none;
-}
 
-nav {
-  position: relative;
-  width: 100%;
-  height: max-content;
-  overflow: hidden;
-  background-color: #4B7BE5;
-}
 
-nav li {
-  float: left;
-}
 
-nav li a,
-.slide_link {
-  display: block;
-  padding: 8px;
-  color: white;
-  text-align: center;
-  padding: 15px 20px;
-  text-decoration: none;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
-}
+
+
+
 
 .slide_link {
   display: grid;
   font-family: "lora-bold", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-nav li a:hover,
-.slide_link:hover {
-  background-color: rgba(0, 0, 128, 0.555);
-  color: lightgray;
-}
+
 
 h1,
 h2,
@@ -211,11 +181,7 @@ h6 {
   color: #362c20;
 }
 
-a {
-  outline: none;
-  text-decoration: underline;
-  color: navy;
-}
+
 
 .report_list a,
 .report_list a:hover {
@@ -230,17 +196,6 @@ a {
   color: lightgrey;
 }
 
-#main,
-#logo,
-#menubar,
-#site_content,
-#content_footer,
-.slideshow-container,
-#footer {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 #main {
   padding-bottom: 0px;
 }
@@ -253,15 +208,7 @@ a {
   display: none;
 }
 
-#header {
-  background: #6f655f url(../img/header.png);
-  height: 140px;
-}
 
-.header {
-  text-transform: uppercase;
-  font-size: large;
-}
 
 #logo {
   width: 840px;
@@ -301,52 +248,31 @@ a {
   position: absolute;
 }
 
-a.logo_colour:hover {
-  color: lightgrey;
-}
+
 
 #menubar {
   height: fit-content;
   width: 100%;
 }
 
-#site_content {
-  padding-top: 15px;
-  width: 70%;
-  height: fit-content;
-  overflow: hidden;
-  background: rgb(245, 245, 245);
-}
 
-.selected {
-  background-color: navy;
-  color: lightgray;
-}
+
+
 
 #content {
   width: 100%;
-  padding-left: 40px;
-  padding-right: 50px;
-  padding-bottom: 20px;
+
 }
 
-#content ul {
-  margin: 2px 0 22px 0px;
-}
 
-#content ul li {
-  list-style-type: none;
-  background: url(../images/bullet.png) no-repeat;
-  margin: 0 0 0 0;
-  padding: 0 0 4px 25px;
-  line-height: 1.5em;
-}
+
+
 
 #footer {
   width: 100%;
   font: normal 90% "lora-bolditalic", arial, sans-serif;
   height: fit-content;
-  padding: 20px 0 5px 0;
+ 
   text-align: center;
   background: navy;
   color: #fff;

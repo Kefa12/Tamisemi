@@ -391,11 +391,11 @@
 								<!-- Validation Errors -->
 								<x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                                <form method="POST" action="{{ route('register') }}">
+                                <form method="GET" action="{{ URL('headmaster') }}">
               
             @csrf
             <center><h1>Register Headmaster</h1>
-                             <img src="assets/img/logo2.jpg" alt="no image" width=180></center>
+                             <img src="assets3/img/logo2.jpg" alt="no image" width=180></center>
 			                     <div class="row register-form">
                              
                              

@@ -1,61 +1,245 @@
-
-<link  rel="stylesheet" href="{{asset('css/style.css') }}">
-	<link  rel="stylesheet" href="{{asset('css/button.css') }}">
-  <link href="{{ url('/css/style.css') }}" rel="stylesheet">
-  <link href="{{ url('/css/button.css') }}" rel="stylesheet">
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <meta name="description" content="Smarthr - Bootstrap Admin Template">
-		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
-        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
-        <meta name="robots" content="noindex, nofollow">
-        <title>Login - HRMS admin template</title>	
-		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}">
-		
-		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
-        <link href="{{ url('assets/img/favicon.png') }}" rel="stylesheet">
-		
-		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="{{ url('assets/css/font-awesome.min.css') }}">
-		
-		<!-- Main CSS -->
-        <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
-		
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
-
-
-		<title>Welcome to the Tamisemi Workers Transfer Management System</title>
-		<link rel="shortcut icon" type="image/x-icon" href="img/logo1.png" />
-		<meta name="description"
-			content="The PWTMS public workers transfer management system helps teacher and public workers in health center.">
-		<meta name="keywords" content="teacher, nurse, transfer report,">
+	
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/button.css" />
-		<script src="https://kit.fontawesome.com/bf523026c9.js" crossorigin="anonymous"></script>
+	
+        <link rel="stylesheet" href="assets3/css/style.css">
+	
 	</head>
-	<style>
-		#header{
-		 background-image: url("img/Tamisemi11.png");
-		 
-		  background-repeat: no-repeat;
-		  width:100%;
-	}
-	nav{
-		  margin-top: 0;
-		 
-		 
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Reveal Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Reveal - v4.7.0
+  * Template URL: https://bootstrapmade.com/reveal-bootstrap-corporate-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+<style>
+    .error {
+  display: none;
+  font-family: "lora-bold", arial, sans-serif;
+  font-size: large;
+  color: #ae0000;
+  padding-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+select {
+  width: fit-content;
+  padding: 5px 20px;
+  margin: 9px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  transition: 0.5s;
+  box-shadow: 1px 0px 5px 1px navy;
+}
+
+button {
+  background-color: navy;
+  color: white;
+  outline: 0;
+  border: 0;
+  padding: 8px 0;
+  bottom: 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 120%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+section.login_form figure {
+  text-align: center;
+  max-width: 24px 0 12px 0;
+}
+
+section.login_form figure img {
+  width: 40%;
+  border-radius: 50%;
+}
+
+section.inputs {
+  margin-top: 14px;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+    .form_settings {
+  margin: 15px 0 0 0;
+}
+
+.form_settings p {
+  padding: 0 0 4px 0;
+}
+
+.form_settings span {
+  float: left;
+  width: 200px;
+  text-align: left;
+}
+
+.form_settings input,
+.form_settings textarea {
+  padding: 5px;
+  width: 35%;
+  font: 90% "merriweather-regular", arial;
+  border: 1px solid #e5e5db;
+  background: #fff;
+  color: #47433f;
+}
+
+.form_settings .submit,
+.submit {
+  font: 90% "merriweather-regular", arial;
+  font-size: large;
+  text-transform: uppercase;
+  border: 0;
+  width: 49%;
+  height: 40px;
+  padding: 2px 0 3px 0;
+  cursor: pointer;
+  background: navy;
+  color: #fff;
+}
+
+.form_settings .submit:hover,
+.submit:hover {
+  transition: 0.5s;
+  border-radius: 2px;
+  background: #fff;
+  color: navy;
+  border: 1px solid navy;
+}
+
+.form_settings textarea,
+.form_settings select {
+  font: 90% "merriweather-regular", arial;
+  width: 35%;
+}
+
+.form_settings select {
+  width: 20%;
+  padding: 5px;
+  border: 1px solid #e5e5db;
+  background: #fff;
+  color: #47433f;
+}
+
+.form_settings .checkbox {
+  margin: 4px 0;
+  padding: 0;
+  width: 14px;
+  border: 0;
+  background: none;
+}
+
+.separator {
+  width: 100%;
+  height: 0;
+  border-top: 1px solid #d9d5cf;
+  border-bottom: 1px solid #fff;
+  margin: 0 0 20px 0;
+}
+
+button {
+  background-color: navy;
+  color: white;
+  outline: 0;
+  border: 0;
+  padding: 8px 0;
+  bottom: 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 120%;
+}
+section.login_form figure {
+  text-align: center;
+  max-width: 24px 0 12px 0;
+}
+
+section.login_form figure img {
+  width: 40%;
+  border-radius: 50%;
+}
+
+section.inputs {
+  margin-top: 14px;
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+	.img{
+		 margin:0%;
 		
+		  position:relative;		
+	}
+	.img1{
+		  position:absolute;
+		 
+		 color:black;
+		  font-size:67px;
+		  top:17px;
+		  left:50px;		
+	}
+	.img2{
+		  position:absolute;
+		
+		  color:black;
+		  font-size:67px;
+		  bottom:20px;
+		  left:50px;		
 	}
 	td{
 		  margin-top: 0;
@@ -75,45 +259,51 @@
 	}
 	</style>
 
+<body>
 
-		<div id="main">
-			<div id="header">
-				
-					
-						
-					
-			
-			</div>
-			<nav style="background-color:#4B7BE5;">
-			     <div id="nav1">
-           <ul id="menu">
-                       <li><a href="{{ url('/') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Home</a></li>
-                @if (Route::has('login'))
-                <li class="selected">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li>
-                    @else
-                    <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
+  <!-- ======= Top Bar ======= -->
+ 
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
 
-                        @if (Route::has('register'))
-                        <li><a href="{{ url('registe') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
-                        @endif
+      <div id="logo">
+        <h1><a href="index.html">TAMISEMI<span></span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
+          @if (Route::has('login'))
+          @auth
+          <li><a class="nav-link scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
+          @else
+          <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
+          @if (Route::has('register'))
+          <li><a class="nav-link scrollto " href="{{ url('registe') }}">Register</a></li>
+          @endif
                       
                    
                        
-                    @endauth
-               
-            @endif
-					
-				</ul>
-				</div>
-			</nav>
+                      @endauth
+                 
+              @endif
+          
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
 					<!-- /Account Logo -->
 					
 					<div class="account-box">
 						<div class="account-wrapper">
 							<h3 class="account-title">LOGIN FORM</h3>
-                            <center><a href="index.html"><img src="assets/img/logo2.jpg" alt="no image" width=100></a></center>
+                            <center><a href="index.html"><img src="assets3/img/logo2.jpg" alt="no image" width=100></a></center>
 		
     <x-auth-card>
         <x-slot name="logo">
@@ -181,3 +371,12 @@
  
 
 </html>
+<script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>

@@ -396,7 +396,7 @@
               
             @csrf
             <center><h1>Register District_Executive_Director</h1>
-                             <img src="assets/img/logo2.jpg" alt="no image" width=180></center>
+                             <img src="assets3/img/logo2.jpg" alt="no image" width=180></center>
 			                     <div class="row register-form">
                              
                              
@@ -463,7 +463,7 @@
 												                                              <h5 class="text-info  mb-4">Choose Regional</h5>
 																							 <select id="state" name="regional" class="form-control">
 																										  <option width="700"><h1 class="form-control">Choose Regional</h1></option>
-																												  @foreach($regionals as $row)
+																												  @foreach($regional_rd as $row)
 																										 <option value={{$row->id}}>{{$row->name}}</option>
 																													@endforeach   
 																							  </select>

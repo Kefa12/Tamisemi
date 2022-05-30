@@ -86,6 +86,7 @@ Route::get('auth/register',[App\Http\Controllers\DropDown::class, 'index7']);
 
 Route::get('add', [App\Http\Controllers\FinalSearch::class, 'index']);
 Route::get('add1', [App\Http\Controllers\FinalSearch::class, 'index1']);
+Route::get('headmaster', [App\Http\Controllers\FinalSearch::class, 'headmaster']);
 Route::get('add2', [App\Http\Controllers\FinalSearch::class, 'index2']);
 Route::get('add3', [App\Http\Controllers\FinalSearch::class, 'index3']);
 Route::get('add4', [App\Http\Controllers\FinalSearch::class, 'index4']);

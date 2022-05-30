@@ -72,7 +72,7 @@
 									
 										<li> <a class="#" href="{{ URL('letters1') }}" title="Send a request">Create New Request</a></li>
 										
-										<li><a href="{{ URL('letters') }}">REQUEST TO BE APPROVED</a></li>
+										<li><a href="{{ URL('letters') }}">REQUEST PROGRESS</a></li>
 										<li><a href="{{ URL('letters3') }}">REQUEST FROM TEACHER</a></li>
 										<div id="navbar2">
 										<li style="float: right;" width=100px>
