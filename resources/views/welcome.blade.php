@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Reveal Bootstrap Template</title>
+  <title>Tamisemi Teacher Transfer</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -40,25 +40,25 @@
   <!-- ======= Top Bar ======= -->
  
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
+  <header id="header" class="d-flex align-items-center" style="background-color:#ADD8E6; color:white;">
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="index.html">TAMISEMI<span></span></a></h1>
+        <h1><a href="#" style="color:white;">TAMISEMI<span></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
+        <ul >
+          <li><a class="nav-link scrollto active" href="{{ url('/') }}" style="color:black;">Home</a></li>
           @if (Route::has('login'))
           @auth
           <li><a class="nav-link scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
           @else
-          <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('login') }}" >Login</a></li>
           @if (Route::has('register'))
-          <li><a class="nav-link scrollto " href="{{ url('registe') }}">Register</a></li>
+          <li><a class="nav-link scrollto " href="{{ url('registe') }}"  >Register</a></li>
           @endif
                       
                    

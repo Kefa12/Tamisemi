@@ -12,13 +12,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Reveal Bootstrap Template</title>
+  <title>Tamisemi Teacher Transfer</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
@@ -264,25 +264,25 @@ button:hover {
   <!-- ======= Top Bar ======= -->
  
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
+  <header id="header" class="d-flex align-items-center" style="background-color:#ADD8E6; color:white;">
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="index.html">TAMISEMI<span></span></a></h1>
+        <h1><a href="#" style="color:white;">TAMISEMI<span></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
+        <ul >
+          <li><a class="nav-link scrollto active" href="{{ url('/') }}"  style="color:black;">Home</a></li>
           @if (Route::has('login'))
           @auth
           <li><a class="nav-link scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
           @else
-          <li><a class="nav-link scrollto" href="{{ route('login') }}">Login</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('login') }}" >Login</a></li>
           @if (Route::has('register'))
-          <li><a class="nav-link scrollto " href="{{ url('registe') }}">Register</a></li>
+          <li><a class="nav-link scrollto " href="{{ url('registe') }}"  >Register</a></li>
           @endif
                       
                    
@@ -323,7 +323,7 @@ button:hover {
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('EMPLOYEE_ID')" />
+                <x-label for="email" :value="__('Check_Number')" />
 
                 <x-input id="email1" class="block mt-1 w-full" type="text" name="Employee_id" :value="old('email')" required autofocus />
             </div>
