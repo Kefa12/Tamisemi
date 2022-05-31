@@ -90,7 +90,7 @@
                         <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
                         @endrole
                           
-                            <a href="#" class="dropdown-item">Completed Report</a>
+                            <a href="#" class="dropdown-item">Completed Request</a>
                         </div>
                     </div>
                   

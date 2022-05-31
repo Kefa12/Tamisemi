@@ -44,7 +44,7 @@
 				
 					<!-- Account Logo -->
 					<div class="account-logo">
-						<a href="index.html"><img src="assets/img/logo2.jpg" alt="Dreamguy's Technologies"></a>
+					
 					</div>
 					<!-- /Account Logo -->
 					

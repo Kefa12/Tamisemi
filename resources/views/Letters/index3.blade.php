@@ -91,7 +91,7 @@
                           
                             <a href="{{ URL('letters3') }}" class="dropdown-item">Request From Teacher</a>
                           
-                            <a href="element.html" class="dropdown-item">Completed Report</a>
+                            <a href="#" class="dropdown-item">Completed Request</a>
                         </div>
                     </div>
                  
