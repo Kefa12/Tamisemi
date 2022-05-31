@@ -147,7 +147,7 @@
 
             <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4">
-			<table>
+			<table  class="table table-striped">
 			 <th>PERSONAL INFORMATION<th>
           <tr>
     <div class="row">
@@ -164,7 +164,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <td><strong>Full Name:</strong></td>
-               <td> {{ Auth::user()->name }}  {{ Auth::user()->name }}</td>
+               <td> {{ Auth::user()->name }}  {{ Auth::user()->name1 }}</td>
             </div>
         </div>
 </tr>
