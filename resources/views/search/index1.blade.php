@@ -51,7 +51,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"> Teacher Dashboard</h3>
+                    <h3 class="text-primary"> Teacher </h3>
                 </a>
                 <!-- no 
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -179,10 +179,10 @@
         </div>
     @endif
 
-    <table class="table table-bordered table-responsive-lg">
+    <table class="table table-striped w-auto">
       
 		
-			<tr style="background-color:gray; color:white">
+			<tr>
             <th>No</th>
             <th>Name</th>
 			<th>regional</th>

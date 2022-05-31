@@ -189,7 +189,7 @@
     @endif
  @foreach ($letters as $letter)
   @if($letter->author=="unknown" && $letter->name==Auth::user()->name)
-  <table style="padding-top:0px;">
+  <table  style="padding-top:0px;">
         <tr>
             <th>No</th>
             <td>{{ ++$i }}</td>
@@ -333,7 +333,7 @@
          
     </table>
     <table>
-    <tr style="border: none; background-color:blue; color:white;">
+    <tr style="border: none; background-color:gray; color:white;">
                   <th>Description</th>
                   <th>Number Of day To respond</th>
             </tr>
