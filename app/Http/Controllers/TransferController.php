@@ -263,7 +263,7 @@ class TransferController extends Controller
     {
         $data['regional_rd'] = DB::table('regional_rd')->get();
 
-        return view("letters.create",$data);     
+        return view('Letters.create',$data);     
     }
     function getCity()
     {
