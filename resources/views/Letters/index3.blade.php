@@ -360,7 +360,7 @@
         </div>
     @endif
 
-    <table class="table table-bordered table-responsive-lg" style="background-color:gray;">
+    <table class="table table-striped">
         <tr>
             <th>No</th>
             <th>Name</th>

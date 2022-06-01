@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\School;
+use App\Models\District;
+use App\Models\Ward;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Redirect,Response;
@@ -280,9 +282,56 @@ class LetterController extends Controller
           
         ]);  
         $letter->update($request->all());
-      
-        return redirect()->route('letters.index')
-        ->with('success', 'request update successfully.');
+       
+        $districts = District::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+     
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+   
+       
+        $schools = School::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+            $wards = Ward::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+                $i=0;
+   
+                return redirect()->route('schools.index')
+                ->with('success', 'user updated successfully');
+     
+       
     }
     public function update1(Request $request, Letter $letter)
     {

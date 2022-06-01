@@ -178,10 +178,38 @@
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
+                                            <script>
+       function showHideissues(){
+    if (document.getElementById("REJECTED BY HEADMASTER").checked){
+      document.getElementById("issues").style.display = "block";
+    }else{
+      document.getElementById("issues").style.display = "none";
+    }
+  }
+</script>
+  <!-- <div class="question">
+
+       <h5>Need to support or not support that transfer request</h5>
+                 <div class="form-check col-sm-2">
+                   <input class="form-check-input" type="radio"  name="Headmaster" id="APPROVED BY HEADMASTER" value="APPROVED BY HEADMASTER" onclick="showHideissues()">
+                   <label class="form-check-label">APPROVED BY HEADMASTER</label>
+                 </div>
+                 <div class="form-check col-sm-2">
+                   <input class="form-check-input" type="radio" name="Headmaster" id="REJECTED BY HEADMASTER" value="REJECTED BY HEADMASTER" onclick="showHideissues()">
+                   <label class="form-check-label">REJECTED BY HEADMASTER</label>
+                 </div>
+                 <div class="form-group" style="display:none;" id="issues">
+                   <input  class="form-control" rows="4" name="H_comment"   placeholder="few school Teacher:" value="not a reason"></input>
+         </div>
+ </div> -->
+
+ <div class="form-group"  id="issues">
+                   <input  class="form-control" rows="4" name="H_comment"   placeholder="few school Teacher:" value="not a reason"></input>
+         </div>
                                             
-                                            Comment<input type="text" class="form-control" style="height:50px" name="H_comment" 
-                                                    ></input>
-                </div>
+                     
+//                 </div>
+//           
         @csrf
         @method('PUT')
        
@@ -515,6 +543,7 @@
             </div>
             
             @endrole
+            
             @if($letter->author==Auth::user()->name)
             @if($letter->Teacher_approved=='REJECTED BY TEACHER' || $letter->Teacher_approved=='pending')
             @role('Teacher')
