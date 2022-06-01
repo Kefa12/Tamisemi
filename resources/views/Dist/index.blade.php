@@ -72,31 +72,9 @@
                 -->
 
                 <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                  
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Request</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                          
-                            <a href="{{ URL('districts') }}" class="dropdown-item">Onprogress Request</a>
-                          
-                          
-                      
-                        </div>
-                    </div>
-                   
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+ 
+                    <a href="{{ URL('districts') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
                 </div>
             </nav>
         </div>
@@ -125,60 +103,30 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
+                               
                             </a>
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
+                               
                             </a>
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
+                              
                             </a>
                             <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
+                           
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
+                       
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
+                          
                             <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
+                           
                             <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
+                          
                             <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                          
                         </div>
                         
                     </div>
@@ -225,7 +173,7 @@
     @endif
 
     <table class="table table-bordered table-responsive-lg" style="width:100%;">
-        <tr style="background-color:gray">
+        <tr>
             <th>No</th>
             <th>Name</th>
             <th>current school</th>
@@ -280,11 +228,11 @@
                 </div></td>
                
                 @endif
-                @if( $letter->DEO == 'REJECTED BY DEO')
+                @if( $letter->DEO == 'REJECTED BY District_Education_Officer')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
-               @elseif( $letter->DEO == 'APPROVED BY DEO ')
+               @elseif( $letter->DEO == 'APPROVED BY District_Education_Officer')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                  <button type="submit" class="btn btn-primary">APPROVED</button>
                 </div></td>
@@ -294,11 +242,11 @@
                 </div></td>
                
                 @endif
-                @if( $letter->DED == 'REJECTED BY DED')
+                @if( $letter->DED == 'REJECTED BY District_Executive_Director')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
-               @elseif( $letter->DED == 'APPROVED BY DED')
+               @elseif( $letter->DED == 'APPROVED BY District_Executive_Director')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                  <button type="submit" class="btn btn-primary">APPROVED</button>
                 </div></td>

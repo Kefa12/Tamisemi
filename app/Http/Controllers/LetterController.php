@@ -334,7 +334,13 @@ class LetterController extends Controller
          elseif ($request->status=="1") {
             return redirect()->route('wards.index')
             ->with('success', 'user updated successfully');
-         }else {
+         }elseif ($request->status=="2") {
+            return redirect()->route('districts.index')
+            ->with('success', 'user updated successfully');
+         } elseif ($request->status=="3") {
+            return redirect()->route('districts.index')
+            ->with('success', 'user updated successfully');
+         }else{
             return redirect()->route('wards.index')
             ->with('success', 'user updated successfully');
          } 

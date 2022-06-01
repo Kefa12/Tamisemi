@@ -446,7 +446,7 @@
             @endrole
 
             @role('DED')
-     <form action="{{ route('letters.update', $letter->id) }}" method="POST">
+            <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -461,35 +461,73 @@
                 <div class="form-group">
                  
                     <input type="Hidden" class="form-control" style="height:50px" name="cschool" value="{{ $letter->cschool }}"
-                        placeholder="mwenge"></textarea>
+                        placeholder="mwenge"></input>
                 </div>
+                <div class="form-group">
+                 
+             </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
                     <input type="Hidden" class="form-control" style="height:50px" name="cdistrict" value="{{ $letter->cdistrict}}"
-                        placeholder="iringa"></textarea>
+                        placeholder="iringa"></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
                     <input type="Hidden" class="form-control" style="height:50px" name="tdistrict" value="{{ $letter->tdistrict}}"
-                        placeholder="mbeya"></textarea>
+                        placeholder="mbeya"></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
                     <input type="Hidden" class="form-control" style="height:50px" name="description" value="{{$letter->description}}"
-                        placeholder="description"></textarea>
+                        placeholder="description"></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                  
                     <input type="Hidden" class="form-control" style="height:50px" name="ward"   value="{{$letter->ward}}"
-                        placeholder="ruanda"></textarea>
+                        placeholder="ruanda"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                        ></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="hidden" class="form-control" style="height:50px" name="ward1"    value="{{Auth::user()->ward}}"
+                        placeholder="ruanda"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                 
+                    <input type="Hidden" class="form-control" style="height:50px" name="cschool1" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></textarea>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="hidden" class="form-control" style="height:50px" name="regional"  value="{{ Auth::user()->regional}}"
+                        placeholder="mbeya"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="schools" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></input>
                 </div>
             </div>
             
@@ -510,35 +548,73 @@
                 <div class="form-group">
                  
                     <input type="Hidden" class="form-control" style="height:50px" name="cschool" value="{{ $letter->cschool }}"
-                        placeholder="mwenge"></textarea>
+                        placeholder="mwenge"></input>
                 </div>
+                <div class="form-group">
+                 
+             </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
                     <input type="Hidden" class="form-control" style="height:50px" name="cdistrict" value="{{ $letter->cdistrict}}"
-                        placeholder="iringa"></textarea>
+                        placeholder="iringa"></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
                     <input type="Hidden" class="form-control" style="height:50px" name="tdistrict" value="{{ $letter->tdistrict}}"
-                        placeholder="mbeya"></textarea>
+                        placeholder="mbeya"></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
                     <input type="Hidden" class="form-control" style="height:50px" name="description" value="{{$letter->description}}"
-                        placeholder="description"></textarea>
+                        placeholder="description"></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                  
                     <input type="Hidden" class="form-control" style="height:50px" name="ward"   value="{{$letter->ward}}"
-                        placeholder="ruanda"></textarea>
+                        placeholder="ruanda"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                        ></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="hidden" class="form-control" style="height:50px" name="ward1"    value="{{Auth::user()->ward}}"
+                        placeholder="ruanda"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                 
+                    <input type="Hidden" class="form-control" style="height:50px" name="cschool1" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></textarea>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="hidden" class="form-control" style="height:50px" name="regional"  value="{{ Auth::user()->regional}}"
+                        placeholder="mbeya"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="schools" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></input>
                 </div>
             </div>
             
@@ -632,11 +708,21 @@
             @endrole
             @endif
            
-            @if($letter->WEO=='APPROVED BY WEO') 
+         
             @if($letter->DEO=='REJECTED BY District_Education_Officer' || $letter->DEO=='pending') 
             @role('DEO')
+            <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
+                       
+            <input type="hidden" class="form-control" style="height:50px" name="WEO"    value="{{$letter->WEO}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="status"    value="2"
+                       ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">DEO APPROVED
+                <div class="form-group">DEO APPROVED jvhkjvfkj
                 <select name="DEO" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="APPROVED BY District_Education_Officer">APPROVED</option>
                         <option value="REJECTED BY District_Education_Officer">REJECTED</option>
@@ -644,11 +730,23 @@
                 </div>
             </div>
             @endrole
+          
             @endif
-            @endif
-            @if($letter->DEO=='APPROVED BY District_Education_Officer') 
+           
             @if($letter->DED=='REJECTED BY District_Executive_Director' || $letter->DED=='pending') 
             @role('DED')
+            <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
+               ></input>        
+            <input type="hidden" class="form-control" style="height:50px" name="WEO"    value="{{$letter->WEO}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="DEO"    value="{{$letter->DEO}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="status"    value="3"
+                       ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">DED APPROVED
                 <select name="DED" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
@@ -658,7 +756,7 @@
                 </div>
             </div>
             @endrole
-            @endif
+          
             @endif
 
            
