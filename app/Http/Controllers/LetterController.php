@@ -153,9 +153,9 @@ class LetterController extends Controller
         $exist = DB::table('letters')->where('name',$request->name)->value('name');
         if($exist==NULL){
         $regional1 = DB::table('regional_rd')->where('id',$request->regional)->value('name');
-        $districts1 = DB::table('districts')->where('id',$request->tdistrict)->value('name');
-        $wards1 = DB::table('wards')->where('id',$request->ward1)->value('name');
-        $schools1 = DB::table('schools')->where('id',$request->schools)->value('name');
+        $districts1 = DB::table('district_dp')->where('id',$request->tdistrict)->value('name');
+        $wards1 = DB::table('ward_dp')->where('id',$request->ward1)->value('name');
+        $schools1 = DB::table('school_dp')->where('id',$request->schools)->value('name');
         Letter::create([
             'name' =>  $request->name,
             'cschool' => $request->cschool1,
