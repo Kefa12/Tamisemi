@@ -230,7 +230,7 @@
       
             <tr style="background-color:white;">
             
-            @if($letter->name==Auth::user()->name &&  $letter->cschool==$school->name)
+            @if($letter->name==Auth::user()->name &&  $letter->cschool==$school->name && $i<1)
           
                 <td>{{ ++$i }}</td>
                 <td>{{ $letter->name }}</td>

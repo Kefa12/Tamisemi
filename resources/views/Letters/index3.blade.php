@@ -210,7 +210,7 @@
             <tr style="background-color:white;">
         @if($letter->author==Auth::user()->name)
          
-    <table  class="table table-striped">
+    <table  >
         <tr>
             <th>No</th>
             <td>{{ ++$i }}</td>
@@ -224,7 +224,7 @@
            
             
             @if( $letter->Teacher_approved == 'REJECTED BY TEACHER')
-                <t><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
                @elseif( $letter->Teacher_approved == 'APPROVED BY TEACHER')

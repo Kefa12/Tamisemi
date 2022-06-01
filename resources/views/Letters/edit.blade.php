@@ -243,7 +243,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
-                    <input type="hidden" name="author" value="{{ $letter->name }}" class="form-control" placeholder="Name">
+                    <input type="hidden" name="author" value="{{ $letter->author }}" class="form-control" placeholder="Name">
                 </div>
             </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -554,8 +554,7 @@
                   
              <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>
-            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="pending"
-                       ></input>
+       
                 </div>
             </div>
           
@@ -575,9 +574,10 @@
            
 
            
-            @if($letter->Headmaster=='REJECTED BY HEADMASTER' || $letter->Headmaster=='pending')
+           
             @role('Headmaster')
-          
+            @if($letter->Headmaster=='REJECTED BY HEADMASTER'  || $letter->Headmaster=='APPROVED BY HEADMASTER' || $letter->Headmaster=='pending' || $letter->Transfer_Headmaster=='REJECTED BY HEADMASTER' || $letter->Transfer_Headmaster=='pending' || $letter->Transfer_Headmaster=='APPROVED BY HEADMASTER')
+            @if($letter->author=='unknown' || $letter->Transfer_Headmaster!='pending')
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">Headmaster Approved
                 <select name="Headmaster" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
@@ -585,7 +585,17 @@
                         <option value="REJECTED BY HEADMASTER">REJECTED</option>
                 </select>
                 </div>
+            </div>  
+          @else
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">Headmaster Approved
+                <select name="Transfer_Headmaster" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <option value="APPROVED BY HEADMASTER">APPROVED</option>
+                        <option value="REJECTED BY HEADMASTER">REJECTED</option>
+                </select>
+                </div>
             </div>
+            @endif
             @endif
             @endrole
          

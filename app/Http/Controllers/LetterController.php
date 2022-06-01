@@ -275,7 +275,8 @@ class LetterController extends Controller
             'ward1' => 'required',
             'schools' => 'required',
             'Headmaster' => 'required',
-           
+            'tHeadmaster' => 'required',
+         
             'DEO' => 'required',
             'DED' => 'required',
            
