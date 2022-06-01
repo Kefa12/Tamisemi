@@ -49,10 +49,10 @@ class RegisteredUserController extends Controller
             'schools' => ['required', 'string', 'max:255'],
         ]);
     
-        $regionals1 = DB::table('regionals')->where('id',$request->regional)->value('name');
-        $districts1 = DB::table('districts')->where('id',$request->district)->value('name');
-        $wards1 = DB::table('wards')->where('id',$request->ward)->value('name');
-        $schools1 = DB::table('schools')->where('id',$request->schools)->value('name');
+        $regionals1 = DB::table('regional_rd')->where('id',$request->regional)->value('name');
+        $districts1 = DB::table('district_dp')->where('id',$request->district)->value('name');
+        $wards1 = DB::table('ward_dp')->where('id',$request->ward)->value('name');
+        $schools1 = DB::table('school_dp')->where('id',$request->schools)->value('name');
         //$regional = DB::select('select name from regionals where id=?',[$request->regional ]);
        //$regionals1->implode($regionals1," ");
     

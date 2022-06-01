@@ -72,27 +72,25 @@
                 -->
 
                 <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @role('Teacher')
                     <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
                     @endrole
                    
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Request</a>
-                        <div class="dropdown-menu bg-transparent border-0">
+                
                         @role('Teacher')  
-                        <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
-                            <a href="{{ URL('letters1') }}" class="dropdown-item">New Report</a>
-                            <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
-                            <a href="{{ URL('letters3') }}" class="dropdown-item">Request From Teacher</a>
+                      
+                            <a href="{{ URL('letters1') }}"  class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Report</a>
+                            <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
+                            <a href="{{ URL('letters3') }}"  class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Request From Teacher</a>
                         @endrole
                         @role('Weo')
                         <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
                         @endrole
                           
-                            <a href="#" class="dropdown-item">Completed Report</a>
+                        
                         </div>
-                    </div>
+                    
                   
                    
                     </div>

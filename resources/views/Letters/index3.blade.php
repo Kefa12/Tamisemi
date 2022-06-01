@@ -50,7 +50,7 @@
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
                 @role('Teacher')
-                    <h3 class="text-primary">Teacher Dashboard</h3>
+                    <h3 class="text-primary">Teacher</h3>
                 @endrole
                 @role('Headmaster')
                     <h3 class="text-primary">HeadMaster</h3>
@@ -72,26 +72,23 @@
                 -->
 
                 <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @role('Teacher')
                           <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
                     @endrole
                    
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Request</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                        @role('Teacher')
-                              <a href="{{ URL('letters1') }}" class="dropdown-item">New Report</a>
-                              <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
+                     @role('Teacher')
+                              <a href="{{ URL('letters1') }}"class="nav-item nav-link""><i class="fa fa-keyboard me-2"></i>New Report</a>
+                              <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
                         @endrole
                         @role('Headmaster')
-                              <a href="{{ URL('schools') }}" class="dropdown-item">Onprogress Request</a>
+                              <a href="{{ URL('schools') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
                         @endrole
                            
                           
-                            <a href="{{ URL('letters3') }}" class="dropdown-item">Request From Teacher</a>
+                            <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Request From Teacher</a>
                           
-                            <a href="#" class="dropdown-item">Completed Report</a>
+                         
                         </div>
                     </div>
                  
@@ -106,9 +103,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a>
+               
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -195,9 +190,9 @@
               
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+          
                <h1>Request From Another Teacher</h1>
-            </div>
+          
            
         </div>
     </div>

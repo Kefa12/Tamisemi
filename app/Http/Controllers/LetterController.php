@@ -196,8 +196,7 @@ class LetterController extends Controller
             'DEO' => 'required',
             'DED' => 'required',
         ]);
-        $exist = NULL;
-        
+        $exist = DB::table('letters')->where('name',$request->name)->value('name');
         if($exist==NULL){
         Letter::create([
             'name' =>  $request->name,

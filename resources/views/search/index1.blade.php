@@ -1,5 +1,3 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,19 +67,14 @@
                 -->
 
                 <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-					<a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
-					<div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Request</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{ URL('letters1') }}" class="dropdown-item">New Report</a>
-                            <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
-                            <a href="{{ URL('letters3') }}" class="dropdown-item">Request From Teacher</a>
-                          
-                            <a href="#" class="dropdown-item">Completed Request</a>
-                        </div>
-                    </div>
-                  
+                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
+                 
+                   
+                    <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Report</a>
+                    <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
+                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Request From Teacher</a>
+                   
                     </div>
                 </div>
             </nav>
@@ -105,11 +98,31 @@
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Message</span>
                         </a>
-                  
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                  
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                  
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                   
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                           
+                        </div>
                     </div>
                     <div class="nav-item dropdown">
-                      
-                      
+                       
+                        
                         
                     </div>
                     <div class="nav-item dropdown">
@@ -129,6 +142,14 @@
                     </div>
                 </div>
             </nav>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+     
+               
+                <!--MESSAGE-->
+  
 
             <style>
               

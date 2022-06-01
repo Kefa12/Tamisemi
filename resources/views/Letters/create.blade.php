@@ -49,7 +49,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"> Teacher</h3>
+                    <h3 class="text-primary"> Teacher </h3>
                 </a>
                 <!-- no 
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -67,20 +67,14 @@
                 -->
 
                 <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Request</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{ URL('letters1') }}" class="dropdown-item">New Report</a>
-                            <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
-                            <a href="{{ URL('letters3') }}" class="dropdown-item">Request From Teacher</a>
-                          
-                            <a href="#" class="dropdown-item">Completed Request</a>
-                        </div>
-                    </div>
                  
-                  
+                   
+                    <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Report</a>
+                    <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
+                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Request From Teacher</a>
+                   
                     </div>
                 </div>
             </nav>
@@ -96,7 +90,7 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                
+               
                 <!--MESSAGE-->
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
@@ -104,9 +98,33 @@
                             <i class="fa fa-envelope me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Message</span>
                         </a>
-                      
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                  
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                  
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                   
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                           
+                        </div>
                     </div>
-                   
+                    <div class="nav-item dropdown">
+                       
+                        
+                        
+                    </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="asset4/img/user.jpg" alt="" style="width: 40px; height: 40px;">
@@ -127,7 +145,7 @@
 
             <style>
                 form{
-                    margin-left:240px;
+                    margin-left:20px;
                    margin-top:0px;
                 }
             </style>
