@@ -327,13 +327,20 @@ class LetterController extends Controller
             ])
                 ->orderBy("id","desc")
                 ->paginate(10);
-                $i=0;
-   
+            
+                if($request->status=="0")
                 return redirect()->route('schools.index')
                 ->with('success', 'user updated successfully');
-     
-       
-    }
+         elseif ($request->status=="1") {
+            return redirect()->route('wards.index')
+            ->with('success', 'user updated successfully');
+         }else {
+            return redirect()->route('wards.index')
+            ->with('success', 'user updated successfully');
+         } 
+        
+        }
+    
     public function update1(Request $request, Letter $letter)
     {
         //
@@ -388,6 +395,7 @@ class LetterController extends Controller
            
        
     }
+ 
 
     /**
      * Remove the specified resource from storage.
