@@ -229,9 +229,7 @@
                 <td>
                     <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                            <i class="fas fa-eye text-success  fa-lg"></i>
-                        </a>
+                       
 					
 						
                         <a href="{{ route('letters.edit', $letter->id) }}">
@@ -243,6 +241,9 @@
                         @csrf
                         @method('DELETE')
                         @role('admin')
+                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
                         <button type="submit" title="delete" style="border: none; background-color:transparent;">
                             <i class="fas fa-trash fa-lg text-danger"></i>
 
