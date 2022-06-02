@@ -246,11 +246,11 @@
                 </div></td>
                
                 @endif
-                @if( $letter->Regional_Director == 'REJECTED BY  Regional_Director')
+                @if( $letter->Regional_Director == 'REJECTED BY RD')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> REJECTED</button>
                 </div></td>
-               @elseif( $letter-> Regional_Director == 'APPROVED BY  Regional_Director')
+               @elseif( $letter-> Regional_Director == 'APPROVED BY RD')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                  <button type="submit" class="btn btn-primary">APPROVED</button>
                 </div></td>

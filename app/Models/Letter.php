@@ -25,6 +25,7 @@ class Letter extends Model
         'WEO',
         'DEO',
         'DED',
+        'Regional_Director',
         'T_comment',
         'H_comment',
         'T_date',

@@ -279,6 +279,7 @@ class LetterController extends Controller
          
             'DEO' => 'required',
             'DED' => 'required',
+            'Regional_Director' => 'required',
            
           
         ]);  
@@ -339,6 +340,9 @@ class LetterController extends Controller
             ->with('success', 'user updated successfully');
          } elseif ($request->status=="3") {
             return redirect()->route('districts.index')
+            ->with('success', 'user updated successfully');
+         }elseif ($request->status=="4") {
+            return redirect()->route('regionals.index')
             ->with('success', 'user updated successfully');
          }else{
             return redirect()->route('wards.index')

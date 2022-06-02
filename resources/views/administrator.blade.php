@@ -66,13 +66,14 @@
                 </div>
                 -->
 
+              
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                   
                   
                    
-                    <a href="{{ URL('regionals') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress_Request</a>
-                 <div class="nav-item dropdown">
+                    <a href="{{ URL('regionals') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
+                 <div class="nav-item dropdown"> <div class="nav-item dropdown">
                      
                     </div>
                 </div>

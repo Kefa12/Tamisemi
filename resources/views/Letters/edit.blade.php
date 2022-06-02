@@ -208,8 +208,8 @@
          </div>
                                             
                      
-//                 </div>
-//           
+                 </div>
+           
         @csrf
         @method('PUT')
        
@@ -619,6 +619,93 @@
             </div>
             
             @endrole
+            @role('Regional_Director')
+            <form action="{{ route('letters.update', $letter->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="Hidden" name="name" value="{{ $letter->name }}" class="form-control" placeholder="Name">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                 
+                    <input type="Hidden" class="form-control" style="height:50px" name="cschool" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></input>
+                </div>
+                <div class="form-group">
+                 
+             </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="Hidden" class="form-control" style="height:50px" name="cdistrict" value="{{ $letter->cdistrict}}"
+                        placeholder="iringa"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="Hidden" class="form-control" style="height:50px" name="tdistrict" value="{{ $letter->tdistrict}}"
+                        placeholder="mbeya"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="Hidden" class="form-control" style="height:50px" name="description" value="{{$letter->description}}"
+                        placeholder="description"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                 
+                    <input type="Hidden" class="form-control" style="height:50px" name="ward"   value="{{$letter->ward}}"
+                        placeholder="ruanda"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                        ></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="hidden" class="form-control" style="height:50px" name="ward1"    value="{{Auth::user()->ward}}"
+                        placeholder="ruanda"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                 
+                    <input type="Hidden" class="form-control" style="height:50px" name="cschool1" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></textarea>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="hidden" class="form-control" style="height:50px" name="regional"  value="{{ Auth::user()->regional}}"
+                        placeholder="mbeya"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="schools" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></input>
+                </div>
+            </div>
+            
+            @endrole
             
             @if($letter->author==Auth::user()->name)
             @if($letter->Teacher_approved=='REJECTED BY TEACHER' || $letter->Teacher_approved=='pending')
@@ -758,6 +845,33 @@
             @endrole
           
             @endif
+            @if($letter->Regional_Director=='REJECTED BY RD' || $letter->Regional_Director=='pending') 
+            @role('Regional_Director')
+            <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
+               ></input>        
+            <input type="hidden" class="form-control" style="height:50px" name="WEO"    value="{{$letter->WEO}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="DEO"    value="{{$letter->DEO}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="DED"    value="{{$letter->DED}}"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="status"    value="4"
+                       ></input>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">Regional_Director APPROVED
+                <select name="Regional_Director" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                        <option value="APPROVED BY RD">APPROVED</option>
+                        <option value="REJECTED BY RD">REJECTED</option>
+                </select>
+                </div>
+            </div>
+            @endrole
+          
+            @endif
 
            
            
@@ -794,6 +908,11 @@
             </div>
             @endrole
             @role('DED')
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">APPROVED / REJECTED</button>
+            </div>
+            @endrole
+            @role('Regional_Director')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">APPROVED / REJECTED</button>
             </div>
