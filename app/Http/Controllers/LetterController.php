@@ -345,8 +345,12 @@ class LetterController extends Controller
             return redirect()->route('regionals.index')
             ->with('success', 'user updated successfully');
          }else{
-            return redirect()->route('letters.index')
-                ->with('success', 'user updated successfully');
+            return redirect('letters3');
+                
+
+                // $i=0;
+                // return view('letters.index3',compact('letters','i'))
+                //          ->with('i', (request()->input('page', 1) - 1) * 5);
          } 
         
         }
