@@ -396,13 +396,13 @@
            
             @if(($letter->name==Auth::user()->name || !(Auth::user()->hasRole(['Teacher'])))) 
          
-    <table style="padding-top:0px;">
+            <table  class="table table-striped" style="padding-top:0px;">
         <tr>
-            <th>No</th>
+            <td>No</td>
             <td>{{ ++$i }}</td>
-            <th>Name</th>
-            <th>Approve_status</th>
-        </tr>
+            <td>Name</td>
+            <td>Approve_status</td>
+            <td>Comment</td>
         <tr>
             <th>Name</th>
             <td>{{ $letter->name }}</td>
@@ -532,10 +532,11 @@
               
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
+                 
+                  @role('Tamisemi_Director')
                   <a href="{{ route('letters.show', $letter->id) }}" title="show">
                       <i class="fas fa-eye text-success  fa-lg"></i>
                   </a>
-                  @role('Tamisemi_Director')
                   <a href="{{ route('letters.edit', $letter->id) }}">
                       <i class="fas fa-edit  fa-lg"></i>
 
@@ -568,11 +569,14 @@
           
          
     </table>
-    <table>
-    <tr style="border: none; background-color:blue; color:white;">
-                  <th>Description</th>
-                  <th>Number Of day To respond</th>
-            </tr>
+    <h1>TABLE SHOW TIME TAKEN TO RESPOND REQUEST</h1>
+    <table  class="table table-striped" style="padding-top:0px;">
+        <tr>
+            <td><strong>Description</strong></td>
+            <td>Number Of day To respond</td>
+            
+        <tr>
+    
               <tr>
                   <th>LIFE TIME FOR REQUEST</th>
                   <td>{{ abs(round((strtotime($date2)-strtotime($letter->created_at))/86400)) }}</td>

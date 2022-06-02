@@ -210,13 +210,14 @@
             <tr style="background-color:white;">
         @if($letter->author==Auth::user()->name)
          
-    <table  >
+        <table  class="table table-striped" style="padding-top:0px;">
         <tr>
-            <th>No</th>
+            <td>No</td>
             <td>{{ ++$i }}</td>
-            <th>Name</th>
-            <th>Approve_status</th>
-        </tr>
+            <td>Name</td>
+            <td>Approve_status</td>
+            <td>Comment</td>
+        <tr>
         <tr>
             <th>Name</th>
             <td>{{ $letter->name }}</td>
