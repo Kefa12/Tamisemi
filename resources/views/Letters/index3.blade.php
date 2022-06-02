@@ -171,9 +171,7 @@
                 }
               
                
-                h1{
-                    padding-left:250px;
-                }
+              
             </style>
             <!-- Navbar End -->
 
