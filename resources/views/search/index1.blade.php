@@ -176,13 +176,13 @@
 					<div class="input-group">
 						<table  class="table table-bordered table-responsive-lg">
                     <tr>
-						<td colspan=2>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search regional " id="term1"></input>
+						<td colspan=4>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search regional " id="term1"></input>
                          	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-					   <td colspan=2>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search transfer District " id="term2">
+					   <td colspan=4>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search transfer District " id="term2">
                          	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-					   <td colspan=2>  <input type="text" class="form-control mr-2" name="term" placeholder="Search ward" id="term">
+					   <td colspan=4>  <input type="text" class="form-control mr-2" name="term" placeholder="Search ward" id="term">
                          	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-						<td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
+						<td colspan=1>	<button class="btn btn-info" type="submit" title="Search users"><br>
 	                    		<span class="fas fa-search"></span>
 	                         	</button></td>
 									

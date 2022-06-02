@@ -708,7 +708,7 @@
             @endrole
             
             @if($letter->author==Auth::user()->name)
-            @if($letter->Teacher_approved=='REJECTED BY TEACHER' || $letter->Teacher_approved=='pending')
+            @if($letter->Teacher_approved=='APPROVED BY TEACHER' || $letter->Teacher_approved=='REJECTED BY TEACHER' || $letter->Teacher_approved=='pending')
             @role('Teacher')
 
           
