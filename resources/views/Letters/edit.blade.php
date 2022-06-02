@@ -717,6 +717,8 @@
                   
              <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="status"    value="5"
+                       ></input>
        
                 </div>
             </div>

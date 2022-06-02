@@ -279,7 +279,7 @@ class LetterController extends Controller
          
             'DEO' => 'required',
             'DED' => 'required',
-            'Regional_Director' => 'required',
+           
            
           
         ]);  
@@ -345,8 +345,8 @@ class LetterController extends Controller
             return redirect()->route('regionals.index')
             ->with('success', 'user updated successfully');
          }else{
-            return redirect()->route('wards.index')
-            ->with('success', 'user updated successfully');
+            return redirect()->route('letters.index')
+                ->with('success', 'user updated successfully');
          } 
         
         }
