@@ -1,3 +1,4 @@
+
 @extends('layouts.layout')
 
 @section('content')
@@ -54,7 +55,7 @@
                 <div class="form-group">
                    
                     <input type="hidden" class="form-control" style="height:50px" name="tdistrict"
-                        placeholder="mbeya" value="{{ $transfer->tdistrict}}"></input>
+                        placeholder="mbeya" value="{{ $transfer->tdistrict}}">+
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

@@ -74,7 +74,7 @@
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @role('Teacher')
-                          <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
+                          <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search Teacher For swapping</a>
                     @endrole
                    
                      @role('Teacher')
@@ -86,7 +86,7 @@
                         @endrole
                            
                           
-                            <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Request From Teacher</a>
+                            <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request From Teacher</a>
                           
                          
                         </div>

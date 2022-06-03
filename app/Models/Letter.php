@@ -9,6 +9,7 @@ class Letter extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'Employee_id',
         'name',
         'cschool',
         'cdistrict',

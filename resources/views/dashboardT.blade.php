@@ -331,7 +331,16 @@
                                 </form>
 
       
-      <table class="table table-bordered table-responsive-lg">
+      <table class="table table-striped">
+      <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>current school</th>
+            <th>current disctrict</th>
+            <th>transfer district</th>
+            <th>description</th>  
+            <th width="280px">Action</th>
+      </tr>
       
 		@foreach ($letters as $letter)
 		@if($letter->name==Auth::user()->name &&  $letter->Message!="")

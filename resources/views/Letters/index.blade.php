@@ -74,7 +74,7 @@
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @role('Teacher')
-                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
+                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search Teacher For swapping</a>
                     @endrole
                    
                 
@@ -82,7 +82,7 @@
                       
                             <a href="{{ URL('letters1') }}"  class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Request</a>
                             <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
-                            <a href="{{ URL('letters3') }}"  class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Request From Teacher</a>
+                            <a href="{{ URL('letters3') }}"  class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request From Teacher</a>
                         @endrole
                         @role('Weo')
                         <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
@@ -186,13 +186,14 @@
         </div>
     @endif
  @foreach ($letters as $letter)
-  @if($letter->author=="unknown" && $letter->name==Auth::user()->name)
-  <table  style="padding-top:0px;">
+  @if($letter->author=="unknown" && $letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id)
+  <table  class="table table-striped w-auto" style="padding-top:0px;">
         <tr>
             <th>No</th>
             <td>{{ ++$i }}</td>
             <th>Name</th>
             <th>Approve_status</th>
+            <th>Comments</th>
         </tr>
         <tr>
             <th>Name</th>
@@ -330,7 +331,10 @@
           
          
     </table>
-    <table>
+    <br/>
+    <h2>NUMBER DAY FOR REQUEST RESPOND</h2>
+    <table  class="table table-striped w-auto">
+      
     <tr style="border: none; background-color:gray; color:white;">
                   <th>Description</th>
                   <th>Number Of day To respond</th>

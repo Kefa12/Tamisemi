@@ -67,13 +67,13 @@
                 -->
 
                 <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
+                    <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search Teacher For swapping</a>
                  
                    
                     <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Request</a>
                     <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
-                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Request From Teacher</a>
+                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request From Teacher</a>
                    
                     </div>
                 </div>
@@ -181,6 +181,10 @@
   
     <input type="hidden" name="name" class="form-control" placeholder="Name" value="{{ Auth::user()->name }}">
 </div>
+<div class="form-group">
+  
+    <input type="hidden" name="Employee_id" class="form-control" placeholder="Name" value="{{ Auth::user()->Employee_id }}">
+</div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
@@ -245,8 +249,8 @@
         
               <div class="form-group">
 												                                              <h5 class="text-info  mb-4">Choose Regional
-																							 <select id="state" name="regional" class="form-control" style="width:500px;">
-																										  <option width="100px"><h1 class="form-control">Choose Regional</h1></option>
+																							 <select id="state" name="regional" class="form-control" style="width:250px;">
+																										  <option width="50px"><h1 class="form-control">Choose Regional</h1></option>
 																												  @foreach($regional_rd as $row)
 																										 <option value={{$row->id}}>{{$row->name}}</option>
 																													@endforeach   
@@ -254,18 +258,18 @@
 												   </div> 
 													<div class="form-group">
 																										  <h5 class="text-info  mb-4">Choose District
-																											   <select  id="city" name="tdistrict" style="width:500px;" class="form-control" disabled >
+																											   <select  id="city" name="tdistrict"  style="width:250px;" class="form-control" disabled >
 																													<option  width="100px">City List</option>
 																											   </select></h5>
 																					</div>
 																				<div class="form-group">
 																						   <h5 class="text-info  mb-4">Choose Ward
-																							 <select  id="stadium"  name="ward" style="width:500px;"  class="form-control" disabled>
+																							 <select  id="stadium"  name="ward"  style="width:250px;"  class="form-control" disabled>
 																							 </select></h5>
 																				  </div>
 																	<div class="form-group">
 																									   <h5 class="text-info  mb-4">Choose school
-																												<select  id="details" name="schools" style="width:500px;" class="form-control" disabled>
+																												<select  id="details" name="schools"  style="width:250px;" class="form-control" disabled>
 																												</select></h5>
 																	</div>
 																							   </div>
@@ -273,16 +277,18 @@
            
                                                                                 <h5 class="text-info  mb-4">
                                                                                     
-                                                                                        <strong>Description:</strong>
-                                                                                        <input type="text" style="width:500px;" name="description" class="form-control" placeholder="request">
+                                                                                        <strong>Reason For Transfer:</strong>
+                                                                                        <input type="text"  style="width:250px;" name="description" class="form-control" placeholder="request">
                                                                                     
-                                                                                    </h5>
-                                                                                </div>
+                                                                                   
+                                                                                
           
 
            
-            <div class="col-xs-12 col-sm-6 col-md-6 text-center"  >
-                <button type="submit" style="width:200px;" class="btn btn-primary">Submit</button>
+                                                                                    <h5 class="text-info  mb-4">
+                <button type="submit" style="width:150px;" class="btn btn-primary">Submit</button>
+            </div>
+            </h5>
             </div>
         </div>
 

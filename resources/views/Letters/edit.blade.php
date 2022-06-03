@@ -5,11 +5,9 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Send Request</h2>
+                <h2>Send Swapping Request to Teacher {{ $letter->name }} </h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('letters.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
-            </div>
+         
         </div>
     </div>
 
@@ -58,6 +56,13 @@
         <div class="row">
        
            
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="Employee_id" value="{{  Auth::user()->Employee_id}}"
+                        placeholder="mwenge"></input>
+                </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -112,7 +117,7 @@
             @if(!($letter->author==Auth::user()->name))
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                     <label>Description</label>
+                     <label>Reason for Want to swap</label>
                     <input type="text" class="form-control" style="height:50px" name="description"  
                         placeholder="description"></input>
                 </div>

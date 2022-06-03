@@ -67,13 +67,13 @@
                 -->
 
                 <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search</a>
+                    <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search Teacher For swapping</a>
                  
                    
                     <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Request</a>
                     <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
-                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Request From Teacher</a>
+                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request From Teacher</a>
                    
                     </div>
                 </div>
@@ -200,7 +200,7 @@
         </div>
     @endif
 
-    <table class="table table-striped w-auto">
+    <table class="table table-striped w-auto" style="margin-left:10px;">
       
 		
 			<tr>
@@ -216,8 +216,9 @@
         </tr>
 	
         @foreach ($letters as $letter)
+          
+			@if(($letter->name!=Auth::user()->name) && ($i<10))
             <tr>
-			@if(($letter->name!=Auth::user()->name)&& $i<10)
                 <td>{{ ++$i }}</td>
                 <td>{{ $letter->name }}</td>
 				<td>{{ $letter->regional }}</td>
