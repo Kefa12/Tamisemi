@@ -4,8 +4,8 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Send Swapping Request to Teacher {{ $letter->name }} </h2>
+        <div class="pull-left">
+              
             </div>
          
         </div>
@@ -23,6 +23,7 @@
     @endif
    
     @role('Teacher')
+    <h2>Send Swapping Request to Teacher {{ $letter->name }} </h2>
 
     @if(!($letter->author==Auth::user()->name))
      <form action="{{ URL('letters2'), $letter->id}}" method="GET">
@@ -180,6 +181,7 @@
             
             @endrole
             @role('Headmaster')
+            <h2>Headmster Respond Request to Teacher {{ $letter->name }} </h2>
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
@@ -319,11 +321,12 @@
             
             @endrole
             @role('Weo')
+            <h2>Ward Education Officer Respond Request to Teacher {{ $letter->name }} </h2>
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                             
-                                            Comment<input type="text" class="form-control" style="height:50px" name="W_comment" 
+                                            <input type="text" class="form-control" style="height:50px" name="W_comment" 
                                                     ></input>
                 </div>
         @csrf
@@ -451,6 +454,7 @@
             @endrole
 
             @role('DED')
+            <h2>District Director Respond Request to Teacher {{ $letter->name }} </h2>
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -538,6 +542,7 @@
             
             @endrole
             @role('DEO')
+            <h2>District Education Officer Respond Request to Teacher {{ $letter->name }} </h2>
      <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -625,6 +630,7 @@
             
             @endrole
             @role('Regional_Director')
+            <h2>Regional Director Respond Request to Teacher {{ $letter->name }} </h2>
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -803,7 +809,7 @@
             @endif
            
          
-            @if($letter->DEO=='REJECTED BY District_Education_Officer' || $letter->DEO=='pending') 
+            @if($letter->DEO=='APPROVED BY District_Education_Officer'  || $letter->DEO=='REJECTED BY District_Education_Officer' || $letter->DEO=='pending') 
             @role('DEO')
             <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>

@@ -211,27 +211,27 @@
 
     <table   class="table table-striped">
         <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
+            <td>No</td>
+            <td>Name</td>
+            <td>current school</td>
+            <td>current disctrict</td>
+            <td>transfer district</td>
            
-            <th>description</th>
-            <th>HeadMaster_Action</th>
-            <th>WEO_Action</th>
-            <th>DEO_Action</th>
+            <td>description</td>
+            <td>HeadMaster_Action</td>
+            <td>WEO_Action</td>
+            <td>DEO_Action</td>
             
-            <th width="280px">Action</th>
+            <td width="280px">Action</td>
         </tr>
       
         @foreach ($letters as $letter)
         @foreach ($schools as $school)
       
-            <tr style="background-color:white;">
+          
             
             @if($letter->name==Auth::user()->name &&  $letter->cschool==$school->name && $i<1)
-          
+            <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $letter->name }}</td>
                 <td>{{ $letter->cschool }}</td>
@@ -325,17 +325,18 @@
     @endif
 
     <table  class="table table-striped">
-        <tr style="background-color:;">
-            <th>No</th>
-            <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
-            <th>description</th>
-            <th>Headmaster_Approved</th>
+        <tr>
+        <td>No</td>
+            <td>Name</td>
+            <td>current school</td>
+            <td>current disctrict</td>
+            <td>transfer district</td>
+           
+            <td>description</td>
+            <td>Headmaster_Approved</td>
            
             
-            <th>Action</th>
+            <td>Action</td>
         </tr>
       
         @foreach ($letters as $letter)
