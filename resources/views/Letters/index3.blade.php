@@ -189,7 +189,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
           
-               <h1>Request From Another Teacher</h1>
+               <h1>Swapping Request From Another Teacher</h1>
           
            
         </div>
@@ -266,37 +266,21 @@
         <tr>
             <th>current ward</th>
             <td>{{ $letter->ward }}</td>
-            
-        </tr>
-        <tr>
-            <th>current disctrict</th>
-            <td>{{ $letter->cdistrict }}</td>
-           
-        </tr>
-        <tr>
-            <th>transfer district</th>
-            <td>{{ $letter->tdistrict }}</td>
-          
-        </tr>
-        <tr>
-            <th>description</th>
-            <td>{{ $letter->description }}</td>
-            <th width="280px">Action</th>
-            <td>
-            
-            <td>
+            <th>Require to respond swapping request</th>
+           <td>
             
               
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                      <i class="fas fa-eye text-success  fa-lg"></i>
-                  </a>
+                 
                   <a href="{{ route('letters.edit', $letter->id) }}">
                             <i class="fas fa-edit  fa-lg"></i>
 
                 </a>
                   @role('Tamisemi_Director')
+                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                      <i class="fas fa-eye text-success  fa-lg"></i>
+                  </a>
                   <a href="{{ route('letters.edit', $letter->id) }}">
                       <i class="fas fa-edit  fa-lg"></i>
 
@@ -316,6 +300,22 @@
                 
               </form>
           </td>
+            
+        </tr>
+        <tr>
+            <th>current disctrict</th>
+            <td>{{ $letter->cdistrict }}</td>
+           
+        </tr>
+        <tr>
+            <th>transfer district</th>
+            <td>{{ $letter->tdistrict }}</td>
+          
+        </tr>
+        <tr>
+            <th>description</th>
+            <td>{{ $letter->description }}</td>
+            
        </tr>
         <tr>
           <th>Message from Teacher</th>

@@ -335,7 +335,7 @@
     <h2>NUMBER DAY FOR REQUEST RESPOND</h2>
     <table  class="table table-striped w-auto">
       
-    <tr style="border: none; background-color:gray; color:white;">
+    <tr style="border: none; color:white;">
                   <th>Description</th>
                   <th>Number Of day To respond</th>
             </tr>
@@ -396,7 +396,7 @@
        
  @elseif($letter->name==Auth::user()->name )
      @foreach ($letters as $letter)
-            <tr style="background-color:white;">
+          
            
             @if(($letter->name==Auth::user()->name || !(Auth::user()->hasRole(['Teacher'])))) 
          
@@ -573,7 +573,7 @@
           
          
     </table>
-    <h1>TABLE SHOW TIME TAKEN TO RESPOND REQUEST</h1>
+    <h2>TIME TAKEN TO RESPOND REQUEST</h2>
     <table  class="table table-striped" style="padding-top:0px;">
         <tr>
             <td><strong>Description</strong></td>

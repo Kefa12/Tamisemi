@@ -170,20 +170,20 @@
         </div>
     @endif
 
-    <table class="table table-bordered table-responsive-lg" style="width:100%;">
+    <table  class="table table-striped">
         <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
-            <th>description</th>
-            <th>HeadMaster_Action</th>
-            <th>WEO_Action</th>
-            <th>DEO_Action</th>
-            <th>DED_Action</th>
+            <td>No</td>
+            <td>Name</td>
+            <td>current school</td>
+            <td>current disctrict</td>
+            <td>transfer district</td>
+            <td>description</td>
+            <td>HeadMaster_Action</td>
+            <td>WEO_Action</td>
+            <td>DEO_Action</td>
+            <td>DED_Action</td>
             
-            <th width="280px">Action</th>
+            <td width="280px">Action</td>
         </tr>
       
         @foreach ($letters as $letter)
