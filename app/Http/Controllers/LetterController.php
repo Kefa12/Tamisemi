@@ -154,7 +154,8 @@ class LetterController extends Controller
             'DED' => 'required',
         ]);
         $exist = DB::table('letters')->where('Employee_id',$request->Employee_id)->value('Employee_id');
-        if($exist==NULL){
+        $exist1 = DB::table('letters')->where('name',$request->name)->value('name');
+        if(($exist==NULL) && ($exist1==NULL)){
         $regional1 = DB::table('regional_rd')->where('id',$request->regional)->value('name');
         $districts1 = DB::table('district_dp')->where('id',$request->tdistrict)->value('name');
         $wards1 = DB::table('ward_dp')->where('id',$request->ward1)->value('name');
