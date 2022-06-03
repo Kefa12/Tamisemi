@@ -10,6 +10,14 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
+  <style>
+    .form-group{
+      padding-left:10px;
+      padding-right:10px;
+    }
+    </style>
+  <link href="assets/img/favicon.png" rel="icon">
+  
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -85,21 +93,22 @@
 
 								<!-- Validation Errors -->
 								<x-auth-validation-errors class="mb-4" :errors="$errors" />
+<div class="card bg-blue text-black" style="border-radius: 2rem;">
 
                 <form method="POST" action="{{ route('register') }}">
               
             @csrf
             <center><h1>Registration form </h1>
-                            </center>
-			                     <div class="row register-form">
+            <img src="assets3/img/logo2.jpg" alt="no image" width=100></center></center>
+			          <div class="row register-form">
                              
                              
-											  <div class="col-md-4">
+											  <div class="col-md-6">
 													 <div class="form-group">
 
 												
 													 <h4 >Check_Number</h4>
-														<input id="Employee_id"  class="form-control" type="text" name="Employee_id" placeholder="Employee_id *" :value="old('first_name')" required autofocus />
+														<input id="Employee_id"  class="form-control" type="text" name="Employee_id" placeholder="Check_number *" :value="old('first_name')" required autofocus />
 													   </div>
 													  <div class="form-group">
 												
@@ -117,12 +126,13 @@
 													 <h4 >Phone_number</h4>
 														  <input id="phone_number"  class="form-control" type="text" placeholder="phone_number *" name="phone_number" :value="old('Phone')" required />
 												      </div>
-                                               </div>
-											   <div class="col-md-4">
+                   
+											  
 													 <div class="form-group">
 													 
 														
 													 <h4 >Email</h4>
+                           
 														  <input id="email"  class="form-control" type="text" placeholder="Email *" name="email" :value="old('Phone')" required />
 												      </div>
 													 <div class="form-group">
@@ -133,16 +143,20 @@
 																							  name="password"
 																							  placeholder="Password *"
 																								 required autocomplete="new-password" />
-													  </div>
-											        <div class="form-group">
-														
+									
+											       
+                      </div>
+                    	
+                           <div class="form-group">
 													<h4 >Confirm-Password</h4>
 														   <input id="password_confirmation"  class="form-control"
 																	 type="password"
 																	 placeholder="Confirm-Password *"
 																	  name="password_confirmation" required />
 											      </div>
-												   <div class="form-group">
+                            </div>
+                    <div class="col-md-6">
+                          <div class="form-group">
 												   <h4 >User_role</h4>
 															<select name="role_id"  class="form-control">
 				
@@ -150,10 +164,10 @@
 																  
 														
 														   </select>
-												   </div>
-											 </div>
-												  <div class="col-md-4">
-												  
+												   
+                          </div>
+											
+												 
 											     
 												   <div class="form-group">
 												                                             <h4 >Choose Regional</h4>
@@ -163,7 +177,8 @@
 																										 <option value={{$row->id}}>{{$row->name}}</option>
 																													@endforeach   
 																							  </select>
-												   </div> 
+												     </div> 
+                           
 													<div class="form-group">
 																										  <h4>Choose District</h4>
 																											   <select  id="city" name="district" width="700px" class="form-control" disabled >
@@ -186,24 +201,26 @@
 														  </tr>
 														  <table>
 													  
-													   
+													     </div>                        
+													</div>
+                      </div>
 
 															
 														 
 
 																<div class="form-group">
-																	<a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+																	<a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}" style="color:black;">
 																		{{ __('Already registered?') }}
 																	</a>
 
-																	<button class="ml-4">
+																	<button class="ml-4" style="background-color:blue; color:white; width:150px;">
 																		{{ __('Register') }}
 																	</button>
 																</div>
 																</form>
 														</x-auth-card>
-                                                     </div>
-													</div>
+               </div> 
+               </div>         
 	
 		<!-- JAVASCRIPTS -->
 		<script type="text/javascript" src="js/ajax.js"></script>

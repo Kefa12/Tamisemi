@@ -227,7 +227,7 @@
                  
             </tr>
             <tr>
-                  <td>HEADMSTER RESPOND TIME TAKEN</td>
+                  <td>HEADMASTER RESPOND TIME TAKEN</td>
                   @if($letter->Headmaster=='pending')
                   <td>not respond</td>
                   @else

@@ -206,13 +206,13 @@
             <td>{{ $letter->cschool }}</td>
             <th>HeadMaster_Action</th>
             
-            @if( $letter->Headmaster == 'REJECTED BY HEADMASTER')
+            @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->Headmaster == 'APPROVED BY HEADMASTER')
+               @elseif( $letter->Headmaster == 'support BY HEADMASTER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -232,13 +232,13 @@
             <th>current ward</th>
             <td>{{ $letter->ward }}</td>
             <th>WEO_Action</th>
-            @if( $letter->WEO == 'REJECTED BY WEO')
+            @if( $letter->WEO == 'Not_support BY WEO')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->WEO == 'APPROVED BY WEO')
+               @elseif( $letter->WEO == 'support BY WEO')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -251,13 +251,13 @@
             <th>current disctrict</th>
             <td>{{ $letter->cdistrict }}</td>
             <th>DEO_Action</th>
-            @if( $letter->DEO == 'REJECTED BY District_Education_Officer')
+            @if( $letter->DEO == 'Not_support BY District_Education_Officer')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->DEO == 'APPROVED BY District_Education_Officer')
+               @elseif( $letter->DEO == 'support BY District_Education_Officer')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -270,13 +270,13 @@
             <th>transfer district</th>
             <td>{{ $letter->tdistrict }}</td>
             <th>DED_Action</th>
-            @if( $letter->DED == 'REJECTED BY District_Executive_Director')
+            @if( $letter->DED == 'Not_support BY District_Executive_Director')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-            @elseif( $letter->DED == 'APPROVED BY District_Executive_Director')
+            @elseif( $letter->DED == 'support BY District_Executive_Director')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
             @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -413,13 +413,13 @@
             <th>Teacher From another school</th>
            
             
-            @if( $letter->Teacher_approved == 'REJECTED BY TEACHER')
+            @if( $letter->Teacher_support == 'Not_support BY TEACHER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->Teacher_approved == 'APPROVED BY TEACHER')
+               @elseif( $letter->Teacher_support == 'support BY TEACHER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -434,13 +434,13 @@
             <td>{{ $letter->cschool }}</td>
             <th>HeadMaster_Action</th>
             
-            @if( $letter->Headmaster == 'REJECTED BY HEADMASTER')
+            @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->Headmaster == 'APPROVED BY HEADMASTER')
+               @elseif( $letter->Headmaster == 'support BY HEADMASTER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -455,13 +455,13 @@
             <th>Transfer school</th>
             <td>{{ $letter->tschool }}</td>
             <th>HeadMaster From another school</th>         
-            @if( $letter->Transfer_Headmaster == 'REJECTED BY HEADMASTER')
+            @if( $letter->Transfer_Headmaster == 'Not_support BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger">Not_support</button>
                 </div></td>
-               @elseif( $letter->Transfer_Headmaster == 'APPROVED BY HEADMASTER')
+               @elseif( $letter->Transfer_Headmaster == 'support BY HEADMASTER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -473,13 +473,13 @@
             <th>current ward</th>
             <td>{{ $letter->ward }}</td>
             <th>WEO_Action</th>
-            @if( $letter->WEO == 'REJECTED BY WEO')
+            @if( $letter->WEO == 'Not_support BY WEO')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->WEO == 'APPROVED BY WEO')
+               @elseif( $letter->WEO == 'support BY WEO')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -492,13 +492,13 @@
             <th>current disctrict</th>
             <td>{{ $letter->cdistrict }}</td>
             <th>DEO_Action</th>
-            @if( $letter->DEO == 'REJECTED BY District_Education_Officer')
+            @if( $letter->DEO == 'Not_support BY District_Education_Officer')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->DEO == 'APPROVED BY District_Education_Officer')
+               @elseif( $letter->DEO == 'support BY District_Education_Officer')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -511,13 +511,13 @@
             <th>transfer district</th>
             <td>{{ $letter->tdistrict }}</td>
             <th>DED_Action</th>
-            @if( $letter->DED == 'REJECTED BY District_Executive_Director')
+            @if( $letter->DED == 'Not_support BY District_Executive_Director')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-            @elseif( $letter->DED == 'APPROVED BY District_Executive_Director')
+            @elseif( $letter->DED == 'support BY District_Executive_Director')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
             @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">

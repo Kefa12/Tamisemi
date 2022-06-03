@@ -187,7 +187,7 @@
                                             <div class="form-group">
                                             <script>
        function showHideissues(){
-    if (document.getElementById("REJECTED BY HEADMASTER").checked){
+    if (document.getElementById("Not_support BY HEADMASTER").checked){
       document.getElementById("issues").style.display = "block";
     }else{
       document.getElementById("issues").style.display = "none";
@@ -198,12 +198,12 @@
 
        <h5>Need to support or not support that transfer request</h5>
                  <div class="form-check col-sm-2">
-                   <input class="form-check-input" type="radio"  name="Headmaster" id="APPROVED BY HEADMASTER" value="APPROVED BY HEADMASTER" onclick="showHideissues()">
-                   <label class="form-check-label">APPROVED BY HEADMASTER</label>
+                   <input class="form-check-input" type="radio"  name="Headmaster" id="support BY HEADMASTER" value="support BY HEADMASTER" onclick="showHideissues()">
+                   <label class="form-check-label">support BY HEADMASTER</label>
                  </div>
                  <div class="form-check col-sm-2">
-                   <input class="form-check-input" type="radio" name="Headmaster" id="REJECTED BY HEADMASTER" value="REJECTED BY HEADMASTER" onclick="showHideissues()">
-                   <label class="form-check-label">REJECTED BY HEADMASTER</label>
+                   <input class="form-check-input" type="radio" name="Headmaster" id="Not_support BY HEADMASTER" value="Not_support BY HEADMASTER" onclick="showHideissues()">
+                   <label class="form-check-label">Not_support BY HEADMASTER</label>
                  </div>
                  <div class="form-group" style="display:none;" id="issues">
                    <input  class="form-control" rows="4" name="H_comment"   placeholder="few school Teacher:" value="not a reason"></input>
@@ -730,7 +730,7 @@
             @endrole
             
             @if($letter->author==Auth::user()->name)
-            @if($letter->Teacher_approved=='APPROVED BY TEACHER' || $letter->Teacher_approved=='REJECTED BY TEACHER' || $letter->Teacher_approved=='pending')
+            @if($letter->Teacher_approved=='support BY TEACHER' || $letter->Teacher_approved=='Not_support BY TEACHER' || $letter->Teacher_approved=='pending')
             @role('Teacher')
 
           
@@ -748,8 +748,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">TEACHER ACCEPTED
                 <select name="Teacher_approved" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="APPROVED BY TEACHER">ACCEPTED</option>
-                        <option value="REJECTED BY TEACHER">REJECTED</option>
+                        <option value="support BY TEACHER">ACCEPTED</option>
+                        <option value="Not_support BY TEACHER">Not_accepted</option>
                 </select>
                 </div>
             </div>
@@ -763,15 +763,15 @@
            
            
             @role('Headmaster')
-            @if($letter->Headmaster=='REJECTED BY HEADMASTER'  || $letter->Headmaster=='APPROVED BY HEADMASTER' || $letter->Headmaster=='pending' || $letter->Transfer_Headmaster=='REJECTED BY HEADMASTER' || $letter->Transfer_Headmaster=='pending' || $letter->Transfer_Headmaster=='APPROVED BY HEADMASTER')
+            @if($letter->Headmaster=='Not_support BY HEADMASTER'  || $letter->Headmaster=='support BY HEADMASTER' || $letter->Headmaster=='pending' || $letter->Transfer_Headmaster=='Not_support BY HEADMASTER' || $letter->Transfer_Headmaster=='pending' || $letter->Transfer_Headmaster=='support BY HEADMASTER')
             @if($letter->author=='unknown' || $letter->Transfer_Headmaster!='pending')
             <div class="col-xs-12 col-sm-12 col-md-12">
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="0"
                        ></input>
                 <div class="form-group">Headmaster Approved
                 <select name="Headmaster" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="APPROVED BY HEADMASTER">APPROVED</option>
-                        <option value="REJECTED BY HEADMASTER">REJECTED</option>
+                        <option value="support BY HEADMASTER">support</option>
+                        <option value="Not_support BY HEADMASTER">Not_support</option>
                 </select>
                 </div>
             </div>  
@@ -781,8 +781,8 @@
                        ></input>
                 <div class="form-group">Headmaster Approved
                 <select name="Transfer_Headmaster" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="APPROVED BY HEADMASTER">APPROVED</option>
-                        <option value="REJECTED BY HEADMASTER">REJECTED</option>
+                        <option value="support BY HEADMASTER">support</option>
+                        <option value="Not_support BY HEADMASTER">Not_support</option>
                 </select>
                 </div>
             </div>
@@ -793,7 +793,7 @@
            
          
             @role('Weo')
-            @if($letter->WEO=='REJECTED BY WEO' || $letter->WEO=='pending') 
+            @if($letter->WEO=='Not_support BY WEO' || $letter->WEO=='pending') 
           
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -809,10 +809,10 @@
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="1"
                        ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">WEO APPROVED
+                <div class="form-group">WEO support
                 <select name="WEO" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="APPROVED BY WEO">APPROVED</option>
-                        <option value="REJECTED BY WEO">REJECTED</option>
+                        <option value="support BY WEO">support</option>
+                        <option value="Not_support BY WEO">Not_support</option>
                 </select>
                 </div>
             </div>
@@ -820,7 +820,7 @@
             @endif
            
          
-            @if($letter->DEO=='APPROVED BY District_Education_Officer'  || $letter->DEO=='REJECTED BY District_Education_Officer' || $letter->DEO=='pending') 
+            @if($letter->DEO=='support BY District_Education_Officer'  || $letter->DEO=='Not_support BY District_Education_Officer' || $letter->DEO=='pending') 
             @role('DEO')
             <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>
@@ -833,10 +833,10 @@
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="2"
                        ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">DEO APPROVED jvhkjvfkj
+                <div class="form-group">DEO support jvhkjvfkj
                 <select name="DEO" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="APPROVED BY District_Education_Officer">APPROVED</option>
-                        <option value="REJECTED BY District_Education_Officer">REJECTED</option>
+                        <option value="support BY District_Education_Officer">support</option>
+                        <option value="Not_support BY District_Education_Officer">Not_support</option>
                 </select>
                 </div>
             </div>
@@ -844,7 +844,7 @@
           
             @endif
            
-            @if($letter->DED=='REJECTED BY District_Executive_Director' || $letter->DED=='pending') 
+            @if($letter->DED=='Not_support BY District_Executive_Director' || $letter->DED=='pending') 
             @role('DED')
             <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>
@@ -859,17 +859,17 @@
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="3"
                        ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">DED APPROVED
+                <div class="form-group">DED support
                 <select name="DED" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="APPROVED BY District_Executive_Director">APPROVED</option>
-                        <option value="REJECTED BY District_Executive_Director">REJECTED</option>
+                        <option value="support BY District_Executive_Director">support</option>
+                        <option value="Not_support BY District_Executive_Director">Not_support</option>
                 </select>
                 </div>
             </div>
             @endrole
           
             @endif
-            @if($letter->Regional_Director=='REJECTED BY RD' || $letter->Regional_Director=='pending') 
+            @if($letter->Regional_Director=='Not_support BY RD' || $letter->Regional_Director=='pending') 
             @role('Regional_Director')
             <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>
@@ -886,10 +886,10 @@
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="4"
                        ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">Regional_Director APPROVED
+                <div class="form-group">Regional_Director support
                 <select name="Regional_Director" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="APPROVED BY RD">APPROVED</option>
-                        <option value="REJECTED BY RD">REJECTED</option>
+                        <option value="support BY RD">support</option>
+                        <option value="Not_support BY RD">Not_support</option>
                 </select>
                 </div>
             </div>
@@ -912,33 +912,33 @@
           
             @else
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">APPROVED / REJECTED</button>
+                <button type="submit" class="btn btn-primary">support / Not_support</button>
             </div>
             @endif
             @endrole
             @role('Headmaster')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">APPROVED / REJECTED</button>
+                <button type="submit" class="btn btn-primary">support / Not_support</button>
             </div>
             @endrole
             @role('Weo')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">APPROVED / REJECTED</button>
+                <button type="submit" class="btn btn-primary">support / Not_support</button>
             </div>
             @endrole
             @role('DEO')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">APPROVED / REJECTED</button>
+                <button type="submit" class="btn btn-primary">support / Not_support</button>
             </div>
             @endrole
             @role('DED')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">APPROVED / REJECTED</button>
+                <button type="submit" class="btn btn-primary">support / Not_support</button>
             </div>
             @endrole
             @role('Regional_Director')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">APPROVED / REJECTED</button>
+                <button type="submit" class="btn btn-primary">support / Not_support</button>
             </div>
             @endrole
         </div>

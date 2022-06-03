@@ -209,13 +209,13 @@
                 <td>{{ $letter->cdistrict }}</td>
                 <td>{{ $letter->tdistrict }}</td>
                 <td>{{ $letter->description }}</td>
-                @if( $letter->Headmaster == 'REJECTED BY HEADMASTER')
+                @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->Headmaster == 'APPROVED BY HEADMASTER')
+               @elseif( $letter->Headmaster == 'support BY HEADMASTER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -223,13 +223,13 @@
                 </div></td>
                
                 @endif
-                @if( $letter->WEO == 'REJECTED BY WEO')
+                @if( $letter->WEO == 'Not_support BY WEO')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-                @elseif( $letter->WEO == 'APPROVED BY WEO')
+                @elseif( $letter->WEO == 'support BY WEO')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -237,13 +237,13 @@
                 </div></td>
                
                 @endif
-                @if( $letter->DEO == 'REJECTED BY District_Education_Officer')
+                @if( $letter->DEO == 'Not_support BY District_Education_Officer')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->DEO == 'APPROVED BY District_Education_Officer')
+               @elseif( $letter->DEO == 'support BY District_Education_Officer')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -251,13 +251,13 @@
                 </div></td>
                
                 @endif
-                @if( $letter->DED == 'REJECTED BY District_Executive_Director')
+                @if( $letter->DED == 'Not_support BY District_Executive_Director')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->DED == 'APPROVED BY District_Executive_Director')
+               @elseif( $letter->DED == 'support BY District_Executive_Director')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -265,13 +265,13 @@
                 </div></td>
                
                 @endif
-                @if( $letter->Regional_Director == 'REJECTED BY RD')
+                @if( $letter->Regional_Director == 'Not_support BY RD')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter-> Regional_Director == 'APPROVED BY RD')
+               @elseif( $letter-> Regional_Director == 'support BY RD')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">

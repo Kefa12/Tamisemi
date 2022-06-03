@@ -222,13 +222,13 @@
             <th>Teacher_Action</th>
            
             
-            @if( $letter->Teacher_approved == 'REJECTED BY TEACHER')
+            @if( $letter->Teacher_approved == 'Not_support BY TEACHER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->Teacher_approved == 'APPROVED BY TEACHER')
+               @elseif( $letter->Teacher_approved == 'support BY TEACHER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">Support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -249,13 +249,13 @@
             <th>Transfer school</th>
             <td>{{ $letter->tschool }}</td>
             <th>HeadMaster_Action</th>         
-            @if( $letter->Transfer_Headmaster == 'REJECTED BY HEADMASTER')
+            @if( $letter->Transfer_Headmaster == 'Not_support BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->Transfer_Headmaster == 'APPROVED BY HEADMASTER')
+               @elseif( $letter->Transfer_Headmaster == 'Support BY HEADMASTER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">Support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -391,13 +391,13 @@
                 <td>{{ $letter->description }}</td>
                 <td>{{ $letter->Message }} from {{ $letter->author }}</td>
                 <td>{{ $letter->author }}</td>
-                @if( $letter->Teacher_approved == 'REJECTED BY TEACHER')
+                @if( $letter->Teacher_approved == 'Not_support BY TEACHER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->Teacher_approved == 'APPROVED BY TEACHER')
+               @elseif( $letter->Teacher_approved == 'support BY TEACHER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -405,13 +405,13 @@
                 </div></td>
                
                 @endif
-                @if( $letter->Transfer_Headmaster == 'REJECTED BY HEADMASTER')
+                @if( $letter->Transfer_Headmaster == 'Not_support BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> REJECTED</button>
+                <button type="submit" class="btn btn-danger"> Not_support</button>
                 </div></td>
-               @elseif( $letter->Transfer_Headmaster == 'APPROVED BY HEADMASTER')
+               @elseif( $letter->Transfer_Headmaster == 'support BY HEADMASTER')
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">APPROVED</button>
+                 <button type="submit" class="btn btn-primary">support</button>
                 </div></td>
                 @else
                  <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
