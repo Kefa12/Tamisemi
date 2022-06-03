@@ -51,6 +51,8 @@ class SchoolController extends Controller
         ])
             ->orderBy("id","desc")
             ->paginate(20);
+
+            
             $wards = Ward::where([
                 ['name','!=', NULL],
                [function($query) use ($request) {

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Transfer;
 use App\Models\Letter;
 use Illuminate\Http\Request;
+use App\Models\Regional;
+use App\Models\Ward;
+use App\Models\School;
+use App\Models\District;
 
 
 use App\Models\User;
@@ -142,6 +146,124 @@ class TransferController extends Controller
                  ->paginate(30);
    
         return view('dashboardT', compact('letters','transfers'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+      
+    }
+    public function index3(Request $request)
+    {
+        //
+        if($request->term){
+        $letters = Letter::where([
+            ['cdistrict','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('cdistrict','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+        }elseif($request->term1){
+            $letters = Letter::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term1)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+            }elseif($request->term2){
+                $letters = Letter::where([
+                ['ward','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term2)){
+                    $query->orWhere('ward','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(30);
+            }else{
+                $letters = Letter::where([
+                    ['ward','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term2)){
+                        $query->orWhere('ward','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(30);
+            }
+            $transfers = Transfer::where([
+                ['tdistrict','!=', NULL],
+                [function($query) use ($request) {
+                    if(($term=$request->term2)){
+                     $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                    }
+                }]
+             ])
+                 ->orderBy("id","desc")
+                 ->paginate(30);
+
+                 $regionals = Regional::where([
+                    ['name','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(10);
+                
+                    $wards = Ward::where([
+                        ['name','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term)){
+                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(10);
+
+                        $districts = District::where([
+                            ['name','!=', NULL],
+                           [function($query) use ($request) {
+                               if(($term=$request->term)){
+                                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                               }
+                           }]
+                        ])
+                            ->orderBy("id","desc")
+                            ->paginate(10);
+
+                            $schools = School::where([
+                                ['name','!=', NULL],
+                               [function($query) use ($request) {
+                                   if(($term=$request->term)){
+                                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                                   }
+                               }]
+                            ])
+                                ->orderBy("id","desc")
+                                ->paginate(20);
+
+      if($request->status=="1"){
+          return view('Dist.index', compact('letters','transfers','regionals','wards','districts'))
+      ->with('i', (request()->input('page', 1) - 1) * 5);
+      }elseif($request->status=="2"){
+            return view('Wards.index', compact('letters','transfers','regionals','wards','districts'))
+      ->with('i', (request()->input('page', 1) - 1) * 5);
+      }elseif($request->status=="3"){
+        return view('Masters.index', compact('letters','transfers','regionals','wards','districts','schools'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+
+      }
+        return view('reg.index', compact('letters','transfers','regionals','wards'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
       
     }

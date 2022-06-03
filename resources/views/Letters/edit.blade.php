@@ -456,8 +456,11 @@
             @role('DED')
             <h2>District Director Respond Request to Teacher {{ $letter->name }} </h2>
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
+
         @csrf
         @method('PUT')
+        <input type="text" class="form-control" style="height:50px" name="DED_comment" 
+                                                    ></input>
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -548,7 +551,8 @@
      <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
-
+        <input type="text" class="form-control" style="height:50px" name="DEO_comment" 
+                                                    ></input>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -638,7 +642,8 @@
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
-
+        <input type="text" class="form-control" style="height:50px" name="RD_comment" 
+                                                    ></input>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">

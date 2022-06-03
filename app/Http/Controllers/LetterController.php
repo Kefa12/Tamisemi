@@ -243,8 +243,8 @@ class LetterController extends Controller
     public function show(Letter $letter)
     {
         //
-       
-            return view('Letters.show', compact('letter'));
+        $date2 = date('Y-m-d H:i:s');
+        return view('Letters.show', compact('letter','date2'));
     }
 
     /**

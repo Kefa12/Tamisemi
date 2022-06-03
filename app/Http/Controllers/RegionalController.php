@@ -72,7 +72,7 @@ class RegionalController extends Controller
         ]);
 
         District::create($request->all());
-
+       
         return redirect()->route('reg.index')
             ->with('success', 'request letter created successfully.');
     }

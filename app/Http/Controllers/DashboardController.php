@@ -72,9 +72,14 @@ class DashboardController extends Controller
                      ])
                          ->orderBy("id","desc")
                          ->paginate(30);
-           
-                return view('dashboardT', compact('letters','transfers'))
+                         $i=0;
+            if($request->status=="1")
+                return view('reg.index', compact('letters','transfers'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
+            else
+              return view('dashboardT', compact('letters','transfers'))
+                  ->with('i', (request()->input('page', 1) - 1) * 5);
+          
         
         }elseif(Auth::user()->hasRole('Teacher')){
             return view('Teachdash1');

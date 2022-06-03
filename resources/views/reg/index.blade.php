@@ -82,9 +82,7 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
-                </a>
+               
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -150,6 +148,27 @@
             <div class="pull-left">
                 <h2>Manage Request </h2>
             </div>
+            <table class="table table-bordered table-responsive-lg">
+                                <form action="{{ url('form1') }}" method="GET" role="search">
+                                                    <div class="input-group">
+                                                        <table  class="table table-bordered table-responsive-lg">
+                                                    <tr>
+                                                       
+                                                    <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term">
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                            <td>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search  ward " id="term">
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                        <td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
+                                                                <span class="fas fa-search"></span>
+                                                                </button></td>
+                                                                <td></td>	
+                                                    
+                                                            
+                                                    </tr>
+                                                    </table>
+                                                    
+                                    
+                                </form>
            
    
 

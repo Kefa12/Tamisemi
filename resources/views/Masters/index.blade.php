@@ -194,6 +194,28 @@
             <div class="pull-left">
                 <h2>Manage Request </h2>
             </div>
+            <table class="table table-bordered table-responsive-lg">
+                                <form action="{{ url('form1') }}" method="GET" role="search">
+                                                    <div class="input-group">
+                                                        <table  class="table table-bordered table-responsive-lg">
+                                                    <tr>
+                                                        <input type="hidden" name="status" value="3"></input>
+                                                       
+                                                    <td colspan="3">  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term">
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                            <td colspan="3">  <input type="text" class="form-control mr-2" name="term2" placeholder="Search  ward " id="term">
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                        <td colspan="3">	<button class="btn btn-info" type="submit" title="Search users"><br>
+                                                                <span class="fas fa-search"></span>
+                                                                </button></td>
+                                                                <td></td>	
+                                                    
+                                                            
+                                                    </tr>
+                                                    </table>
+                                                    
+                                    
+                                </form>
            
         </div>
     </div>
@@ -310,6 +332,7 @@
                             <i class="fas fa-edit  fa-lg"></i>
 
                         </a>
+                     </form>
            
              @endif 
            

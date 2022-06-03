@@ -97,6 +97,7 @@ Route::get('registe3', [App\Http\Controllers\auth\RegisteredUserController::clas
 Route::get('/dashboardT', [App\Http\Controllers\TransferController::class, 'index2']);
 
 Route::get('form', [App\Http\Controllers\TransferController::class, 'index2']);
+Route::get('form1', [App\Http\Controllers\TransferController::class, 'index3']);
 
 Route::get('letters1', [App\Http\Controllers\TransferController::class, 'index6']);
 Route::get('letters2', [App\Http\Controllers\LetterController::class, 'store2']);
