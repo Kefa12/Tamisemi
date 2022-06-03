@@ -425,7 +425,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="WEO"  value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="WEO"  value=" {{ $letter->WEO }} " 
                         ></input>
                 </div>
             </div>
@@ -439,14 +439,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DEO" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DEO" value=" {{ $letter->DEO }} " 
                         ></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value=" {{ $letter->DED }} " 
                         ></input>
                 </div>
             </div>
@@ -466,6 +466,8 @@
                     <input type="Hidden" name="name" value="{{ $letter->name }}" class="form-control" placeholder="Name">
                 </div>
             </div>
+            <input type="hidden" class="form-control" style="height:50px" name="DED_date" value="{{ $date2 }}"
+                        placeholder="mwenge"></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                  
@@ -507,7 +509,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="{{$letter->DED}}" 
                         ></input>
                 </div>
             </div>
@@ -554,6 +556,8 @@
                     <input type="Hidden" name="name" value="{{ $letter->name }}" class="form-control" placeholder="Name">
                 </div>
             </div>
+            <input type="hidden" class="form-control" style="height:50px" name="DEO_date" value="{{ $date2 }}"
+                        placeholder="mwenge"></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                  
@@ -642,6 +646,8 @@
                     <input type="Hidden" name="name" value="{{ $letter->name }}" class="form-control" placeholder="Name">
                 </div>
             </div>
+            <input type="hidden" class="form-control" style="height:50px" name="RD_date" value="{{ $date2 }}"
+                        placeholder="mwenge"></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                  

@@ -603,26 +603,26 @@
             </tr>
             <tr>
                   <th>DEO RESPOND TIME TAKEN</th>
-                  @if($letter->WEO=='pending')
+                  @if($letter->DEO=='pending')
                   <td>not respond</td>
                   @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->DEO_date)-strtotime($letter->created_at))/86400)) }}</td>
                   @endif
             </tr>
             <tr>
                   <th>DED RESPOND TIME TAKEN</th>
-                  @if($letter->WEO=='pending')
+                  @if($letter->DED=='pending')
                   <td>not respond</td>
                   @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->DED_date)-strtotime($letter->created_at))/86400)) }}</td>
                   @endif
             </tr>
             <tr>
                   <th>RED RESPOND TIME TAKEN</th>
-                  @if($letter->WEO=='pending')
+                  @if($letter->Regional_Director=='pending')
                   <td>not respond</td>
                   @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->created_at)-strtotime($letter->RD_date))/86400)) }}</td>
                   @endif
               </tr>
               <th>

@@ -30,6 +30,9 @@ class Letter extends Model
         'T_comment',
         'H_comment',
         'T_date',
-        'W_date'
+        'W_date',
+        'DEO_date',
+        'DED_date',
+        'RD_date',
     ];
 }
