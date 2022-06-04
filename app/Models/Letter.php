@@ -38,5 +38,6 @@ class Letter extends Model
         'DEO_date',
         'DED_date',
         'RD_date',
+        'Tamisemi',
     ];
 }

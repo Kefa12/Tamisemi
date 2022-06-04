@@ -57,7 +57,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tamisemi_Director-Dashboard</title>
+    <title>public_workers</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -81,7 +81,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                
-                <div class="sidebar-brand-text mx-3">TAMISEMI_DIRECTOR</div>
+                <div class="sidebar-brand-text mx-3">Administrator</div>
             </a>
 
             <!-- Divider -->
@@ -364,6 +364,7 @@
                 </td>
             </tr>
            </table>
+         
            <table class="table table-bordered table-responsive-lg">
 			<tr style="background-color:red">
             <th>No</th>
@@ -378,7 +379,7 @@
       @endforeach
       @foreach ($letters as $letter)
           <tr>
-          @if($letter->name!=Auth::user()->name)
+          @if($letter->name!=Auth::user()->name && $letter->Tamisemi=="pending")
               <td>{{ ++$i }}</td>
               <td>{{ $letter->name }}</td>
               <td>{{ $letter->cschool }}</td>
@@ -389,9 +390,74 @@
               <td>
                   <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-                      <a href="#" title="show">
-                          <i class="fas fa-eye text-success  fa-lg"></i>
+                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                      <i class="fas fa-eye text-success  fa-lg"></i>
+                  </a>
+                      <a href="{{route('letters.edit', $letter->id) }}">
+                          <i class="fas fa-edit  fa-lg"></i>
+
                       </a>
+                     
+
+                      @csrf
+                      @method('DELETE')
+                      @role('admin')
+                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                          <i class="fas fa-trash fa-lg text-danger"></i>
+
+                      </button>
+                      @endrole
+                  </form>
+              </td>
+          </tr>
+          @endrole
+      @endforeach
+
+  {!! $letters->links() !!}
+  </table>
+  <center><h1>Transfer Request That Already Respond by Administrator</h1></center>
+  <table class="table table-striped">
+			<tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>current school</th>
+            <th>current disctrict</th>
+            <th>transfer district</th>
+            <th>description</th>
+            <th>Approved_status</th>   
+            <th width="280px">Action</th>
+      </tr>
+  
+      @foreach ($letters as $letter)
+          <tr>
+          @if($letter->Tamisemi!="pending")
+              <td>{{ ++$i }}</td>
+              <td>{{ $letter->name }}</td>
+              <td>{{ $letter->cschool }}</td>
+              <td>{{ $letter->cdistrict }}</td>
+              <td>{{ $letter->tdistrict }}</td>
+              <td>{{ $letter->description }}</td>
+              @if( $letter->Tamisemi== 'Rejected BY Tamisemi_Director')
+                
+              <td> <button type="submit" class="btn btn-danger"><i> Rejected</i></button> </td>
+           
+           @elseif(  $letter->Tamisemi== 'Approved BY Tamisemi_Director')
+          
+           <td><button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">Approved</i></button> </td>
+          
+            @else
+           
+            <td><button type="submit" class="btn btn-success"><i>pending</i></button> </td>
+           
+           
+            @endif
+              
+              <td>
+                  <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                      <i class="fas fa-eye text-success  fa-lg"></i>
+                  </a>
                       <a href="{{route('letters.edit', $letter->id) }}">
                           <i class="fas fa-edit  fa-lg"></i>
 
@@ -412,7 +478,24 @@
           @endrole
       @endforeach
   </table>
-  {!! $letters->links() !!}
+          
+
+                      @csrf
+                      @method('DELETE')
+                      @role('admin')
+                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                          <i class="fas fa-trash fa-lg text-danger"></i>
+
+                      </button>
+                      @endrole
+                  </form>
+              </td>
+          </tr>
+    
+  
+  </table>
+
+  
 
 
                     <!-- Page Heading -->
@@ -423,6 +506,8 @@
             </div>
         </div>
     </div>
+
+    
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

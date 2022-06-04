@@ -153,6 +153,9 @@
                             @role('Regional_Director')
                             <span class="d-none d-lg-inline-flex">{{ __('Regional_Director') }}({{Auth::user()->name}})</span>
                             @endrole
+                            @role('Tamisemi_Director')
+                            <span class="d-none d-lg-inline-flex">{{ __('Administrator') }}({{Auth::user()->name}})</span>
+                            @endrole
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>

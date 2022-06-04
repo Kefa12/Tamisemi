@@ -81,7 +81,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                
-                <div class="sidebar-brand-text mx-3">TAMISEMI_DIRECTOR</div>
+                <div class="sidebar-brand-text mx-3">Administrator</div>
             </a>
 
             <!-- Divider -->
@@ -392,7 +392,7 @@
                 <form method="GET" action="{{ url('add4') }}">
               
             @csrf
-            <center><h1>Register TAMISEMI DIRECTOR</h1>
+            <center><h1>Register Administrator</h1>
                              <img src="assets3/img/logo2.jpg" alt="no image" width=180></center>
 			                     <div class="row register-form">
                              

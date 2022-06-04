@@ -729,6 +729,11 @@
             </div>
             
             @endrole
+            @role('Tamisemi_Director')
+          
+       
+            
+            @endrole
             
             @if($letter->author==Auth::user()->name)
             @if($letter->Teacher_approved=='support BY TEACHER' || $letter->Teacher_approved=='Not_support BY TEACHER' || $letter->Teacher_approved=='pending')
@@ -946,8 +951,110 @@
 
     </form>
    
-@endsection
+
 @role('Tamisemi_Director')
+   <form action="{{ route('letters.update', $letter->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="Hidden" name="name" value="{{ $letter->name }}" class="form-control" placeholder="Name">
+                </div>
+            </div>
+            <input type="hidden" class="form-control" style="height:50px" name="RD_date" value="{{ $date2 }}"
+                        placeholder="mwenge"></input>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                 
+                    <input type="Hidden" class="form-control" style="height:50px" name="cschool" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></input>
+                </div>
+                <div class="form-group">
+                 
+             </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="Hidden" class="form-control" style="height:50px" name="cdistrict" value="{{ $letter->cdistrict}}"
+                        placeholder="iringa"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="Hidden" class="form-control" style="height:50px" name="tdistrict" value="{{ $letter->tdistrict}}"
+                        placeholder="mbeya"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="Hidden" class="form-control" style="height:50px" name="description" value="{{$letter->description}}"
+                        placeholder="description"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                 
+                    <input type="Hidden" class="form-control" style="height:50px" name="ward"   value="{{$letter->ward}}"
+                        placeholder="ruanda"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                        ></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="hidden" class="form-control" style="height:50px" name="ward1"    value="{{Auth::user()->ward}}"
+                        placeholder="ruanda"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                 
+                    <input type="Hidden" class="form-control" style="height:50px" name="cschool1" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></textarea>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                  
+                    <input type="hidden" class="form-control" style="height:50px" name="regional"  value="{{ Auth::user()->regional}}"
+                        placeholder="mbeya"></input>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="schools" value="{{ $letter->cschool }}"
+                        placeholder="mwenge"></input>
+                </div>
+            </div>
+                <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
+                       ></input>
+               <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
+                       ></input>
+               <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
+               ></input>        
+               <input type="hidden" class="form-control" style="height:50px" name="WEO"    value="{{$letter->WEO}}"
+                       ></input>
+               <input type="hidden" class="form-control" style="height:50px" name="DEO"    value="{{$letter->DEO}}"
+                       ></input>
+               <input type="hidden" class="form-control" style="height:50px" name="DED"    value="{{$letter->DED}}"
+                       ></input>
+              <input type="hidden" class="form-control" style="height:50px" name="DED"    value="{{$letter->Regional_Director}}"
+                       ></input>
+               <input type="hidden" class="form-control" style="height:50px" name="status"    value="5"
+                       ></input>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');*{margin: 0;padding: 0;box-sizing: border-box;list-style: none;font-family: 'Montserrat', sans-serif}body{padding: 10px}.topnav{background-color: #ffff;overflow: hidden}.far.fa-user-circle{font-size: 29px;color: #726f6f;padding-top: 10px}.input-10{width: 40px;color: #4c4c96;font-weight: 600}.fas.fa-search{display: flex;flex-direction: column;align-items: center;justify-content: center;background-color: lightsalmon;height: 100%}.topnav a{float: left;display: block;color: #8d8b8b;font-weight: 800;font-size: 14px;text-transform: uppercase;padding: 14px 16px;text-decoration: none;border-bottom: 3px solid transparent}.topnav a:hover{color: black;border-bottom: 3px solid red}.topnav .active{color: black;border-bottom: 3px solid red}form.example input[type=text]{padding: 10px;font-size: 17px;border: 1px solid grey;float: left;width: 90%;height: 36px;background: #fff}form.example input[type=text]:focus{outline: none}form.example button{float: left;width: 10%;height: 36px;padding: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;background: #4c4c96;color: white;font-size: 14px;border: 1px solid grey;border-left: none;cursor: pointer}.navbar-toggler:focus{box-shadow: none;outline: none;border: none}::placeholder{font-size: 10px}form.example button:hover{background: #0b7dda}form.example::after{content: "";clear: both;display: table}.container .table-responsive{margin: 20px auto;overflow-x: auto}.container .table-responsive::-webkit-scrollbar{height: 5px}.container .table-responsive::-webkit-scrollbar-thumb{border-radius: 5px;background-image: linear-gradient(to right, #5D7ECD, #0C91E6)}.table thead tr th{font-size: 11px;color: #868585;padding: 10px 10px}.table tbody tr td{font-size: 13.5px;padding: 10px 10px}#navbar{width: 20%;background-color: #21214e !important;height: 50px;border: none}.bg-blight{color: #7f7fee;font-weight: 600}.bg-bdark{color: #4c4c96;font-weight: 600}#navbar a{color: white}.fas.fa-bars{color: white}#navbar2{width: 80%}#navbar-items{width: 20%;height: 500px;background-color: #4f4f8a}ul#navbar-items li{color: #b6b5b5;padding: 15px 25px;font-weight: 600;text-transform: uppercase;font-size: 10px;display: flex;align-items: center}ul li .fas{font-size: 16px}ul#navbar-items li:hover{background-color: #21214e;color: white}ul li:hover .fas{color: #f7910c}#topnavbar{width: 80%}.fs13{font-size: 13px}.fs14{font-size: 18px;color: white}.fas.fa-times{color: red}.fas.fa-check{color: greenyellow}.example{width: 50%}@media(max-width:780px){#navbar{width: 20%}#topnavbar{width: 80%}.text-decoration-none.fs14{font-size: 10px}.text-decoration-none .fs13{font-size: 9px}}@media(max-width:430px){#navbar-items, #topnavbar{width: 100%;height: 100%}#navbar-items{padding: 20px;margin-bottom: 30px}.topnav a{font-size: 12px;padding: 12px}#navbar{width: 100%;background-color: blue}.example{width: 100%}.text-decoration-none.fs14{font-size: 14px}.text-decoration-none .fs13{font-size: 13px}}@media(max-width:376px){#navbar-items{padding: 20px;margin-bottom: 30px}.topnav a{font-size: 12px;padding: 7px}}@media(max-width:320px){.topnav a{font-size: 10px;padding: 4px}}
@@ -1113,23 +1220,10 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 </div>
                 <h6><b>Administrator</b></h6>
                 <hr class="mt-0 mb-4">
-                <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
-                       ></input>
-               <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
-                       ></input>
-               <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
-               ></input>        
-               <input type="hidden" class="form-control" style="height:50px" name="WEO"    value="{{$letter->WEO}}"
-                       ></input>
-               <input type="hidden" class="form-control" style="height:50px" name="DEO"    value="{{$letter->DEO}}"
-                       ></input>
-               <input type="hidden" class="form-control" style="height:50px" name="DED"    value="{{$letter->DED}}"
-                       ></input>
-               <input type="hidden" class="form-control" style="height:50px" name="status"    value="4"
-                       ></input>
+  
                 <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">Administrator Approved
-                <select name="Tamisemi_Director" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                <select name="Tamisemi" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="Approved BY Tamisemi_Director"><p style="color:blue;">APPROVED</p></option>
                         <option value="Rejected BY Tamisemi_Director"><p style="color:red;">REJECTED</p></option>
                 </select>
@@ -1139,6 +1233,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Approved / Rejected</button>
             </div>
+</form>
           
                   </div>
                 </div>
@@ -1160,3 +1255,4 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
 
 @endrole
+@endsection

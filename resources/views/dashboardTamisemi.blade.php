@@ -307,32 +307,10 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <table class="table table-bordered table-responsive-lg">
-                                <form action="{{ url('form') }}" method="GET" role="search">
-                                                    <div class="input-group">
-                                                        <table  class="table table-bordered table-responsive-lg">
-                                                    <tr>
-                                                        <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term1"></input>
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                    <td>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search transfer District " id="term2">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                    <td>  <input type="text" class="form-control mr-2" name="term" placeholder="Search current District " id="term">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                        <td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
-                                                                <span class="fas fa-search"></span>
-                                                                </button></td>
-                                                                <td></td>	
-                                                    
-                                                            
-                                                    </tr>
-                                                    </table>
-                                                    
-                                    
-                                </form>
-
+               
       
-      <table class="table table-striped">
-      <tr>
+ <table class="table table-bordered table-responsive-lg">
+			<tr>
             <th>No</th>
             <th>Name</th>
             <th>current school</th>
@@ -340,8 +318,44 @@
             <th>transfer district</th>
             <th>description</th>  
             <th width="280px">Action</th>
-      </tr
+      </tr>
+  
+      @foreach ($letters as $letter)
+          <tr>
+          @if($letter->Tamisemi=="Approved by Tamisemi_Director")
+              <td>{{ ++$i }}</td>
+              <td>{{ $letter->name }}</td>
+              <td>{{ $letter->cschool }}</td>
+              <td>{{ $letter->cdistrict }}</td>
+              <td>{{ $letter->tdistrict }}</td>
+              <td>{{ $letter->description }}</td>
+              
+              <td>
+                  <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
+                      <a href="#" title="show">
+                          <i class="fas fa-eye text-success  fa-lg"></i>
+                      </a>
+                      <a href="{{route('letters.edit', $letter->id) }}">
+                          <i class="fas fa-edit  fa-lg"></i>
+
+                      </a>
+                     
+
+                      @csrf
+                      @method('DELETE')
+                      @role('admin')
+                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                          <i class="fas fa-trash fa-lg text-danger"></i>
+
+                      </button>
+                      @endrole
+                  </form>
+              </td>
+          </tr>
+          @endrole
+      @endforeach
+  </table>
           
 
                       @csrf
