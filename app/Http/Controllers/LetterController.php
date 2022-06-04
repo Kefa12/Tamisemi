@@ -253,9 +253,18 @@ class LetterController extends Controller
      * @param  \App\Models\Letter  $letter
      * @return \Illuminate\Http\Response
      */
-    public function edit(Letter $letter)
+    public function edit(Letter $letter,Request $request)
     {
-        //
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
         $date2 = date('Y-m-d H:i:s');
         return view('Letters.edit', compact('letter','date2'));
     }
