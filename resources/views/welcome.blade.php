@@ -79,7 +79,7 @@
   <section id="hero">
 
     <div class="hero-content" data-aos="fade-up">
-      <h2>Welcome,Teacher Transfer <br> Management System</h2>
+      <h2>Public Workers Transfer <br> Management System</h2>
       <div>
       @if (Route::has('login'))
          @auth

@@ -60,13 +60,13 @@
     <title>Tamisemi_Director-Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -340,63 +340,9 @@
             <th>transfer district</th>
             <th>description</th>  
             <th width="280px">Action</th>
-      </tr>
-      
-		@foreach ($letters as $letter)
-		@if($letter->name==Auth::user()->name &&  $letter->Message!="")
-            <tr>
-                
-               
-               <td colspan="7" style="background-color:white;"><center><p style="color:green">MESSAGE FROM  <i>  {{ $letter->author }} </i>:</p>   {{ $letter->Message }} </center></td>
-                <td></td>
-                <td>
-                    
+      </tr
 
-                        @csrf
-                        @method('DELETE')
-                        @role('admin')
-                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                            <i class="fas fa-trash fa-lg text-danger"></i>
-
-                        </button>
-                        @endrole
-                  
-                </td>
-            </tr>
-           </table>
-           <table class="table table-bordered table-responsive-lg">
-			<tr style="background-color:red">
-            <th>No</th>
-            <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
-            <th>description</th>  
-            <th width="280px">Action</th>
-      </tr>
-   @endif
-      @endforeach
-      @foreach ($letters as $letter)
-          <tr>
-          @if($letter->name!=Auth::user()->name)
-              <td>{{ ++$i }}</td>
-              <td>{{ $letter->name }}</td>
-              <td>{{ $letter->cschool }}</td>
-              <td>{{ $letter->cdistrict }}</td>
-              <td>{{ $letter->tdistrict }}</td>
-              <td>{{ $letter->description }}</td>
-              
-              <td>
-                  <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
-
-                      <a href="#" title="show">
-                          <i class="fas fa-eye text-success  fa-lg"></i>
-                      </a>
-                      <a href="{{route('letters.edit', $letter->id) }}">
-                          <i class="fas fa-edit  fa-lg"></i>
-
-                      </a>
-                     
+          
 
                       @csrf
                       @method('DELETE')
@@ -409,10 +355,10 @@
                   </form>
               </td>
           </tr>
-          @endrole
-      @endforeach
+    
+  
   </table>
-  {!! $letters->links() !!}
+ 
 
 
                     <!-- Page Heading -->
