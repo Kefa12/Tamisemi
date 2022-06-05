@@ -83,7 +83,65 @@ class DashboardController extends Controller
           
         
         }elseif(Auth::user()->hasRole('Teacher')){
-            return view('Teachdash1');
+               //
+        if($request->term){
+            $letters = Letter::where([
+                ['ward','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('ward','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+            }elseif($request->term1){
+                $letters = Letter::where([
+                    ['regional','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term1)){
+                        $query->orWhere('regional','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(10);
+                }elseif($request->term2){
+                    $letters = Letter::where([
+                    ['tdistrict','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term2)){
+                        $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(30);
+                }else{
+                    $letters = Letter::where([
+                    ['tdistrict','!=', NULL],
+                    [function($query) use ($request) {
+                        if(($term=$request->term2)){
+                         $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                        }
+                    }]
+                 ])
+                     ->orderBy("id","desc")
+                     ->paginate(30);
+                }
+                $transfers = Transfer::where([
+                    ['tdistrict','!=', NULL],
+                    [function($query) use ($request) {
+                        if(($term=$request->term2)){
+                         $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                        }
+                    }]
+                 ])
+                     ->orderBy("id","desc")
+                     ->paginate(30);
+       
+            return view('search.index1', compact('letters','transfers'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Headmaster')){
             return view('Headmaster_dash');
         }elseif(Auth::user()->hasRole('Health_Worker')){

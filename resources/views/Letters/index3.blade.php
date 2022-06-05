@@ -74,19 +74,19 @@
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @role('Teacher')
-                          <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search Teacher For swapping</a>
+                          <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Swapping teacher </a>
                     @endrole
                    
                      @role('Teacher')
                               <a href="{{ URL('letters1') }}"class="nav-item nav-link""><i class="fa fa-keyboard me-2"></i>New Request</a>
-                              <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
+                              <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
                         @endrole
                         @role('Headmaster')
-                              <a href="{{ URL('schools') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
+                              <a href="{{ URL('schools') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
                         @endrole
                            
                           
-                            <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request From Teacher</a>
+                            <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request</a>
                           
                          
                         </div>
@@ -150,8 +150,8 @@
                           
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="{{ URL('Teachdash1') }}" class="dropdown-item">My Profile</a>
+                           
 							<form method="POST" action="{{ route('logout') }}">
 																	@csrf
                             <a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();

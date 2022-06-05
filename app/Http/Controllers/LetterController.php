@@ -306,9 +306,9 @@ class LetterController extends Controller
             $request1= $request->tregional;
         
             $request2=  $request->tdistrict;
-            $wards1 = DB::table('users')->where('id',$request->Employee_id)->value('ward');
+           
             $request3= $request->tward;
-            $school1 = DB::table('users')->where('id',$request->Employee_id)->value('schools');
+          
            
             $request4=$request->tschool;
          

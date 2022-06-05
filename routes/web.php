@@ -26,8 +26,8 @@ Route::get('/welcome1', function () {
 Route::get('/welcome2', function () {
     return view('welcome2');
 });
-Route::get('dashboardTamisemi/{id}', function () {
-    return view('dashboardTamisemi');
+Route::get('Teachdash1', function () {
+    return view('Teachdash1');
 });
 Route::get('/registe', function () {
     return view('registe');

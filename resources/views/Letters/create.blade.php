@@ -68,12 +68,12 @@
 
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Search Teacher For swapping</a>
+                
                  
                    
                     <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Request</a>
-                    <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress Request</a>
-                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request From Teacher</a>
+                    <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
+                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request</a>
                    
                     </div>
                 </div>
@@ -94,10 +94,7 @@
                 <!--MESSAGE-->
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
+                       
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
@@ -131,8 +128,8 @@
                             <span class="d-none d-lg-inline-flex">{{ __('Teacher') }}({{Auth::user()->name}})</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="{{ URL('Teachdash1') }}" class="dropdown-item">My Profile</a>
+                           
 							<form method="POST" action="{{ route('logout') }}">
 																	@csrf
                             <a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();
@@ -144,9 +141,18 @@
             </nav>
 
             <style>
-                form{
+                .form1{
                     margin-left:20px;
                    margin-top:0px;
+                   border: 5px solid blue;
+                   border-radius: 15px;
+                   width:300px;
+                }
+                h5{
+                    padding-left:20px;
+                }
+                select{
+                    padding-left:20px;
                 }
             </style>
             <!-- Navbar End -->
@@ -171,6 +177,7 @@
             </ul>
         </div>
     @endif
+    <div class="form1">
     <form action="{{ route('letters.store') }}" method="POST"  id="form1">
         @csrf
      
@@ -244,8 +251,8 @@
 </div>
 </div>
 
-                <h2>TRANSFER REQUEST</h2>
-        
+                <center><h4>TRANSFER REQUEST</h4>
+                <img src="assets/img/letter.png" alt="no image" width=56 height=56></center>
               <div class="form-group">
 												                                              <h5 class="text-info  mb-4">Choose Regional
 																							 <select id="state" name="tregional" class="form-control" style="width:250px;">
@@ -285,13 +292,14 @@
 
            
                                                                                     <h5 class="text-info  mb-4">
-                <button type="submit" style="width:150px;" class="btn btn-primary">Submit</button>
+               <center> <button type="submit" style="width:120px;" class="btn btn-primary">Submit</button></center>
             </div>
             </h5>
             </div>
         </div>
 
     </form>
+</div>
 
 
 	<!-- JAVASCRIPTS -->
