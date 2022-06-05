@@ -47,8 +47,9 @@ class LetterController extends Controller
             $diff = strtotime($date2) - strtotime($date1);
      
            $dateDiff = abs(round($diff / 86400));
+           $t=1;
    
-        return view('Letters.index', compact('letters','date2'))
+        return view('Letters.index', compact('letters','date2','t'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function index2(Request $request)
@@ -142,12 +143,15 @@ class LetterController extends Controller
            
             'name' => 'required',
             'cschool1' => 'required',
+            'tschool' => 'required',
             'cdistrict' => 'required',
             'tdistrict' => 'required',
             'regional' => 'required',
+            'tregional' => 'required',
             'description' => 'required',
             'ward1' => 'required',
-            'schools' => 'required',
+            'tward' => 'required',
+           
             'Headmaster' => 'required',
             'WEO' => 'required',
             'DEO' => 'required',
@@ -156,18 +160,20 @@ class LetterController extends Controller
         $exist = DB::table('letters')->where('Employee_id',$request->Employee_id)->value('Employee_id');
         $exist1 = DB::table('letters')->where('name',$request->name)->value('name');
         if(($exist==NULL) && ($exist1==NULL)){
-        $regional1 = DB::table('regional_rd')->where('id',$request->regional)->value('name');
+        $regional1 = DB::table('regional_rd')->where('id',$request->tregional)->value('name');
         $districts1 = DB::table('district_dp')->where('id',$request->tdistrict)->value('name');
-        $wards1 = DB::table('ward_dp')->where('id',$request->ward1)->value('name');
-        $schools1 = DB::table('school_dp')->where('id',$request->schools)->value('name');
+        $wards1 = DB::table('ward_dp')->where('id',$request->tward)->value('name');
+        $schools1 = DB::table('school_dp')->where('id',$request->tschool)->value('name');
         Letter::create([
             'Employee_id' => $request->Employee_id,
             'name' =>  $request->name,
             'cschool' => $request->cschool1,
             'tschool' => $schools1,
             'cdistrict' => $request->cdistrict,
-            'regional' => $regional1,
+            'tregional' =>  $regional1,
+            'regional' =>  $request->regional,
             'ward' => $request->ward1,
+            'tward' =>  $wards1,
             'tdistrict' =>  $districts1,
             'description' => $request->description,
         ]);
@@ -286,8 +292,6 @@ class LetterController extends Controller
             'regional' => 'required',
             'description' => 'required',
             'Message' => 'required',
-            'ward1' => 'required',
-            'schools' => 'required',
             'Headmaster' => 'required',
             'tHeadmaster' => 'required',
          
@@ -296,8 +300,45 @@ class LetterController extends Controller
            
            
           
-        ]);  
+        ]); 
+     
+            if( $request->Tamisemi=="Approved BY Tamisemi_Director"){
+            $request1= $request->tregional;
+        
+            $request2=  $request->tdistrict;
+            $wards1 = DB::table('users')->where('id',$request->Employee_id)->value('ward');
+            $request3= $request->tward;
+            $school1 = DB::table('users')->where('id',$request->Employee_id)->value('schools');
+           
+            $request4=$request->tschool;
+         
+          
+            // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
+         
+                DB::table('users')
+              ->where('Employee_id', $request->Employee_id)
+              ->update(['schools' =>  $request4]);
+              DB::table('users')
+              ->where('Employee_id', $request->Employee_id)
+              ->update(['regional' =>  $request1]);
+              DB::table('users')
+              ->where('Employee_id', $request->Employee_id)
+              ->update(['district' =>  $request2]);
+              DB::table('users')
+              ->where('Employee_id', $request->Employee_id)
+              ->update(['ward' =>  $request3]);
+            //$users = User::find($request->Employee_id);
+            // $users->schools = $request4;
+            // $users->district = $request->tdistrict;
+            // $users->regional = $request->tregional;
+          
+            // $users->update();
+            }
         $letter->update($request->all());
+
+       
+       
+       
        
         $districts = District::where([
             ['name','!=', NULL],
@@ -371,6 +412,7 @@ class LetterController extends Controller
          } 
         
         }
+   
     
     public function update1(Request $request, Letter $letter)
     {

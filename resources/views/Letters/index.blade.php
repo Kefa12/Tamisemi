@@ -169,6 +169,9 @@
                    
                     <div class="row">
         <div class="col-lg-12 margin-tb">
+
+   
+      
            
             <h1>Request Onprogress</h1>
         </div>
@@ -186,6 +189,7 @@
         </div>
     @endif
  @foreach ($letters as $letter)
+ @if(($letter->Tamisemi !="Approved BY Tamisemi_Director"))
   @if($letter->author=="unknown" && $letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id)
   <table  class="table table-striped w-auto" style="padding-top:0px;">
         <tr>
@@ -642,7 +646,19 @@
       
  
     @endif
+    @else
+    
+     @if(($letter->name==Auth::user()->name))
+      
+     <h1><span style="color:blue">Congratration!</span> Successfully transfer request<h1>
+     @endif
+@endif
  @endforeach
+
+  
+
+
+
 
 
   

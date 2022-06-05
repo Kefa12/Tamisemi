@@ -73,6 +73,7 @@ class DashboardController extends Controller
                          ->orderBy("id","desc")
                          ->paginate(30);
                          $i=0;
+                        
             if($request->status=="1")
                 return view('reg.index', compact('letters','transfers'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);

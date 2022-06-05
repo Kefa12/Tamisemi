@@ -215,7 +215,6 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
  
-    <input type="hidden" name="ward" class="form-control" placeholder="request"  value="{{ Auth::user()->ward }}">
 </div>
 </div>
 
@@ -249,7 +248,7 @@
         
               <div class="form-group">
 												                                              <h5 class="text-info  mb-4">Choose Regional
-																							 <select id="state" name="regional" class="form-control" style="width:250px;">
+																							 <select id="state" name="tregional" class="form-control" style="width:250px;">
 																										  <option width="50px"><h1 class="form-control">Choose Regional</h1></option>
 																												  @foreach($regional_rd as $row)
 																										 <option value={{$row->id}}>{{$row->name}}</option>
@@ -264,12 +263,12 @@
 																					</div>
 																				<div class="form-group">
 																						   <h5 class="text-info  mb-4">Choose Ward
-																							 <select  id="stadium"  name="ward"  style="width:250px;"  class="form-control" disabled>
+																							 <select  id="stadium"  name="tward"  style="width:250px;"  class="form-control" disabled>
 																							 </select></h5>
 																				  </div>
 																	<div class="form-group">
 																									   <h5 class="text-info  mb-4">Choose school
-																												<select  id="details" name="schools"  style="width:250px;" class="form-control" disabled>
+																												<select  id="details" name="tschool"  style="width:250px;" class="form-control" disabled>
 																												</select></h5>
 																	</div>
 																							   </div>

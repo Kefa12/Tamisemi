@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Tamisemi Teacher Transfer</title>
+  <title>public workers</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
@@ -44,7 +44,7 @@
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="#" style="color:white;">TAMISEMI<span></span></a></h1>
+        <h1><a href="#" style="color:white;"> <img src="assets3/img/logo2.jpg" alt="no image" width=85>PWTMS<span></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
