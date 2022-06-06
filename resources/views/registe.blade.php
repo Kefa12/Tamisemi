@@ -92,7 +92,8 @@
 
 								<!-- Validation Errors -->
 								<x-auth-validation-errors class="mb-4" :errors="$errors" />
-<div class="card bg-blue text-black" style="border-radius: 2rem;">
+<div class="card bg-blue text-black" style="border-radius: 25px; border: 1px solid blue;">
+
 
                 <form method="POST" action="{{ route('register') }}">
               
