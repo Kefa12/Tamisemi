@@ -34,7 +34,7 @@
    
     @role('Teacher')
     <div class="form1">
-    <h2> Swapping Respond, {{ $letter->name }} </h2>
+    <h2> Swapping teacher, {{ $letter->name }} </h2>
 
     @if(!($letter->author==Auth::user()->name))
      <form action="{{ URL('letters2'), $letter->id}}" method="GET">
