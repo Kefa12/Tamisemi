@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Transfer;
 use App\Models\Letter;
+use App\Models\School;
+use App\Models\Ward;
+use App\Models\District;
+use App\Models\Regional;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -143,7 +148,55 @@ class DashboardController extends Controller
             return view('search.index1', compact('letters','transfers'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Headmaster')){
-            return view('Headmaster_dash');
+           //
+        $districts = District::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+     
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+   
+       
+        $schools = School::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+
+            
+            $wards = Ward::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+   
+        return view('Masters.index', compact('schools','letters','districts','wards'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Health_Worker')){
 
             return view('HealthDash');

@@ -400,8 +400,7 @@ class LetterController extends Controller
             return redirect()->route('regionals.index')
             ->with('success', 'user updated successfully');
          }elseif($request->status=="5") {
-            return redirect()->route('dashboard')
-            ->with('success', 'user updated successfully');
+            return redirect('letters3');
          }else{
             return redirect('letters3');
                 

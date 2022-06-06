@@ -82,7 +82,7 @@
                       
                             <a href="{{ URL('letters1') }}"  class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Request</a>
                             <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
-                            <a href="{{ URL('letters3') }}"  class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request</a>
+                            <a href="{{ URL('letters3') }}"  class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping</a>
                         @endrole
                         @role('Weo')
                         <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
@@ -207,7 +207,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             
  @foreach ($letters as $letter)
  @if(($letter->Tamisemi !="Approved BY Tamisemi_Director"))
-  @if($letter->author=="unknown" && $letter->name==Auth::user()->name || $letter->Employee_id==Auth::user()->Employee_id)
+  @if($letter->author=="unknown" && $letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id)
   <div class="col-md-8">
               <div class="card-body p-4">
               <h6>Transfer Request Details</h6>
@@ -266,14 +266,14 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
-                    <h6>Headmster</h6>
+                    <h6>Headmaster</h6>
                     @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
                 
                     <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
                
                @elseif( $letter->Headmaster  == 'support BY HEADMASTER')
               
-                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+                 <button type="submit" class="btn btn-primary" style="height:34px;" ><i style="height:34px; padding:0px 0px 0px 0px;">support</i></button>
               
                 @else
                
@@ -353,19 +353,23 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
            
             @endif
                   </div>
-                </div>
+              
+                <h6><b>Teacher_Action</b></h6>
+                <hr class="mt-0 mb-4">
+  
+                
            
               
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
               
-                  @role('Tamisemi_Director')
+                
                   <a href="{{ route('letters.edit', $letter->id) }}">
                       <i class="fas fa-edit  fa-lg"></i>
 
                   </a>
-                  @endif
-     
+                
+       </div>
      
                 
                   @csrf
@@ -474,147 +478,259 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
            
             @if(($letter->name==Auth::user()->name || !(Auth::user()->hasRole(['Teacher'])))) 
          
-            <table  class="table table-striped" style="padding-top:0px;">
-        <tr>
-            <td>No</td>
-            <td>{{ ++$i }}</td>
-            <td>Name</td>
-            <td>Approve_status</td>
-            <td>Comment</td>
-        <tr>
-            <th>Name</th>
-            <td>{{ $letter->name }}</td>
-            <th>Teacher From another school</th>
-           
-            
-            @if( $letter->Teacher_support == 'Not_support BY TEACHER')
-                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> Not_support</button>
-                </div></td>
-               @elseif( $letter->Teacher_support == 'support BY TEACHER')
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">support</button>
-                </div></td>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+              <h6>Transfer Request Details</h6>
+                <hr class="mt-0 mb-10">
+                <h6><b>Current_status</b></h6>
+                <div class="row pt-1">
+                  <div class="col-3 mb-2">
+                    <h6>Name</h6>
+                    <p class="text-muted">{{$letter->name}}</p>
+                  </div>
+                  <div class="col-3 mb-2">
+                    <h6>School</h6>
+                    <p class="text-muted">{{$letter->cschool}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    ward:
+                    <p class="text-muted">{{$letter->ward}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>District</h6>
+                    <p class="text-muted">{{$letter->cdistrict}}</p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Regional</h6>
+                    <p class="text-muted">{{$letter->regional}}</p>
+
+                    </div>
+                  </div>
+                  <h6><b>Request</b></h6>
+
+                  <div class="row pt-1">
+                  <div class="col-3 mb-1">
+                        <h6>Reason</h6>
+                         <p class="text-muted">{{$letter->description}}</p>
+                     </div>
+                        <div class="col-3 mb-">
+                        <h6>Regional</h6>
+                         <p class="text-muted">{{$letter->tregional}}</p>
+                     </div>
+                    <div class="col-6 mb-3">
+                        <h6>District</h6>
+                         <p class="text-muted">{{$letter->tdistrict}}</p>
+                     </div>
+                        <div class="col-6 mb-3">
+                        <h6>Ward</h6>
+                         <p class="text-muted">{{$letter->tward}}</p>
+                     </div>
+                
+                     <div class="col-6 mb-3">
+                        <h6>School</h6>
+                         <p class="text-muted">{{$letter->tschool}}</p>
+                     </div>
+              
+                 </div>
+                 <h6><b>Support status</b></h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Teacher</h6>
+                    @if( $letter->Teacher_approved == 'Not_support BY TEACHER')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $letter->Teacher_approved  == 'support BY TEACHER')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
                 @else
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-success">PENDING</button>
-                </div></td>
-                @endif
-             <td>{{ $letter->T_comment }}</td>
-           
-        </tr>
-        <tr>
-            <th>current school</th>
-            <td>{{ $letter->cschool }}</td>
-            <th>HeadMaster_Action</th>
-            
-            @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
-                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> Not_support</button>
-                </div></td>
-               @elseif( $letter->Headmaster == 'support BY HEADMASTER')
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">support</button>
-                </div></td>
-                @else
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-success">PENDING</button>
-                </div></td>
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
                
                 @endif
-            <td>{{ $letter->H_comment }}</td>
-           
-        </tr>
-        <tr>
-            <th>Transfer school</th>
-            <td>{{ $letter->tschool }}</td>
-            <th>HeadMaster From another school</th>         
-            @if( $letter->Transfer_Headmaster == 'Not_support BY HEADMASTER')
-                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger">Not_support</button>
-                </div></td>
+                
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Headmaster</h6>
+                    @if( $letter->Transfer_Headmaster == 'Not_support BY HEADMASTER')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
                @elseif( $letter->Transfer_Headmaster == 'support BY HEADMASTER')
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">support</button>
-                </div></td>
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
                 @else
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-success">PENDING</button>
-                </div></td>
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
                 @endif
-        </tr>
-        <tr>
-            <th>current ward</th>
-            <td>{{ $letter->ward }}</td>
-            <th>WEO_Action</th>
-            @if( $letter->WEO == 'Not_support BY WEO')
-                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> Not_support</button>
-                </div></td>
+</div>
+                <div class="col-6 mb-3">
+                    <h6>Current_Headmaster</h6>
+                    @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $letter->Headmaster == 'support BY HEADMASTER')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Ward_officer</h6>
+                    @if( $letter->WEO == 'Not_support BY WEO')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
                @elseif( $letter->WEO == 'support BY WEO')
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">support</button>
-                </div></td>
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
                 @else
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-success">PENDING</button>
-                </div></td>
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
                
                 @endif
-        </tr>
-        <tr>
-            <th>current disctrict</th>
-            <td>{{ $letter->cdistrict }}</td>
-            <th>DEO_Action</th>
-            @if( $letter->DEO == 'Not_support BY District_Education_Officer')
-                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> Not_support</button>
-                </div></td>
+                  </div>
+                </div>
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                    <h6>District_officer</h6>
+                    @if( $letter->DEO == 'Not_support BY District_Education_Officer')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
                @elseif( $letter->DEO == 'support BY District_Education_Officer')
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">support</button>
-                </div></td>
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
                 @else
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-success">PENDING</button>
-                </div></td>
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
                
                 @endif
-        </tr>
-        <tr>
-            <th>transfer district</th>
-            <td>{{ $letter->tdistrict }}</td>
-            <th>DED_Action</th>
-            @if( $letter->DED == 'Not_support BY District_Executive_Director')
-                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> Not_support</button>
-                </div></td>
-            @elseif( $letter->DED == 'support BY District_Executive_Director')
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">support</button>
-                </div></td>
-            @else
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-success">PENDING</button>
-                </div></td>
-               
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>District_Director</h6>
+                    @if( $letter->DED == 'Not_support BY District_Executive_Director')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
            
+           @elseif( $letter->DED == 'support BY District_Executive_Director')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Regional_Director</h6>
+                    @if( $letter->Regional_Director== 'Not_support BY RD')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $letter->Regional_Director == 'support BY RD')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+                  </div>
+                </div>
                
-                @endif
-        </tr>
-        <tr>
-            <th>description</th>
-            <td>{{ $letter->description }}</td>
-            <th width="280px">Action</th>
-            <td>
+                  </div>
+                  
+                  </div>
+                </div>
+                <br/>
+   <h4>RESPOND  TIME</h4>
+    <center><table  class="table table-striped w-auto">
+      
+    <tr style="border: none; color:black;">
+                  <th>Description</th>
+                  <th>Respond time</th>
+            </tr>
+              <tr>
+                  <th>Lifetime request</th>
+                  <td>{{ abs(round((strtotime($date2)-strtotime($letter->created_at))/86400)) }}</td>
+            </tr>
+            <tr>
+                  <th>Headmaster</th>
+                  @if($letter->T_date=='0000-00-00')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->T_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>Ward_officer</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>District_officer</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>District_Director</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+            </tr>
+            <tr>
+                  <th>Regional_officer</th>
+                  @if($letter->WEO=='pending')
+                  <td>not respond</td>
+                  @else
+                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
+                  @endif
+              </tr>
+              <th>
+               
+                 
+                
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+
+    </table></center>
+           
               
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-                 
+              
                   @role('Tamisemi_Director')
-                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                      <i class="fas fa-eye text-success  fa-lg"></i>
-                  </a>
                   <a href="{{ route('letters.edit', $letter->id) }}">
                       <i class="fas fa-edit  fa-lg"></i>
 
@@ -647,68 +763,23 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
           
          
     </table>
-    <h2>TIME TAKEN TO RESPOND REQUEST</h2>
-    <table  class="table table-striped" style="padding-top:0px;">
-        <tr>
-            <td><strong>Description</strong></td>
-            <td>Number Of day To respond</td>
-            
-        <tr>
-    
-              <tr>
-                  <th>LIFE TIME FOR REQUEST</th>
-                  <td>{{ abs(round((strtotime($date2)-strtotime($letter->created_at))/86400)) }}</td>
-            </tr>
-            <tr>
-                  <th>HEADMSTER RESPOND TIME TAKEN</th>
-                  @if($letter->Headmaster=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->T_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-            </tr>
-            <tr>
-                  <th>WEO RESPOND TIME TAKEN</th>
-                  @if($letter->WEO=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-            </tr>
-            <tr>
-                  <th>DEO RESPOND TIME TAKEN</th>
-                  @if($letter->DEO=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->DEO_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-            </tr>
-            <tr>
-                  <th>DED RESPOND TIME TAKEN</th>
-                  @if($letter->DED=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->DED_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-            </tr>
-            <tr>
-                  <th>RED RESPOND TIME TAKEN</th>
-                  @if($letter->Regional_Director=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->created_at)-strtotime($letter->RD_date))/86400)) }}</td>
-                  @endif
-              </tr>
-              <th>
-               
-                 
-                
-                  <td></td>
-                  <td></td>
-                  <td></td>
-              </tr>
+    <br/>
+   
 
     </table>
+    </form>
+          
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
            @endif 
         @endforeach
 

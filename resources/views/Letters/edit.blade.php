@@ -11,6 +11,15 @@
          
         </div>
     </div>
+    <style>
+        .form1{
+                    margin-left:20px;
+                   margin-top:0px;
+                   border: 5px solid blue;
+                   border-radius: 15px;
+                   height: 550px;
+                } 
+    </style>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -24,7 +33,8 @@
     @endif
    
     @role('Teacher')
-    <h2>Send Swapping Request to Teacher {{ $letter->name }} </h2>
+    <div class="form1">
+    <h2> Swapping Respond, {{ $letter->name }} </h2>
 
     @if(!($letter->author==Auth::user()->name))
      <form action="{{ URL('letters2'), $letter->id}}" method="GET">
@@ -135,7 +145,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
-                    <input type="hidden" class="form-control" style="height:50px"  name="Teacher_approved"  value="pending"  
+                    <input type="hidden" class="form-control" style="height:50px"  name="Teacher_approved"  value="{{$letter->Teacher_approved}}"  
                         placeholder="description"></input>
                 </div>
             </div>
@@ -145,16 +155,16 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
-             <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="pending"
+             <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
                         ></input>
                 </div>
             </div>
-            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="pending"
+            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
                        ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="WEO"  value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="WEO"  value="{{$letter->WEO}}" 
                         ></input>
                 </div>
             </div>
@@ -168,14 +178,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DEO" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DEO" value="{{$letter->DEO}}" 
                         ></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="{{$letter->DED}}" 
                         ></input>
                 </div>
             </div>
@@ -757,6 +767,7 @@
                         <option value="support BY TEACHER">ACCEPTED</option>
                         <option value="Not_support BY TEACHER">Not_accepted</option>
                 </select>
+                 </div>
                 </div>
             </div>
             @endif
@@ -770,7 +781,7 @@
            
             @role('Headmaster')
             @if($letter->Headmaster=='Not_support BY HEADMASTER'  || $letter->Headmaster=='support BY HEADMASTER' || $letter->Headmaster=='pending' || $letter->Transfer_Headmaster=='Not_support BY HEADMASTER' || $letter->Transfer_Headmaster=='pending' || $letter->Transfer_Headmaster=='support BY HEADMASTER')
-            @if($letter->author=='unknown' || $letter->Transfer_Headmaster!='pending')
+            @if($letter->author=='unknown' && $letter->Transfer_Headmaster!='pending')
             <div class="col-xs-12 col-sm-12 col-md-12">
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="0"
                        ></input>
@@ -1140,7 +1151,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
-                    <h6>Headmster</h6>
+                    <h6>Headmaster</h6>
                     @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
                 
                     <button type="submit" class="btn btn-danger"><i> Not_support</i></button>

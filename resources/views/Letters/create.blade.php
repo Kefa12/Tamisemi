@@ -73,7 +73,7 @@
                    
                     <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Request</a>
                     <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
-                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping Request</a>
+                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping</a>
                    
                     </div>
                 </div>

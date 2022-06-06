@@ -70,8 +70,8 @@
                     <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                   
                    
-                    <a href="{{ URL('schools') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
-                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Request From Teacher</a>
+                  
+                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Swapping</a>
                    
                 </div>
             </nav>
@@ -91,10 +91,7 @@
                 <!--MESSAGE-->
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
+                      
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
                                
@@ -134,8 +131,8 @@
                             <span class="d-none d-lg-inline-flex">{{ __('HeadMaster') }}({{Auth::user()->name}})</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="{{ URL('Headmaster_dash') }}" class="dropdown-item">My Profile</a>
+                           
 							<form method="POST" action="{{ route('logout') }}">
 																	@csrf
                             <a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();
