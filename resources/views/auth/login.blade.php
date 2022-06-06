@@ -257,6 +257,20 @@ button:hover {
 		  padding-right: 210px;
 		background-color: white;		
 	}
+ 
+                .account-box{
+                   
+                   border: 1px solid blue;
+                   border-radius: 25px;
+                 
+                }
+                h5{
+                    padding-left:20px;
+                }
+                select{
+                    padding-left:20px;
+                }
+           
 	</style>
 
 <body>
@@ -299,9 +313,11 @@ button:hover {
     </div>
   </header>
 					<!-- /Account Logo -->
-					
+				  	
 					<div class="account-box">
+        
 						<div class="account-wrapper">
+            
 							<h3 class="account-title">LOGIN FORM</h3>
                             <center><a href="index.html"><img src="assets3/img/logo2.jpg" alt="no image" width=100></a></center>
 		
@@ -317,7 +333,7 @@ button:hover {
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+       
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
@@ -365,6 +381,7 @@ button:hover {
             </div>
         </form>
     </x-auth-card>
+
 
 	
 	</body>
