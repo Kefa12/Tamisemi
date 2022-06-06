@@ -144,8 +144,8 @@
                 .form1{
                     margin-left:20px;
                    margin-top:0px;
-                   border: 5px solid blue;
-                   border-radius: 15px;
+                   border: 1px solid #0096FF;
+                   border-radius: 35px;
                    width:300px;
                 }
                 h5{
@@ -177,8 +177,8 @@
             </ul>
         </div>
     @endif
-    <div class="form1">
-    <form action="{{ route('letters.store') }}" method="POST"  id="form1">
+    <center> <div class="form1">
+   <form action="{{ route('letters.store') }}" method="POST"  id="form1">
         @csrf
      
         <div>
@@ -300,6 +300,7 @@
 
     </form>
 </div>
+            </center>
 
 
 	<!-- JAVASCRIPTS -->

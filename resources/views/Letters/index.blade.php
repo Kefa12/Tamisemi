@@ -202,8 +202,9 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
     <section class="vh-100" style="background-color: #f4f5f7;">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-lg-6 mb-4 mb-lg-0" style="width:800;">
-        <div class="card mb-3" style="border-radius: .5rem;">
+        <div class="card mb-3" style="border-radius: .5rem;  border: 1px solid #0096FF;">
           <div class="row g-0">
+              
             
  @foreach ($letters as $letter)
  @if(($letter->Tamisemi !="Approved BY Tamisemi_Director"))
@@ -214,11 +215,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 <hr class="mt-0 mb-10">
                 <h6><b>Current_status</b></h6>
                 <div class="row pt-1">
-                  <div class="col-3 mb-2">
+                  <div class="col-6 mb-3">
                     <h6>Name</h6>
                     <p class="text-muted">{{$letter->name}}</p>
                   </div>
-                  <div class="col-3 mb-2">
+                  <div class="col-6 mb-3">
                     <h6>School</h6>
                     <p class="text-muted">{{$letter->cschool}}</p>
                   </div>
@@ -239,11 +240,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   <h6><b>Request</b></h6>
 
                   <div class="row pt-1">
-                  <div class="col-3 mb-1">
+                  <div class="col-6 mb-3">
                         <h6>Reason</h6>
                          <p class="text-muted">{{$letter->description}}</p>
                      </div>
-                        <div class="col-3 mb-">
+                        <div class="col-6 mb-3">
                         <h6>Regional</h6>
                          <p class="text-muted">{{$letter->tregional}}</p>
                      </div>
@@ -364,7 +365,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
               
                 
-                  <a href="{{ route('letters.edit', $letter->id) }}">
+                  Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
                       <i class="fas fa-edit  fa-lg"></i>
 
                   </a>
@@ -561,7 +562,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                
                @elseif( $letter->Transfer_Headmaster == 'support BY HEADMASTER')
               
-                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+                 <button type="submit" class="btn btn-primary" style="" ><i style="">support</i></button>
               
                 @else
                

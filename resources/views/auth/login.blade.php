@@ -260,8 +260,10 @@ button:hover {
  
                 .account-box{
                    
-                   border: 1px solid blue;
+                   border: 0.1px solid blue;
                    border-radius: 25px;
+                   padding: 1px 1px 1px 1px;
+                   margin
                  
                 }
                 h5{
@@ -282,7 +284,7 @@ button:hover {
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="#" style="color:white;"> <img src="assets3/img/logo2.jpg" alt="no image" width=85>PWTMS<span></span></a></h1>
+        <h1><a href="#" style="color:black;">PWTMS<span></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>

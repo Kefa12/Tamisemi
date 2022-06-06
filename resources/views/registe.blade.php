@@ -51,7 +51,7 @@
   <header id="header" class="d-flex align-items-center" style="background-color:#ADD8E6; color:white;">
     <div class="container d-flex justify-content-between">
     <div id="logo">
-        <h1><a href="#" style="color:white;"> <img src="assets3/img/logo2.jpg" alt="no image" width=85>PWTMS<span></span></a></h1>
+        <h1><a href="#" style="color:black;">PWTMS<span></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
