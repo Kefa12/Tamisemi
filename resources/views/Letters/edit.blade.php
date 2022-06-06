@@ -1100,8 +1100,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
           <div class="row g-0">
             <div class="col-md-4 gradient-custom text-center text-white" bgcolor="#5C5CFF"
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; background-color:#5C5CFF;">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              
                
               <h2 style="color:black;">Name:{{$letter->name}}</h2>
              

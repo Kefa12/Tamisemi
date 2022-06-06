@@ -29,6 +29,18 @@ Route::get('/welcome2', function () {
 Route::get('Teachdash1', function () {
     return view('Teachdash1');
 });
+Route::get('WEOdash', function () {
+    return view('WEOdash');
+});
+Route::get('DEOdash', function () {
+    return view('DEOdash');
+});
+Route::get('Dmdash', function () {
+    return view('Dmdash');
+});
+Route::get('administrator', function () {
+    return view('administrator');
+});
 Route::get('/registe', function () {
     return view('registe');
 });

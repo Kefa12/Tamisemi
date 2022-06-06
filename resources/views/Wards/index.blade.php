@@ -49,7 +49,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"> Ward Education Officer </h3>
+                    <h3 class="text-primary"> Ward Officer </h3>
                 </a>
                 <!-- no 
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -71,7 +71,7 @@
                   
                    
                    
-                    <a href="{{ URL('wards') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
+                   
                    
                 </div>
             </nav>
@@ -93,10 +93,7 @@
                 <!--MESSAGE-->
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
+                      
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
                                 
@@ -132,8 +129,8 @@
                             <span class="d-none d-lg-inline-flex">{{ __('WEO') }}({{Auth::user()->name}})</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="{{URL('WEOdash')}}" class="dropdown-item">My Profile</a>
+                           
 							<form method="POST" action="{{ route('logout') }}">
 																	@csrf
                             <a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();
@@ -151,7 +148,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Request Require To Approve </h2>
+                <h2>Onprogress Request </h2>
             </div>
             <table class="table table-bordered table-responsive-lg">
                                 <form action="{{ url('form1') }}" method="GET" role="search">

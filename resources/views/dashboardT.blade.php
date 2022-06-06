@@ -297,7 +297,7 @@
                                 </form>
 
       
-      <table class="table table-striped">
+      <table class="table table-bordered table-responsive-lg">
       <tr>
             <th>No</th>
             <th>Name</th>
@@ -382,7 +382,7 @@
   {!! $letters->links() !!}
   </table>
   <center><h1>Request  Respond </h1></center>
-  <table class="table table-striped">
+  <table class="table table-bordered table-responsive-lg">
 			<tr>
             <th>No</th>
             <th>Name</th>
