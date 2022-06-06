@@ -223,6 +223,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                     <h6>School</h6>
                     <p class="text-muted">{{$letter->cschool}}</p>
                   </div>
+                
                   <div class="col-6 mb-3">
                     ward:
                     <p class="text-muted">{{$letter->ward}}</p>
@@ -485,11 +486,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 <hr class="mt-0 mb-10">
                 <h6><b>Current_status</b></h6>
                 <div class="row pt-1">
-                  <div class="col-3 mb-2">
+                  <div class="col-6 mb-3">
                     <h6>Name</h6>
                     <p class="text-muted">{{$letter->name}}</p>
                   </div>
-                  <div class="col-3 mb-2">
+                  <div class="col-6 mb-3">
                     <h6>School</h6>
                     <p class="text-muted">{{$letter->cschool}}</p>
                   </div>
@@ -510,11 +511,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   <h6><b>Request</b></h6>
 
                   <div class="row pt-1">
-                  <div class="col-3 mb-1">
+                  <div class="col-6 mb-3">
                         <h6>Reason</h6>
                          <p class="text-muted">{{$letter->description}}</p>
                      </div>
-                        <div class="col-3 mb-">
+                        <div class="col-6 mb-3">
                         <h6>Regional</h6>
                          <p class="text-muted">{{$letter->tregional}}</p>
                      </div>
@@ -664,68 +665,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   
                   </div>
                 </div>
-                <br/>
-   <h4>RESPOND  TIME</h4>
-    <center><table  class="table table-striped w-auto">
-      
-    <tr style="border: none; color:black;">
-                  <th>Description</th>
-                  <th>Respond time</th>
-            </tr>
-              <tr>
-                  <th>Lifetime request</th>
-                  <td>{{ abs(round((strtotime($date2)-strtotime($letter->created_at))/86400)) }}</td>
-            </tr>
-            <tr>
-                  <th>Headmaster</th>
-                  @if($letter->T_date=='0000-00-00')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->T_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-            </tr>
-            <tr>
-                  <th>Ward_officer</th>
-                  @if($letter->WEO=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-            </tr>
-            <tr>
-                  <th>District_officer</th>
-                  @if($letter->WEO=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-            </tr>
-            <tr>
-                  <th>District_Director</th>
-                  @if($letter->WEO=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-            </tr>
-            <tr>
-                  <th>Regional_officer</th>
-                  @if($letter->WEO=='pending')
-                  <td>not respond</td>
-                  @else
-                  <td>The day late to proved is {{ abs(round((strtotime($letter->W_date)-strtotime($letter->created_at))/86400)) }}</td>
-                  @endif
-              </tr>
-              <th>
-               
-                 
-                
-                  <td></td>
-                  <td></td>
-                  <td></td>
-              </tr>
-
-    </table></center>
+                </center>
            
               
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">

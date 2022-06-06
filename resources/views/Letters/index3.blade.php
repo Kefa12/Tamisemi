@@ -231,11 +231,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 <hr class="mt-0 mb-10">
                 <h6><b>Current_status</b></h6>
                 <div class="row pt-1">
-                  <div class="col-3 mb-2">
+                  <div class="col-6 mb-3">
                     <h6>Name</h6>
                     <p class="text-muted">{{$letter->name}}</p>
                   </div>
-                  <div class="col-3 mb-2">
+                  <div class="col-6 mb-3">
                     <h6>School</h6>
                     <p class="text-muted">{{$letter->cschool}}</p>
                   </div>
@@ -256,11 +256,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   <h6><b>Request</b></h6>
 
                   <div class="row pt-1">
-                  <div class="col-3 mb-1">
+                  <div class="col-6 mb-3">
                         <h6>Reason</h6>
                          <p class="text-muted">{{$letter->description}}</p>
                      </div>
-                        <div class="col-3 mb-">
+                        <div class="col-6 mb-3">
                         <h6>Regional</h6>
                          <p class="text-muted">{{$letter->tregional}}</p>
                      </div>

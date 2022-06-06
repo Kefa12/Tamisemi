@@ -145,7 +145,7 @@
                     margin-left:20px;
                    margin-top:0px;
                    border: 1px solid #0096FF;
-                   border-radius: 35px;
+                   border-radius: 5px;
                    width:300px;
                 }
                 h5{
