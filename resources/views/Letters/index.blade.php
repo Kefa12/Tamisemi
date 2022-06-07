@@ -201,15 +201,16 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
     @endif
     <section class="vh-100" style="background-color: #f4f5f7;">
     <div class="row d-flex justify-content-center align-items-center h-100">
+         @foreach ($letters as $letter)
+ @if(($letter->Tamisemi !="Approved BY Tamisemi_Director"))
+  @if($letter->author=="unknown" && $letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id)
+  
       <div class="col col-lg-6 mb-4 mb-lg-0" style="width:800;">
         <div class="card mb-3" style="border-radius: .5rem;  border: 1px solid #0096FF;">
           <div class="row g-0">
               
             
- @foreach ($letters as $letter)
- @if(($letter->Tamisemi !="Approved BY Tamisemi_Director"))
-  @if($letter->author=="unknown" && $letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id)
-  <div class="col-md-12">
+<div class="col-md-12">
               <div class="card-body p-4">
               <h6>Transfer Request Details</h6>
                 <hr class="mt-0 mb-10">
@@ -412,7 +413,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             </tr>
             <tr>
                   <th>Headmaster</th>
-                  @if($letter->T_date=='0000-00-00')
+                  @if($letter->Headmaster=='pending')
                   <td>not respond</td>
                   @else
                   <td>The day late to proved is {{ abs(round((strtotime($letter->T_date)-strtotime($letter->created_at))/86400)) }}</td>

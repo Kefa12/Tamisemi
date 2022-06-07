@@ -235,12 +235,13 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
     @endif
     <section class="vh-100" style="background-color: #f4f5f7;">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-lg-6 mb-4 mb-lg-0" style="width:800;">
-        <div class="card mb-3" style="border-radius: .5rem;">
-          <div class="row g-0">
     @foreach ($letters as $letter)
             <tr style="background-color:white;">
         @if($letter->author==Auth::user()->name)
+      <div class="col col-lg-6 mb-4 mb-lg-0" style="width:800;">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+  
          
         <div class="col-md-12">
               <div class="card-body p-4">

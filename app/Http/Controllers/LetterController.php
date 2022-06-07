@@ -218,6 +218,8 @@ class LetterController extends Controller
             'cdistrict' => $request->cdistrict,
             'ward' => $request->ward1,
             'tdistrict' => $request->tdistrict,
+            'tregional' => $request->tregional,
+            'tward' => $request->tward,
             'description' => $request->description,
             'Message' => $request->Message,
             'author' => $request->author,
@@ -301,6 +303,7 @@ class LetterController extends Controller
            
           
         ]); 
+           $letter->update($request->all());
      
             if( $request->Tamisemi=="Approved BY Tamisemi_Director"){
             $request1= $request->tregional;
@@ -334,7 +337,7 @@ class LetterController extends Controller
           
             // $users->update();
             }
-        $letter->update($request->all());
+       
 
        
        

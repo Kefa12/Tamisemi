@@ -15,9 +15,9 @@
         .form1{
                     margin-left:20px;
                    margin-top:0px;
-                   border: 5px solid blue;
+                   /* border: 5px solid blue; */
                    border-radius: 15px;
-                   height: 550px;
+                  
                 } 
     </style>
 
@@ -31,9 +31,10 @@
             </ul>
         </div>
     @endif
-   
+    
     @role('Teacher')
-    <div class="form1">
+<div class="form2">
+     <div class="form1">
     <h2> Swapping teacher, {{ $letter->name }} </h2>
 
     @if(!($letter->author==Auth::user()->name))
@@ -50,6 +51,26 @@
                     <input type="hidden" name="author"  value="{{ $letter->name }}" class="form-control" placeholder="Name">
                 </div>
             </div>
+            <div class="form-group">
+                  
+                  <input type="hidden" class="form-control" style="height:50px"  name="Teacher_approved"  value="pending"  
+                      placeholder="description"></input>
+              </div>
+              <div class="form-group">
+                   
+                   <input type="hidden" class="form-control" style="height:50px" name="WEO"  value="pending" 
+                       ></input>
+                       <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="pending"
+                        ></input>
+                </div>
+            </div>
+            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="pending"
+                       ></input>
+            <input type="hidden" class="form-control" style="height:50px" name="DEO" value="pending" 
+                        ></input>
+        <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                        ></input>
+               </div>
         @csrf
         @method('PUT')
     @else
@@ -60,6 +81,27 @@
                  Comment<input type="text" class="form-control" style="height:50px" name="T_comment" 
                         ></input>
                 </div>
+                <div class="form-group">
+                  
+                  <input type="hidden" class="form-control" style="height:50px"  name="Teacher_approved"  value="{{$letter->Teacher_approved}}"  
+                      placeholder="description"></input>
+              </div>
+              <div class="form-group">
+                   
+                   <input type="hidden" class="form-control" style="height:50px" name="WEO"  value="{{$letter->WEO}}" 
+                       ></input>
+               </div>
+               <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
+                        ></input>
+                </div>
+            </div>
+            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
+                       ></input>
+                       <input type="hidden" class="form-control" style="height:50px" name="DEO" value="pending" 
+                        ></input>
+        <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                        ></input>
+        
         @csrf
         @method('PUT')
     @endif
@@ -75,6 +117,17 @@
                     <input type="hidden" class="form-control" style="height:50px" name="Employee_id" value="{{  Auth::user()->Employee_id}}"
                         placeholder="mwenge"></input>
                 </div>
+                <div class="form-group">
+                   
+                   <input type="hidden" class="form-control" style="height:50px" name="tregional" value="{{ $letter->tregional}}"
+                       placeholder="mwenge"></input>
+               </div>
+               <div class="form-group">
+                   
+                   <input type="hidden" class="form-control" style="height:50px" name="tward" value="{{ $letter->tward}}"
+                       placeholder="mwenge"></input>
+               </div>
+                
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -143,11 +196,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="hidden" class="form-control" style="height:50px"  name="Teacher_approved"  value="{{$letter->Teacher_approved}}"  
-                        placeholder="description"></input>
-                </div>
+               
             </div>
          
             @endif
@@ -155,18 +204,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
-             <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
-                        ></input>
-                </div>
-            </div>
-            <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
-                       ></input>
+           
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                   
-                    <input type="hidden" class="form-control" style="height:50px" name="WEO"  value="{{$letter->WEO}}" 
-                        ></input>
-                </div>
+              
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -178,16 +218,15 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DEO" value="{{$letter->DEO}}" 
-                        ></input>
+                   
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="{{$letter->DED}}" 
-                        ></input>
+                   
                 </div>
+            </div>
             </div>
             
             @endrole
@@ -204,6 +243,7 @@
       document.getElementById("issues").style.display = "none";
     }
   }
+</div>
 </script>
   <!-- <div class="question">
 
@@ -926,11 +966,15 @@
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
+</div>
+
           
             @else
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">support / Not_support</button>
             </div>
+</div>
+
             @endif
             @endrole
             @role('Headmaster')
