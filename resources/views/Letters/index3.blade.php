@@ -74,11 +74,11 @@
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @role('Teacher')
-           
+                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-search" aria-hidden="true"></i>Swap teacher</a>
                     @endrole
                    
                      @role('Teacher')
-                              <a href="{{ URL('letters1') }}"class="nav-item nav-link""><i class="fa fa-keyboard me-2"></i>New Request</a>
+                              <a href="{{ URL('letters1') }}"class="nav-item nav-link""><i class="fa fa-table me-2"></i>New Request</a>
                               <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
                         @endrole
                         @role('Headmaster')
@@ -86,7 +86,7 @@
                         @endrole
                            
                           
-                            <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping </a>
+                            <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping </a>
                           
                          
                         </div>
@@ -95,7 +95,10 @@
                    
                 </div>
             </nav>
+
         </div>
+
+        
         <!-- Sidebar End -->
 
 
@@ -146,6 +149,7 @@
                             @endrole
                           
                         </a>
+                        @role('Headmaster')
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="{{ URL('Headmaster_dash') }}" class="dropdown-item">My Profile</a>
                            
@@ -155,6 +159,18 @@
 																						this.closest('form').submit();">	{{ __('LogOut') }}</a>
                     	</form>    
 					</div>
+                    @endrole
+                    @role('Teacher')
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="{{ URL('Teachdash1') }}" class="dropdown-item">My Profile</a>
+                           
+							<form method="POST" action="{{ route('logout') }}">
+																	@csrf
+                            <a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();
+																						this.closest('form').submit();">	{{ __('LogOut') }}</a>
+                    	</form>    
+					</div>
+                    @endrole
                     </div>
                 </div>
             </nav>
@@ -186,7 +202,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
           
-               <center><h1>Swapping Request</h1></center>
+               
           
            
         </div>
@@ -206,6 +222,7 @@ background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgb
 background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
 }
 </style> 
+<center><h1>Swapping Request</h1></center>
     <div class="pull-left">
     @role('Teacher')
     <form action="{{ route('letters.index') }}" method="GET" role="search">
@@ -225,7 +242,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             <tr style="background-color:white;">
         @if($letter->author==Auth::user()->name)
          
-        <div class="col-md-8">
+        <div class="col-md-12">
               <div class="card-body p-4">
               <h6>Transfer Request Details</h6>
                 <hr class="mt-0 mb-10">
@@ -256,7 +273,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   <h6><b>Request</b></h6>
 
                   <div class="row pt-1">
-                  <div class="col-6 mb-3">
+                  <div class="col-12 mb-6">
                         <h6>Reason</h6>
                          <p class="text-muted">{{$letter->description}}</p>
                      </div>
@@ -706,8 +723,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+   </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

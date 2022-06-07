@@ -316,14 +316,14 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DEO" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DEO" value="{{$letter->DEO}}" 
                         ></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="{{$letter->DED}}" 
                         ></input>
                 </div>
             </div>
@@ -614,7 +614,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="{{$letter->DED}}" 
                         ></input>
                 </div>
             </div>
@@ -705,7 +705,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="pending" 
+                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="{{$letter->DED}}" 
                         ></input>
                 </div>
             </div>

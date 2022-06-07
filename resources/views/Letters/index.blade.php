@@ -70,7 +70,7 @@
                 
                 </div>
                 -->
-
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">                
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     @role('Teacher')
@@ -79,10 +79,10 @@
                    
                 
                         @role('Teacher')  
-                      
+                             <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-search" aria-hidden="true"></i>Swap teacher</a>
                             <a href="{{ URL('letters1') }}"  class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Request</a>
                             <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
-                            <a href="{{ URL('letters3') }}"  class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Swapping</a>
+                            <a href="{{ URL('letters3') }}"  class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping</a>
                         @endrole
                         @role('Weo')
                         <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>
@@ -209,7 +209,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
  @foreach ($letters as $letter)
  @if(($letter->Tamisemi !="Approved BY Tamisemi_Director"))
   @if($letter->author=="unknown" && $letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id)
-  <div class="col-md-8">
+  <div class="col-md-12">
               <div class="card-body p-4">
               <h6>Transfer Request Details</h6>
                 <hr class="mt-0 mb-10">
@@ -232,7 +232,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                     <h6>District</h6>
                     <p class="text-muted">{{$letter->cdistrict}}</p>
                   </div>
-                  <div class="col-6 mb-3">
+                  <div class="col-12 mb-6">
                     <h6>Regional</h6>
                     <p class="text-muted">{{$letter->regional}}</p>
 
@@ -480,7 +480,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
            
             @if(($letter->name==Auth::user()->name || !(Auth::user()->hasRole(['Teacher'])))) 
          
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="card-body p-4">
               <h6>Transfer Request Details</h6>
                 <hr class="mt-0 mb-10">
@@ -535,7 +535,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
               
                  </div>
                  <h6><b>Support status</b></h6>
-                <hr class="mt-0 mb-4">
+                <hr class="mt-0 mb-8">
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Teacher</h6>
@@ -883,8 +883,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+   </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

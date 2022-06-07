@@ -10,6 +10,7 @@ use App\Models\District;
 use App\Models\Regional;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -218,8 +219,60 @@ class DashboardController extends Controller
                  ])
                      ->orderBy("id","desc")
                      ->paginate(30);
-       
-            return view('search.index1', compact('letters','transfers'))
+                $regionals = Regional::where([
+                        ['name','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term)){
+                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(10);
+
+                 $districts = District::where([
+                            ['name','!=', NULL],
+                           [function($query) use ($request) {
+                               if(($term=$request->term)){
+                                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                               }
+                           }]
+                        ])
+                            ->orderBy("id","desc")
+                            ->paginate(10);
+
+                 $wards = Ward::where([
+                                ['name','!=', NULL],
+                               [function($query) use ($request) {
+                                   if(($term=$request->term)){
+                                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                                   }
+                               }]
+                            ])
+                                ->orderBy("id","desc")
+                                ->paginate(10);
+                                
+                $schools = School::where([
+                                    ['name','!=', NULL],
+                                   [function($query) use ($request) {
+                                       if(($term=$request->term)){
+                                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                                       }
+                                   }]
+                                ])
+                                    ->orderBy("id","desc")
+                                    ->paginate(20);
+                    
+                    
+
+                     $data = DB::table("letters")->count('Employee_id');
+                      $i=0;
+                   
+                         
+
+                    
+                    $k=0;
+            return view('Teachdash2', compact('letters','transfers','data','i','k','regionals','districts','wards','schools'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Headmaster')){
            //
