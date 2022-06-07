@@ -219,6 +219,7 @@ class LetterController extends Controller
             'ward' => $request->ward1,
             'tdistrict' => $request->tdistrict,
             'tregional' => $request->tregional,
+            'regional' => $request->tregional,
             'tward' => $request->tward,
             'description' => $request->description,
             'Message' => $request->Message,
