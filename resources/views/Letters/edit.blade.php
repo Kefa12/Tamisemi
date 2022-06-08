@@ -70,6 +70,7 @@
                        ></input>
                        <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="pending"
                         ></input>
+                        
                 </div>
             </div>
             <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="pending"
@@ -80,7 +81,43 @@
                         ></input>
         <input type="hidden" class="form-control" style="height:50px" name="regional"  value="{{ Auth::user()->regional}}"
                         placeholder="mbeya"></input>
+        <input type="hidden" class="form-control" style="height:50px" name="Employee_id" value="{{Auth::user()->Employee_id}}"
+                        placeholder="mwenge"></input>
                </div>
+        <input type="hidden" class="form-control" style="height:50px" name="cdistrict"  value="{{ Auth::user()->district}}"
+                        placeholder="mbeya"></input>
+        <input type="hidden" class="form-control" style="height:50px" name="ward1"    value="{{Auth::user()->ward}}"
+                        placeholder="ruanda"></input>
+        <input type="hidden" class="form-control" style="height:50px" name="cschool1" value="{{ Auth::user()->schools }}"
+                        placeholder="mwenge"></input>
+                  
+                        <div class="form-group">
+                   
+                   <input type="hidden" class="form-control" style="height:50px" name="tregional" value="{{ $letter->regional}}"
+                       placeholder="mwenge"></input>
+               </div>
+               <div class="form-group">
+                   
+                   <input type="hidden" class="form-control" style="height:50px" name="tward" value="{{ $letter->ward}}"
+                       placeholder="mwenge"></input>
+               </div>
+                
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                   
+                    <input type="hidden" class="form-control" style="height:50px" name="schools" value="{{$letter->cschool}}"
+                        placeholder="mwenge"></input>
+                </div>
+            </div>
+           
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    
+                    <input type="hidden" class="form-control" style="height:50px" name="tdistrict" value="{{$letter->cdistrict}}"
+                        placeholder="iringa"></input>
+                </div>
+            </div>
         @csrf
         @method('PUT')
     @else
@@ -92,6 +129,13 @@
                         ></input>
                 </div>
                 <div class="form-group">
+                <input type="hidden" class="form-control" style="height:50px" name="cdistrict"  value="{{ $letter->cdistrict}}"
+                        placeholder="mbeya"></input>
+                <input type="hidden" class="form-control" style="height:50px" name="Employee_id" value="{{ $letter->Employee_id}}"
+                        placeholder="mwenge"></input>
+                <input type="hidden" name="name" value="{{ $letter->name }}" class="form-control" placeholder="Name">
+                <input type="hidden" name="author"  value="{{ $letter->author }}" class="form-control" placeholder="Name">
+               
                   
                   <input type="hidden" class="form-control" style="height:50px"  name="Teacher_approved"  value="{{$letter->Teacher_approved}}"  
                       placeholder="description"></input>
@@ -113,25 +157,11 @@
                         ></input>
       <input type="hidden" class="form-control" style="height:50px" name="regional"  value="{{ $letter->regional}}"
                         placeholder="mbeya"></input>
-        
-        @csrf
-        @method('PUT')
-    @endif
-
-
-        <div class="row">
-       
-           
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                   
-                    <input type="hidden" class="form-control" style="height:50px" name="Employee_id" value="{{  Auth::user()->Employee_id}}"
+        <input type="hidden" class="form-control" style="height:50px" name="ward1"    value="{{$letter->ward}}"
+                        placeholder="ruanda"></input>
+     <input type="hidden" class="form-control" style="height:50px" name="cschool1" value="{{ $letter->cschool }}"
                         placeholder="mwenge"></input>
-                </div>
-                <div class="form-group">
-                   
-                   <input type="hidden" class="form-control" style="height:50px" name="tregional" value="{{ $letter->tregional}}"
+                        <input type="hidden" class="form-control" style="height:50px" name="tregional" value="{{ $letter->tregional}}"
                        placeholder="mwenge"></input>
                </div>
                <div class="form-group">
@@ -144,38 +174,31 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                    
-                    <input type="hidden" class="form-control" style="height:50px" name="schools" value="{{ $letter->cschool }}"
+                    <input type="hidden" class="form-control" style="height:50px" name="schools" value="{{ $letter->tschool }}"
                         placeholder="mwenge"></input>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                   
-                    <input type="hidden" class="form-control" style="height:50px" name="cschool1" value="{{ Auth::user()->schools }}"
-                        placeholder="mwenge"></input>
-                </div>
-            </div>
+           
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     
-                    <input type="hidden" class="form-control" style="height:50px" name="tdistrict" value="{{ $letter->cdistrict}}"
+                    <input type="hidden" class="form-control" style="height:50px" name="tdistrict" value="{{ $letter->tdistrict}}"
                         placeholder="iringa"></input>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="hidden" class="form-control" style="height:50px" name="cdistrict"  value="{{ Auth::user()->district}}"
-                        placeholder="mbeya"></input>
-                </div>
+        
+        @csrf
+        @method('PUT')
+    @endif
+
+
+        <div class="row">
+       
+           
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="hidden" class="form-control" style="height:50px" name="regional"  value="{{ Auth::user()->regional}}"
-                        placeholder="mbeya"></input>
-                </div>
-            </div>
+   
+           
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                   
@@ -183,13 +206,7 @@
                         placeholder="description"></input>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="hidden" class="form-control" style="height:50px" name="ward1"    value="{{Auth::user()->ward}}"
-                        placeholder="ruanda"></input>
-                </div>
-            </div>
+           
         
             @if(!($letter->author==Auth::user()->name))
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -807,6 +824,8 @@
              <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="5"
+                       ></input>
+        <input type="hidden" class="form-control" style="height:50px" name="statusi"    value="m"
                        ></input>
        
                 </div>

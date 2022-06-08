@@ -357,20 +357,10 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             @endif
                   </div>
               
-                <h6><b>Teacher_Action</b></h6>
-                <hr class="mt-0 mb-4">
+              
   
                 
-           
-              
-              <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
-
-              
-                
-                  Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
-                      <i class="fas fa-edit  fa-lg"></i>
-
-                  </a>
+          
                 
        </div>
      
@@ -378,6 +368,18 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   @csrf
                   @method('DELETE')
                   @role('Tamisemi_Director')
+                  <h6><b>Teacher_Action</b></h6>
+                <hr class="mt-0 mb-4">
+                   
+              
+              <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+              
+                
+Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
+    <i class="fas fa-edit  fa-lg"></i>
+
+</a>
                   <button type="submit" title="delete" style="border: none; background-color:transparent;">
                       <i class="fas fa-trash fa-lg text-danger"></i>
 
@@ -400,6 +402,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
          
     </table>
     <br/>
+    @role('Tamisemi_Director')
     <center><h4>RESPOND  TIME</h4></center>
     <table  class="table table-striped w-auto">
       
@@ -462,6 +465,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
     </table>
     </form>
+    @endrole
           
                   </div>
                 </div>
@@ -475,7 +479,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
   </div>
     </section>
        
- @elseif($letter->name==Auth::user()->name )
+ @elseif($letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id )
      @foreach ($letters as $letter)
           
            

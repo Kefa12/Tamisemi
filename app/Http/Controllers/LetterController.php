@@ -219,7 +219,7 @@ class LetterController extends Controller
             'ward' => $request->ward1,
             'tdistrict' => $request->tdistrict,
             'tregional' => $request->tregional,
-            'regional' => $request->tregional,
+            'regional' => $request->regional,
             'tward' => $request->tward,
             'description' => $request->description,
             'Message' => $request->Message,
@@ -304,9 +304,41 @@ class LetterController extends Controller
            
           
         ]); 
+        if($request->Teacher_approved=="support BY TEACHER" && $request->statusi=='m'){
            $letter->update($request->all());
-     
-            if( $request->Tamisemi=="Approved BY Tamisemi_Director"){
+           $exist = DB::table('Users')->where('name',$request->author)->value('Employee_id');
+           $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+           if($exist1==NULL){
+           Letter::create([
+            'Employee_id' =>   $exist,
+            'name' =>  $request->author,
+            'cschool' => $request->schools,
+            'tschool' => $request->cschool1,
+            'cdistrict' => $request->tdistrict,
+            'ward' => $request->tward,
+            'tdistrict' => $request->cdistrict,
+            'tregional' => $request->regional,
+            'regional' => $request->tregional,
+            'tward' => $request->ward1,
+            'description' => $request->description,
+            'Message' => $request->Message,
+            'author' => $request->name,
+            'Teacher_approved' => $request->Teacher_approved,
+            'Headmaster' => $request->tHeadmaster,
+            'Transfer_Headmaster' => $request->Headmaster,
+            'WEO' => $request->WEO,
+            'DEO' => $request->DEO,
+           
+            'DED' => $request->DED,
+        ]); 
+    }else{
+        return redirect()->route('letters.index')
+        ->with('success', 'duplication of request.');
+    }
+        }else
+          $letter->update($request->all());
+       
+            if($request->Tamisemi=="Approved BY Tamisemi_Director"){
             $request1= $request->tregional;
         
             $request2=  $request->tdistrict;

@@ -145,32 +145,37 @@
                 <div class="row g-4">
             <!-- Sale & Revenue Start -->
             @foreach ($letters as $letter)
+               @if($letter->Employee_id==Auth::user()->Employee_id && $k<1)
+              <input type="hidden" name="w" value="{{++$k}}"></input>
+           
+                    @endif
+            @endforeach
                          
-                        @if($letter->Employee_id==Auth::user()->Employee_id && $k<1)
+                        @if($letter->Employee_id==Auth::user()->Employee_id && $k<0)
           
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-file fa-3x text-primary"></i>
                             <a href="{{ URL('letters') }}" style="text-decoration: none; color:black;"><div class="ms-3">
                                 <p class="mb-2">Request progress</p>
-                                <h6 class="mb-0">{{++$k}}</h6>
+                                <h6 class="mb-0">{{$k}}</h6>
                             </div></a>
                         </div>
                     </div>
-                    @elseif($k<1)
-                    <input type="hidden" name="w" value="{{++$k}}"></input>
+                    @else
+                  
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-file fa-3x text-primary"></i>
                             <a href="{{ URL('letters') }}" style="text-decoration: none; color:black;"><div class="ms-3">
                                 <p class="mb-2">Request progress</p>
-                                <h6 class="mb-0">0</h6>
+                                <h6 class="mb-0">{{$k}}</h6>
                             </div></a>
                         </div>
                     </div>
-                    @else
+                 
                     @endif
-                    @endforeach
+                 
                  
                     <div class="col-sm-6 col-xl-3">
                     <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
