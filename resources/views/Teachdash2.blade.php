@@ -244,12 +244,12 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             <tr>
       
          
-        <div class="col-md-12">
-              <div class="card-body p-4" >
+        <div class="col-md-16">
+              <div class="card-body p-8" >
               <center><h6>ADMINISTRATIVE</h6></center>
           
                
-                <div class="row pt-1" style="margin-bottom:190px;">
+                <div class="row pt-1" style="margin-bottom:200px;">
                   <div class="col-6 mb-3">
                     <h6>Headmaster:</h6>
                     <p class="text-muted"></p>
@@ -283,7 +283,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   @endforeach<br>
                   </div>
                   <div class="col-6 mb-6">
-                   <h6>District_Education_Officer:</h6>
+                   <h6>District_Officer:</h6>
                     <p class="text-muted"></p>
                   </div>
                   <div class="col-6 mb-3">
