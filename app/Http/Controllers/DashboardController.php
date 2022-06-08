@@ -153,12 +153,16 @@ class DashboardController extends Controller
                          ->orderBy("id","desc")
                          ->paginate(30);
                          $i=0;
+                         $data = DB::table("Users")->count('id');
+                         $data1 = DB::table("School_dp")->count('id');
+                         $data2 = DB::table("Letters")->count('id');
+                         $data3 = Letter::where('Tamisemi','=','pending')->count();
                         
             if($request->status=="1")
                 return view('reg.index', compact('letters','transfers'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
             else
-              return view('dashboardT', compact('letters','transfers'))
+              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3'))
                   ->with('i', (request()->input('page', 1) - 1) * 5);
           
         

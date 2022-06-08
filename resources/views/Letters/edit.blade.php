@@ -10,11 +10,13 @@
                    
                     border: 2px solid blue; 
                    border-radius: 15px;
+                   padding-top:10px;
                    width:423px;
                   
                 } 
                 form-group{
                 padding-top:178px;
+              
             }
         
     </style>
@@ -1001,7 +1003,7 @@
           
             @else
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">support / Not_support</button>
+                <button type="submit" class="btn btn-primary">accept / Not_accept</button>
             </div>
 </div>
 
@@ -1039,6 +1041,27 @@
    
 
 @role('Tamisemi_Director')
+<style>
+.container{
+                    
+                  
+                   
+                    background-color:white;
+                     border: 2px solid white; 
+                    border-radius: 15px;
+                    padding-top:-1110px;
+                    width:423px;
+                   
+                 }
+                 form{
+                     padding-top:-2123px;
+                     position: relative;
+                     top: -230px;
+                 }
+                 .col-md-4{
+                     background-color:blue;
+                 }
+  </style> 
    <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -1168,19 +1191,19 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
 
             
-            <section class="vh-100" style="background-color: #f4f5f7;">
+            <section class="vh-100">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-lg-6 mb-4 mb-lg-0" style="width:800;">
         <div class="card mb-3" style="border-radius: .5rem;">
           <div class="row g-0">
-            <div class="col-md-4 gradient-custom text-center text-white" bgcolor="#5C5CFF"
+            <div class="col-md-4 gradient-custom text-center text-white" 
               style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem; background-color:#5C5CFF;">
               
                
-              <h2 style="color:black;">Name:{{$letter->name}}</h2>
+              <h2 style="color:white;">Name:{{$letter->name}}</h2>
              
-              <h2 style="color:black;">Check_No:{{$letter->Employee_id}}</h2>
+              <h2 style="color:white;">Check_No:{{$letter->Employee_id}}</h2>
               <i class="far fa-edit mb-5"></i>
             </div>
             <div class="col-md-8">

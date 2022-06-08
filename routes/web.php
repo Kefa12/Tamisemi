@@ -119,6 +119,7 @@ Route::get('letters2', [App\Http\Controllers\LetterController::class, 'store2'])
 Route::get('letters3', [App\Http\Controllers\LetterController::class, 'index2']);
 Route::get('letters4', [App\Http\Controllers\LetterController::class, 'update']);
 Route::get('letters5', [App\Http\Controllers\LetterController::class, 'index3']);
+Route::get('letters9', [App\Http\Controllers\LetterController::class, 'index9']);
 Route::get('WEO/{id}', [App\Http\Controllers\LetterController::class, 'update3']);
 
 

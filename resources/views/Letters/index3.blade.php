@@ -416,6 +416,8 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 <hr class="mt-0 mb-4">
    
                 </div>
+</div>
+
             
               
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
@@ -447,6 +449,10 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                   @endrole
                 
               </form>
+
+
+
+</div>
           
    
            @endif 
