@@ -263,8 +263,17 @@ button:hover {
                    border: 0.1px solid blue;
                    border-radius: 25px;
                    padding: 1px 1px 1px 1px;
-                   margin
                  
+                
+                   border-style: outset;
+                   position:relative;
+                   top:52px;
+                 
+                }
+                form{
+                  margin-left:auto;
+                  margin-right:auto;
+                   width:90%
                 }
                 h5{
                     padding-left:20px;
@@ -280,11 +289,12 @@ button:hover {
   <!-- ======= Top Bar ======= -->
  
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center" style="background-color:#ADD8E6; color:white;">
+  <header id="header" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="#" style="color:black;">PWTMS<span></span></a></h1>
+      <h1><a href="index.html">PW<span>TMS</span></a></h1>
+        
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>

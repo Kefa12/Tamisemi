@@ -14,8 +14,10 @@
                    width:423px;
                   
                 } 
-                form-group{
+               input{
                 padding-top:178px;
+                position: relative;
+                     top: -230px;
               
             }
         

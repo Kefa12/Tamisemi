@@ -40,18 +40,18 @@
   <!-- ======= Top Bar ======= -->
  
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center" style="background-color:#ADD8E6; color:white;">
+  <header id="header" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="#" style="color:black;"> <img src="assets3/img/logo2.jpg" alt="no image" width=65>PWTMS<span></span></a></h1>
+      <h1><a href="index.html">PW<span>TMS</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul >
-          <li><a class="nav-link scrollto active" href="{{ url('/') }}" style="color:black;">Home</a></li>
+          <li><a class="nav-link scrollto active"  href="{{ url('/') }}" ">Home</a></li>
           @if (Route::has('login'))
           @auth
           <li><a class="nav-link scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
@@ -85,7 +85,7 @@
          @auth
         <a href="{{ url('/dashboard') }}" class="btn-get-started scrollto">Home</a>
         @else
-        <a href="{{ route('login') }}" class="btn-projects scrollto">Login</a>
+        <a href="{{ route('login') }}"  class="btn-get-started scrollto">Login</a>
         
         @if (Route::has('register'))
         <a href="{{ url('registe') }}" class="btn-projects scrollto">Register</a>

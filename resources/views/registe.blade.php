@@ -48,13 +48,12 @@
   <!-- ======= Top Bar ======= -->
  
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center" style="background-color:#ADD8E6; color:white;">
+  <header id="header" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between">
-    <div id="logo">
-        <h1><a href="#" style="color:black;">PWTMS<span></span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
-      </div>
+
+      <div id="logo">
+      <h1><a href="index.html">PW<span>TMS</span></a></h1>
+         </div>
 
       <nav id="navbar" class="navbar">
         <ul >
