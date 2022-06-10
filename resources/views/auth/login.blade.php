@@ -255,21 +255,34 @@ button:hover {
 	#main{
 		  padding-left: 210px;
 		  padding-right: 210px;
+      justify-content:center;
 		background-color: white;		
 	}
  
-                .account-box{
+            .account-wrapper{
                    
                    border: 0.1px solid blue;
                    border-radius: 25px;
-                   padding: 1px 1px 1px 1px;
+                 
                  
                 
                    border-style: outset;
+                   float:center;
                    position:relative;
                    top:52px;
+                   
+                   margin-right:auto;
+                   margin-left:auto;
+                   width:90%;
+                   height:80%;
+                  margin-bottom:70px;
+                  
                  
                 }
+               .account-box{
+                 border:none;
+               }
+
                 form{
                   margin-left:auto;
                   margin-right:auto;
@@ -326,9 +339,9 @@ button:hover {
   </header>
 					<!-- /Account Logo -->
 				  	
-					<div class="account-box">
+		<div class="account-box">
         
-						<div class="account-wrapper">
+	<div class="account-wrapper">
             
 							<h3 class="account-title">LOGIN FORM</h3>
                             <center><a href="index.html"><img src="assets3/img/logo2.jpg" alt="no image" width=100></a></center>
@@ -388,9 +401,9 @@ button:hover {
                        register here
                 <x-button class="ml-3">
                      <a href="{{ url('registe') }}" style="color:white" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">create account here</a>
-</x-button> 
+ </x-button> 
                       @endif
-            </div>
+          
         </form>
     </x-auth-card>
 
@@ -409,3 +422,5 @@ button:hover {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+ </div>
+ </div>
