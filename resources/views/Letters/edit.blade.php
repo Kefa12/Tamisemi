@@ -1150,6 +1150,8 @@
             </div>
                 <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>
+               <input type="hidden" class="form-control" style="height:50px" name="author"    value="{{$letter->author}}"
+                       ></input>
                <input type="hidden" class="form-control" style="height:50px" name="tHeadmaster"    value="{{$letter->Transfer_Headmaster}}"
                        ></input>
                <input type="hidden" class="form-control" style="height:50px" name="Headmaster"    value="{{$letter->Headmaster}}"
@@ -1167,11 +1169,19 @@
                       
                        <input type="hidden" class="form-control" style="height:50px" name="tschool"    value="{{$letter->tschool}}"
                        ></input>
+    <input type="hidden" class="form-control" style="height:50px" name="schools"    value="{{$letter->cschool}}"
+                       ></input>
 <input type="hidden" class="form-control" style="height:50px" name="tward"    value="{{$letter->tward}}"
+                       ></input>
+<input type="hidden" class="form-control" style="height:50px" name="ward"    value="{{$letter->ward}}"
                        ></input>
     <input type="hidden" class="form-control" style="height:50px" name="tdistrict"    value="{{$letter->tdistrict}}"
                        ></input>
+<input type="hidden" class="form-control" style="height:50px" name="district"    value="{{$letter->cdistrict}}"
+                       ></input>
 <input type="hidden" class="form-control" style="height:50px" name="tregional"    value="{{$letter->tregional}}"
+                       ></input>
+<input type="hidden" class="form-control" style="height:50px" name="regional"    value="{{$letter->regional}}"
                        ></input>
                        <input type="hidden" class="form-control" style="height:50px" name="status"    value="5"></input>
 </div>

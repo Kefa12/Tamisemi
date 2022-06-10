@@ -307,6 +307,7 @@ class LetterController extends Controller
           
         ]); 
         if($request->Teacher_approved=="support BY TEACHER" && $request->statusi=='m'){
+          
            $letter->update($request->all());
            $exist = DB::table('Users')->where('name',$request->author)->value('Employee_id');
            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
@@ -333,6 +334,8 @@ class LetterController extends Controller
            
             'DED' => $request->DED,
         ]); 
+  
+
     }else{
         return redirect()->route('letters.index')
         ->with('success', 'duplication of request.');
@@ -340,7 +343,7 @@ class LetterController extends Controller
         }else
           $letter->update($request->all());
        
-            if($request->Tamisemi=="Approved BY Tamisemi_Director"){
+            if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->author=="unknown"){
             $request1= $request->tregional;
         
             $request2=  $request->tdistrict;
@@ -371,6 +374,44 @@ class LetterController extends Controller
             // $users->regional = $request->tregional;
           
             // $users->update();
+            }else{
+                DB::table('users')
+                ->where('name', $request->author)
+                ->update(['schools' => $request->schools]);
+                DB::table('users')
+                ->where('name', $request->author)
+                ->update(['regional' => $request->regional]);
+                DB::table('users')
+                ->where('name', $request->author)
+                ->update(['district' =>  $request->district]);
+                DB::table('users')
+                ->where('name', $request->author)
+                ->update(['ward' =>  $request->ward]);
+                $request1= $request->tregional;
+        
+                $request2=  $request->tdistrict;
+               
+                $request3= $request->tward;
+              
+               
+                $request4=$request->tschool;
+             
+              
+                // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
+             
+                    DB::table('users')
+                  ->where('Employee_id', $request->Employee_id)
+                  ->update(['schools' =>  $request4]);
+                  DB::table('users')
+                  ->where('Employee_id', $request->Employee_id)
+                  ->update(['regional' =>  $request1]);
+                  DB::table('users')
+                  ->where('Employee_id', $request->Employee_id)
+                  ->update(['district' =>  $request2]);
+                  DB::table('users')
+                  ->where('Employee_id', $request->Employee_id)
+                  ->update(['ward' =>  $request3]);
+
             }
        
 

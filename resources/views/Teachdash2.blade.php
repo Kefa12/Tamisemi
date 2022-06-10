@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <img src="img/Tamisemi1.png" width="100%" height="50px"></img>
 	<style>
 	
 	</style>
@@ -32,6 +33,7 @@
 
     <!-- Template Stylesheet -->
     <link href="asset4/css/style.css" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -66,8 +68,8 @@
                 </div>
                 -->
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">         
-                <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <div class="navbar-nav w-100" style="background-color:blue;">
+                    <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2" style="color:white;"></i>Dashboard</a>
                    
                  
                     <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-search" aria-hidden="true"></i>Swap teacher</a>
