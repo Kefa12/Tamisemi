@@ -113,6 +113,7 @@ Route::get('/dashboardT', [App\Http\Controllers\TransferController::class, 'inde
 
 Route::get('form', [App\Http\Controllers\TransferController::class, 'index2']);
 Route::get('form1', [App\Http\Controllers\TransferController::class, 'index3']);
+Route::get('form2', [App\Http\Controllers\TransferController::class, 'index4']);
 
 Route::get('letters1', [App\Http\Controllers\TransferController::class, 'index6']);
 Route::get('letters2', [App\Http\Controllers\LetterController::class, 'store2']);
@@ -120,6 +121,7 @@ Route::get('letters3', [App\Http\Controllers\LetterController::class, 'index2'])
 Route::get('letters4', [App\Http\Controllers\LetterController::class, 'update']);
 Route::get('letters5', [App\Http\Controllers\LetterController::class, 'index3']);
 Route::get('letters9', [App\Http\Controllers\LetterController::class, 'index9']);
+Route::get('letters10', [App\Http\Controllers\LetterController::class, 'index10']);
 Route::get('WEO/{id}', [App\Http\Controllers\LetterController::class, 'update3']);
 
 

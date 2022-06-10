@@ -68,7 +68,7 @@
                 </div>
                 -->
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">         
-                <div class="navbar-nav w-100" style="background-color:blue;">
+                <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2" style="color:white;"></i>Dashboard</a>
                    
                  
@@ -152,6 +152,19 @@
            
                     @endif
             @endforeach
+            @foreach ($letters as $letter)
+               @if($letter->Employee_id==Auth::user()->Employee_id && $letter->Tamisemi=="Approved BY Tamisemi_Director")
+              <input type="hidden" name="s" value="{{++$s}}"></input>
+           
+                    @endif
+            @endforeach
+            @if($s>0)
+            <marquee><h1><span style="color:blue">Congratrualion!</span> success to transfer from MBEYA TO dar es salaam </hi></marquee>
+
+            @endif
+           
+
+            
                          
                         @if($letter->Employee_id==Auth::user()->Employee_id && $k<0)
           

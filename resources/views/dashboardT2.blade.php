@@ -96,6 +96,9 @@
                     <a class="nav-link" href="{{ url('letters9') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
+                    <a class="nav-link" href="{{ url('letters10') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Complete</span></a>
             </li>
 
             <!-- Divider -->
@@ -281,6 +284,7 @@
                                 <form action="{{ url('form') }}" method="GET" role="search">
                                                     <div class="input-group">
                                                         <table  class="table table-bordered table-responsive-lg">
+                                                        <input type="hidden" name="status" value="status"></input>
                                                     <tr>
                                                         <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term1"></input>
                                                             <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
@@ -385,54 +389,7 @@
 
   {!! $letters->links() !!}
   </table>
-  <center><h1>Request  Respond </h1></center>
-  <table class="table table-bordered table-responsive-lg">
-			<tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
-            <th>description</th>
-            <th>Approved_status</th>   
-            <th width="280px">Action</th>
-      </tr>
-  
-      @foreach ($letters as $letter)
-          <tr>
-          @if($letter->Tamisemi!="pending")
-              <td>{{ ++$i }}</td>
-              <td>{{ $letter->name }}</td>
-              <td>{{ $letter->cschool }}</td>
-              <td>{{ $letter->cdistrict }}</td>
-              <td>{{ $letter->tdistrict }}</td>
-              <td>{{ $letter->description }}</td>
-              @if( $letter->Tamisemi== 'Rejected BY Tamisemi_Director')
-                
-              <td> <button type="submit" class="btn btn-danger"><i> Rejected</i></button> </td>
-           
-           @elseif(  $letter->Tamisemi== 'Approved BY Tamisemi_Director')
-          
-           <td><button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">Approved</i></button> </td>
-          
-            @else
-           
-            <td><button type="submit" class="btn btn-success"><i>pending</i></button> </td>
-           
-           
-            @endif
-              
-              <td>
-                  <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
-
-                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                      <i class="fas fa-eye text-success  fa-lg"></i>
-                  </a>
-                      <a href="{{route('letters.edit', $letter->id) }}">
-                          <i class="fas fa-edit  fa-lg"></i>
-
-                      </a>
-                     
+ 
 
                       @csrf
                       @method('DELETE')
@@ -442,11 +399,7 @@
 
                       </button>
                       @endrole
-                  </form>
-              </td>
-          </tr>
-          @endrole
-      @endforeach
+            
   </table>
           
 

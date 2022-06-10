@@ -271,12 +271,13 @@ class DashboardController extends Controller
 
                      $data = DB::table("letters")->count('Employee_id');
                       $i=0;
+                      $s=0;
                    
                          
 
                     
                     $k=0;
-            return view('Teachdash2', compact('letters','transfers','data','i','k','regionals','districts','wards','schools'))
+            return view('Teachdash2', compact('letters','transfers','data','i','k','regionals','districts','wards','schools','s'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Headmaster')){
            //

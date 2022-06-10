@@ -81,6 +81,8 @@ class TransferController extends Controller
              ])
                  ->orderBy("id","desc")
                  ->paginate(30);
+
+                
    
         return view('search.index1', compact('letters','transfers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -144,6 +146,18 @@ class TransferController extends Controller
              ])
                  ->orderBy("id","desc")
                  ->paginate(30);
+                 if($request->status="status"){
+                    $i=0;
+                    $data = DB::table("Users")->count('id');
+                    $data1 = DB::table("School_dp")->count('id');
+                    $data2 = DB::table("Letters")->count('id');
+                    $data3 = Letter::where('Tamisemi','=','pending')->count();
+                   
+      
+         return view('dashboardT2', compact('letters','transfers','data','data1','data2','data3'))
+             ->with('i', (request()->input('page', 1) - 1) * 5);
+
+                 }else
    
         return view('dashboardT', compact('letters','transfers'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -470,5 +484,75 @@ class TransferController extends Controller
         return Response::json($res);
 
         // return view("dropdown",$result);
+    }
+    public function index4(Request $request)
+    {
+        //
+        if($request->term){
+        $letters = Letter::where([
+            ['cdistrict','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('cdistrict','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+        }elseif($request->term1){
+            $letters = Letter::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term1)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+            }elseif($request->term2){
+                $letters = Letter::where([
+                ['tdistrict','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term2)){
+                    $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(30);
+            }else{
+                $letters = Letter::where([
+                ['tdistrict','!=', NULL],
+                [function($query) use ($request) {
+                    if(($term=$request->term2)){
+                     $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                    }
+                }]
+             ])
+                 ->orderBy("id","desc")
+                 ->paginate(30);
+            }
+            $transfers = Transfer::where([
+                ['tdistrict','!=', NULL],
+                [function($query) use ($request) {
+                    if(($term=$request->term2)){
+                     $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                    }
+                }]
+             ])
+                 ->orderBy("id","desc")
+                 ->paginate(30);
+   
+                 $i=0;
+                 $data = DB::table("Users")->count('id');
+                 $data1 = DB::table("School_dp")->count('id');
+                 $data2 = DB::table("Letters")->count('id');
+                 $data3 = Letter::where('Tamisemi','=','pending')->count();
+                
+   
+      return view('dashboardT3', compact('letters','transfers','data','data1','data2','data3'))
+          ->with('i', (request()->input('page', 1) - 1) * 5);
+      
     }
 }
