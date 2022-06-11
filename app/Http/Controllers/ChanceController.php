@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chance;
+use App\Models\Letter;
 use Illuminate\Http\Request;
+
+
+
+
 
 class ChanceController extends Controller
 {
@@ -12,9 +17,22 @@ class ChanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $chances = Chance::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+
+            $i=0;
+            return view('Teachdash4', compact('chances',"i"));
     }
 
     /**
@@ -77,9 +95,24 @@ class ChanceController extends Controller
      * @param  \App\Models\Chance  $chance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chance $chance)
+    public function edit(Chance $chance,Request $request)
     {
         //
+     
+          
+        $chances = Chance::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+        $date2 = date('Y-m-d H:i:s');
+        return view('Chances.edit', compact('date2','chance'));
+
     }
 
     /**
@@ -92,6 +125,22 @@ class ChanceController extends Controller
     public function update(Request $request, Chance $chance)
     {
         //
+        $request->validate([
+            'school' => 'required',
+            'district' => 'required',
+            
+            'regional' => 'required',
+            'description' => 'required',
+            'name' => 'required',
+           
+           
+           
+          
+        ]); 
+        $chance->update($request->all());
+        return redirect()->route('dashboard')
+        ->with('success', 'user updated successfully');
+      
     }
 
     /**

@@ -80,7 +80,8 @@
                      @role('Teacher')
                               <a href="{{ URL('letters1') }}"class="nav-item nav-link""><i class="fa fa-table me-2"></i>New Request</a>
                               <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
-                        @endrole
+                             
+                              @endrole
                         
                            
                           
@@ -88,6 +89,9 @@
                      @role('Headmaster')
                         <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Chance</a>
                             
+                        @endrole
+                        @role('Teacher')
+                        <a href="{{ URL('chances1') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>chances</a>
                         @endrole
                          
                         </div>

@@ -1,5 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+        .image {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:blue;
+  font-size:100%;
+  font:bold;
+}
+        </style>
 
 <head>
     <meta charset="utf-8">
@@ -7,6 +53,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <div class="image">
+          <img src="img/ban.png"  width="100%" height="70px">
+       
+        
+         <div class="centered">Public Workers Transfer Management System</div>
+</div>
+   
 	<style>
 	
 	</style>
@@ -32,6 +85,7 @@
 
     <!-- Template Stylesheet -->
     <link href="asset4/css/style.css" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -49,12 +103,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    @role('Teacher')
                     <h3 class="text-primary"> Teacher </h3>
-                    @endrole
-                    @role('Headmaster')
-                    <h3 class="text-primary"> Headmaster </h3>
-                    @endrole
                 </a>
                 <!-- no 
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -70,22 +119,16 @@
                 
                 </div>
                 -->
-
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">         
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                
-                   @role('Teacher')
+                   
+                 
                     <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-search" aria-hidden="true"></i>Swap teacher</a>
-                    <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>New Request</a>
+                    <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Request</a>
                     <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
                     <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping</a>
-                    <a href="{{ URL('chances1') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>chances</a>
-                    @endrole
-                   @role('Headmaster')
-                   
-                   <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Chance</a>
-                   <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping </a>
-                   @endrole
+                    <a href="{{ URL('chances1') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Chance</a>
                     </div>
                 </div>
             </nav>
@@ -136,12 +179,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="asset4/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            @role('Teacher')
                             <span class="d-none d-lg-inline-flex">{{ __('Teacher') }}({{Auth::user()->name}})</span>
-                            @endrole
-                            @role('Headmaster')
-                            <span class="d-none d-lg-inline-flex">{{ __('Headmaster') }}({{Auth::user()->name}})</span>
-                            @endrole
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="{{ URL('Teachdash1') }}" class="dropdown-item">My Profile</a>
@@ -155,364 +193,131 @@
                     </div>
                 </div>
             </nav>
-
-            <style>
-                .form1{
-                    margin-left:20px;
-                   margin-top:0px;
-                   border: 1px solid #0096FF;
-                   border-radius: 5px;
-                   width:300px;
-                }
-                h5{
-                    padding-left:20px;
-                }
-                select{
-                    padding-left:20px;
-                }
-            </style>
             <!-- Navbar End -->
 
-
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
             <!-- Sale & Revenue Start -->
-         
             
-
-        
-				
-
-
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+@if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
         </div>
     @endif
-    @role('Teacher')
-    <center> <div class="form1">
-   <form action="{{ route('letters.store') }}" method="POST"  id="form1">
-        @csrf
-     
-        <div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
 
-<div class="form-group">
-  
-    <input type="hidden" name="name" class="form-control" placeholder="Name" value="{{ Auth::user()->name }}">
-</div>
-<div class="form-group">
-  
-    <input type="hidden" name="Employee_id" class="form-control" placeholder="Name" value="{{ Auth::user()->Employee_id }}">
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-    <input type="hidden" class="form-control" name="cschool1" value="{{ Auth::user()->schools }}"
-        placeholder="Current_school"></input>
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-    <input type="hidden" class="form-control" style="height:50px" name="ward1" value="{{ Auth::user()->ward }}"
-        placeholder="Current_school"></textarea>
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-    <input type="hidden" name="cdistrict" class="form-control" placeholder="iringa" value="{{ Auth::user()->district }}">
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-  
-    <input type="hidden" name="regional" class="form-control" value="{{ Auth::user()->regional }}">
-</div>
-</div>
-
-
-
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
- 
-</div>
-</div>
-
-
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-   
-    <input type="hidden" value="pending" name="Headmaster" class="form-control" placeholder="request">
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-   
-    <input type="hidden" value="pending" name="WEO" class="form-control" placeholder="request"></input>
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-   
-    <input type="hidden" value="pending" name="DEO" class="form-control" placeholder="request">
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-   
-    <input type="hidden" value="pending" name="DED" class="form-control" placeholder="request">
-</div>
-</div>
-
-                <center><h4>TRANSFER REQUEST</h4>
-                <img src="assets/img/letter.png" alt="no image" width=56 height=56></center>
-              <div class="form-group">
-												                                              <h5 class="text-info  mb-4">Choose Regional
-																							 <select id="state" name="tregional" class="form-control" style="width:250px;">
-																										  <option width="50px"><h1 class="form-control">Choose Regional</h1></option>
-																												  @foreach($regional_rd as $row)
-																										 <option value={{$row->id}}>{{$row->name}}</option>
-																													@endforeach   
-																							  </select></h5>
-												   </div> 
-													<div class="form-group">
-																										  <h5 class="text-info  mb-4">Choose District
-																											   <select  id="city" name="tdistrict"  style="width:250px;" class="form-control" disabled >
-																													<option  width="100px">City List</option>
-																											   </select></h5>
-																					</div>
-																				<div class="form-group">
-																						   <h5 class="text-info  mb-4">Choose Ward
-																							 <select  id="stadium"  name="tward"  style="width:250px;"  class="form-control" disabled>
-																							 </select></h5>
-																				  </div>
-																	<div class="form-group">
-																									   <h5 class="text-info  mb-4">Choose school
-																												<select  id="details" name="tschool"  style="width:250px;" class="form-control" disabled>
-																												</select></h5>
-																	</div>
-																							   </div>
-                                                                                               <div class="form-group">
-           
-                                                                                <h5 class="text-info  mb-4">
-                                                                                    
-                                                                                        <strong>Reason For Transfer:</strong>
-                                                                                        <input type="text"  style="width:250px;" name="description" class="form-control" placeholder="request">
-                                                                                    
-                                                                                   
-                                                                                
-          
-
-           
-                                                                                    <h5 class="text-info  mb-4">
-               <center> <button type="submit" style="width:120px;" class="btn btn-primary">Submit</button></center>
-            </div>
-            </h5>
-            </div>
-        </div>
-
-    </form>
-</div>
-            </center>
-    @endrole
-    @role('Headmaster')
-    <center> <div class="form1">
-   <form action="{{ route('chances.store') }}" method="POST"  id="form1">
-        @csrf
-     
-        <div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-<div class="form-group">
-  
-    <input type="hidden" name="name" class="form-control" placeholder="Name" value="{{ Auth::user()->name }}">
-</div>
-<div class="form-group">
-  
-    <input type="hidden" name="position" class="form-control" placeholder="Name" value="Headmaster">
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-    <input type="hidden" class="form-control" name="school" value="{{ Auth::user()->schools }}"
-        placeholder="Current_school"></input>
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-    <input type="hidden" class="form-control" style="height:50px" name="ward" value="{{ Auth::user()->ward }}"
-        placeholder="Current_school"></textarea>
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-    <input type="hidden" name="district" class="form-control" placeholder="iringa" value="{{ Auth::user()->district }}">
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-  
-    <input type="hidden" name="regional" class="form-control" value="{{ Auth::user()->regional }}">
-</div>
-</div>
-
-
-
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
- 
-</div>
-</div>
-
-
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-   
-    <input type="hidden" value="pending" name="Headmaster" class="form-control" placeholder="request">
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-   
-    <input type="hidden" value="pending" name="WEO" class="form-control" placeholder="request"></input>
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-   
-    <input type="hidden" value="pending" name="DEO" class="form-control" placeholder="request">
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-12">
-<div class="form-group">
-   
-    <input type="hidden" value="pending" name="DED" class="form-control" placeholder="request">
-</div>
-</div>
-
-                <center><h4>Request Add Teacher</h4>
-                <img src="assets/img/letter.png" alt="no image" width=56 height=56></center>
-              <div class="form-group">
-												                                            
-                                                                                <h5 class="text-info  mb-4">
-                                                                                    
-                                                                                        <strong>Reason:</strong>
-                                                                                        <input type="text"  style="width:250px;" name="description" class="form-control" placeholder="request">
-                                                                                    
-                                                                                   
-                                                                                
-          
-
-           
-                                                                                    <h5 class="text-info  mb-4">
-               <center> <button type="submit" style="width:120px;" class="btn btn-primary">Submit</button></center>
-            </div>
-            </h5>
-            </div>
-        </div>
-
-    </form>
-</div>
-            </center>
-    @endrole
-
-
-	<!-- JAVASCRIPTS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
-
-			<script type="text/javascript" src="js/_crime.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<script>
-    // Get City List 
-    $(document).ready(function(){
-        $('#state').change(function(){
-           var state = $('#state').val();
-           $('#city').html('');
-           $('#stadium').html('');
-           $('#details').html('')
-            $.ajax({
-              url:'getCity/{id}',
-              type:'GET',
-              data:{myID:state},
-              dataType: "json",
-              success:function(data)
-              {
-               
-                $.each(data, function(key, city)
-                 {     
-                  // alert(city.city_name)
-                  $('#city').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
-                });
-              }
-          });
-        });
-      });
-    
-      // Get STADIUM and ADDRESS by CITY
-    
-      $(document).ready(function(){
-        $('#city').change(function(){
-           var city = $('#city').val();
-           $('#stadium').html('');
-           $('#details').html('');
-           $.ajax({
-              url:'getStadiumDetail/{id}',
-              type:'GET',
-              data:{id:city},
-              dataType: "json",
-              success:function(data)
-              {
-                $.each(data, function(key, city)
-                 {     
-                  $('#stadium').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
-                 
-                });
-              }
-          });
-        });
-      });
-      $(document).ready(function(){
-        $('#stadium').change(function(){
-           var city = $('#stadium').val();
-           $('#details').html('');
-           $.ajax({
-              url:'getStadiumDetail1/{id}',
-              type:'GET',
-              data:{id:city},
-              dataType: "json",
-              success:function(data)
-              {
-                $.each(data, function(key, city)
-                 {     
-                  $('#details').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
-                 
-                });
-              }
-          });
-        });
-      });
-    </script>  
+    <table class="table table-bordered table-responsive-lg"style="margin-left:10px;">
+      
+		
+			<tr>
+            <th>No</th>
+            <th>Name</th>
+			<th>regional</th>
+			<th>district</th>
+			<th>ward</th>
+            <th>school</th>		
+            <th>description</th>
             
+           
+        </tr>
+	
+        @foreach ($chances as $chance)
+          
+		
+            <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{$chance->name }}</td>
+				<td>{{$chance->regional }}</td>
+				<td>{{$chance->district }}</td>
+				<td>{{$chance->ward }}</td>
+                <td>{{$chance->school }}</td>	
+                <td>{{$chance->description }}</td>
+                
+                <td>
+                    <form action="{{ route('chances.destroy',$chance->id) }}" method="POST">
+
+                       
+					
+						
+                      
+					
+
+                        @csrf
+                        @method('DELETE')
+                        @role('admin')
+                        <a href="{{ route('chances.edit',$chance->id) }}">
+                            <i class="fas fa-edit  fa-lg"></i>
+
+                        </a>
+                        <a href="{{ route('chances.show',$chance->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
+
+                        </button>
+                        @endrole
+                    </form>
+                </td>
+            </tr>
+		
+        @endforeach
+    </table>
+
+          
+           
+
+    
+              
+             
+         
+            </div>
+            <hr>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+     <style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');*{margin: 0;padding: 0;box-sizing: border-box;list-style: none;font-family: 'Montserrat', sans-serif}body{padding: 10px}.topnav{background-color: #ffff;overflow: hidden}.far.fa-user-circle{font-size: 29px;color: #726f6f;padding-top: 10px}.input-10{width: 40px;color: #4c4c96;font-weight: 600}.fas.fa-search{display: flex;flex-direction: column;align-items: center;justify-content: center;background-color: lightsalmon;height: 100%}.topnav a{float: left;display: block;color: #8d8b8b;font-weight: 800;font-size: 14px;text-transform: uppercase;padding: 14px 16px;text-decoration: none;border-bottom: 3px solid transparent}.topnav a:hover{color: black;border-bottom: 3px solid red}.topnav .active{color: black;border-bottom: 3px solid red}form.example input[type=text]{padding: 10px;font-size: 17px;border: 1px solid grey;float: left;width: 90%;height: 36px;background: #fff}form.example input[type=text]:focus{outline: none}form.example button{float: left;width: 10%;height: 36px;padding: 5px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;background: #4c4c96;color: white;font-size: 14px;border: 1px solid grey;border-left: none;cursor: pointer}.navbar-toggler:focus{box-shadow: none;outline: none;border: none}::placeholder{font-size: 10px}form.example button:hover{background: #0b7dda}form.example::after{content: "";clear: both;display: table}.container .table-responsive{margin: 20px auto;overflow-x: auto}.container .table-responsive::-webkit-scrollbar{height: 5px}.container .table-responsive::-webkit-scrollbar-thumb{border-radius: 5px;background-image: linear-gradient(to right, #5D7ECD, #0C91E6)}.table thead tr th{font-size: 11px;color: #868585;padding: 10px 10px}.table tbody tr td{font-size: 13.5px;padding: 10px 10px}#navbar{width: 20%;background-color: #21214e !important;height: 50px;border: none}.bg-blight{color: #7f7fee;font-weight: 600}.bg-bdark{color: #4c4c96;font-weight: 600}#navbar a{color: white}.fas.fa-bars{color: white}#navbar2{width: 80%}#navbar-items{width: 20%;height: 500px;background-color: #4f4f8a}ul#navbar-items li{color: #b6b5b5;padding: 15px 25px;font-weight: 600;text-transform: uppercase;font-size: 10px;display: flex;align-items: center}ul li .fas{font-size: 16px}ul#navbar-items li:hover{background-color: #21214e;color: white}ul li:hover .fas{color: #f7910c}#topnavbar{width: 80%}.fs13{font-size: 13px}.fs14{font-size: 18px;color: white}.fas.fa-times{color: red}.fas.fa-check{color: greenyellow}.example{width: 50%}@media(max-width:780px){#navbar{width: 20%}#topnavbar{width: 80%}.text-decoration-none.fs14{font-size: 10px}.text-decoration-none .fs13{font-size: 9px}}@media(max-width:430px){#navbar-items, #topnavbar{width: 100%;height: 100%}#navbar-items{padding: 20px;margin-bottom: 30px}.topnav a{font-size: 12px;padding: 12px}#navbar{width: 100%;background-color: blue}.example{width: 100%}.text-decoration-none.fs14{font-size: 14px}.text-decoration-none .fs13{font-size: 13px}}@media(max-width:376px){#navbar-items{padding: 20px;margin-bottom: 30px}.topnav a{font-size: 12px;padding: 7px}}@media(max-width:320px){.topnav a{font-size: 10px;padding: 4px}}
+    .gradient-custom {
+/* fallback for old browsers */
+background: #f6d365;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}
+</style> 
+
+    <div class="pull-left">
+    @role('Teacher')
+    <form action="{{ route('chances.index') }}" method="GET" role="search">
+
+
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    <section class="vh-100" style="background-color: #f4f5f7;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-6 mb-4 mb-lg-0" style="width:800;">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+ 
+            <tr>
+      
+  
+
+                  
+                 
+   
+
+    
+
+   
+   
+    @endrole
+	     
                
             <!-- Recent Sales End -->
 
@@ -647,7 +452,7 @@
 
 
         <!-- Back to Top -->
-  </div>
+   </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

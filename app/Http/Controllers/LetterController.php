@@ -275,7 +275,7 @@ class LetterController extends Controller
      * @param  \App\Models\Letter  $letter
      * @return \Illuminate\Http\Response
      */
-    public function edit(Letter $letter,Request $request)
+    public function edit(Letter $letter,Request $request, Chance $chance)
     {
         $letters = Letter::where([
             ['name','!=', NULL],
@@ -287,8 +287,18 @@ class LetterController extends Controller
         ])
             ->orderBy("id","desc")
             ->paginate(10);
+            $chances = Chance::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
         $date2 = date('Y-m-d H:i:s');
-        return view('Letters.edit', compact('letter','date2'));
+        return view('Letters.edit', compact('letter','date2','chance'));
     }
 
     /**
@@ -310,13 +320,14 @@ class LetterController extends Controller
             'Message' => 'required',
             'Headmaster' => 'required',
             'tHeadmaster' => 'required',
-         
+          
             'DEO' => 'required',
             'DED' => 'required',
            
            
           
         ]); 
+        $letter->update($request->all());
         if($request->Teacher_approved=="support BY TEACHER" && $request->statusi=='m'){
           
            $letter->update($request->all());
@@ -355,11 +366,11 @@ class LetterController extends Controller
           $letter->update($request->all());
        
             if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->author=="unknown"){
-            $request1= $request->tregional;
+            $request1= $request->regional;
         
-            $request2=  $request->tdistrict;
+            $request2=  $request->cdistrict;
            
-            $request3= $request->tward;
+            $request3= $request->cward;
           
            
             $request4=$request->tschool;
@@ -386,6 +397,7 @@ class LetterController extends Controller
           
             // $users->update();
             }else{
+              
                 DB::table('users')
                 ->where('name', $request->author)
                 ->update(['schools' => $request->schools]);
@@ -394,10 +406,10 @@ class LetterController extends Controller
                 ->update(['regional' => $request->regional]);
                 DB::table('users')
                 ->where('name', $request->author)
-                ->update(['district' =>  $request->district]);
+                ->update(['district' =>  $request->cdistrict]);
                 DB::table('users')
                 ->where('name', $request->author)
-                ->update(['ward' =>  $request->ward]);
+                ->update(['ward' =>  $request->ward1]);
                 DB::table('letters')
                 ->where('name', $request->author)
                 ->update(['Tamisemi' =>  $request->Tamisemi]);
@@ -410,21 +422,11 @@ class LetterController extends Controller
                
                 $request4=$request->tschool;
              
+             
               
                 // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
              
-                    DB::table('users')
-                  ->where('Employee_id', $request->Employee_id)
-                  ->update(['schools' =>  $request4]);
-                  DB::table('users')
-                  ->where('Employee_id', $request->Employee_id)
-                  ->update(['regional' =>  $request1]);
-                  DB::table('users')
-                  ->where('Employee_id', $request->Employee_id)
-                  ->update(['district' =>  $request2]);
-                  DB::table('users')
-                  ->where('Employee_id', $request->Employee_id)
-                  ->update(['ward' =>  $request3]);
+                 ;
 
             }
        

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Teacher Dashboard</title>
+    <title>WEO Dashboard</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -49,7 +49,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"> Teacher </h3>
+                    <h3 class="text-primary"> Ward Officer </h3>
                 </a>
                 <!-- no 
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -66,17 +66,13 @@
                 </div>
                 -->
 
-                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">                       </head>                     
                 <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                  
                    
-                 
-                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-search" aria-hidden="true"></i>Swap teacher</a>
-                    <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Request</a>
-                    <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
-                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping</a>
-                    <a href="{{ URL('chances1') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>chances</a>
-                    </div>
+                   
+                   
+                   
                 </div>
             </nav>
         </div>
@@ -87,32 +83,28 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-               
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-               
+                
                 <!--MESSAGE-->
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        
+                      
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                  
-                                </div>
+                                
                             </a>
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                  
-                                </div>
+                             
                             </a>
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                   
-                                </div>
+                               
                             </a>
                             <hr class="dropdown-divider">
                            
@@ -120,16 +112,24 @@
                     </div>
                     <div class="nav-item dropdown">
                        
-                        
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                          
+                            <hr class="dropdown-divider">
+                           
+                            <hr class="dropdown-divider">
+                         
+                            <hr class="dropdown-divider">
+                         
+                        </div>
                         
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="asset4/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">{{ __('Teacher') }}({{Auth::user()->name}})</span>
+                            <span class="d-none d-lg-inline-flex">{{ __('WEO') }}({{Auth::user()->name}})</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="{{ URL('Teachdash1') }}" class="dropdown-item">My Profile</a>
+                            <a href="{{URL('WEOdash')}}" class="dropdown-item">My Profile</a>
                            
 							<form method="POST" action="{{ route('logout') }}">
 																	@csrf
@@ -140,129 +140,149 @@
                     </div>
                 </div>
             </nav>
-        <!-- Sidebar End -->
-
-
-        <!-- Content Start -->
-     
-               
-                <!--MESSAGE-->
-  
-
-            <style>
-              
-                td{
-                    background-color: white;
-                    height:45px;
-                    width:145px;
-                }
-               
-               
-                h1{
-                    padding-left:50px;
-                }
-            </style>
             <!-- Navbar End -->
 
 
             <!-- Sale & Revenue Start -->
-           
-            
+     
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Onprogress Request </h2>
+            </div>
+            <table class="table table-bordered table-responsive-lg">
+                                <form action="{{ url('form1') }}" method="GET" role="search">
+                                                    <div class="input-group">
+                                                        <table  class="table table-bordered table-responsive-lg">
+                                                    <tr>
+                                                        <input type="hidden" name="status" value="2"></input>
+                                                       
+                                                    <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term">
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                            <td>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search  ward " id="term">
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                        <td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
+                                                                <span class="fas fa-search"></span>
+                                                                </button></td>
+                                                                <td></td>	
+                                                    
+                                                            
+                                                    </tr>
+                                                    </table>
+                                                    
+                                    
+                                </form>
+            <div class="pull-right">
+               
+                    </a>
+                    
+            </div>
+        </div>
+    </div>
+    <div class="pull-left">
+    <form action="{{ route('wards.index') }}" method="GET" role="search">
 
-          
-			<form action="{{ route('transfers.index') }}" method="GET" role="search">
-					<div class="input-group">
-						<table  class="table table-bordered table-responsive-lg">
-                    <tr>
-						<td colspan=4>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search regional " id="term1"></input>
-                         	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-					   <td colspan=4>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search transfer District " id="term2">
-                         	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-					   <td colspan=4>  <input type="text" class="form-control mr-2" name="term" placeholder="Search ward" id="term">
-                         	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-						<td colspan=1>	<button class="btn btn-info" type="submit" title="Search users"><br>
-	                    		<span class="fas fa-search"></span>
-	                         	</button></td>
-									
-				      
-							
-					 </tr>
-                    </table>
-					
-	 
-</form>
+                   
+</div>
 
 
-@if ($message = Session::get('success'))
+    @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
 
-    <table class="table table-striped w-auto" style="margin-left:10px;">
-      
-		
-			<tr>
+    <table class="table table-striped">
+        <tr>
             <th>No</th>
             <th>Name</th>
-			<th>regional</th>
-			<th>transfer district</th>
-			<th>ward</th>
-            <th>current school</th>		
+            <th>current school</th>
+            <th>current disctrict</th>
+            <th>transfer district</th>
             <th>description</th>
+            <th>HeadMaster_Action</th>
+            <th>WEO_Action</th>
             
             <th width="280px">Action</th>
         </tr>
-	
+      
         @foreach ($letters as $letter)
-          
-			@if(($letter->name!=Auth::user()->name) && ($i<10))
+        @foreach ($wards as $ward)
             <tr>
+            
+        
+            @if($ward->WEO==Auth::user()->name && $letter->ward==$ward->name)
                 <td>{{ ++$i }}</td>
                 <td>{{ $letter->name }}</td>
-				<td>{{ $letter->regional }}</td>
-				<td>{{ $letter->tdistrict }}</td>
-				<td>{{ $letter->ward }}</td>
-                <td>{{ $letter->cschool }}</td>			
+                <td>{{ $letter->cschool }}</td>
+                <td>{{ $letter->cdistrict }}</td>
+                <td>{{ $letter->tdistrict }}</td>
                 <td>{{ $letter->description }}</td>
+                @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter->Headmaster == 'support BY HEADMASTER')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
+                @if( $letter->WEO == 'Not_support BY WEO')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter->WEO == 'support BY WEO')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
                 
                 <td>
+              
                     <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
+                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
                        
-					
-						
                         <a href="{{ route('letters.edit', $letter->id) }}">
                             <i class="fas fa-edit  fa-lg"></i>
 
                         </a>
-					
-
+           
+               @endif
+           
+           
+                   
                         @csrf
                         @method('DELETE')
-                        @role('admin')
-                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                            <i class="fas fa-eye text-success  fa-lg"></i>
-                        </a>
+                        @role('Tamisemi_Director')
                         <button type="submit" title="delete" style="border: none; background-color:transparent;">
                             <i class="fas fa-trash fa-lg text-danger"></i>
 
                         </button>
                         @endrole
+                      
                     </form>
                 </td>
+
             </tr>
-			@endrole
+        @endforeach
         @endforeach
     </table>
 
 
   
-
-
-
-				</div>
-			</div>
                
             <!-- Recent Sales End -->
 
@@ -397,7 +417,8 @@
 
 
         <!-- Back to Top -->
-  </div>
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

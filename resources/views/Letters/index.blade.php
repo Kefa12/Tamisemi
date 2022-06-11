@@ -83,6 +83,7 @@
                             <a href="{{ URL('letters1') }}"  class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>New Request</a>
                             <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
                             <a href="{{ URL('letters3') }}"  class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping</a>
+                            <a href="{{ URL('chances1') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>chances</a>    
                         @endrole
                         @role('Weo')
                         <a href="{{ URL('letters') }}" class="dropdown-item">Onprogress Request</a>

@@ -319,7 +319,7 @@
 		
       @foreach ($chances as $chance)
           <tr>
-          @if($chance->name!=Auth::user()->name && $chance->Tamisemi=="pending")
+        
               <td>{{ ++$i }}</td>
               <td>{{ $chance->name }}</td>
               <td>{{ $chance->school }}</td>
@@ -333,7 +333,8 @@
                   <a href="{{ route('chances.show', $chance->id) }}" title="show">
                       <i class="fas fa-eye text-success  fa-lg"></i>
                   </a>
-                      <a href="{{route('letters.edit', $chance->id) }}">
+                  <input type='hidden' name="M" value="1"></input>
+                      <a href="{{route('chances.edit', $chance->id) }}">
                           <i class="fas fa-edit  fa-lg"></i>
 
                       </a>
@@ -350,7 +351,7 @@
                   </form>
               </td>
           </tr>
-          @endrole
+       
       @endforeach
 
   {!! $letters->links() !!}

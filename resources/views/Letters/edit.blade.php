@@ -397,6 +397,9 @@
                    
                     <input type="hidden" class="form-control" style="height:50px" name="DED" value="{{$letter->DED}}" 
                         ></input>
+                    
+                <input type="hidden" class="form-control" style="height:50px" name="Tamisemi" value="{{$letter->Tamisemi}}" 
+                        ></input>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -409,8 +412,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                             
-                                            <input type="text" class="form-control" style="height:50px" name="W_comment" 
-                                                    ></input>
+                                           
                 </div>
         @csrf
         @method('PUT')
@@ -494,6 +496,8 @@
                   
                     <input type="hidden" class="form-control" style="height:50px"  name="Teacher_approved"  value="pending"  
                         placeholder="description"></input>
+                <input type="hidden" class="form-control" style="height:50px"  name="W_comment"  value="{{$letter->W_comment}}"  
+                        placeholder="description"></input>
                 </div>
             </div>
          
@@ -542,7 +546,7 @@
 
         @csrf
         @method('PUT')
-        <input type="text" class="form-control" style="height:50px" name="DED_comment" 
+        <input type="text" class="form-control" style="height:50px" name="DED_comment" value="{{$letter->DED_comment}}"
                                                     ></input>
 
         <div class="row">
@@ -634,7 +638,7 @@
      <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <input type="text" class="form-control" style="height:50px" name="DEO_comment" 
+        <input type="text" class="form-control" style="height:50px" name="DEO_comment" value="{{ $letter->DEO_comment }}"
                                                     ></input>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -725,7 +729,7 @@
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <input type="text" class="form-control" style="height:50px" name="RD_comment" 
+        <input type="text" class="form-control" style="height:50px" name="RD_comment" value="{{$letter->RD_comment}}" 
                                                     ></input>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -813,7 +817,7 @@
             @endrole
             @role('Tamisemi_Director')
           
-       
+         
             
             @endrole
             
