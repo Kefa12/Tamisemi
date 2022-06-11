@@ -1387,4 +1387,5 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
 
 @endrole
+
 @endsection

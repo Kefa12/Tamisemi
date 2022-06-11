@@ -399,7 +399,7 @@ class TransferController extends Controller
     {
         $data['regional_rd'] = DB::table('regional_rd')->get();
 
-
+        $data3 = Letter::where('Tamisemi','=','pending')->count();
         return view('Letters.create',$data);     
 
     }

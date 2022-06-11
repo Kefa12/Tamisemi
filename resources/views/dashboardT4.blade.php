@@ -96,28 +96,28 @@
                     <a class="nav-link" href="{{ url('letters9') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
-               <a class="nav-link" href="{{ url('letters10') }}">
+                    <a class="nav-link" href="{{ url('letters10') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Complete</span></a>
-                <a class="nav-link" href="{{ url('letters11') }}">
-                <i class="fa fa-table me-2"></i>
-                    <span>Chance</span></a>
             </li>
 
             <!-- Divider -->
-            
+            <hr class="sidebar-divider">
 
             <!-- Heading -->
         
 
-          
-            <hr class="sidebar-divider">
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                
+                
+            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-users"></i>
+                    <i class="fas fa-fw fa-wrench"></i>
                     <span>REGISTER USER</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
@@ -280,64 +280,109 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <div class="row g-4">
-            <!-- Sale & Revenue Start -->
-          
-              <input type="hidden" name="w" value=""></input>
-           
-               
-                   
-                    <div class="col-sm-6 col-xl-3">
-                     <div  style="background-color:white;  height:130px; width:197px;">
-                        <div class="bg-white rounded  d-flex  justify-content-between p-4">
-                            <i class="fa fa-user fa-3x text-primary"></i>
-                            <a href="#" style="text-decoration: none; color:black;"><div class="ms-3">
-                                <p class="mb-2">Totals Users</p>
-                                <h6 class="mb-0">{{ $data }}</h6>
-                            </div></a>
-                        </div>
-                    </div>
-                </div>
-                
+                <table class="table table-bordered table-responsive-lg">
+                                <form action="{{ url('form') }}" method="GET" role="search">
+                                                    <div class="input-group">
+                                                        <table  class="table table-bordered table-responsive-lg">
+                                                        <input type="hidden" name="status" value="status"></input>
+                                                    <tr>
+                                                        <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term1"></input>
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                    <td>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search transfer District " id="term2">
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                    <td>  <input type="text" class="form-control mr-2" name="term" placeholder="Search current District " id="term">
+                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
+                                                        <td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
+                                                                <span class="fas fa-search"></span>
+                                                                </button></td>
+                                                                <td></td>	
+                                                    
+                                                            
+                                                    </tr>
+                                                    </table>
+                                                    
+                                    
+                                </form>
+
+      
+      <table class="table table-bordered table-responsive-lg">
+      <tr>
+            <th>No</th>
+            <th>Headmaster</th>
+            <th>School</th>
+            <th>Disctrict</th>
+            <th>Regional</th>
+            <th>description</th>  
+            <th width="280px">Action</th>
+      </tr>
+      
+		
+      @foreach ($chances as $chance)
+          <tr>
+          @if($chance->name!=Auth::user()->name && $chance->Tamisemi=="pending")
+              <td>{{ ++$i }}</td>
+              <td>{{ $chance->name }}</td>
+              <td>{{ $chance->school }}</td>
+              <td>{{ $chance->district }}</td>
+              <td>{{ $chance->regional }}</td>
+              <td>{{ $chance->description }}</td>
               
-                    <div class="col-sm-6 col-xl-3">
-                    <div  style="background-color:white; height:130px; width:197px;">
-                        <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-school fa-3x text-primary"></i>
-                            <a href="#" style="text-decoration: none; color:black;"><div class="ms-3">
-                                <p class="mb-2">Schools</p>
-                                <h6 class="mb-0">{{ $data1 }}</h6>
-                            </div></a>
-                        </div>
-                    </div>
-                </div>
-                 
+              <td>
+                  <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
+
+                  <a href="{{ route('chances.show', $chance->id) }}" title="show">
+                      <i class="fas fa-eye text-success  fa-lg"></i>
+                  </a>
+                      <a href="{{route('letters.edit', $chance->id) }}">
+                          <i class="fas fa-edit  fa-lg"></i>
+
+                      </a>
                 
-                 
-                 
-                    <div class="col-sm-6 col-xl-3">
-                     <div  style="background-color:white;  height:130px; width:197px;">
-                        <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
-                         <i class="fa fa-file fa-3x text-primary "></i>
-                           <a href="{{ URL('letters9') }}" style="text-decoration: none; color:black;"><div class="ms-3">
-                            <p class="mb-2">Total Requests</p>
-                                <h6 class="mb-0">{{ $data2 }}</h6>
-                            </div></a>
-                        </div>
-                      </div>
-                    </div>   
-                    
-                    <div class="col-sm-6 col-xl-3">
-                     <div  style="background-color:white;  height:130px; width:207px;">
-                     <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
-                         <i class="fa fa-file fa-3x text-primary "></i>
-                           <a href="{{ URL('letters9') }}" style="text-decoration: none; color:black;"><div class="ms-3">
-                            <p class="mb-2">pending Requests</p>
-                                <h6 class="mb-0">{{ $data3 }}</h6>
-                            </div></a>
-                        </div>
-                      </div>
-                    </div> 
+
+                      @csrf
+                      @method('DELETE')
+                      @role('admin')
+                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                          <i class="fas fa-trash fa-lg text-danger"></i>
+
+                      </button>
+                      @endrole
+                  </form>
+              </td>
+          </tr>
+          @endrole
+      @endforeach
+
+  {!! $letters->links() !!}
+  </table>
+ 
+
+                      @csrf
+                      @method('DELETE')
+                      @role('admin')
+                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                          <i class="fas fa-trash fa-lg text-danger"></i>
+
+                      </button>
+                      @endrole
+            
+  </table>
+          
+
+                      @csrf
+                      @method('DELETE')
+                      @role('admin')
+                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                          <i class="fas fa-trash fa-lg text-danger"></i>
+
+                      </button>
+                      @endrole
+                  </form>
+              </td>
+          </tr>
+    
+  
+  </table>
 
   
 

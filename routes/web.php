@@ -122,6 +122,7 @@ Route::get('letters4', [App\Http\Controllers\LetterController::class, 'update'])
 Route::get('letters5', [App\Http\Controllers\LetterController::class, 'index3']);
 Route::get('letters9', [App\Http\Controllers\LetterController::class, 'index9']);
 Route::get('letters10', [App\Http\Controllers\LetterController::class, 'index10']);
+Route::get('letters11', [App\Http\Controllers\LetterController::class, 'index11']);
 Route::get('/letters', function () {
     return view('Headmaster_dash3');
 });
