@@ -49,7 +49,12 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    @role('Teacher')
                     <h3 class="text-primary"> Teacher </h3>
+                    @endrole
+                    @role('Headmaster')
+                    <h3 class="text-primary"> Headmaster </h3>
+                    @endrole
                 </a>
                 <!-- no 
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -69,12 +74,17 @@
                 <div class="navbar-nav w-100">
                     <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                 
-                 
+                   @role('Teacher')
                     <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-search" aria-hidden="true"></i>Swap teacher</a>
                     <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>New Request</a>
                     <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
                     <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping</a>
+                   @endrole
+                   @role('Headmaster')
                    
+                   <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Chance</a>
+                   <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping </a>
+                   @endrole
                     </div>
                 </div>
             </nav>
@@ -125,7 +135,12 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="asset4/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            @role('Teacher')
                             <span class="d-none d-lg-inline-flex">{{ __('Teacher') }}({{Auth::user()->name}})</span>
+                            @endrole
+                            @role('Headmaster')
+                            <span class="d-none d-lg-inline-flex">{{ __('Headmaster') }}({{Auth::user()->name}})</span>
+                            @endrole
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="{{ URL('Teachdash1') }}" class="dropdown-item">My Profile</a>
@@ -177,6 +192,7 @@
             </ul>
         </div>
     @endif
+    @role('Teacher')
     <center> <div class="form1">
    <form action="{{ route('letters.store') }}" method="POST"  id="form1">
         @csrf
@@ -301,6 +317,107 @@
     </form>
 </div>
             </center>
+    @endrole
+    @role('Headmaster')
+    <center> <div class="form1">
+   <form action="{{ route('chances.store') }}" method="POST"  id="form1">
+        @csrf
+     
+        <div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+<div class="form-group">
+  
+    <input type="hidden" name="name" class="form-control" placeholder="Name" value="{{ Auth::user()->name }}">
+</div>
+<div class="form-group">
+  
+    <input type="hidden" name="position" class="form-control" placeholder="Name" value="Headmaster">
+</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+    <input type="hidden" class="form-control" name="school" value="{{ Auth::user()->schools }}"
+        placeholder="Current_school"></input>
+</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+    <input type="hidden" class="form-control" style="height:50px" name="ward" value="{{ Auth::user()->ward }}"
+        placeholder="Current_school"></textarea>
+</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+    <input type="hidden" name="district" class="form-control" placeholder="iringa" value="{{ Auth::user()->district }}">
+</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+  
+    <input type="hidden" name="regional" class="form-control" value="{{ Auth::user()->regional }}">
+</div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+ 
+</div>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+   
+    <input type="hidden" value="pending" name="Headmaster" class="form-control" placeholder="request">
+</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+   
+    <input type="hidden" value="pending" name="WEO" class="form-control" placeholder="request"></input>
+</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+   
+    <input type="hidden" value="pending" name="DEO" class="form-control" placeholder="request">
+</div>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+<div class="form-group">
+   
+    <input type="hidden" value="pending" name="DED" class="form-control" placeholder="request">
+</div>
+</div>
+
+                <center><h4>Request Add Teacher</h4>
+                <img src="assets/img/letter.png" alt="no image" width=56 height=56></center>
+              <div class="form-group">
+												                                            
+                                                                                <h5 class="text-info  mb-4">
+                                                                                    
+                                                                                        <strong>Reason:</strong>
+                                                                                        <input type="text"  style="width:250px;" name="description" class="form-control" placeholder="request">
+                                                                                    
+                                                                                   
+                                                                                
+          
+
+           
+                                                                                    <h5 class="text-info  mb-4">
+               <center> <button type="submit" style="width:120px;" class="btn btn-primary">Submit</button></center>
+            </div>
+            </h5>
+            </div>
+        </div>
+
+    </form>
+</div>
+            </center>
+    @endrole
 
 
 	<!-- JAVASCRIPTS -->

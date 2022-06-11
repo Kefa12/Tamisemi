@@ -1,5 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+        .image {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:blue;
+  font-size:100%;
+  font:bold;
+}
+        </style>
 
 <head>
     <meta charset="utf-8">
@@ -7,7 +53,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <img src="img/Tamisemi1.png" width="100%" height="50px"></img>
+    <div class="image">
+          <img src="img/ban.png"  width="100%" height="70px">
+       
+        
+         <div class="centered">Public Workers Transfer Management System</div>
+</div>
+   
 	<style>
 	
 	</style>

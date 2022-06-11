@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Letter;
+use App\Models\Chance;
 use Illuminate\Http\Request;
 use App\Models\Transfer;
 
@@ -41,6 +42,16 @@ class LetterController extends Controller
         ])
             ->orderBy("id","desc")
             ->paginate(10);
+            $chances =Chance::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
 
             $date1 =DB::table('letters')->where('name',$request->name)->value('created_at');
             
@@ -51,7 +62,7 @@ class LetterController extends Controller
            $dateDiff = abs(round($diff / 86400));
            $t=1;
    
-        return view('Letters.index', compact('letters','date2','t'))
+        return view('Letters.index', compact('letters','date2','t','chances'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function index2(Request $request)

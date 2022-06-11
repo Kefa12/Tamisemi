@@ -92,7 +92,9 @@
                  
                   
                     <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Swapping</a>
-                    </div>
+                    <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Chance</a>    
+                    <a href="{{ URL('letters') }}"  class="nav-item nav-link">Chance</a>
+                </div>
                 </div>
             </nav>
         </div>

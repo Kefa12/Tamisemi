@@ -356,6 +356,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
            
             @endif
                   </div>
+            
               
               
   
@@ -376,7 +377,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
               
                 
-Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
+                  Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
     <i class="fas fa-edit  fa-lg"></i>
 
 </a>
@@ -663,6 +664,9 @@ Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
            
            
             @endif
+            @csrf
+             @method('DELETE')
+          
                   </div>
                 </div>
                
@@ -674,7 +678,7 @@ Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
            
               
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
-
+              
               
                   @role('Tamisemi_Director')
                   <a href="{{ route('letters.edit', $letter->id) }}">
@@ -693,6 +697,7 @@ Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
 
                   </button>
                   @endrole
+                  
                 
               </form>
           </td>
@@ -726,6 +731,7 @@ Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
     </div>
   </div>
     </section>
+    
            @endif 
         @endforeach
 
@@ -741,6 +747,109 @@ Support/No_support<a href="{{ route('letters.edit', $letter->id) }}">
      @endif
 @endif
  @endforeach
+ @role('Headmaster')
+ @foreach ($chances as $chance)
+          
+           
+          @if(($chance->name==Auth::user()->name))) 
+       
+          <div class="col-md-12">
+            <div class="card-body p-4">
+            <h6>Transfer Request Details</h6>
+              <hr class="mt-0 mb-10">
+              <h6><b>Current_status</b></h6>
+              <div class="row pt-1">
+                <div class="col-6 mb-3">
+                  <h6>Name</h6>
+                  <p class="text-muted">{{$chance->name}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>School</h6>
+                  <p class="text-muted">{{$chance->school}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  ward:
+                  <p class="text-muted">{{$chance->ward}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>District</h6>
+                  <p class="text-muted">{{$chance->district}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Regional</h6>
+                  <p class="text-muted">{{$chance->regional}}</p>
+
+                  </div>
+                </div>
+                <h6><b>Request</b></h6>
+
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                      <h6>Reason</h6>
+                       <p class="text-muted">{{$chance->description}}</p>
+                   </div>
+                      <div class="col-6 mb-3">
+                      <h6>Ward</h6>
+                       <p class="text-muted">{{$chance->ward}}</p>
+                   </div>
+              
+                   <div class="col-6 mb-3">
+                      <h6>School</h6>
+                       <p class="text-muted">{{$chance->school}}</p>
+                   </div>
+            
+               </div>
+              
+            
+            <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+            
+            
+                @role('Tamisemi_Director')
+                <a href="{{ route('letters.edit', $letter->id) }}">
+                    <i class="fas fa-edit  fa-lg"></i>
+
+                </a>
+                @endif
+ @endrole
+                
+ </form>
+          </td>
+       </tr>
+        <tr>
+          
+           
+        </tr>
+              
+                
+                
+              
+            </tr>
+          
+         
+    </table>
+    <br/>
+   
+
+    </table>
+    </form>
+          
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+  
+        @endforeach
+
+        @endrole
+
+ 
 
   
 

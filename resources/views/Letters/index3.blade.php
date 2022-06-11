@@ -81,13 +81,14 @@
                               <a href="{{ URL('letters1') }}"class="nav-item nav-link""><i class="fa fa-table me-2"></i>New Request</a>
                               <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
                         @endrole
-                        @role('Headmaster')
-                            
-                        @endrole
+                        
                            
                           
                             <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping </a>
-                          
+                     @role('Headmaster')
+                        <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Chance</a>
+                            
+                        @endrole
                          
                         </div>
                     </div>
