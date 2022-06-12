@@ -1,73 +1,395 @@
+<style>
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
-    <title>Dashboard</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-	<style>
-	
-	</style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Favicon -->
-    <link href="../asset4/img/favicon.ico" rel="icon">
+    <title>public_workers</title>
+    <img src="../img/flag3.png"  width="100%" height="118px" style="margin-bottom:-20px;">
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="../asset4/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="../asset4/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="../asset4/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="../asset4/css/style.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+<body id="page-top">
+     <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            
+                            <!-- Dropdown - Messages -->
+                           
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              
+                                <!-- Counter - Alerts -->
+                               
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                              
+                                
+                                   
+                                  
+                                </a>
+                               
+                                   
+                                    <div>
+                                       
+                                </a>
+                              
+                           
+                            </div>
+                        </li>
 
 
-        <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
-                @role('Headmaster')
-                <h3 class="text-primary"> Headmaster </h3>
-                @endrole
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+               
                 @role('Teacher')
-                    <h3 class="text-primary"> Teacher </h3>
+                <div class="sidebar-brand-text mx-3">Teacher</div>
                 @endrole
                 @role('Weo')
-                    <h3 class="text-primary"> Ward_Officer</h3>
+                <div class="sidebar-brand-text mx-3">Ward_officer</div>
+                @endrole
+                @role('Headmaster')
+                <div class="sidebar-brand-text mx-3"> Headmaster </div>
                 @endrole
                 @role('DEO')
-                    <h3 class="text-primary"> District_Officer</h3>
+                <div class="sidebar-brand-text mx-3">District_Officer</div>
                 @endrole
                 @role('DED')
-                    <h3 class="text-primary"> District_Director</h3>
+                <div class="sidebar-brand-text mx-3"> District_Director</div>
                 @endrole
                 @role('Regional_Director')
-                    <h3 class="text-primary"> Regional_Director</h3>
+                <div class="sidebar-brand-text mx-3"> Regional_Director</div>
                 @endrole
-                </a>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ URL('dashboard') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+                    @role('Tamisemi_Director')
+                    <li class="nav-item active">
+                <a class="nav-link" href="{{ url('dashboard') }}">
+                    
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ url('letters9') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+               <a class="nav-link" href="{{ url('letters10') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Complete</span></a>
+                <a class="nav-link" href="{{ url('letters11') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+            </li>
+
+                    @endrole
+                    @role('Teacher')
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('transfers') }}">
+                <i class="fa fa-search"></i>
+                    <span>Swap teacher</span></a>
+               <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('chances1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                    @endrole
+                    @role('Headmaster')
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Swapping</span></a>
+                    @endrole
+            </li>
+
+            <!-- Divider -->
+            
+
+            <!-- Heading -->
+        
+
+          
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+           
+
+          
+
+            <!-- Divider -->
+          
+
+            <!-- Heading -->
+          
+
+            <!-- Nav Item - Pages Collapse Menu -->
+         
+
+            <!-- Nav Item - Charts -->
+          
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+           
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                  
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            
+                            <!-- Dropdown - Messages -->
+                           
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              
+                                <!-- Counter - Alerts -->
+                               
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                              
+                                
+                                   
+                                  
+                                </a>
+                               
+                                   
+                                    <div>
+                                       
+                                </a>
+                              
+                           
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               
+                                <!-- Counter - Messages -->
+                             
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                               
+                           
+                               
+                             
+                               
+                              
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="../img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                          
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                     
+                  
+						
+                   
+						<strong>  {{Auth::user()->name}}</strong>
+                        
+						<small style="font-size:15px">
+                          @role('Teacher')
+							<i style="color: #888;">({{ __('Teacher') }})</i>
+                           
+                           @endrole
+                           @role('Headmaster')
+							<i style="color: #888;">({{ __('Headmaster') }})</i>
+                          @endrole
+                            {{ __('LogOut') }}
+                          
+                            </x-responsive-nav-link> 
+                           </form>
+                         
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+       
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+       
+               
+              
+               
+                <!--MESSAGE-->
+               
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+     
+               
+                <!--MESSAGE-->
+  
+
+            <style>
+              
+                td{
+                    background-color: white;
+                    height:45px;
+                    width:145px;
+                }
+               
+               
+                h1{
+                    padding-left:50px;
+                }
+            </style>
+
+        <!-- Sidebar Start -->
+        
+               
                 <!-- no 
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -83,117 +405,42 @@
                 </div>
                 -->
 
-                <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                  
-                    @role('Headmaster')
-                    <a href="{{ URL('schools') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
-                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Request From Teacher</a>
-                    @endrole
-                    @role('Weo')
-                    <a href="{{ URL('wards') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
-                    
-                    @endrole
-                    @role('DEO')
-                    <a href="{{ URL('districts') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
-                    
-                    @endrole
-                    @role('DED')
-                    <a href="{{ URL('districts') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
-                    
-                    @endrole
-                    @role('Regional_Director')
-                    <a href="{{ URL('regionals') }}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Onprogress Request</a>
-                    
-                    @endrole
-
-                </div>
+                
                    
-                    </div>
-                </div>
-            </nav>
-        </div>
+          
         <!-- Sidebar End -->
 
 
         <!-- Content Start -->
-        <div class="content">
+     
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-               
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                </a>
-               
-                <!--MESSAGE-->
-                <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                      
-                       
-                    </div>
-                   
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="../asset4/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            @role('Teacher')
-                            <span class="d-none d-lg-inline-flex">{{ __('Teacher') }}({{Auth::user()->name}})</span>
-                            @endrole
-                            @role('Weo')
-                            <span class="d-none d-lg-inline-flex">{{ __('WEO') }}({{Auth::user()->name}})</span>
-                            @endrole
-                            @role('DEO')
-                            <span class="d-none d-lg-inline-flex">{{ __('DEO') }}({{Auth::user()->name}})</span>
-                            @endrole
-                            @role('DED')
-                            <span class="d-none d-lg-inline-flex">{{ __('DED') }}({{Auth::user()->name}})</span>
-                            @endrole
-                            @role('Regional_Director')
-                            <span class="d-none d-lg-inline-flex">{{ __('Regional_Director') }}({{Auth::user()->name}})</span>
-                            @endrole
-                            @role('Tamisemi_Director')
-                            <span class="d-none d-lg-inline-flex">{{ __('Administrator') }}({{Auth::user()->name}})</span>
-                            @endrole
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                           
-							<form method="POST" action="{{ route('logout') }}">
-																	@csrf
-                            <a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();
-																						this.closest('form').submit();">	{{ __('LogOut') }}</a>
-                    	</form>    
-					</div>
-                    </div>
-                </div>
+          
+         
             </nav>
 
-            <style>
-              
-                td{
-                    background-color: white;
-                    height:45px;
-                    width:145px;
-                }
-               
-               
-                h1{
-                    padding-left:50px;
-                }
-            </style>
+           
             <!-- Navbar End -->
 
 
             <!-- Sale & Revenue Start -->
            
-            
+ <div class="container-fluid">  
 
            
             
 
-<body bgcolor="white">
+            <h1 class="h3 mb-2 text-gray-800"></h1>
+   
+   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Search other request</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="table-responsive">
 <p>LIFE TIME FOR REQUEST CREATED BY {{$letter->name}} is {{ abs(round((strtotime($date2)-strtotime($letter->created_at))/86400)) }}  days</p>
                   
 
-<center> <table class="table table-striped">
+ <table class="table table-striped">
 <tr>
               <th>
    
@@ -318,29 +565,37 @@
  
 
         
-</table>
-</center>
-</div>
+    </table>
+ </div>
+            </div>
+
         <!-- Content End -->
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+  </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../asset4/lib/chart/chart.min.js"></script>
-    <script src="../asset4/lib/easing/easing.min.js"></script>
-    <script src="../asset4/lib/waypoints/waypoints.min.js"></script>
-    <script src="../asset4/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="../asset4/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="../asset4/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="../asset4/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="../asset4/js/main.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="../js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+  
+
+   
+
 </body>
 
 </html>

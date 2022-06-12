@@ -391,7 +391,7 @@
         </tr>
 	
         @foreach ($chances as $chance)
-          
+          @if($chance->Tamisemi== 'Approved BY Tamisemi_Director')
 		
             <tr>
                 <td>{{ ++$i }}</td>
@@ -429,6 +429,7 @@
                     </form>
                 </td>
             </tr>
+            @endif
 		
         @endforeach
     </table>

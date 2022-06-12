@@ -189,7 +189,7 @@
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+                             
                             </a>
                             <!-- Dropdown - Messages -->
                            
@@ -326,6 +326,7 @@
                                    <tbody>
    
         @foreach ($chances as $chance)
+          
            <tr>
            <td>{{ ++$i }}</td>
               <td>{{ $chance->name }}</td>
@@ -351,9 +352,7 @@
                <td>
                <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
 
-                                     <a href="{{ route('chances.show', $chance->id) }}" title="show">
-                                     <i class="fas fa-eye text-success  fa-lg"></i>
-                                     </a>
+                                    
                                      <input type='hidden' name="M" value="1"></input>
                                      <a href="{{route('chances.edit', $chance->id) }}">
                                      <i class="fas fa-edit  fa-lg"></i>
@@ -364,6 +363,9 @@
                        @csrf
                        @method('DELETE')
                        @role('admin')
+                       <a href="{{ route('chances.show', $chance->id) }}" title="show">
+                        <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
                            <i class="fas fa-eye text-success  fa-lg"></i>
                        </a>
@@ -375,6 +377,7 @@
                    </form>
                </td>
            </tr>
+          
           
        @endforeach
    </tbody>

@@ -519,8 +519,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             @endif
                   </div>
             
-              
-              
+                  <div class="col-6 mb-3">
+                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                    </div>
   
                 
           
@@ -826,6 +829,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
            
            
             @endif
+            <div class="col-12 mb-6">
+                <p>Time Taken To Respond</p>  <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                    </div>
             @csrf
              @method('DELETE')
           

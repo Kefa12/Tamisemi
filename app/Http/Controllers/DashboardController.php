@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transfer;
 use App\Models\Letter;
+use App\Models\Chance;
 use App\Models\School;
 use App\Models\Ward;
 use App\Models\District;
@@ -275,7 +276,8 @@ class DashboardController extends Controller
                       $s=0;
                    
                          
-                      $chance = DB::table("chances")->count('id');
+                     // $chance = DB::table("chances")->count('id');
+                      $chance = Chance::where('Tamisemi','=','Approved by Tamisemi_Director')->count();
                     
                     $k=0;
             return view('Teachdash2', compact('letters','transfers','data','i','k','regionals','districts','wards','schools','s','chance'))

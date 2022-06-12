@@ -340,10 +340,10 @@
                 
                 <td>
                     <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
-
-                       
-					
-						
+                         <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                     
                         <a href="{{ route('letters.edit', $letter->id) }}">
                             <i class="fas fa-edit  fa-lg"></i>
 
