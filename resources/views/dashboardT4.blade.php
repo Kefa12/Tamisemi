@@ -96,9 +96,12 @@
                     <a class="nav-link" href="{{ url('letters9') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
-                    <a class="nav-link" href="{{ url('letters10') }}">
+               <a class="nav-link" href="{{ url('letters10') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Complete</span></a>
+                <a class="nav-link" href="{{ url('letters11') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
             </li>
 
             <!-- Divider -->
@@ -280,110 +283,105 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <table class="table table-bordered table-responsive-lg">
-                                <form action="{{ url('form') }}" method="GET" role="search">
-                                                    <div class="input-group">
-                                                        <table  class="table table-bordered table-responsive-lg">
-                                                        <input type="hidden" name="status" value="status"></input>
-                                                    <tr>
-                                                        <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term1"></input>
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                    <td>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search transfer District " id="term2">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                    <td>  <input type="text" class="form-control mr-2" name="term" placeholder="Search current District " id="term">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                        <td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
-                                                                <span class="fas fa-search"></span>
-                                                                </button></td>
-                                                                <td></td>	
-                                                    
-                                                            
-                                                    </tr>
-                                                    </table>
-                                                    
-                                    
-                                </form>
+              
 
       
-      <table class="table table-bordered table-responsive-lg">
-      <tr>
-            <th>No</th>
+   
+  <h1 class="h3 mb-2 text-gray-800"></h1>
+   
+   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Chance for Teacher Transfer</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="table-responsive">
+                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                   <thead>
+                                       <tr> <th>No</th>
             <th>Headmaster</th>
             <th>School</th>
             <th>Disctrict</th>
             <th>Regional</th>
-            <th>description</th>  
+            <th>description</th> 
+            <th>Approved_status</th> 
             <th width="280px">Action</th>
-      </tr>
-      
-		
-      @foreach ($chances as $chance)
-          <tr>
-        
-              <td>{{ ++$i }}</td>
+           
+                                       
+                                     </tr>
+                                   </thead>
+                                   <tfoot>
+                                   <tr> 
+                                       <th>No</th>
+                                            <th>Headmaster</th>
+                                            <th>School</th>
+                                            <th>district</th>
+                                                 <th>Regional</th>
+                                            <th>descriptionn</th>
+                                            <th>Approved_status</th>		
+                                               
+           
+                                        <th width="280px">Action</th>
+                                     </tr>
+                                   </tfoot>
+                                   <tbody>
+   
+        @foreach ($chances as $chance)
+           <tr>
+           <td>{{ ++$i }}</td>
               <td>{{ $chance->name }}</td>
               <td>{{ $chance->school }}</td>
               <td>{{ $chance->district }}</td>
               <td>{{ $chance->regional }}</td>
               <td>{{ $chance->description }}</td>
-              
-              <td>
-                  <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
-
-                  <a href="{{ route('chances.show', $chance->id) }}" title="show">
-                      <i class="fas fa-eye text-success  fa-lg"></i>
-                  </a>
-                  <input type='hidden' name="M" value="1"></input>
-                      <a href="{{route('chances.edit', $chance->id) }}">
-                          <i class="fas fa-edit  fa-lg"></i>
-
-                      </a>
+             
+               @if(  $chance->Tamisemi== 'Rejected BY Tamisemi_Director')
                 
-
-                      @csrf
-                      @method('DELETE')
-                      @role('admin')
-                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                          <i class="fas fa-trash fa-lg text-danger"></i>
-
-                      </button>
-                      @endrole
-                  </form>
-              </td>
-          </tr>
-       
-      @endforeach
-
-  {!! $letters->links() !!}
-  </table>
- 
-
-                      @csrf
-                      @method('DELETE')
-                      @role('admin')
-                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                          <i class="fas fa-trash fa-lg text-danger"></i>
-
-                      </button>
-                      @endrole
+                <td> <button type="submit" class="btn btn-danger" width="280px"><i> Rejected</i></button> </td>
+             
+             @elseif(  $chance->Tamisemi== 'Approved BY Tamisemi_Director')
             
-  </table>
+             <td><button type="submit" class="btn btn-primary" style="width: 180px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">Approved</i></button> </td>
+            
+              @else
+             
+              <td><button type="submit" class="btn btn-success" width="280px"><i>pending</i></button> </td>
+             
+             
+              @endif
+               <td>
+               <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
+
+                                     <a href="{{ route('chances.show', $chance->id) }}" title="show">
+                                     <i class="fas fa-eye text-success  fa-lg"></i>
+                                     </a>
+                                     <input type='hidden' name="M" value="1"></input>
+                                     <a href="{{route('chances.edit', $chance->id) }}">
+                                     <i class="fas fa-edit  fa-lg"></i>
+
+                                      </a>
+                   
+
+                       @csrf
+                       @method('DELETE')
+                       @role('admin')
+                       <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                           <i class="fas fa-eye text-success  fa-lg"></i>
+                       </a>
+                       <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                           <i class="fas fa-trash fa-lg text-danger"></i>
+
+                       </button>
+                       @endrole
+                   </form>
+               </td>
+           </tr>
           
-
-                      @csrf
-                      @method('DELETE')
-                      @role('admin')
-                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                          <i class="fas fa-trash fa-lg text-danger"></i>
-
-                      </button>
-                      @endrole
-                  </form>
-              </td>
-          </tr>
-    
-  
+       @endforeach
+   </tbody>
   </table>
+</div>
+</div>
+  
 
   
 
@@ -398,6 +396,7 @@
     </div>
 
     
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -415,6 +414,14 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    
+      <!-- Page level plugins -->
+      <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
 
 </body>
 

@@ -89,9 +89,19 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ url('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ url('letters9') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+               <a class="nav-link" href="{{ url('letters10') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Complete</span></a>
+                <a class="nav-link" href="{{ url('letters11') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
             </li>
 
             <!-- Divider -->

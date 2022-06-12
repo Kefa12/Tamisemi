@@ -58,6 +58,7 @@
     <meta name="author" content="">
 
     <title>public_workers</title>
+    <img src="img/flag3.png"  width="100%" height="118px">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -89,9 +90,19 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{URL('dashboard')}}">
+                <a class="nav-link" href="{{ url('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ url('letters9') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+               <a class="nav-link" href="{{ url('letters10') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Complete</span></a>
+                <a class="nav-link" href="{{ url('letters11') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
             </li>
 
             <!-- Divider -->

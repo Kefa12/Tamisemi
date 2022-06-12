@@ -58,6 +58,7 @@
     <meta name="author" content="">
 
     <title>public_workers</title>
+    <img src="img/flag3.png"  width="100%" height="118px">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -96,6 +97,12 @@
                     <a class="nav-link" href="{{ url('letters9') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
+               <a class="nav-link" href="{{ url('letters10') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Complete</span></a>
+                <a class="nav-link" href="{{ url('letters11') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
             </li>
 
             <!-- Divider -->

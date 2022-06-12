@@ -96,9 +96,12 @@
                     <a class="nav-link" href="{{ url('letters9') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
-                    <a class="nav-link" href="{{ url('letters10') }}">
+               <a class="nav-link" href="{{ url('letters10') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Complete</span></a>
+                <a class="nav-link" href="{{ url('letters11') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
             </li>
 
             <!-- Divider -->
@@ -186,7 +189,7 @@
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+                           
                             </a>
                             <!-- Dropdown - Messages -->
                            
@@ -280,143 +283,94 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <table class="table table-bordered table-responsive-lg">
-                                <form action="{{ url('form') }}" method="GET" role="search">
-                                                    <div class="input-group">
-                                                        <table  class="table table-bordered table-responsive-lg">
-                                                        <input type="hidden" name="status" value="status"></input>
-                                                    <tr>
-                                                        <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term1"></input>
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                    <td>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search transfer District " id="term2">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                    <td>  <input type="text" class="form-control mr-2" name="term" placeholder="Search current District " id="term">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                        <td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
-                                                                <span class="fas fa-search"></span>
-                                                                </button></td>
-                                                                <td></td>	
-                                                    
-                                                            
-                                                    </tr>
-                                                    </table>
-                                                    
-                                    
-                                </form>
+                
 
       
-      <table class="table table-bordered table-responsive-lg">
-      <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
-            <th>description</th>  
-            <th width="280px">Action</th>
-      </tr>
+    
       
-		@foreach ($letters as $letter)
-		@if($letter->name==Auth::user()->name &&  $letter->Message!="")
+	
+
+  <h1 class="h3 mb-2 text-gray-800"></h1>
+   
+    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Search other request</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr> <th>No</th>
+                                             <th>Name</th>
+			                                 <th>regional</th>
+			                                 <th>transfer district</th>
+			                                      <th>ward</th>
+                                             <th>current school</th>		
+                                                 <th>description</th>
+            
+                                         <th width="280px">Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr> 
+                                        <th>No</th>
+                                             <th>Name</th>
+			                                 <th>regional</th>
+			                                 <th>transfer district</th>
+			                                      <th>ward</th>
+                                             <th>current school</th>		
+                                                 <th>description</th>
+            
+                                         <th width="280px">Action</th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
+	
+        @foreach ($letters as $letter)
+          
+			@if(($letter->Tamisemi=='pending'))
             <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{ $letter->name }}</td>
+				<td>{{ $letter->regional }}</td>
+				<td>{{ $letter->tdistrict }}</td>
+				<td>{{ $letter->ward }}</td>
+                <td>{{ $letter->cschool }}</td>			
+                <td>{{ $letter->description }}</td>
                 
-               
-               <td colspan="7" style="background-color:white;"><center><p style="color:green">MESSAGE FROM  <i>  {{ $letter->author }} </i>:</p>   {{ $letter->Message }} </center></td>
-                <td></td>
                 <td>
-                    
+                    <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+                       
+					
+						
+                        <a href="{{ route('letters.edit', $letter->id) }}">
+                            <i class="fas fa-edit  fa-lg"></i>
+
+                        </a>
+					
 
                         @csrf
                         @method('DELETE')
                         @role('admin')
+                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
                         <button type="submit" title="delete" style="border: none; background-color:transparent;">
                             <i class="fas fa-trash fa-lg text-danger"></i>
 
                         </button>
                         @endrole
-                  
+                    </form>
                 </td>
             </tr>
-           </table>
-         
-           <table class="table table-bordered table-responsive-lg">
-			<tr style="background-color:red">
-            <th>No</th>
-            <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
-            <th>transfer district</th>
-            <th>description</th>  
-            <th width="280px">Action</th>
-      </tr>
-   @endif
-      @endforeach
-      @foreach ($letters as $letter)
-          <tr>
-          @if($letter->name!=Auth::user()->name && $letter->Tamisemi=="pending")
-              <td>{{ ++$i }}</td>
-              <td>{{ $letter->name }}</td>
-              <td>{{ $letter->cschool }}</td>
-              <td>{{ $letter->cdistrict }}</td>
-              <td>{{ $letter->tdistrict }}</td>
-              <td>{{ $letter->description }}</td>
-              
-              <td>
-                  <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+			@endrole
+        @endforeach
+    </tbody>
+   </table>
+ </div>
+</div>
 
-                  <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                      <i class="fas fa-eye text-success  fa-lg"></i>
-                  </a>
-                      <a href="{{route('letters.edit', $letter->id) }}">
-                          <i class="fas fa-edit  fa-lg"></i>
-
-                      </a>
-                     
-
-                      @csrf
-                      @method('DELETE')
-                      @role('admin')
-                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                          <i class="fas fa-trash fa-lg text-danger"></i>
-
-                      </button>
-                      @endrole
-                  </form>
-              </td>
-          </tr>
-          @endrole
-      @endforeach
-
-  {!! $letters->links() !!}
-  </table>
- 
-
-                      @csrf
-                      @method('DELETE')
-                      @role('admin')
-                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                          <i class="fas fa-trash fa-lg text-danger"></i>
-
-                      </button>
-                      @endrole
-            
-  </table>
-          
-
-                      @csrf
-                      @method('DELETE')
-                      @role('admin')
-                      <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                          <i class="fas fa-trash fa-lg text-danger"></i>
-
-                      </button>
-                      @endrole
-                  </form>
-              </td>
-          </tr>
-    
-  
-  </table>
 
   
 
@@ -448,6 +402,13 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    
+      <!-- Page level plugins -->
+      <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
