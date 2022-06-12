@@ -117,14 +117,13 @@
                     @endrole
                     @role('Headmaster')
                     <hr class="sidebar-divider">
-                    <a class="nav-link" href="{{ URL('letters') }}">
+                <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a>
-                    <hr class="sidebar-divider">
-                    <a class="nav-link" href="{{ URL('letters3') }}">
-                <i class="fa fa-table me-2"></i>
-                    <span>Swapping</span></a>
-                    @endrole
+                @endrole
             </li>
 
             <!-- Divider -->

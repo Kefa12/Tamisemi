@@ -6,6 +6,7 @@ use App\Models\Transfer;
 use App\Models\Letter;
 use App\Models\Chance;
 use App\Models\School;
+use App\Models\Role;
 use App\Models\Ward;
 use App\Models\District;
 use App\Models\Regional;
@@ -317,6 +318,26 @@ class DashboardController extends Controller
         ])
             ->orderBy("id","desc")
             ->paginate(20);
+         $chances = Chance::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+            $roles = Role::where([
+                    ['id','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('id','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(20);
 
             
             $wards = Ward::where([
@@ -329,8 +350,14 @@ class DashboardController extends Controller
             ])
                 ->orderBy("id","desc")
                 ->paginate(10);
+                $data=0;
+                $k=0;
+                $c=0;
+                $chance=0;
    
-        return view('Masters.index', compact('schools','letters','districts','wards'))
+        // return view('Masters.index', compact('schools','letters','districts','wards'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('Headmaster_dash', compact('schools','letters','districts','chance','wards','data','k','chances','c','roles'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Health_Worker')){
 
