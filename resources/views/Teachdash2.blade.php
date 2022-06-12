@@ -41,9 +41,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color:blue;
-  font-size:100%;
-  font:bold;
+  color:white;
+  font-size:39px;
+  font:75px;
 }
         </style>
 
@@ -53,12 +53,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
-    <div class="image">
-          <img src="img/ban.png"  width="100%" height="70px">
+    <img src="img/flag3.png"  width="100%" height="118px">
+    <!-- <div class="image">
+          <img src="img/flag4.jpg"  width="100%" height="78px">
        
         
-         <div class="centered">Public Workers Transfer Management System</div>
-</div>
+         <div class="centered">Public Workers Transfer<br> Management System</div>
+</div> -->
    
 	<style>
 	
@@ -91,18 +92,14 @@
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
+     
         <!-- Spinner End -->
 
 
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+            <nav class="navbar bg-blue navbar-light">
+                <a href="#" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"> Teacher </h3>
                 </a>
                 <!-- no 

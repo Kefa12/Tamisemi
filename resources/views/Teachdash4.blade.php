@@ -210,7 +210,6 @@
 		
 			<tr>
             <th>No</th>
-            <th>Name</th>
 			<th>regional</th>
 			<th>district</th>
 			<th>ward</th>
@@ -225,7 +224,7 @@
 		
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{$chance->name }}</td>
+              
 				<td>{{$chance->regional }}</td>
 				<td>{{$chance->district }}</td>
 				<td>{{$chance->ward }}</td>

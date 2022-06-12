@@ -17,7 +17,7 @@
                input{
                 padding-top:178px;
                 position: relative;
-                     top: -230px;
+                   
               
             }
         
@@ -223,8 +223,8 @@
           
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                  
-             <input type="text" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
+               <label>other Description</label>   
+             <input type="text" class="form-control" style="height:50px" name="Message"   
                        ></input>
                 </div>
             </div>
