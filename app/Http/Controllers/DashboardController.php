@@ -153,6 +153,7 @@ class DashboardController extends Controller
                          ->orderBy("id","desc")
                          ->paginate(30);
                          $i=0;
+                         $chance = DB::table("chances")->count('id');
                          $data = DB::table("users")->count('id');
                          $data1 = DB::table("school_dp")->count('id');
                          $data2 = DB::table("letters")->count('id');
@@ -162,7 +163,7 @@ class DashboardController extends Controller
                 return view('reg.index', compact('letters','transfers'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
             else
-              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3'))
+              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance'))
                   ->with('i', (request()->input('page', 1) - 1) * 5);
           
         
@@ -274,10 +275,10 @@ class DashboardController extends Controller
                       $s=0;
                    
                          
-
+                      $chance = DB::table("chances")->count('id');
                     
                     $k=0;
-            return view('Teachdash2', compact('letters','transfers','data','i','k','regionals','districts','wards','schools','s'))
+            return view('Teachdash2', compact('letters','transfers','data','i','k','regionals','districts','wards','schools','s','chance'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Headmaster')){
            //

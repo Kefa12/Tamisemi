@@ -1,85 +1,332 @@
+<style>
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
-    <title>Teacher Dashboard</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-	<style>
-	
-	</style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Favicon -->
-    <link href="asset4/img/favicon.ico" rel="icon">
+    <title>public_workers</title>
+    <img src="img/flag3.png"  width="100%" height="118px">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="asset4/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="asset4/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="asset4/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="asset4/css/style.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
+<body id="page-top">
+     <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            
+                            <!-- Dropdown - Messages -->
+                           
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              
+                                <!-- Counter - Alerts -->
+                               
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                              
+                                
+                                   
+                                  
+                                </a>
+                               
+                                   
+                                    <div>
+                                       
+                                </a>
+                              
+                           
+                            </div>
+                        </li>
+
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+               
+                @role('Teacher')
+                <div class="sidebar-brand-text mx-3">Teacher</div>
+                @endrole
+                @role('Weo')
+                <div class="sidebar-brand-text mx-3">Ward_officer</div>
+                @endrole
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ URL('dashboard') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+                    @role('Teacher')
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('transfers') }}">
+                <i class="fa fa-search"></i>
+                    <span>Swap teacher</span></a>
+               <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('chances1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                    @endrole
+                    @role('Headmaster')
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Swapping</span></a>
+                    @endrole
+            </li>
+
+            <!-- Divider -->
+            
+
+            <!-- Heading -->
+        
+
+          
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+           
+
+          
+
+            <!-- Divider -->
+          
+
+            <!-- Heading -->
+          
+
+            <!-- Nav Item - Pages Collapse Menu -->
+         
+
+            <!-- Nav Item - Charts -->
+          
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-        </div>
-        <!-- Spinner End -->
 
+            <!-- Sidebar Message -->
+           
 
-        <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"> Teacher </h3>
-                </a>
-                <!-- no 
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-                    </div>
-                    
-                    <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
-                        <span>Admin</span>
-                    </div>
-                
-                </div>
-                -->
+        </ul>
+        <!-- End of Sidebar -->
 
-                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">                       </head>                     
-                <div class="navbar-nav w-100">
-                    <a href="{{ URL('dashboard') }}"  class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                  
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            
+                            <!-- Dropdown - Messages -->
+                           
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              
+                                <!-- Counter - Alerts -->
+                               
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                              
+                                
+                                   
+                                  
+                                </a>
+                               
+                                   
+                                    <div>
+                                       
+                                </a>
+                              
+                           
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               
+                                <!-- Counter - Messages -->
+                             
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                               
+                           
+                               
+                             
+                               
+                              
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                          
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                     
+                  
+						
                    
-                 
-                    <a href="{{ URL('transfers') }}" class="nav-item nav-link"><i class="fa fa-search" aria-hidden="true"></i>Swap teacher</a>
-                    <a href="{{ URL('letters1') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Request</a>
-                    <a href="{{ URL('letters') }}" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Onprogress</a>
-                    <a href="{{ URL('letters3') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>Swapping</a>
-                    <a href="{{ URL('chances1') }}" class="nav-item nav-link"><i class='fas fa-exchange-alt'></i>chances</a>
-                    </div>
-                </div>
+						<strong>  {{Auth::user()->name}}</strong>
+                        
+						<small style="font-size:15px">
+                          @role('Teacher')
+							<i style="color: #888;">({{ __('Teacher') }})</i>
+                           
+                           @endrole
+                           @role('Headmaster')
+							<i style="color: #888;">({{ __('Headmaster') }})</i>
+                          @endrole
+                            {{ __('LogOut') }}
+                          
+                            </x-responsive-nav-link> 
+                           </form>
+                         
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="row">
+        <div class="col-lg-8">
             </nav>
-        </div>
         <!-- Sidebar End -->
 
 
@@ -88,26 +335,12 @@
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                
-                <a href="#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
+              
                 </a>
                
                 <!--MESSAGE-->
                 <div class="navbar-nav align-items-center ms-auto">
-                    <div class="nav-item dropdown">
-                        
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                  
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                  
-                                </div>
-                            </a>
+                    
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
@@ -123,23 +356,26 @@
                         
                         
                     </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="asset4/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">{{ __('Teacher') }}({{Auth::user()->name}})</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="{{ URL('Teachdash1') }}" class="dropdown-item">My Profile</a>
-                           
-							<form method="POST" action="{{ route('logout') }}">
-																	@csrf
-                            <a href="route('logout')" class="dropdown-item" onclick="event.preventDefault();
-																						this.closest('form').submit();">	{{ __('LogOut') }}</a>
-                    	</form>    
-					</div>
+                    
                     </div>
                 </div>
             </nav>
+
+            <style>
+                .form1{
+                    margin-left:20px;
+                   margin-top:0px;
+                   border: 1px solid #0096FF;
+                   border-radius: 5px;
+                   width:300px;
+                }
+                h5{
+                    padding-left:20px;
+                }
+                select{
+                    padding-left:20px;
+                }
+            </style>
         <!-- Sidebar End -->
 
 
@@ -169,28 +405,7 @@
            
             
 
-          
-			<form action="{{ route('transfers.index') }}" method="GET" role="search">
-					<div class="input-group">
-						<table  class="table table-bordered table-responsive-lg">
-                    <tr>
-						<td colspan=4>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search regional " id="term1"></input>
-                         	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-					   <td colspan=4>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search transfer District " id="term2">
-                         	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-					   <td colspan=4>  <input type="text" class="form-control mr-2" name="term" placeholder="Search ward" id="term">
-                         	<a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-						<td colspan=1>	<button class="btn btn-info" type="submit" title="Search users"><br>
-	                    		<span class="fas fa-search"></span>
-	                         	</button></td>
-									
-				      
-							
-					 </tr>
-                    </table>
-					
-	 
-</form>
+     
 
 
 @if ($message = Session::get('success'))
@@ -198,21 +413,44 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+    <div class="container-fluid">
 
-    <table class="table table-striped w-auto" style="margin-left:10px;">
-      
-		
-			<tr>
-            <th>No</th>
-            <th>Name</th>
-			<th>regional</th>
-			<th>transfer district</th>
-			<th>ward</th>
-            <th>current school</th>		
-            <th>description</th>
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"></h1>
+   
+    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Search other request</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr> <th>No</th>
+                                             <th>Name</th>
+			                                 <th>regional</th>
+			                                 <th>transfer district</th>
+			                                      <th>ward</th>
+                                             <th>current school</th>		
+                                                 <th>description</th>
             
-            <th width="280px">Action</th>
-        </tr>
+                                         <th width="280px">Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr> 
+                                        <th>No</th>
+                                             <th>Name</th>
+			                                 <th>regional</th>
+			                                 <th>transfer district</th>
+			                                      <th>ward</th>
+                                             <th>current school</th>		
+                                                 <th>description</th>
+            
+                                         <th width="280px">Action</th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
 	
         @foreach ($letters as $letter)
           
@@ -254,7 +492,10 @@
             </tr>
 			@endrole
         @endforeach
-    </table>
+    </tbody>
+   </table>
+ </div>
+</div>
 
 
   
@@ -399,19 +640,33 @@
         <!-- Back to Top -->
   </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="asset4/lib/chart/chart.min.js"></script>
-    <script src="asset4/lib/easing/easing.min.js"></script>
-    <script src="asset4/lib/waypoints/waypoints.min.js"></script>
-    <script src="asset4/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="asset4/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="asset4/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="asset4/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+ 
+  <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="asset4/js/main.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+  
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
 </body>
 
 </html>
+

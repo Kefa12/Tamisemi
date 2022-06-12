@@ -58,7 +58,7 @@
     <meta name="author" content="">
 
     <title>public_workers</title>
-
+    <img src="img/flag3.png"  width="100%" height="98px">
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -184,10 +184,7 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
+                            
                             <!-- Dropdown - Messages -->
                            
                         </li>
@@ -284,60 +281,75 @@
             <!-- Sale & Revenue Start -->
           
               <input type="hidden" name="w" value=""></input>
-           
-               
-                   
-                    <div class="col-sm-6 col-xl-3">
-                     <div  style="background-color:white;  height:130px; width:197px;">
-                        <div class="bg-white rounded  d-flex  justify-content-between p-4">
-                            <i class="fa fa-user fa-3x text-primary"></i>
-                            <a href="#" style="text-decoration: none; color:black;"><div class="ms-3">
-                                <p class="mb-2">Totals Users</p>
-                                <h6 class="mb-0">{{ $data }}</h6>
+              <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Totals Users</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa fa-user fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                               Schools</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data1 }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa fa-school fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="{{ URL('letters9') }}"> <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="{{ URL('letters9') }}">Total Requests</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data2 }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa fa-file fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div></a>
                         </div>
-                    </div>
-                </div>
-                
-              
-                    <div class="col-sm-6 col-xl-3">
-                    <div  style="background-color:white; height:130px; width:197px;">
-                        <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-school fa-3x text-primary"></i>
-                            <a href="#" style="text-decoration: none; color:black;"><div class="ms-3">
-                                <p class="mb-2">Schools</p>
-                                <h6 class="mb-0">{{ $data1 }}</h6>
+                       
+                 
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="{{ URL('letters9') }}"> <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="{{ URL('letters9') }}">pending Requests</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data3 }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa fa-file fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div></a>
-                        </div>
-                    </div>
-                </div>
-                 
-                
-                 
-                 
-                    <div class="col-sm-6 col-xl-3">
-                     <div  style="background-color:white;  height:130px; width:197px;">
-                        <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
-                         <i class="fa fa-file fa-3x text-primary "></i>
-                           <a href="{{ URL('letters9') }}" style="text-decoration: none; color:black;"><div class="ms-3">
-                            <p class="mb-2">Total Requests</p>
-                                <h6 class="mb-0">{{ $data2 }}</h6>
-                            </div></a>
-                        </div>
-                      </div>
-                    </div>   
+                        </div>  
                     
-                    <div class="col-sm-6 col-xl-3">
-                     <div  style="background-color:white;  height:130px; width:207px;">
-                     <div class="bg-white rounded d-flex align-items-center justify-content-between p-4">
-                         <i class="fa fa-file fa-3x text-primary "></i>
-                           <a href="{{ URL('letters9') }}" style="text-decoration: none; color:black;"><div class="ms-3">
-                            <p class="mb-2">pending Requests</p>
-                                <h6 class="mb-0">{{ $data3 }}</h6>
-                            </div></a>
-                        </div>
-                      </div>
-                    </div> 
+                   
 
   
 

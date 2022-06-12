@@ -58,7 +58,7 @@
     <meta name="author" content="">
 
     <title>Tamisemi_Director-Dashboard</title>
-
+    <img src="img/flag3.png"  width="100%" height="118px">
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
