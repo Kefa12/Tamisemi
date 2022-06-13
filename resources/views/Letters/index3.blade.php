@@ -385,7 +385,7 @@ background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgb
 background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
 }
 </style> 
-<center><h1>Swapping Request</h1></center>
+
     <div class="pull-left">
     @role('Teacher')
     <form action="{{ route('letters.index') }}" method="GET" role="search">
@@ -628,7 +628,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
     @endrole
 
     @role('Headmaster')
-    <form action="{{ route('letters.index') }}" method="GET" role="search">
+   
 
 
     @if ($message = Session::get('success'))
@@ -637,8 +637,17 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
         </div>
     @endif
 
-    <table class="table table-striped w-auto">
-        <tr>
+    <h1 class="h3 mb-2 text-gray-800"></h1>
+   
+   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Search other request</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="table-responsive">
+                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                   <thead>
+                                       <tr>
             <th>No</th>
             <th>Name</th>
             <th>current school</th>
@@ -654,6 +663,26 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             
             <th width="280px">Action</th>
         </tr>
+        </thead>
+                                    <tfoot>
+                                    <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>current school</th>
+            <th>Transfer school</th>
+            <th>current disctrict</th>
+            <th>transfer district</th>
+            <th>description</th>
+            <th>Message from Teacher</th>
+            <th>Teacher Name</th>
+            <th>Teacher_Action</th>
+            <th>HeadMaster_Action</th>
+           
+            
+            <th width="280px">Action</th>
+        </tr>
+                            </tfoot>
+                            <tbody>
       
     @foreach ($letters as $letter)
             <tr style="background-color:white;">
@@ -728,16 +757,15 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
                         </button>
                         @endrole
-                      
-                    </form>
+                        </form>
                 </td>
             </tr>
+         
         @endforeach
-    </table>
-  
-          
-          </div>
-        </div>
+    </tbody>
+   </table>
+ </div>
+</div>
        
       </div>
     </div>
@@ -894,10 +922,10 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
 
         <!-- Back to Top -->
    </div>
+   
 
-    <!-- JavaScript Libraries -->
-     <!-- Bootstrap core JavaScript-->
-     <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -912,6 +940,13 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    
+      <!-- Page level plugins -->
+      <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

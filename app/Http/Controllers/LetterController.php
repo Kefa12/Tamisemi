@@ -82,6 +82,58 @@ class LetterController extends Controller
         return view('Letters.index3', compact('letters'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    public function index12(Request $request)
+    {
+        //
+        $districts = District::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+     
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+   
+       
+        $schools = School::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+
+            
+            $wards = Ward::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+   
+        return view('Masters.index', compact('schools','letters','districts','wards'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
     public function index3(Request $request, Letter $letter)
     {
         //

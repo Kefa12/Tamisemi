@@ -264,31 +264,7 @@
 
             <!-- Sale & Revenue Start -->
          
-            <div class="pull-left">
-                <h2>Manage Request </h2>
-            </div>
-            <table class="table table-bordered table-responsive-lg">
-                                <form action="{{ url('form1') }}" method="GET" role="search">
-                                                    <div class="input-group">
-                                                        <table  class="table table-bordered table-responsive-lg">
-                                                    <tr>
-                                                       
-                                                    <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                            <td>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search  ward " id="term">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                        <td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
-                                                                <span class="fas fa-search"></span>
-                                                                </button></td>
-                                                                <td></td>	
-                                                    
-                                                            
-                                                    </tr>
-                                                    </table>
-                                                    
-                                    
-                                </form>
-           
+            
    
 
                    
@@ -299,7 +275,20 @@
         </div>
     @endif
 
-    <table class="table table-striped">
+    <div class="container-fluid">
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"></h1>
+   
+    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Search other request</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                       
         <tr>
             <th>No</th>
             <th>Name</th>
@@ -315,6 +304,25 @@
             
             <th width="280px">Action</th>
         </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>current school</th>
+            <th>current disctrict</th>
+            <th>transfer district</th>
+            <th>description</th>
+            <th>HeadMaster_Action</th>
+            <th>WEO_Action</th>
+            <th>DEO_Action</th>
+            <th>DED_Action</th>
+            <th>RD_Action</th>
+            
+            <th width="280px">Action</th>
+        </tr>
+        </tfoot>
+        <tbody>
       
         @foreach ($letters as $letter)
         @foreach ($regionals as $regional)
@@ -423,15 +431,18 @@
                         <button type="submit" title="delete" style="border: none; background-color:transparent;">
                             <i class="fas fa-trash fa-lg text-danger"></i>
 
-                        </button>
+                            </button>
                         @endrole
-                      
                     </form>
                 </td>
             </tr>
+		
+            @endforeach
         @endforeach
-        @endforeach
-    </table>
+    </tbody>
+   </table>
+ </div>
+</div>
      
                
             <!-- Recent Sales End -->
@@ -514,6 +525,29 @@
                                         <span>Short task goes here...</span>
                                         <button class="btn btn-sm"><i class="fa fa-times"></i></button>
                                     </div>
+                                <h6 class="mb-0">Calender</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div id="calender"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">To Do List</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <input class="form-control bg-transparent" type="text" placeholder="Enter task">
+                                <button type="button" class="btn btn-primary ms-2">Add</button>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center border-bottom py-2">
@@ -562,15 +596,15 @@
             <!-- Footer Start -->
          
             <!-- Footer End -->
-        </div>
+            </div>
         <!-- Content End -->
 
 
         <!-- Back to Top -->
-  
-    <!-- JavaScript Libraries -->
-     <!-- Bootstrap core JavaScript-->
-     <script src="vendor/jquery/jquery.min.js"></script>
+  </div>
+
+ 
+  <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -585,6 +619,15 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+  
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

@@ -297,7 +297,7 @@
         </div>
     @endif
     <h1 class="h3 mb-2 text-gray-800"></h1>
-  <center><h1>Onprogress Request </h1></center>
+ 
    <div class="card shadow mb-4">
                        <div class="card-header py-3">
                            <h6 class="m-0 font-weight-bold text-primary">Search  request</h6>
