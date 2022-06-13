@@ -374,6 +374,18 @@ class DashboardController extends Controller
             ])
                 ->orderBy("id","desc")
                 ->paginate(10);
+            
+                $chances = Chance::where([
+                    ['name','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(20); 
+                
        
            
             $wards = Ward::where([
@@ -386,8 +398,13 @@ class DashboardController extends Controller
             ])
                 ->orderBy("id","desc")
                 ->paginate(10);
+
+                $data=0;
+                $k=0;
+                $c=0;
+                $chance=0;
        
-            return view('Wards.index', compact('wards','letters'))
+            return view('WEOdash', compact('wards','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('DEO')){
             $letters = Letter::where([
@@ -412,6 +429,11 @@ class DashboardController extends Controller
             ])
                 ->orderBy("id","desc")
                 ->paginate(10);
+
+                $data=0;
+                $k=0;
+                $c=0;
+                $chance=0;
        
             return view('Dist.index', compact('districts','letters'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
