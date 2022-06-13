@@ -92,6 +92,16 @@ class DashboardController extends Controller
             return view('DEOdash', compact('districts','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Regional_Director')){
+            $chances = Chance::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
             $letters = Letter::where([
                 ['name','!=', NULL],
                [function($query) use ($request) {
@@ -114,8 +124,13 @@ class DashboardController extends Controller
             ])
                 ->orderBy("id","desc")
                 ->paginate(10);
+
+                $data=0;
+                $k=0;
+                $c=0;
+                $chance=0;
        
-            return view('reg.index', compact('regionals','letters'))
+            return view('administrator', compact('regionals','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Tamisemi_Director')){
             if($request->term){
