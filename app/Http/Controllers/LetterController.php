@@ -383,7 +383,7 @@ class LetterController extends Controller
         if($request->Teacher_approved=="support BY TEACHER" && $request->statusi=='m'){
           
            $letter->update($request->all());
-           $exist = DB::table('Users')->where('name',$request->author)->value('Employee_id');
+           $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
            if($exist1==NULL){
            Letter::create([
@@ -689,9 +689,9 @@ class LetterController extends Controller
                      ->orderBy("id","desc")
                      ->paginate(30);
                      $i=0;
-                     $data = DB::table("Users")->count('id');
-                     $data1 = DB::table("School_dp")->count('id');
-                     $data2 = DB::table("Letters")->count('id');
+                     $data = DB::table("users")->count('id');
+                     $data1 = DB::table("school_dp")->count('id');
+                     $data2 = DB::table("letters")->count('id');
                      $data3 = Letter::where('Tamisemi','=','pending')->count();
                     
        
@@ -757,9 +757,9 @@ class LetterController extends Controller
                      ->orderBy("id","desc")
                      ->paginate(30);
                      $i=0;
-                     $data = DB::table("Users")->count('id');
-                     $data1 = DB::table("School_dp")->count('id');
-                     $data2 = DB::table("Letters")->count('id');
+                     $data = DB::table("users")->count('id');
+                     $data1 = DB::table("school_dp")->count('id');
+                     $data2 = DB::table("letters")->count('id');
                      $data3 = Letter::where('Tamisemi','=','pending')->count();
                     
        
@@ -835,9 +835,9 @@ public function index11(Request $request)
                          ->orderBy("id","desc")
                          ->paginate(30);
                      $i=0;
-                     $data = DB::table("Users")->count('id');
-                     $data1 = DB::table("School_dp")->count('id');
-                     $data2 = DB::table("Letters")->count('id');
+                     $data = DB::table("users")->count('id');
+                     $data1 = DB::table("school_dp")->count('id');
+                     $data2 = DB::table("letters")->count('id');
                      $data3 = Letter::where('Tamisemi','=','pending')->count();
                     
        
