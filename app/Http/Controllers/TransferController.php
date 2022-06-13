@@ -148,9 +148,9 @@ class TransferController extends Controller
                  ->paginate(30);
                  if($request->status="status"){
                     $i=0;
-                    $data = DB::table("Users")->count('id');
-                    $data1 = DB::table("School_dp")->count('id');
-                    $data2 = DB::table("Letters")->count('id');
+                    $data = DB::table("users")->count('id');
+                    $data1 = DB::table("school_dp")->count('id');
+                    $data2 = DB::table("letters")->count('id');
                     $data3 = Letter::where('Tamisemi','=','pending')->count();
                    
       

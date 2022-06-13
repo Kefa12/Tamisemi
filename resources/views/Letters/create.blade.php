@@ -173,6 +173,9 @@
             <div id="content">
 
                 <!-- Topbar -->
+              <div id="content">
+
+                <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
@@ -818,11 +821,13 @@
         <!-- Back to Top -->
   </div>
 
+    
 
- 
-    <!-- JavaScript Libraries -->
-     <!-- Bootstrap core JavaScript-->
-     <script src="vendor/jquery/jquery.min.js"></script>
+
+    
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
