@@ -284,15 +284,16 @@
                             </div>
                         </li>
 
-                    </ul>
+        
+                        </ul>
 
-                </nav>
-        <!-- Sidebar End -->
+</nav>
+<!-- Spinner End -->
 
 
-        <!-- Content Start -->
-        <div class="row">
-        <div class="col-lg-8">
+<!-- Sidebar Start -->
+<div class="container-fluid">
+<div class="row g-4">
             </nav>
         <!-- Sidebar End -->
 
@@ -593,26 +594,6 @@
     @endrole
 
 
-	<!-- JAVASCRIPTS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
-
-			<script type="text/javascript" src="js/_crime.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
     // Get City List 
