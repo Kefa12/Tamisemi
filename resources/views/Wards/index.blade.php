@@ -120,7 +120,7 @@
                 @endrole
                 @role('Weo')
                 <a class="nav-link" href="{{ route('wards.index') }}">
-                <i class='fas fa-exchange-alt'></i>
+                <i class='fa fa-table me-2'></i>
                     <span>request</span></a>
                <!-- <a class="nav-link" href="{{ URL('chances1') }}">
                 <i class="fa fa-table me-2"></i>

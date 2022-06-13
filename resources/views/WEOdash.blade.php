@@ -114,17 +114,17 @@
                 <a class="nav-link" href="{{ URL('letters3') }}">
                 <i class='fas fa-exchange-alt'></i>
                     <span>Swapping</span></a>
-               <!-- <a class="nav-link" href="{{ URL('letters1') }}">
+                <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
-                    <span>Chance</span></a> -->
+                    <span>Chance</span></a> 
                 @endrole
                 @role('Weo')
                 <a class="nav-link" href="{{ route('wards.index') }}">
-                <i class='fas fa-exchange-alt'></i>
+                <i class='fa fa-table me-2'></i>
                     <span>request</span></a>
-               <a class="nav-link" href="{{ URL('chancess1') }}">
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
                 <i class="fa fa-table me-2"></i>
-                    <span>Chance</span></a>
+                    <span>Chance</span></a> -->
                 @endrole
             </li>
 
