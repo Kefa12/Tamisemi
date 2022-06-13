@@ -21,6 +21,16 @@ class DashboardController extends Controller
     {
        
         if(Auth::user()->hasRole('DED')){
+            $chances = Chance::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
             $letters = Letter::where([
                 ['name','!=', NULL],
                [function($query) use ($request) {
@@ -44,7 +54,12 @@ class DashboardController extends Controller
                 ->orderBy("id","desc")
                 ->paginate(10);
        
-            return view('Dist.index', compact('districts','letters'))
+                $data=0;
+                $k=0;
+                $c=0;
+                $chance=0;
+       
+            return view('Dmdash', compact('districts','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('District_Medical_Officer')){
             $letters = Letter::where([
@@ -69,8 +84,12 @@ class DashboardController extends Controller
             ])
                 ->orderBy("id","desc")
                 ->paginate(10);
+         $data=0;
+                $k=0;
+                $c=0;
+                $chance=0;
        
-            return view('Dist.index', compact('districts','letters'))
+            return view('DEOdash', compact('districts','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Regional_Director')){
             $letters = Letter::where([
@@ -430,12 +449,23 @@ class DashboardController extends Controller
                 ->orderBy("id","desc")
                 ->paginate(10);
 
+                $chances = Chance::where([
+                    ['name','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(20); 
+
                 $data=0;
                 $k=0;
                 $c=0;
                 $chance=0;
        
-            return view('Dist.index', compact('districts','letters'))
+            return view('DEOdash', compact('districts','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('District_Medical_Officer')){
             $letters = Letter::where([

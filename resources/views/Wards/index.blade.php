@@ -284,54 +284,28 @@
 
             <!-- Sale & Revenue Start -->
      
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Onprogress Request </h2>
-            </div>
-            <table class="table table-bordered table-responsive-lg">
-                                <form action="{{ url('form1') }}" method="GET" role="search">
-                                                    <div class="input-group">
-                                                        <table  class="table table-bordered table-responsive-lg">
-                                                    <tr>
-                                                        <input type="hidden" name="status" value="2"></input>
-                                                       
-                                                    <td>  <input type="text" class="form-control mr-2" name="term1" placeholder="Search name " id="term">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                            <td>  <input type="text" class="form-control mr-2" name="term2" placeholder="Search  ward " id="term">
-                                                            <a href="{{ route('transfers.index') }}" class=" mt-1"></td>
-                                                        <td colspan=2>	<button class="btn btn-info" type="submit" title="Search users"><br>
-                                                                <span class="fas fa-search"></span>
-                                                                </button></td>
-                                                                <td></td>	
-                                                    
-                                                            
-                                                    </tr>
-                                                    </table>
-                                                    
-                                    
-                                </form>
-            <div class="pull-right">
-               
-                    </a>
+   
+           
+          
                     
-            </div>
-        </div>
-    </div>
-    <div class="pull-left">
-    <form action="{{ route('wards.index') }}" method="GET" role="search">
-
-                   
-</div>
-
+    
+ 
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
-
-    <table class="table table-striped">
+    <h1 class="h3 mb-2 text-gray-800"></h1>
+  <center><h1>Onprogress Request </h1></center>
+   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Search  request</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="table-responsive">
+                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                   <thead>
         <tr>
             <th>No</th>
             <th>Name</th>
@@ -344,6 +318,23 @@
             
             <th width="280px">Action</th>
         </tr>
+        <thead>
+        <tfoot>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>current school</th>
+            <th>current disctrict</th>
+            <th>transfer district</th>
+            <th>description</th>
+            <th>HeadMaster_Action</th>
+            <th>WEO_Action</th>
+            
+            <th width="280px">Action</th>
+        </tr>
+       </tfoot>
+       <tbody>
+
       
         @foreach ($letters as $letter)
         @foreach ($wards as $ward)
@@ -412,13 +403,17 @@
                         </button>
                         @endrole
                       
-                    </form>
-                </td>
-
-            </tr>
-        @endforeach
-        @endforeach
-    </table>
+                      
+                   </form>
+               </td>
+           </tr>
+          
+           @endforeach 
+       @endforeach
+   </tbody>
+  </table>
+</div>
+</div>
 
 
   
@@ -549,13 +544,13 @@
 
 
             <!-- Footer Start -->
-         
-            <!-- Footer End -->
+            </div>
         </div>
-        <!-- Content End -->
+    </div>
+
+    
 
 
-  
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -572,6 +567,14 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    
+      <!-- Page level plugins -->
+      <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
 
 </body>
 
