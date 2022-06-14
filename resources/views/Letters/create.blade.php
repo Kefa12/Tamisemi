@@ -335,8 +335,7 @@
                 .form1{
                     margin-left:20px;
                    margin-top:0px;
-                   border: 1px solid #0096FF;
-                   border-radius: 5px;
+                  
                    width:300px;
                 }
                 h5{
@@ -442,6 +441,10 @@
     <input type="hidden" value="pending" name="DED" class="form-control" placeholder="request">
 </div>
 </div>
+<div class="card shadow mb-4">
+                                
+                                <div class="card-body">
+                                    <div class="text-center">
 
                 <center><h4>TRANSFER REQUEST</h4>
                 <img src="assets/img/letter.png" alt="no image" width=56 height=56></center>
@@ -492,6 +495,8 @@
 
     </form>
 </div>
+</div>
+                            </div>
             </center>
     @endrole
     @role('Headmaster')
@@ -568,6 +573,10 @@
     <input type="hidden" value="pending" name="DED" class="form-control" placeholder="request">
 </div>
 </div>
+<div class="card shadow mb-4">
+                                
+                                <div class="card-body">
+                                    <div class="text-center">
 
                 <center><h4>Request Add Teacher</h4>
                 <img src="assets/img/letter.png" alt="no image" width=56 height=56></center>
@@ -593,6 +602,8 @@
     </form>
 </div>
             </center>
+            </div>
+        </div>    
     @endrole
 
 

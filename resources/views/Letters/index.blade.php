@@ -336,8 +336,8 @@
       
         <div class="card mb-4">
                                 
-                                <div class="card-body">      
-            <center><h1>Request Onprogress</h1></center>
+                              
+        
       
 
 
@@ -366,8 +366,9 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
             <p>{{ $message }}</p>
         </div>
     @endif
+
     <section class="vh-100" style="background-color: ;">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+    
          @foreach ($letters as $letter)
  @if(($letter->Tamisemi !="Approved BY Tamisemi_Director"))
   @if($letter->author=="unknown" && $letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id)
@@ -376,9 +377,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
         <div class="card mb-3" style="border-radius: .5rem;  border: 1px solid #0096FF;">
           <div class="row g-0">
               
-            
-<div class="col-md-12">
-              <div class="card-body p-4">
+  <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Request Onprogress</h6>
+                                </div>
+                                <div class="card-body">
               <h6>Transfer Request Details</h6>
                 <hr class="mt-0 mb-10">
                 <h6><b>Current_status</b></h6>
@@ -572,6 +575,9 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
           
          
     </table>
+    </div>
+                                </div>
+                            </div>
     <br/>
     @role('Tamisemi_Director')
     <center><h4>RESPOND  TIME</h4></center>
@@ -656,8 +662,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
            
             @if(($letter->name==Auth::user()->name || !(Auth::user()->hasRole(['Teacher'])))) 
          
-            <div class="col-md-12">
-              <div class="card-body p-4">
+            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Request Onprogress</h6>
+                                </div>
+                                <div class="card-body">
               <h6>Transfer Request Details</h6>
                 <hr class="mt-0 mb-10">
                 <h6><b>Current_status</b></h6>
@@ -892,8 +901,8 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
     <br/>
    
 
-    </table>
     </form>
+</div>
           
                   </div>
                 </div>

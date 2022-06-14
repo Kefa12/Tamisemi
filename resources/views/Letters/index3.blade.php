@@ -322,8 +322,7 @@
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-               
+          
               
                     @role('Teacher')
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
@@ -406,7 +405,9 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
       <div class="col col-lg-6 mb-4 mb-lg-0" style="width:800;">
         <div class="card mb-3" style="border-radius: .5rem;">
           <div class="row g-0">
-  
+          <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Swap Request</h6>
+                                </div>
          
         <div class="col-md-12">
               <div class="card-body p-4">
