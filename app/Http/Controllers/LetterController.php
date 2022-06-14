@@ -844,5 +844,94 @@ public function index11(Request $request)
           return view('dashboardT4', compact('letters','transfers','data','data1','data2','data3','chances'))
               ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    public function index14(Request $request)
+    {
+        //
+        if($request->term){
+            $letters = Letter::where([
+                ['regional','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('regional','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+            }elseif($request->term1){
+                $letters = Letter::where([
+                    ['regional','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term1)){
+                        $query->orWhere('regional','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(10);
+                }elseif($request->term2){
+                    $letters = Letter::where([
+                    ['tdistrict','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term2)){
+                        $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(30);
+                }else{
+                    $letters = Letter::where([
+                    ['tdistrict','!=', NULL],
+                    [function($query) use ($request) {
+                        if(($term=$request->term2)){
+                         $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                        }
+                    }]
+                 ])
+                     ->orderBy("id","desc")
+                     ->paginate(30);
+                }
+                $chances = Chance::where([
+                    ['name','!=', NULL],
+                    [function($query) use ($request) {
+                        if(($term=$request->term2)){
+                         $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                        }
+                    }]
+                 ])
+                     ->orderBy("id","desc")
+                     ->paginate(30);
+                     $transfers = Transfer::where([
+                        ['tdistrict','!=', NULL],
+                        [function($query) use ($request) {
+                            if(($term=$request->term2)){
+                             $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                            }
+                        }]
+                     ])
+                         ->orderBy("id","desc")
+                         ->paginate(30);
+
+                         $wards = Ward::where([
+                            ['name','!=', NULL],
+                           [function($query) use ($request) {
+                               if(($term=$request->term)){
+                                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                               }
+                           }]
+                        ])
+                            ->orderBy("id","desc")
+                            ->paginate(10);
+                     $i=0;
+                     $data = DB::table("users")->count('id');
+                     $data1 = DB::table("school_dp")->count('id');
+                     $data2 = DB::table("letters")->count('id');
+                     $data3 = Letter::where('Tamisemi','=','pending')->count();
+                    
+       
+          return view('Chances.index', compact('letters','transfers','wards','data','data1','data2','data3','chances'))
+              ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
    
 }

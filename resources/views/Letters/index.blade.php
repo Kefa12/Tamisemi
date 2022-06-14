@@ -125,6 +125,9 @@
                <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a>
+                <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
                 @endrole
             </li>
 
@@ -935,11 +938,13 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
  @foreach ($chances as $chance)
           
            
-          @if(($chance->school==Auth::user()->schools))) 
-       
-          <div class="col-md-12">
-            <div class="card-body p-4">
-            <h6>chance request Details</h6>
+          @if(($chance->school==Auth::user()->schools)) 
+          <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">chance request Details</h6>
+                                </div>
+                                <div class="card-body">
+            <h6></h6>
               <hr class="mt-0 mb-10">
               <div class="row pt-1">
                 <div class="col-6 mb-3">
