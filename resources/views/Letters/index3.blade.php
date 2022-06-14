@@ -58,6 +58,7 @@
     <meta name="author" content="">
 
     <title>public_workers</title>
+    <body id="page-top" style="width:100%; position:relative; top:-19px; left:-19px;">
     <img src="img/flag3.png"  width="100%" height="118px">
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -70,7 +71,7 @@
 
 </head>
 
-<body id="page-top">
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">

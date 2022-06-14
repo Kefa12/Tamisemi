@@ -45,6 +45,7 @@
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
+
 </style>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +59,7 @@
     <meta name="author" content="">
 
     <title>public_workers</title>
+    <body  style=" position:relative; top:-19px; left:-19px;">
     <img src="img/flag3.png"  width="100%" height="118px">
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -68,12 +70,11 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-</head>
 
-<body id="page-top">
+
 
     <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" style="width:100%;">
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
