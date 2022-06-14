@@ -58,7 +58,6 @@
     <meta name="author" content="">
 
     <title>public_workers</title>
-    <body id="page-top" style="width:100%; position:relative; top:-19px; left:-19px;">
     <img src="img/flag3.png"  width="100%" height="118px">
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -71,14 +70,48 @@
 
 </head>
 
+<body id="page-top" style="width=100%; position:relative; top:-19px; left:-10; margin-right:-20px;">
+     <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            
+                            <!-- Dropdown - Messages -->
+                           
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              
+                                <!-- Counter - Alerts -->
+                               
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                              
+                                
+                                   
+                                  
+                                </a>
+                               
+                                   
+                                    <div>
+                                       
+                                </a>
+                              
+                           
+                            </div>
+                        </li>
 
 
     <!-- Page Wrapper -->
-    <div id="wrapper" >
-
+    <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"  style="position:relative; top:-16px;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -173,7 +206,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" style="width=100%;">
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -187,7 +220,7 @@
                   
 
                     <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto" >
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
@@ -287,13 +320,129 @@
                     </ul>
 
                 </nav>
-        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="row">
+        <div class="col-lg-8">
+            </nav>
         <!-- Sidebar End -->
 
 
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+               
+              
+                </a>
+               
+                <!--MESSAGE-->
+                <div class="navbar-nav align-items-center ms-auto">
+                    
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                   
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                           
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                       
+                        
+                        
+                    </div>
+                    
+                    </div>
+                </div>
+            </nav>
+
+            <style>
+                .form1{
+                    margin-left:20px;
+                   margin-top:0px;
+                   border: 1px solid #0096FF;
+                   border-radius: 5px;
+                   width:300px;
+                }
+                h5{
+                    padding-left:20px;
+                }
+                select{
+                    padding-left:20px;
+                }
+            </style>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+     
+               
+                <!--MESSAGE-->
+  
+
+            <style>
+              
+                td{
+                    background-color: white;
+                    height:45px;
+                    width:145px;
+                }
+               
+               
+                h1{
+                    padding-left:50px;
+                }
+            </style>
+            <!-- Navbar End -->
+
+
+            <!-- Sale & Revenue Start -->
+           
+            
+
+     
+
+
+@if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+    <div class="container" style="width=100%;">
+       
+            <!-- Navbar Start -->
+            
+               
+                <!--MESSAGE-->
+                <div class="navbar-nav align-items-center ms-auto">
+                     
+					</div>
+                    </div>
+                </div>
+            </nav>
+
+         
+            <!-- Navbar End -->
+
+
+            <!-- Sale & Revenue Start -->
+           
+            
+
+        
+                                
+                              
+        
+      
+
+
+        <div class="container-fluid">
+                <div class="row g-4">>
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                
                

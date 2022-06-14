@@ -70,7 +70,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" style="width=100%; position:relative; top:-19px; left:-10; margin-right:-20px;">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
