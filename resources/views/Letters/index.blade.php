@@ -393,15 +393,7 @@
  @if(($letter->Tamisemi !="Approved BY Tamisemi_Director"))
   @if($letter->author=="unknown" && $letter->name==Auth::user()->name && $letter->Employee_id==Auth::user()->Employee_id)
   
-   <   <div class="col col-lg-6 mb-4 mb-lg-0" style="width:800;">
-        <div class="card mb-3" style="border-radius: .5rem;  border: 1px solid #0096FF;">
-          <div class="row g-0">
-              
-  <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Request Onprogress</h6>
-                                </div>
-                                <div class="card-body">
+
               <h6>Transfer Request Details</h6>
                 <hr class="mt-0 mb-10">
                 <h6><b>Current_status</b></h6>

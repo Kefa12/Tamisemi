@@ -842,4 +842,87 @@
 
 </body>
 
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+<script>
+
+	
+    // Get City List 
+    $(document).ready(function(){
+        $('#state').change(function(){
+           var state = $('#state').val();
+           $('#city').html('');
+           $('#stadium').html('');
+           $('#details').html('')
+            $.ajax({
+              url:'getCity/{id}',
+              type:'GET',
+              data:{myID:state},
+              dataType: "json",
+              success:function(data)
+              {
+               
+                $.each(data, function(key, city)
+                 {     
+                  // alert(city.city_name)
+                  $('#city').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                });
+              }
+          });
+        });
+      });
+    
+      // Get STADIUM and ADDRESS by CITY
+    
+      $(document).ready(function(){
+        $('#city').change(function(){
+           var city = $('#city').val();
+           $('#stadium').html('');
+           $('#details').html('');
+           $.ajax({
+              url:'getStadiumDetail/{id}',
+              type:'GET',
+              data:{id:city},
+              dataType: "json",
+              success:function(data)
+              {
+                $.each(data, function(key, city)
+                 {     
+                  $('#stadium').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                 
+                });
+              }
+          });
+        });
+      });
+      $(document).ready(function(){
+        $('#stadium').change(function(){
+           var city = $('#stadium').val();
+           $('#details').html('');
+           $.ajax({
+              url:'getStadiumDetail1/{id}',
+              type:'GET',
+              data:{id:city},
+              dataType: "json",
+              success:function(data)
+              {
+                $.each(data, function(key, city)
+                 {     
+                  $('#details').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                 
+                });
+              }
+          });
+        });
+      });
+    </script>
