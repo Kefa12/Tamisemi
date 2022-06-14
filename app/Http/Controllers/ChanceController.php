@@ -74,8 +74,8 @@ class ChanceController extends Controller
         ]);
         Chance::Create($request->all());
 
-        return redirect('dashboard')
-            ->with('success', 'request letter created successfully.');
+        return redirect('letters')
+            ->with('success', 'chance request letter created successfully.');
     }
 
     /**
