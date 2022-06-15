@@ -381,7 +381,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                  
-                    <input type="Hidden" class="form-control" style="height:50px" name="ward1"   value="{{$letter->ward}}"
+                    <input type="Hidden" class="form-control" style="height:50px" name="ward"   value="{{$letter->ward}}"
                         placeholder="ruanda"></textarea>
                 </div>
             </div>
@@ -928,7 +928,7 @@
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="2"
                        ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">DEO support jvhkjvfkj
+                <div class="form-group">DEO support 
                 <select name="DEO" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="support BY District_Education_Officer">support</option>
                         <option value="Not_support BY District_Education_Officer">Not_support</option>

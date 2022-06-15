@@ -138,7 +138,7 @@ class ChanceController extends Controller
           
         ]); 
         $chance->update($request->all());
-        return redirect()->route('dashboard')
+        return redirect('letters11')
         ->with('success', 'user updated successfully');
       
     }

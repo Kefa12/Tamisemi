@@ -396,7 +396,7 @@ class LetterController extends Controller
             'tdistrict' => $request->cdistrict,
             'tregional' => $request->regional,
             'regional' => $request->tregional,
-            'tward' => $request->ward1,
+            'tward' => $request->ward,
             'description' => $request->description,
             'Message' => $request->Message,
             'author' => $request->name,
@@ -422,7 +422,7 @@ class LetterController extends Controller
         
             $request2=  $request->cdistrict;
            
-            $request3= $request->cward;
+            $request3= $request->ward;
           
            
             $request4=$request->tschool;
@@ -461,7 +461,7 @@ class LetterController extends Controller
                 ->update(['district' =>  $request->cdistrict]);
                 DB::table('users')
                 ->where('name', $request->author)
-                ->update(['ward' =>  $request->ward1]);
+                ->update(['ward' =>  $request->ward]);
                 DB::table('letters')
                 ->where('name', $request->author)
                 ->update(['Tamisemi' =>  $request->Tamisemi]);
@@ -547,7 +547,7 @@ class LetterController extends Controller
             return redirect()->route('regionals.index')
             ->with('success', 'user updated successfully');
          }elseif($request->status=="5") {
-            return redirect('letters3');
+            return redirect('letters10');
          }else{
             return redirect('letters3');
                 
@@ -622,10 +622,13 @@ class LetterController extends Controller
      * @param  \App\Models\Letter  $letter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Letter $letter)
+    public function destroy(Letter $letter,Request $request)
     {
         //
-        $transfer->delete();
+        $letter=Letter::find($request->id);
+        $letter->forcedelete();
+        $letter=Letter::where('id',$request->id)->forcedelete();
+        Letter::destroy($request->id);
 
         return redirect()->route('letters.index')
             ->with('success', 'request deleted successfully');
