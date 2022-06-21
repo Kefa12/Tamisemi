@@ -97,6 +97,9 @@
                     <a class="nav-link" href="{{ URL('regionals') }}">
                      <i class="fa fa-table me-2"></i>
                     <span>Request</span></a>
+                    <a class="nav-link" href="{{ URL('letters25') }}">
+                     <i class="fa fa-table me-2"></i>
+                    <span>Teacher</span></a>
                     @endrole
                   
                

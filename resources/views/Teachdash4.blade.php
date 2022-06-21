@@ -137,6 +137,9 @@
                     <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
+                <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
                <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Request</span></a>
@@ -442,7 +445,7 @@
 
 
         <div class="container-fluid">
-                <div class="row g-4">>
+                <div class="row g-4">
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
                
                
@@ -501,7 +504,7 @@
 			<th>district</th>
 			<th>ward</th>
             <th>school</th>		
-            <th>description</th>          
+                  
         </tr>
         </thead>
         <tfoot>
@@ -511,7 +514,7 @@
 			<th>district</th>
 			<th>ward</th>
             <th>school</th>		
-            <th>description</th> 
+         
 </tr>
 </tfoot>
 <tbody>
@@ -526,7 +529,7 @@
 				<td>{{$chance->district }}</td>
 				<td>{{$chance->ward }}</td>
                 <td>{{$chance->school }}</td>	
-                <td>{{$chance->description }}</td>
+              
                 
                 <td>
                     <form action="{{ route('chances.destroy',$chance->id) }}" method="POST">

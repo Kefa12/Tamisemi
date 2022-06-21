@@ -137,6 +137,9 @@
                     <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
+                <a class="nav-link" href="{{ URL('letters21') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
                <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Request</span></a>
@@ -449,6 +452,7 @@
                         <h6>School</h6>
                          <p class="text-muted">{{$letter->tschool}}</p>
                      </div>
+                  
               
                  </div>
                  <h6><b>Support status</b></h6>
@@ -729,6 +733,10 @@
                         <h6>School</h6>
                          <p class="text-muted">{{$letter->tschool}}</p>
                      </div>
+                     <div class="col-6 mb-3">
+                        <h6>swapping with</h6>
+                         <p class="text-muted">{{$letter->author}}</p>
+                     </div>
               
                  </div>
                  <h6><b>Support status</b></h6>
@@ -874,7 +882,14 @@
            
               
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
-              
+              @csrf
+               
+                   <button type="submit" title="Delete"  style="border: none; background-color:transparent;">
+                      <i class="fas fa-trash fa-lg text-danger"></i>
+
+                    </button>
+                    
+              </form>
               
                   @role('Tamisemi_Director')
                   <a href="{{ route('letters.edit', $letter->id) }}">
@@ -886,7 +901,7 @@
      
                 
                   @csrf
-                  @method('DELETE')
+                
                   @role('Tamisemi_Director')
                   <button type="submit" title="delete" style="border: none; background-color:transparent;">
                       <i class="fas fa-trash fa-lg text-danger"></i>

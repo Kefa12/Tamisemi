@@ -137,6 +137,9 @@
                     <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
+                <a class="nav-link" href="{{ URL('letters21') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
                <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Request</span></a>

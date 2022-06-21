@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Letter;
+use App\Models\letter_back;
 use App\Models\Chance;
 use Illuminate\Http\Request;
 use App\Models\Transfer;
@@ -132,6 +133,393 @@ class LetterController extends Controller
                 ->paginate(10);
    
         return view('Masters.index', compact('schools','letters','districts','wards'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function index13(Request $request)
+    {
+        //
+        $chances =Chance::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+        $districts = District::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+     
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+        
+        $letter_back = letter_back::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+   
+       
+        $schools = School::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+
+
+
+            
+            $wards = Ward::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+   
+        return view('Teachdash5', compact('schools','letters','districts','wards','chances','letter_back'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function index22(Request $request)
+    {
+        //
+        $chances =Chance::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+        $districts = District::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+     
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+        
+        $letter_back = letter_back::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+   
+       
+        $schools = School::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+
+
+
+            
+            $wards = Ward::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+          $users = User::join('role_user','users.id','=','role_user.user_id')
+                        ->Where('role_user.role_id','=','2')
+                          ->get(['users.*','role_user.*']);   
+   
+        return view('Headmaster_dash0', compact('schools','letters','districts','wards','chances','letter_back','users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function index23(Request $request)
+    {
+        //
+        $chances =Chance::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+        $districts = District::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+     
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+        
+        $letter_back = letter_back::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+   
+       
+        $schools = School::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+
+
+
+            
+            $wards = Ward::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+          $users = User::join('role_user','users.id','=','role_user.user_id')
+                        ->Where('role_user.role_id','=','2')
+                          ->get(['users.*','role_user.*']);   
+   
+        return view('WEOdash2', compact('schools','letters','districts','wards','chances','letter_back','users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function index24(Request $request)
+    {
+        //
+        $chances =Chance::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+        $districts = District::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+     
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+        
+        $letter_back = letter_back::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+   
+       
+        $schools = School::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+
+
+
+            
+            $wards = Ward::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+          $users = User::join('role_user','users.id','=','role_user.user_id')
+                        ->Where('role_user.role_id','=','2')
+                          ->get(['users.*','role_user.*']);   
+   
+        return view('DEOdash2', compact('schools','letters','districts','wards','chances','letter_back','users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function index25(Request $request)
+    {
+        //
+        $chances =Chance::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+        $districts = District::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
+     
+        $letters = Letter::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+        
+        $letter_back = letter_back::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+   
+       
+        $schools = School::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(20);
+
+
+
+            
+            $wards = Ward::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+          $users = User::join('role_user','users.id','=','role_user.user_id')
+                        ->Where('role_user.role_id','=','2')
+                          ->get(['users.*','role_user.*']);   
+   
+        return view('administrator1', compact('schools','letters','districts','wards','chances','letter_back','users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function index3(Request $request, Letter $letter)
@@ -407,17 +795,112 @@ class LetterController extends Controller
             'DEO' => $request->DEO,
            
             'DED' => $request->DED,
-        ]); 
+         ]);
+        
+         return redirect()->route('letters.index')
+         ->with('success', 'request created.');
   
 
     }else{
+        $exist2=$request->cschool1;
+        DB::table('letters')
+        ->where('name',  $request->author)
+        ->update(['tregional' => $request->regional]);
+        DB::table('letters')
+        ->where('name',  $request->author)
+        ->update(['tdistrict' =>  $request->cdistrict]);
+        DB::table('letters')
+        ->where('name',  $request->author)
+        ->update(['Teacher_approved' =>  $request->Teacher_approved]);
+       
+        DB::table('letters')
+        ->where('name',  $request->author)
+        ->update(['tward' =>  $request->ward1]);
+        DB::table('letters')
+        ->where('name',  $request->author)
+        ->update(['author' =>  $request->name]);
+        DB::table('letters')
+        ->where('name',  $request->author)
+        ->update(['tschool' =>  $exist2]);
         return redirect()->route('letters.index')
-        ->with('success', 'duplication of request.');
+        ->with('success', 'request updated');
     }
-        }else
+        }else if($request->Teacher_approved=="Not_support BY TEACHER" && $request->statusi=='m'){
+            $districts = District::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+         
+            $letters = Letter::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+       
+           
+            $schools = School::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+                $wards = Ward::where([
+                    ['name','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(10);
+                
+                    return redirect()->route('letters.index')
+                    ->with('success', 'not support swapping.');
+        }else{
           $letter->update($request->all());
+        }
        
             if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->author=="unknown"){
+                letter_back::create([
+                    'Employee_id' =>   $request->Employee_id,
+                    'name' =>  $request->name,
+                    'tschool' => $request->schools,
+                    'cschool' => $request->cschool1,
+                    'cdistrict' => $request->cdistrict,
+                    'tward' => $request->tward,
+                    'tdistrict' => $request->tdistrict,
+                    'tregional' => $request->tregional,
+                    'regional' => $request->regional,
+                    'ward' => $request->ward,
+                    'description' => $request->description,
+                    'Message' => $request->Message,
+                    'author' => $request->author,
+                    'Tamisemi' => $request->Tamisemi,
+                    'Teacher_approved' => $request->Teacher_approved,
+                    'Headmaster' => $request->tHeadmaster,
+                    'Transfer_Headmaster' => $request->Headmaster,
+                    'WEO' => $request->WEO,
+                    'DEO' => $request->DEO,
+                   
+                    'DED' => $request->DED,
+                ]); 
+          
             $request1= $request->regional;
         
             $request2=  $request->cdistrict;
@@ -442,29 +925,86 @@ class LetterController extends Controller
               DB::table('users')
               ->where('Employee_id', $request->Employee_id)
               ->update(['ward' =>  $request3]);
+              $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
+            
             //$users = User::find($request->Employee_id);
             // $users->schools = $request4;
             // $users->district = $request->tdistrict;
             // $users->regional = $request->tregional;
           
             // $users->update();
+            }else if($request->Tamisemi=="Rejected BY Tamisemi_Director" && $request->author=="unknown"){
+                letter_back::create([
+                    'Employee_id' =>   $request->Employee_id,
+                    'name' =>  $request->name,
+                    'tschool' => $request->schools,
+                    'cschool' => $request->cschool1,
+                    'cdistrict' => $request->cdistrict,
+                    'tward' => $request->tward,
+                    'tdistrict' => $request->tdistrict,
+                    'tregional' => $request->tregional,
+                    'regional' => $request->regional,
+                    'ward' => $request->ward,
+                    'description' => $request->description,
+                    'Message' => $request->Message,
+                    'author' => $request->author,
+                    'Tamisemi' => $request->Tamisemi,
+                    'Teacher_approved' => $request->Teacher_approved,
+                    'Headmaster' => $request->tHeadmaster,
+                    'Transfer_Headmaster' => $request->Headmaster,
+                    'WEO' => $request->WEO,
+                    'DEO' => $request->DEO,
+                   
+                    'DED' => $request->DED,
+                ]); 
+          
+         
+         
+          
+            // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
+         
+              $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
             }else{
+                // letter_back::create([
+                //     'Employee_id' =>   $request->Employee_id,
+                //     'name' =>  $request->name,
+                //     'tschool' => $request->schools,
+                //     'cschool' => $request->cschool1,
+                //     'cdistrict' => $request->cdistrict,
+                //     'tward' => $request->tward,
+                //     'tdistrict' => $request->tdistrict,
+                //     'tregional' => $request->tregional,
+                //     'regional' => $request->regional,
+                //     'ward' => $request->ward,
+                //     'description' => $request->description,
+                //     'Message' => $request->Message,
+                //     'author' => $request->author,
+                //     'Tamisemi' => $request->Tamisemi,
+                //     'Teacher_approved' => $request->Teacher_approved,
+                //     'Headmaster' => $request->tHeadmaster,
+                //     'Transfer_Headmaster' => $request->Headmaster,
+                //     'WEO' => $request->WEO,
+                //     'DEO' => $request->DEO,
+                   
+                //     'DED' => $request->DED,
+                // ]); 
+            
               
-                DB::table('users')
-                ->where('name', $request->author)
-                ->update(['schools' => $request->schools]);
-                DB::table('users')
-                ->where('name', $request->author)
-                ->update(['regional' => $request->regional]);
-                DB::table('users')
-                ->where('name', $request->author)
-                ->update(['district' =>  $request->cdistrict]);
-                DB::table('users')
-                ->where('name', $request->author)
-                ->update(['ward' =>  $request->ward]);
-                DB::table('letters')
-                ->where('name', $request->author)
-                ->update(['Tamisemi' =>  $request->Tamisemi]);
+                // DB::table('users')
+                // ->where('name', $request->author)
+                // ->update(['schools' => $request->schools]);
+                // DB::table('users')
+                // ->where('name', $request->author)
+                // ->update(['regional' => $request->regional]);
+                // DB::table('users')
+                // ->where('name', $request->author)
+                // ->update(['district' =>  $request->cdistrict]);
+                // DB::table('users')
+                // ->where('name', $request->author)
+                // ->update(['ward' =>  $request->ward]);
+                // DB::table('letters')
+                // ->where('name', $request->author)
+                // ->update(['Tamisemi' =>  $request->Tamisemi]);
                 $request1= $request->tregional;
         
                 $request2=  $request->tdistrict;
@@ -473,17 +1013,26 @@ class LetterController extends Controller
               
                
                 $request4=$request->tschool;
+                // $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
+           
              
-             
-              
                 // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
              
                  ;
 
             }
+            $request1= $request->tregional;
+        
+            $request2=  $request->tdistrict;
+           
+            $request3= $request->tward;
+          
+           
+            $request4=$request->tschool;
        
 
-       
+           
+         
        
        
        
@@ -533,7 +1082,7 @@ class LetterController extends Controller
             
                 if($request->status=="0")
                 return redirect()->route('schools.index')
-                ->with('success', 'user updated successfully');
+                ->with('success', 'Request updated successfully');
          elseif ($request->status=="1") {
             return redirect()->route('wards.index')
             ->with('success', 'user updated successfully');
@@ -622,15 +1171,15 @@ class LetterController extends Controller
      * @param  \App\Models\Letter  $letter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Letter $letter,Request $request)
+    public function destroy(Letter $letter)
     {
-        //
-        $letter=Letter::find($request->id);
-        $letter->forcedelete();
-        $letter=Letter::where('id',$request->id)->forcedelete();
-        Letter::destroy($request->id);
+      
+          Letter::find($id)->delete();
+        // $letter->forcedelete();
+        // $letter=Letter::where('id',$request->id)->forcedelete();
+        // Letter::destroy($request->id);
 
-        return redirect()->route('letters.index')
+        return redirect()->route('Letters.index')
             ->with('success', 'request deleted successfully');
     }
     public function index9(Request $request)

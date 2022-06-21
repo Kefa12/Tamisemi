@@ -80,8 +80,12 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-               
-                <div class="sidebar-brand-text mx-3">Headmaster</div>
+                @role('DEO')
+                <div class="sidebar-brand-text mx-3">District_officer</div>
+                @endrole
+                @role('DED')
+                <div class="sidebar-brand-text mx-3">District</div>
+                @endrole
             </a>
 
             <!-- Divider -->
@@ -111,21 +115,42 @@
                     <span>Chance</span></a>
                 @endrole
                 @role('Headmaster')
-                <a class="nav-link" href="{{ URL('letters20') }}">
-                <i class="fa fa-table me-2"></i>
-                    <span>Request</span></a>
-                <a class="nav-link" href="{{ URL('letters22') }}">
-                <i class='fas fa-exchange-alt'></i>
-                    <span>Teacher</span></a>
                 <a class="nav-link" href="{{ URL('letters3') }}">
                 <i class='fas fa-exchange-alt'></i>
                     <span>Swapping</span></a>
-               <a class="nav-link" href="{{ URL('letters1') }}">
+                <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
-                    <span>Chance</span></a>
-             <a class="nav-link" href="{{ URL('letters') }}">
+                    <span>Chance</span></a> 
+                @endrole
+                @role('Weo')
+                <a class="nav-link" href="{{ route('wards.index') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>request</span></a>
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
                 <i class="fa fa-table me-2"></i>
-                    <span>Onprogress Chance</span></a>
+                    <span>Chance</span></a> -->
+                @endrole
+                @role('DEO')
+                <a class="nav-link" href="{{ route('districts.index') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>request</span></a>
+                <a class="nav-link" href="{{ URL('letters24') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Teacher</span></a>
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a> -->
+                @endrole
+                @role('DED')
+                <a class="nav-link" href="{{ route('districts.index') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>request</span></a>
+                <a class="nav-link" href="{{ URL('letters24') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Teacher</span></a>
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a> -->
                 @endrole
             </li>
 
@@ -178,10 +203,10 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-<!-- Sidebar Toggle (Topbar) -->
-<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-    <i class="fa fa-bars"></i>
-</button>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
                     <!-- Topbar Search -->
                   
@@ -269,8 +294,12 @@
 						<strong>  {{Auth::user()->name}}</strong>
                         
 						<small style="font-size:15px">
-                        
-							<i style="color: #888;">({{ __('Headmaster') }})</i>
+                           @role('DEO')
+							<i style="color: #888;">({{ __('DEO') }})</i>
+                           @endrole
+                           @role('DED')
+							<i style="color: #888;">({{ __('DED') }})</i>
+                           @endrole
                             {{ __('LogOut') }}
                             </x-responsive-nav-link> 
                            </form>
@@ -280,139 +309,88 @@
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
+            <!-- Navbar End -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+
+            <div class="container-fluid">
                 <div class="row g-4">
             <!-- Sale & Revenue Start -->
           
-              <input type="hidden" name="w" value=""></input>
-              @foreach($letters as $letter)
-                @if(auth::user()->schools==$letter->cschool)
-                  <input type="hidden" value="{{$data++}}"></input>
-                @endif
-              @endforeach
-              @foreach($letters as $letter)
-                @if((auth::user()->schools==$letter->cschool) && ($letter->Headmaster=="pending"))
-                  <input type="hidden" value="{{$k++}}"></input>
-                @endif
-              @endforeach
-              @foreach($letters as $letter)
-                @if((auth::user()->schools==$letter->tschool) && ($letter->author!="unknown"))
-                  <input type="hidden" value="{{$i++}}"></input>
-                @endif
-              @endforeach
-              @foreach($chances as $chance)
-                @if(auth::user()->name==$chance->name)
-                  <input type="hidden" value="{{$c++}}"></input>
-                @endif
-              @endforeach
-                    
+            <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Teacher info</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+			<tr>
+            <th>No</th>
+            <th>Employee_id</th>
+			<th>name</th>
+			<th>email</th>
+			<th>schools</th>
+            <th>role</th>		
+            <th>description</th>          
+        </tr>
+        </thead>
+        <tfoot>
+            <tr>
+            <th>No</th>
+            <th>Employee_id</th>
+			<th>name</th>
+			<th>email</th>
+			<th>schools</th>
+            <th>ward</th>		
+            <th>description</th> 
+</tr>
+</tfoot>
+<tbody>
+	
+        @foreach ($users as $user)
+          @if($user->district==Auth::user()->district)
+            <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{$user->Employee_id }}</td>
+				<td>{{$user->name }}</td>
+				<td>{{$user->email }}</td>
+				<td>{{$user->schools }}</td>
+                <td>{{$user->ward }}</td>	
+                <td>{{$user->description }}</td>
+                
+                <td>
                    
+                       
+					
+						
+                      
+					
 
-  
+                        @csrf
+                        @method('DELETE')
+                        @role('admin')
+                        <a href="{{ route('chances.edit',$chance->id) }}">
+                            <i class="fas fa-edit  fa-lg"></i>
 
+                        </a>
+                        <a href="{{ route('chances.show',$chance->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
 
-                    <!-- Page Heading -->
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <a href="{{ URL('letters9') }}"> <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="{{ URL('transfers') }}">Total Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data }}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa fa-file fa-3x text-primary"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></a>
-                        </div>
-                        <!-- @foreach ($letters as $letter)
-               @if($letter->Employee_id==Auth::user()->Employee_id && $k<1)
-              <input type="hidden" name="w" value="{{++$k}}"></input>
-           
-                    @endif
-            @endforeach -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                        <a href="{{ URL('letters') }}"> <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="{{ URL('letters') }}">pending Request</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $k }}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa fa-file fa-3x text-primary"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></a>
-                        </div>
-                     
-                        <div class="col-xl-3 col-md-6 mb-4">
-                        <a href="{{ URL('letters3') }}"> <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="{{ URL('letters3') }}">Swap request</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $i }}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class='fas fa-exchange-alt'></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></a>
-                        </div>
-                        <div class="col-xl-3 col-md-6 mb-4">
-                        <a href="{{ URL('letters3') }}"> <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="{{ URL('chances1') }}">Chance request</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $c }}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fa fa-file fa-3x text-primary"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></a>
-                        </div>
-                        <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Request Chart</h6>
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <hr>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                        <center>
+                        </button>
+                        @endrole
+                    </form>
+                </td>
+            </tr>
+         
+		   @endif
+        @endforeach
                                         
                                     </div>
-                                </div>
-                                <!-- Card Header - Dropdown -->
-                              
-                                        
-                                        
-                              
-   
-			
+                                </div>    
                
             <!-- Recent Sales End -->
 
@@ -546,6 +524,10 @@
         <!-- Content End -->
 
 
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -561,43 +543,7 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script>
-        Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-Chart.defaults.global.defaultFontColor = '#858796';
-
-// Pie Chart Example
-var ctx = document.getElementById("myPieChart");
-var myPieChart = new Chart(ctx, {
-  type: 'doughnut',
-  data: {
-    labels: ["Total Request", "Pending Request"],
-    datasets: [{
-      data: [{{$data}},  {{$k}}],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
-      hoverBorderColor: "rgba(234, 236, 244, 1)",
-    }],
-  },
-  options: {
-    maintainAspectRatio: false,
-    tooltips: {
-      backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      borderColor: '#dddfeb',
-      borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
-      displayColors: false,
-      caretPadding: 10,
-    },
-    legend: {
-      display: false
-    },
-    cutoutPercentage: 80,
-  },
-});
-
-    </script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 

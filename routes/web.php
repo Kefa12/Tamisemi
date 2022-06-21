@@ -125,6 +125,11 @@ Route::get('letters10', [App\Http\Controllers\LetterController::class, 'index10'
 Route::get('letters11', [App\Http\Controllers\LetterController::class, 'index11']);
 Route::get('letters14', [App\Http\Controllers\LetterController::class, 'index14']);
 Route::get('letters20', [App\Http\Controllers\LetterController::class, 'index12']);
+Route::get('letters21', [App\Http\Controllers\LetterController::class, 'index13']);
+Route::get('letters22', [App\Http\Controllers\LetterController::class, 'index22']);
+Route::get('letters23', [App\Http\Controllers\LetterController::class, 'index23']);
+Route::get('letters24', [App\Http\Controllers\LetterController::class, 'index24']);
+Route::get('letters25', [App\Http\Controllers\LetterController::class, 'index25']);
 Route::get('chances1', [App\Http\Controllers\ChanceController::class, 'index']);
 Route::get('/letters', function () {
     return view('Headmaster_dash3');

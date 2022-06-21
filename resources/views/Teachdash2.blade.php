@@ -96,6 +96,9 @@
                     <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
+                <a class="nav-link" href="{{ URL('letters21') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
                <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Request</span></a>
@@ -230,13 +233,15 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
-                                <img class="img-profile rounded-circle"
+                                ({{ __('Teacher') }}) <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
+                           
                             <!-- Dropdown - User Information -->
                           
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
+                                <a href="{{URL('Teachdash1')}}">My profile</a>
                                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
@@ -246,12 +251,12 @@
                      
                   
 						
-                   
-						<strong>  {{Auth::user()->name}}</strong>
-                        
+                    
+                                   
+                               
 						<small style="font-size:15px">
                         
-							<i style="color: #888;">({{ __('Teacherr') }})</i>
+							<i style="color: #888;"></i>
                             {{ __('LogOut') }}
                             </x-responsive-nav-link> 
                            </form>
@@ -353,7 +358,23 @@
                                 </div>
                             </div></a>
                         </div>
-                        <center><div class="card shadow mb-4">
+                        <!-- <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <!-- <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Request Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <!-- <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <hr>
+                                   
+                                </div>
+                            </div>
+                        </div>  -->
+                        <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -368,7 +389,7 @@
                                 <center><h6>ADMINISTRATIVE</h6></center>
           
                
-                <div class="row pt-1" style="margin-bottom:200px;">
+                <div class="row pt-1">
                   <div class="col-6 mb-3">
                     <h6>Headmaster:</h6>
                     <p class="text-muted"></p>
@@ -457,7 +478,7 @@
                     </div>
                     
                   </div></div>
-                            </div></center>
+                            </div>
                    
               
 
