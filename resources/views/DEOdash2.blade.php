@@ -137,6 +137,9 @@
                 <a class="nav-link" href="{{ URL('letters24') }}">
                 <i class='fa fa-table me-2'></i>
                     <span>Teacher</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
                <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a> -->
@@ -148,6 +151,9 @@
                 <a class="nav-link" href="{{ URL('letters24') }}">
                 <i class='fa fa-table me-2'></i>
                     <span>Teacher</span></a>
+                <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
                <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a> -->

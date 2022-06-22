@@ -138,6 +138,19 @@ class ChanceController extends Controller
           
         ]); 
         $chance->update($request->all());
+        if($request->status=='0'){
+            return redirect('letters')
+        ->with('success', 'user updated successfully');
+        }else if($request->status=='1'){
+            return redirect('letters')
+            ->with('success', 'user updated successfully');
+        }else if($request->status=='2'){
+            return redirect('letters')
+            ->with('success', 'user updated successfully');
+        }else if($request->status=='3'){
+            return redirect('letters')
+            ->with('success', 'user updated successfully');
+        }else
         return redirect('letters11')
         ->with('success', 'user updated successfully');
       

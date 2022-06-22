@@ -81,7 +81,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                
-                <div class="sidebar-brand-text mx-3">Administrator</div>
+                <div class="sidebar-brand-text mx-3">Regional_Director</div>
             </a>
 
             <!-- Divider -->
@@ -100,7 +100,27 @@
                     <a class="nav-link" href="{{ URL('letters25') }}">
                      <i class="fa fa-table me-2"></i>
                     <span>Teacher</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                    <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
                     @endrole
+                    @role('Headmaster')
+                <a class="nav-link" href="{{ URL('letters20') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('letters22') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Teacher</span></a>
+                <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+             <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+                @endrole
                   
                
             </li>

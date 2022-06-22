@@ -157,6 +157,9 @@
                 <a class="nav-link" href="{{ URL('letters20') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('letters22') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Teacher</span></a>
                 <a class="nav-link" href="{{ URL('letters3') }}">
                 <i class='fas fa-exchange-alt'></i>
                     <span>Swapping</span></a>
@@ -167,6 +170,62 @@
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress Chance</span></a>
                 @endrole
+                @role('Weo')
+                <a class="nav-link" href="{{ route('wards.index') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>request</span></a>
+                <a class="nav-link" href="{{ URL('letters23') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Teacher</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+                <!-- <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a> -->
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a> -->
+                @endrole
+                @role('DEO')
+                <a class="nav-link" href="{{ route('districts.index') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>request</span></a>
+                <a class="nav-link" href="{{ URL('letters24') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Teacher</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a> -->
+                @endrole
+                @role('DED')
+                <a class="nav-link" href="{{ route('districts.index') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>request</span></a>
+                <a class="nav-link" href="{{ URL('letters24') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Teacher</span></a>
+                <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a> -->
+                @endrole
+                @role('Regional_Director')
+                    <a class="nav-link" href="{{ URL('regionals') }}">
+                     <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                    <a class="nav-link" href="{{ URL('letters25') }}">
+                     <i class="fa fa-table me-2"></i>
+                    <span>Teacher</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                    <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+                  @endrole
             </li>
 
             <!-- Divider -->
@@ -998,17 +1057,15 @@
               
 
                 <div class="row pt-1">
-                <div class="col-6 mb-3">
+                <div class="col-12 mb-6">
                       <h6>Reason</h6>
                        <p class="text-muted">{{$chance->description}}</p>
                    </div>
+                   <div class="col-12 mb-6">
                    <h6><b>Support status</b></h6>
                 <hr class="mt-0 mb-8">
-                <div class="row pt-1">
-                  <div class="col-6 mb-3">
                 
-                
-                  </div>
+                  
                   
         
                   <div class="col-12 mb-6">
@@ -1029,7 +1086,7 @@
                 @endif
                   </div>
                 </div>
-                <div class="row pt-1">
+               
                 <div class="col-6 mb-3">
                     <h6>District_officer</h6>
                     @if( $chance->DEO == 'Not_support BY District_Education_Officer')
@@ -1307,6 +1364,694 @@
   </div>
     </section>
 
+  
+        @endforeach
+
+        @endrole
+        @role('Weo')
+ @foreach ($chances as $chance)
+          
+           
+          @if(($chance->ward==Auth::user()->ward)) 
+        
+                                    <h6 class="m-0 font-weight-bold text-primary">chance request Details</h6>
+                               
+            <h6></h6>
+              <hr class="mt-0 mb-10">
+              <div class="row pt-1">
+                <div class="col-6 mb-3">
+                  <h6>Name</h6>
+                  <p class="text-muted">{{$chance->name}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Position</h6>
+                  <p class="text-muted">{{$chance->position}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>School</h6>
+                  <p class="text-muted">{{$chance->school}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  ward:
+                  <p class="text-muted">{{$chance->ward}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>District</h6>
+                  <p class="text-muted">{{$chance->district}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Regional</h6>
+                  <p class="text-muted">{{$chance->regional}}</p>
+
+                  </div>
+                </div>
+              
+
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                      <h6>Reason</h6>
+                       <p class="text-muted">{{$chance->description}}</p>
+                   </div>
+                   <h6><b>Support status</b></h6>
+                <hr class="mt-0 mb-8">
+                
+                  
+        
+                  <div class="col-12 mb-6">
+                    <h6>Ward_officer</h6>
+                    @if( $chance->WEO == 'Not_support BY WEO')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $chance->WEO == 'support BY WEO')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                </div>
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                    <h6>District_officer</h6>
+                    @if( $chance->DEO == 'Not_support BY District_Education_Officer')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $chance->DEO == 'support BY District_Education_Officer')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>District_Director</h6>
+                    @if( $chance->DED == 'Not_support BY District_Executive_Director')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $chance->DED == 'support BY District_Executive_Director')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Regional_Director</h6>
+                    @if( $chance->Regional_Director== 'Not_support BY RD')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $chance->Regional_Director == 'support BY RD')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+              
+                  
+            
+  </div>
+              
+            
+            <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
+            
+            
+              
+                <a href="{{ route('chances.edit', $chance->id) }}">
+                    <i class="fas fa-edit  fa-lg"></i>
+
+                </a>
+               
+ @endrole
+ 
+                
+ </form>
+          </td>
+       </tr>
+        <tr>
+          
+           
+        </tr>
+              
+                
+                
+              
+            </tr>
+          
+         
+    </table>
+    <br/>
+   
+
+    </table>
+    </form>
+          
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+  
+        @endforeach
+
+        @endrole
+        @role('DEO')
+ @foreach ($chances as $chance)
+          
+           
+          @if(($chance->district==Auth::user()->district)) 
+        
+                                    <h6 class="m-0 font-weight-bold text-primary">chance request Details</h6>
+                               
+            <h6></h6>
+              <hr class="mt-0 mb-10">
+              <div class="row pt-1">
+                <div class="col-6 mb-3">
+                  <h6>Name</h6>
+                  <p class="text-muted">{{$chance->name}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Position</h6>
+                  <p class="text-muted">{{$chance->position}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>School</h6>
+                  <p class="text-muted">{{$chance->school}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  ward:
+                  <p class="text-muted">{{$chance->ward}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>District</h6>
+                  <p class="text-muted">{{$chance->district}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Regional</h6>
+                  <p class="text-muted">{{$chance->regional}}</p>
+
+                  </div>
+                </div>
+              
+
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                      <h6>Reason</h6>
+                       <p class="text-muted">{{$chance->description}}</p>
+                   </div>
+                   <h6><b>Support status</b></h6>
+                <hr class="mt-0 mb-8">
+                
+                  
+        
+                  <div class="col-12 mb-6">
+                    <h6>Ward_officer</h6>
+                    @if( $chance->WEO == 'Not_support BY WEO')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $chance->WEO == 'support BY WEO')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                </div>
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                    <h6>District_officer</h6>
+                    @if( $chance->DEO == 'Not_support BY District_Education_Officer')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $chance->DEO == 'support BY District_Education_Officer')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>District_Director</h6>
+                    @if( $chance->DED == 'Not_support BY District_Executive_Director')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $chance->DED == 'support BY District_Executive_Director')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Regional_Director</h6>
+                    @if( $chance->Regional_Director== 'Not_support BY RD')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $chance->Regional_Director == 'support BY RD')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+              
+                  
+            
+  </div>
+              <p>Ward Officer Action</p>
+            
+            <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
+            
+            
+              
+                <a href="{{ route('chances.edit', $chance->id) }}">
+                    <i class="fas fa-edit  fa-lg"></i>
+
+                </a>
+               
+ @endrole
+ 
+                
+ </form>
+          </td>
+       </tr>
+        <tr>
+          
+           
+        </tr>
+              
+                
+                
+              
+            </tr>
+          
+         
+    </table>
+    <br/>
+   
+
+    </table>
+    </form>
+          
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+  
+        @endforeach
+
+        @endrole
+        @role('DED')
+        @foreach ($chances as $chance)
+          
+           
+          @if(($chance->district==Auth::user()->district)) 
+        
+                                    <h6 class="m-0 font-weight-bold text-primary">chance request Details</h6>
+                               
+            <h6></h6>
+              <hr class="mt-0 mb-10">
+              <div class="row pt-1">
+                <div class="col-6 mb-3">
+                  <h6>Name</h6>
+                  <p class="text-muted">{{$chance->name}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Position</h6>
+                  <p class="text-muted">{{$chance->position}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>School</h6>
+                  <p class="text-muted">{{$chance->school}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  ward:
+                  <p class="text-muted">{{$chance->ward}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>District</h6>
+                  <p class="text-muted">{{$chance->district}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Regional</h6>
+                  <p class="text-muted">{{$chance->regional}}</p>
+
+                  </div>
+                </div>
+              
+
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                      <h6>Reason</h6>
+                       <p class="text-muted">{{$chance->description}}</p>
+                   </div>
+                   <h6><b>Support status</b></h6>
+                <hr class="mt-0 mb-8">
+                
+                  
+        
+                  <div class="col-12 mb-6">
+                    <h6>Ward_officer</h6>
+                    @if( $chance->WEO == 'Not_support BY WEO')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $chance->WEO == 'support BY WEO')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                </div>
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                    <h6>District_officer</h6>
+                    @if( $chance->DEO == 'Not_support BY District_Education_Officer')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $chance->DEO == 'support BY District_Education_Officer')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>District_Director</h6>
+                    @if( $chance->DED == 'Not_support BY District_Executive_Director')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $chance->DED == 'support BY District_Executive_Director')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Regional_Director</h6>
+                    @if( $chance->Regional_Director== 'Not_support BY RD')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $chance->Regional_Director == 'support BY RD')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+              
+                  
+            
+  </div>
+              <p>District_Director Action</p>
+            
+            <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
+            
+            
+              
+                <a href="{{ route('chances.edit', $chance->id) }}">
+                    <i class="fas fa-edit  fa-lg"></i>
+
+                </a>
+               
+ @endrole
+ 
+                
+ </form>
+          </td>
+       </tr>
+        <tr>
+          
+           
+        </tr>
+              
+                
+                
+              
+            </tr>
+          
+         
+    </table>
+    <br/>
+   
+
+    </table>
+    </form>
+          
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+  
+        @endforeach
+
+        @endrole
+        @role('Regional_Director')
+        @foreach ($chances as $chance)
+          
+           
+          @if(($chance->regional==Auth::user()->regional)) 
+        
+                                    <h6 class="m-0 font-weight-bold text-primary">chance request Details</h6>
+                               
+            <h6></h6>
+              <hr class="mt-0 mb-10">
+              <div class="row pt-1">
+                <div class="col-6 mb-3">
+                  <h6>Name</h6>
+                  <p class="text-muted">{{$chance->name}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Position</h6>
+                  <p class="text-muted">{{$chance->position}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>School</h6>
+                  <p class="text-muted">{{$chance->school}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  ward:
+                  <p class="text-muted">{{$chance->ward}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>District</h6>
+                  <p class="text-muted">{{$chance->district}}</p>
+                </div>
+                <div class="col-6 mb-3">
+                  <h6>Regional</h6>
+                  <p class="text-muted">{{$chance->regional}}</p>
+
+                  </div>
+                </div>
+              
+
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                      <h6>Reason</h6>
+                       <p class="text-muted">{{$chance->description}}</p>
+                   </div>
+                   <h6><b>Support status</b></h6>
+                <hr class="mt-0 mb-8">
+                
+                  
+        
+                  <div class="col-12 mb-6">
+                    <h6>Ward_officer</h6>
+                    @if( $chance->WEO == 'Not_support BY WEO')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $chance->WEO == 'support BY WEO')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                </div>
+                <div class="row pt-1">
+                <div class="col-6 mb-3">
+                    <h6>District_officer</h6>
+                    @if( $chance->DEO == 'Not_support BY District_Education_Officer')
+                
+                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+               
+               @elseif( $chance->DEO == 'support BY District_Education_Officer')
+              
+                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+              
+                @else
+               
+                 <button type="submit" class="btn btn-success"><i>pending</i></button>
+               
+               
+                @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>District_Director</h6>
+                    @if( $chance->DED == 'Not_support BY District_Executive_Director')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $chance->DED == 'support BY District_Executive_Director')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Regional_Director</h6>
+                    @if( $chance->RD== 'Not_support BY RD')
+                
+                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
+           
+           @elseif( $chance->RD == 'support BY RD')
+          
+             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
+          
+            @else
+           
+             <button type="submit" class="btn btn-success"><i>pending</i></button>
+           
+           
+            @endif
+              
+                  
+            
+  </div>
+              <p>Regional_Director Action</p>
+            
+            <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
+            
+            
+              
+                <a href="{{ route('chances.edit', $chance->id) }}">
+                    <i class="fas fa-edit  fa-lg"></i>
+
+                </a>
+               
+ @endrole
+ 
+                
+ </form>
+          </td>
+       </tr>
+        <tr>
+          
+           
+        </tr>
+              
+                
+                
+              
+            </tr>
+          
+         
+    </table>
+    <br/>
+   
+
+    </table>
+    </form>
+          
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
   
         @endforeach
 

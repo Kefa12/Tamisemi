@@ -157,6 +157,9 @@
                 <a class="nav-link" href="{{ URL('letters20') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('letters22') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Teacher</span></a>
                 <a class="nav-link" href="{{ URL('letters3') }}">
                 <i class='fas fa-exchange-alt'></i>
                     <span>Swapping</span></a>
@@ -167,6 +170,31 @@
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress Chance</span></a>
                 @endrole
+                @role('DEO')
+                <a class="nav-link" href="{{ route('districts.index') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>request</span></a>
+                <a class="nav-link" href="{{ URL('letters24') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Teacher</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a> -->
+                @endrole
+                @role('Regional_Director')
+                    <a class="nav-link" href="{{ URL('regionals') }}">
+                     <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                    <a class="nav-link" href="{{ URL('letters25') }}">
+                     <i class="fa fa-table me-2"></i>
+                    <span>Teacher</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                    <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+                    @endrole
             </li>
 
             <!-- Divider -->

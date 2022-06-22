@@ -81,7 +81,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                
-                <div class="sidebar-brand-text mx-3">Administrator</div>
+                <div class="sidebar-brand-text mx-3">Regional_Director</div>
             </a>
 
             <!-- Divider -->
@@ -100,6 +100,9 @@
                     <a class="nav-link" href="{{ URL('letters25') }}">
                      <i class="fa fa-table me-2"></i>
                     <span>Teacher</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                    <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
                     @endrole
                   
                
@@ -442,6 +445,22 @@
                                 </div>
                             </div></a>
                         </div>
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Request Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <hr>
+                                   
+                                </div>
+                            </div>
+                        </div>
                         <center>
                                         
                                     </div>
@@ -604,7 +623,43 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script>
+        Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#858796';
+
+// Pie Chart Example
+var ctx = document.getElementById("myPieChart");
+var myPieChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ["Total Request", "Pending Request"],
+    datasets: [{
+      data: [{{$data}},  {{$k}}],
+      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+      hoverBorderColor: "rgba(234, 236, 244, 1)",
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+    legend: {
+      display: false
+    },
+    cutoutPercentage: 80,
+  },
+});
+
+    </script>
 
 </body>
 
