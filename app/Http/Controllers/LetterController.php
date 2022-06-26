@@ -1556,15 +1556,52 @@ class LetterController extends Controller
      * @param  \App\Models\Letter  $letter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Letter $letter)
+    public function destroy(Letter $letter,Request $request)
     {
+        
       
-          Letter::find($id)->delete();
+        $letter=Letter::where('id',$request->del)->delete();  
+        //Letter::find($id)->delete();
         // $letter->forcedelete();
         // $letter=Letter::where('id',$request->id)->forcedelete();
         // Letter::destroy($request->id);
 
         return redirect()->route('Letters.index')
+            ->with('success', 'request deleted successfully');
+    }
+    public function DEL(Request $request)
+    {
+        $request->tregional="dsm";
+        letter_back::create([
+            'Employee_id' =>   $request->Employee_id,
+            'name' =>  $request->name,
+           
+            'cschool' => $request->cschool,
+           
+            'cdistrict' => $request->cdistrict,
+            'tward' => $request->cdistrict,
+          
+            'tdistrict' => $request->tdistrict,
+            'tregional' => $request->tregional,
+            'regional' => $request->regional,
+            'description' => $request->regional,
+           
+          
+          
+            'author' => $request->author,
+        ]); 
+        $exist = DB::table('letters')->where('author',$request->author)->value('Employee_id');
+        DB::table('letters')
+        ->where('Employee_id', $exist )
+        ->update(['author' =>  'unknown']);
+      
+        $letter=Letter::where('id',$request->del)->delete();  
+        //Letter::find($id)->delete();
+        // $letter->forcedelete();
+        // $letter=Letter::where('id',$request->id)->forcedelete();
+        // Letter::destroy($request->id);
+
+        return redirect('letters')
             ->with('success', 'request deleted successfully');
     }
     public function index9(Request $request)

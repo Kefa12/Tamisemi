@@ -538,7 +538,7 @@
                   @endif
             </tr>
             <tr>
-                  <td>RED RESPOND TIME TAKEN</td>
+                  <td>RD RESPOND TIME TAKEN</td>
                   @if($letter->Regional_Director=='pending')
                   <td>not respond</td>
                   @else

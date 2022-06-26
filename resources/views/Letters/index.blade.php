@@ -692,6 +692,7 @@
                             <i class="fas fa-eye text-success  fa-lg"></i>
                         </a>
                     </div>
+                    
   
                 
           
@@ -714,13 +715,28 @@
     <i class="fas fa-edit  fa-lg"></i>
 
 </a>
-                  <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                      <i class="fas fa-trash fa-lg text-danger"></i>
+             
 
                   </button>
                   @endrole
                 
               </form>
+              <form action="{{ URL('DEL') }}" method="GET">
+                  <input type='hidden' name="del" value="{{ $letter->id}}"/>
+                  <input type='hidden' name="author" value="{{ $letter->author}}"/>
+                  <input type='hidden' name="name" value="{{ $letter->name}}"/>
+                  <input type='hidden' name="Employee_id" value="{{ $letter->Employee_id}}"/>
+                  <input type='hidden' name="regional" value="{{ $letter->regional}}"/>
+                  <input type='hidden' name="cdistrict" value="{{ $letter->cdistrict}}"/>
+                  <input type='hidden' name="cschool" value="{{ $letter->cschool}}"/>
+                  <input type='hidden' name="tdistrict" value="{{ $letter->tdistrict}}"/>
+                  <input type='hidden' name="tschool" value="{{ $letter->tschool}}"/>
+                  <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                      <i class="fas fa-trash fa-lg text-danger"></i>
+
+                  </button>
+                  </form>
+              
           </td>
        </tr>
         <tr>
@@ -1024,10 +1040,7 @@
               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
               @csrf
                
-                   <button type="submit" title="Delete"  style="border: none; background-color:transparent;">
-                      <i class="fas fa-trash fa-lg text-danger"></i>
-
-                    </button>
+                 
                     
               </form>
               
@@ -1048,6 +1061,21 @@
 
                   </button>
                   @endrole
+                  <form action="{{ URL('DEL') }}" method="GET">
+                  <input type='hidden' name="del" value="{{ $letter->id}}"/>
+                  <input type='hidden' name="author" value="{{ $letter->author}}"/>
+                  <input type='hidden' name="name" value="{{ $letter->name}}"/>
+                  <input type='hidden' name="Employee_id" value="{{ $letter->Employee_id}}"/>
+                  <input type='hidden' name="regional" value="{{ $letter->regional}}"/>
+                  <input type='hidden' name="cdistrict" value="{{ $letter->cdistrict}}"/>
+                  <input type='hidden' name="cschool" value="{{ $letter->cschool}}"/>
+                  <input type='hidden' name="tdistrict" value="{{ $letter->tdistrict}}"/>
+                  <input type='hidden' name="tschool" value="{{ $letter->tschool}}"/>
+                  <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                      <i class="fas fa-trash fa-lg text-danger"></i>
+
+                  </button>
+                  </form>
                   
                 
               </form>
@@ -1262,6 +1290,7 @@
                             <i class="fas fa-eye text-success  fa-lg"></i>
                         </a>
                     </div>
+                    
   
                 
           
