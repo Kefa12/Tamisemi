@@ -825,7 +825,7 @@
 
 <div class="card shadow mb-4">
               <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Search request</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Teacher request</h6>
               </div>
               <div class="card-body">
                   <div class="table-responsive">
@@ -840,8 +840,8 @@
   <th>transfer district</th>
   <th>description</th>
   <th>Transfer_mode</th>
-  <th>Doctor_in_Charge_Action</th>
-  <th>DMO_Action</th>
+  <th>Headmaster</th>
+  <th>DEO_Action</th>
   <th>DED_Action</th>
   
   <th width="280px">Action</th>
@@ -857,8 +857,8 @@
   <th>transfer district</th>
   <th>description</th>
   <th>Transfer_mode</th>
-  <th>Doctor_in_Charge_Action</th>
-  <th>DMO_Action</th>
+  <th>Headmater</th>
+  <th>DEO_Action</th>
   <th>DED_Action</th>
   
   <th width="280px">Action</th>

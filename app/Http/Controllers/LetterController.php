@@ -1089,6 +1089,46 @@ class LetterController extends Controller
             ->update(['Regional_Director' =>  $request->Regional_Director]);
            return redirect('dashboard');       
         }
+        if(( $request->Headmaster=='support BY HEADMASTER')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['Headmaster' =>  $request->Headmaster]);
+           return redirect('dashboard');       
+        }
+        if(( $request->Headmaster=='Not_support BY HEADMASTER')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['Headmaster' =>  $request->Headmaster]);
+           return redirect('dashboard');       
+        }
+        if(( $request->DEO=='support BY District_Education_Officer')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['Headmaster' =>  $request->Headmaster]);
+           return redirect('dashboard');       
+        }
+        if(( $request->DEO=='Not_support BY District_Education_Officer')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['Headmaster' =>  $request->DEO]);
+           return redirect('dashboard');       
+        }
       
         if($request->Teacher_approved=="support BY TEACHER" && $request->statusi=='m'){
           

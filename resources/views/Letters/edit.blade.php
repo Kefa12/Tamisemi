@@ -1358,7 +1358,7 @@
            
             @role('Headmaster')
             @if($letter->Headmaster=='Not_support BY HEADMASTER'  || $letter->Headmaster=='support BY HEADMASTER' || $letter->Headmaster=='pending' || $letter->Transfer_Headmaster=='Not_support BY HEADMASTER' || $letter->Transfer_Headmaster=='pending' || $letter->Transfer_Headmaster=='support BY HEADMASTER')
-            @if($letter->author=='unknown' && $letter->Transfer_Headmaster!='pending')
+            @if($letter->Headmaster!='support BY HEADMASTER')
             <div class="col-xs-12 col-sm-12 col-md-12">
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="0"
                        ></input>
@@ -1369,7 +1369,8 @@
                 </select>
                 </div>
             </div>  
-          @else
+            @endif
+            @if($letter->Transfer_Headmaster=='support BY HEADMASTER')
             <div class="col-xs-12 col-sm-12 col-md-12">
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="0"
                        ></input>
@@ -1409,7 +1410,7 @@
            
          
             @role('Weo')
-            @if($letter->WEO=='Not_support BY WEO' || $letter->WEO=='pending') 
+         
           
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -1433,7 +1434,7 @@
                 </div>
             </div>
             @endrole
-            @endif
+         
            
          
             @if($letter->DEO=='support BY District_Education_Officer'  || $letter->DEO=='Not_support BY District_Education_Officer' || $letter->DEO=='pending') 
