@@ -307,6 +307,7 @@
 			                                      <th>ward</th>
                                              <th>current school</th>		
                                                  <th>description</th>
+                                                 <th>Transfer_Mode</th>
             
                                          <th width="280px">Action</th>
                                       </tr>
@@ -320,6 +321,7 @@
 			                                      <th>ward</th>
                                              <th>current school</th>		
                                                  <th>description</th>
+                                                 <th>Transfer_Mode</th>
             
                                          <th width="280px">Action</th>
                                       </tr>
@@ -337,6 +339,11 @@
 				<td>{{ $letter->ward }}</td>
                 <td>{{ $letter->cschool }}</td>			
                 <td>{{ $letter->description }}</td>
+                @if($letter->author!='unknown')
+                <td>swap with {{ $letter->author }}</td>
+                @else
+                <td>No swaping</td>
+                @endif
                 
                 <td>
                     <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
@@ -393,6 +400,7 @@
                                                  <th>ward</th>
                                             <th>current Hospital</th>		
                                                 <th>description</th>
+                                                <th>Transfer_Mode</th>
            
                                         <th width="280px">Action</th>
                                      </tr>
@@ -406,6 +414,7 @@
                                                  <th>ward</th>
                                             <th>current hospital</th>		
                                                 <th>description</th>
+                                                <th>Transfer_Mode</th>
            
                                         <th width="280px">Action</th>
                                      </tr>
@@ -423,6 +432,11 @@
                <td>{{ $letter->ward }}</td>
                <td>{{ $letter->chospital }}</td>			
                <td>{{ $letter->description }}</td>
+               @if($letter->author!='unknown')
+                <td>swap with {{ $letter->author }}</td>
+                @else
+                <td>No swaping</td>
+                @endif
                
                <td>
                    <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">

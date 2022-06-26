@@ -363,7 +363,7 @@
                 @endif
               @endforeach
               @foreach($chances as $chance)
-                @if(auth::user()->regional==$chance->district)
+                @if(auth::user()->regional==$chance->regional)
                   <input type="hidden" value="{{$c++}}"></input>
                 @endif
               @endforeach
@@ -413,7 +413,7 @@
                             </div></a>
                         </div>
                      
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <!-- <div class="col-xl-3 col-md-6 mb-4">
                         <a href="{{ URL('letters3') }}"> <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -428,7 +428,7 @@
                                     </div>
                                 </div>
                             </div></a>
-                        </div>
+                        </div> -->
                         <div class="col-xl-3 col-md-6 mb-4">
                         <a href="{{ URL('letters3') }}"> <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">

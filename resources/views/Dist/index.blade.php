@@ -839,6 +839,7 @@
   <th>current district</th>
   <th>transfer district</th>
   <th>description</th>
+  <th>Transfer_mode</th>
   <th>Doctor_in_Charge_Action</th>
   <th>DMO_Action</th>
   <th>DED_Action</th>
@@ -855,6 +856,7 @@
   <th>current district</th>
   <th>transfer district</th>
   <th>description</th>
+  <th>Transfer_mode</th>
   <th>Doctor_in_Charge_Action</th>
   <th>DMO_Action</th>
   <th>DED_Action</th>
@@ -877,6 +879,11 @@
       <td>{{ $letter->cdistrict }}</td>
       <td>{{ $letter->tdistrict }}</td>
       <td>{{ $letter->description }}</td>
+      @if($letter->author!='unknown')
+                <td>swap with {{ $letter->author }}</td>
+                @else
+                <td>No swaping</td>
+                @endif
       @if( $letter->MDC_approved == 'Not_support BY MDC')
       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
       <button type="submit" class="btn btn-danger"> Not_support</button>

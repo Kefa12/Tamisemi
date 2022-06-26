@@ -99,7 +99,7 @@
                     <span>Request</span></a>
                     <a class="nav-link" href="{{ URL('letters25') }}">
                      <i class="fa fa-table me-2"></i>
-                    <span>Teacher</span></a>
+                    <span>public_workers</span></a>
                     <a class="nav-link" href="{{ URL('letters') }}">
                     <i class="fa fa-table me-2"></i>
                     <span>Onprogress Chance</span></a>
@@ -319,6 +319,7 @@
             <th>current district</th>
             <th>transfer district</th>
             <th>description</th>
+            <th>Transfer_mode</th>
             <th>HeadMaster_Action</th>
             <th>WEO_Action</th>
             <th>DEO_Action</th>
@@ -337,6 +338,7 @@
             <th>current district</th>
             <th>transfer district</th>
             <th>description</th>
+            <th>Transfer_mode</th>
             <th>HeadMaster_Action</th>
             <th>WEO_Action</th>
             <th>DEO_Action</th>
@@ -362,6 +364,11 @@
                 <td>{{ $letter->cdistrict }}</td>
                 <td>{{ $letter->tdistrict }}</td>
                 <td>{{ $letter->description }}</td>
+                @if($letter->author!='unknown')
+                <td>swap with {{ $letter->author }}</td>
+                @else
+                <td>No swaping</td>
+                @endif
                 @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> Not_support</button>
@@ -488,6 +495,7 @@
             <th>current disctrict</th>
             <th>transfer district</th>
             <th>description</th>
+            <th>Transfer_mode</th>
             <th>Doctor_in_charge_Action</th>
             <th>DMO_Action</th>
             <th>DED_Action</th>
@@ -504,6 +512,7 @@
             <th>current disctrict</th>
             <th>transfer district</th>
             <th>description</th>
+            <th>Transfer_mode</th>
             <th>Doctor_in_charge_Action</th>
             <th>DMO_Action</th>
             <th>DED_Action</th>
@@ -527,6 +536,11 @@
                 <td>{{ $letter->cdistrict }}</td>
                 <td>{{ $letter->tdistrict }}</td>
                 <td>{{ $letter->description }}</td>
+                @if($letter->author!='unknown')
+                <td>swap with {{ $letter->author }}</td>
+                @else
+                <td>No swaping</td>
+                @endif
                 @if( $letter->MDC == 'Not_support BY MDC')
                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-danger"> Not_support</button>

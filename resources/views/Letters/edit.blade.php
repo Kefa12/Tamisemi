@@ -1831,6 +1831,14 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 </div>
               
               </div>
+              <h6>Transfer Mode</h6>
+              <div class="col-6 mb-3">
+              @if($letter->author!='unknown')
+                <td>swap with {{ $letter->author }}</td>
+                @else
+                <td>No swaping</td>
+                @endif
+            </div>
                 
                 <h6><b>Support status</b></h6>
                 <hr class="mt-0 mb-4">
