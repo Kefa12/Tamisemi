@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transfer;
 use App\Models\Letter;
 use App\Models\Chance;
+use App\Models\User;
 use App\Models\School;
 use App\Models\Role;
 use App\Models\Ward;
@@ -318,19 +319,33 @@ class DashboardController extends Controller
                                 ])
                                     ->orderBy("id","desc")
                                     ->paginate(20);
+
+                                    $chances = Chance::where([
+                                        ['name','!=', NULL],
+                                       [function($query) use ($request) {
+                                           if(($term=$request->term)){
+                                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                                           }
+                                       }]
+                                    ])
+                                        ->orderBy("id","desc")
+                                        ->paginate(20);
                     
                     
 
-                     $data = DB::table("letters")->count('Employee_id');
+                     $data1 = DB::table("letters")->count('Employee_id');
+                     $data =Letter::where('chospital','=','pending')->count();
                       $i=0;
                       $s=0;
                    
                          
-                     // $chance = DB::table("chances")->count('id');
-                      $chance = Chance::where('Tamisemi','=','Approved by Tamisemi_Director')->count();
-                    
+                    // $chance1 = DB::table("chances")->count('id');
+                     // $chance2 = Chance::where('Tamisemi','=','Rejected by Tamisemi_Director')->count();
+                      $chance = Chance::where('school','!=','pending')->count();
+                     // $chance=$chance1-$chance3;
                     $k=0;
-            return view('Teachdash2', compact('letters','transfers','data','i','k','regionals','districts','wards','schools','s','chance'))
+                    $e=0;
+            return view('Teachdash2', compact('e','letters','transfers','data','i','k','regionals','districts','wards','schools','s','chance','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Headmaster')){
            //

@@ -344,6 +344,11 @@
                                 </div>
                             </div></a>
                         </div>
+                        @foreach($chances as $chance)
+                @if($chance->school!='pending' && $chance->Tamisemi=='Approved BY Tamisemi_Director')
+                  <input type="hidden" value="{{$e++}}"></input>
+                @endif
+              @endforeach
                         <div class="col-xl-3 col-md-6 mb-4">
                         <a href="{{ URL('letters3') }}"> <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
@@ -352,7 +357,7 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             <a href="#">Chance Available</div>
                                             <!-- <a href="{{ URL('chances1') }}">Chance Available</div> -->
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chance }}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $e }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-file fa-3x text-primary"></i>
