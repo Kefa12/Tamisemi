@@ -305,7 +305,7 @@
    
     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Search other request</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Teacher request</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -315,8 +315,8 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
+            <th>transfer school</th>
+            <th>current district</th>
             <th>transfer district</th>
             <th>description</th>
             <th>HeadMaster_Action</th>
@@ -332,8 +332,9 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>current school</th>
-            <th>current disctrict</th>
+            <!-- <th>current school</th> -->
+            <th>Transfer school</th>
+            <th>current district</th>
             <th>transfer district</th>
             <th>description</th>
             <th>HeadMaster_Action</th>
@@ -353,9 +354,11 @@
             
         
             @if($regional->RD==Auth::user()->name&& $letter->regional==$regional->name)
-                <td>{{ ++$i }}</td>
+            @if($letter->cschool!="pending" && $letter->cschool="no_define_school" && $letter->tschool!="pending") 
+     <td>{{ ++$i }}</td>
                 <td>{{ $letter->name }}</td>
-                <td>{{ $letter->cschool }}</td>
+                <!-- <td>{{ $letter->cschool }}</td> -->
+                <td>{{ $letter->tschool }}</td>
                 <td>{{ $letter->cdistrict }}</td>
                 <td>{{ $letter->tdistrict }}</td>
                 <td>{{ $letter->description }}</td>
@@ -459,7 +462,159 @@
                     </form>
                 </td>
             </tr>
+            @endif
 		
+            @endforeach
+        @endforeach
+    </tbody>
+   </table>
+ </div>
+</div>
+<h1 class="h3 mb-2 text-gray-800"></h1>
+   
+    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Nurse request</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                       
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>current hospital</th>
+            <th>current disctrict</th>
+            <th>transfer district</th>
+            <th>description</th>
+            <th>Doctor_in_charge_Action</th>
+            <th>DMO_Action</th>
+            <th>DED_Action</th>
+            <th>RD_Action</th>
+            
+            <th width="280px">Action</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+        <th>No</th>
+            <th>Name</th>
+            <th>current hospital</th>
+            <th>current disctrict</th>
+            <th>transfer district</th>
+            <th>description</th>
+            <th>Doctor_in_charge_Action</th>
+            <th>DMO_Action</th>
+            <th>DED_Action</th>
+            <th>RD_Action</th>
+            
+            <th width="280px">Action</th>
+        </tr>
+        </tfoot>
+        <tbody>
+      
+        @foreach ($letters as $letter)
+        @foreach ($regionals as $regional)
+            <tr>
+            
+        
+            @if($regional->RD==Auth::user()->name&& $letter->regional==$regional->name)
+            @if($letter->chospital!='pending')
+                <td>{{ ++$i }}</td>
+                <td>{{ $letter->name }}</td>
+                <td>{{ $letter->chospital }}</td>
+                <td>{{ $letter->cdistrict }}</td>
+                <td>{{ $letter->tdistrict }}</td>
+                <td>{{ $letter->description }}</td>
+                @if( $letter->MDC == 'Not_support BY MDC')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter->MDC == 'support BY MDC')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
+               
+                @if( $letter->DMO == 'Not_support BY DMO')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter->DMO == 'support BY DMO')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
+                @if( $letter->DED == 'Not_support BY District_Executive_Director')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter->DED == 'support BY District_Executive_Director')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
+                @if( $letter->Regional_Director == 'Not_support BY RD')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter-> Regional_Director == 'support BY RD')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
+                
+                
+                <td>
+              
+                    <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                       
+                        <a href="{{ route('letters.edit', $letter->id) }}">
+                            <i class="fas fa-edit  fa-lg"></i>
+
+                        </a>
+           
+               @endif
+           
+           
+                   
+                        @csrf
+                        @method('DELETE')
+                        @role('Tamisemi_Director')
+                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
+
+                            </button>
+                        @endrole
+                    </form>
+                </td>
+             </tr>
+		    @endrole
             @endforeach
         @endforeach
     </tbody>

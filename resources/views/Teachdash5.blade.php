@@ -119,6 +119,9 @@
                 @role('Teacher')
                 <div class="sidebar-brand-text mx-3">Teacher</div>
                 @endrole
+                @role('Health_Worker')
+                <div class="sidebar-brand-text mx-3">Nurse</div>
+                @endrole
                 @role('Weo')
                 <div class="sidebar-brand-text mx-3">Ward_officer</div>
                 @endrole
@@ -153,7 +156,38 @@
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a>
                     @endrole
+                    @role('Health_Worker')
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+             <a class="nav-link" href="{{ URL('letters21') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('transfers') }}">
+                <i class="fa fa-search"></i>
+                    <span>Swap teacher</span></a>
+               <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('chances1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                    @endrole
                     @role('Headmaster')
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Swapping</span></a>
+                    @endrole
+                    @role('Medical_Doctor_in-Charge')
                     <hr class="sidebar-divider">
                     <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
@@ -489,6 +523,7 @@
 
 
 <!-- DataTales Example -->
+@role('Teacher')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Result Request </h6>
@@ -498,13 +533,79 @@
        
      
 <tbody>
-	
+	 
+        @foreach ($letter_back as $letter_backs)
+        <input type="hidden" name="n" value="{{$n=0}}"></input>
+     
+		@if($letter_backs->Employee_id==auth::user()->Employee_id && $n<1)
+        @if($letter_backs->Tamisemi=="Approved BY Tamisemi_Director")
+        <span style="color:blue;"><b>congratulation!</b></span><b> You have successfully transfer from {{$letter_backs->regional}}>>{{$letter_backs->cdistrict}}>>{{$letter_backs->ward }}>>{{$letter_backs->cschool }} to <br/>
+        {{$letter_backs->tregional }}>>{{$letter_backs->tdistrict }}>>{{$letter_backs->tward }}>>{{$letter_backs->tschool }}
+            </b> <br/>
+            <span style="color:blue;"><b>Needed to report at school within <span style="color:red;"> 14 days</span></b></span>
+        @else if($letter_backs->Tamisemi=="Rejected BY Tamisemi_Director")
+        <span style="color:blue;"><b>Transfer Request is rejected due do no satify human resourse need in ministry!</b></span> @endif
+        @else
+        <span style="color:blue;"><b>Request Result not yet publish!</b></span>
+       
+        <input type="hidden" name="n" value="{{++$n}}"></input>
+       
+        
+            <!-- <tr>
+                <td>{{ ++$i }}</td>
+              
+				<td>{{$letter_backs->regional }}</td>
+				<td>{{$letter_backs->cdistrict }}</td>
+				<td>{{$letter_backs->ward }}</td>
+                <td>{{$letter_backs->cschool }}</td>	
+                <td>{{$letter_backs->description }}</td>
+                
+                <td> -->
+                    
+					
+						
+                      
+					
+
+                        @csrf
+                        @method('DELETE')
+                        @role('admin')
+                        <a href="{{ route('chances.edit',$chance->id) }}">
+                            <i class="fas fa-edit  fa-lg"></i>
+
+                        </a>
+                        <a href="{{ route('chances.show',$chance->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
+
+                        </button>
+                        @endrole
+                    </form>
+                </td>
+            </tr>
+        @endif
+		
+        @endforeach
+    @endrole
+    @role('Health_Worker')
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Result Request </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+       
+     
+<tbody>
+	 
         @foreach ($letter_back as $letter_backs)
      
 		@if($letter_backs->Employee_id==auth::user()->Employee_id)
         @if($letter_backs->Tamisemi=="Approved BY Tamisemi_Director")
-        <span style="color:blue;"><b>congratulation!</b></span><b> You have successfully transfer from {{$letter_backs->regional}}>>{{$letter_backs->cdistrict}}>>{{$letter_backs->ward }}>>{{$letter_backs->cschool }} to <br/>
-        {{$letter_backs->tregional }}>>{{$letter_backs->tdistrict }}>>{{$letter_backs->tward }}>>{{$letter_backs->tschool }}
+        <span style="color:blue;"><b>congratulation!</b></span><b> You have successfully transfer from {{$letter_backs->regional}}>>{{$letter_backs->cdistrict}}>>{{$letter_backs->ward }}>>{{$letter_backs->chospital }} to <br/>
+        {{$letter_backs->tregional }}>>{{$letter_backs->tdistrict }}>>{{$letter_backs->tward }}>>{{$letter_backs->thospital }}
             </b> <br/>
             <span style="color:blue;"><b>Needed to report at school within <span style="color:red;"> 14 days</span></b></span>
         @else
@@ -548,6 +649,7 @@
         @endif
 		
         @endforeach
+    @endrole
        
                                     </tbody>
                                 </table>

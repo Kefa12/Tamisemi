@@ -1,204 +1,503 @@
-@extends('layouts.layout')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!DOCTYPE HTML>
-<html>
-
 <style>
-#header{
-		 background-image: url("img/new.png");
-		 
-		  background-repeat: no-repeat;
-		  background-color:white;
-		  width:100%;
-		 padding-left:230px;
-	}
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
-	table{
-		margin-left:250px;
-		width:70%;
-		height:80%;
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-	
-	}
-	#navbar1{
-		  width:100%;
-		 padding-left:130px;
-		 padding-right:360px;
-	}
-	#navbar2{
-		  width:100px;
-		 float:right;
-	}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
 
-	</style>
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 
-	<head>
-		<title>Home -{{Auth::user()->name}}</title>
-		<meta name="description" content="website description" />
-		<meta name="keywords" content="website keywords, website keywords" />
-		<meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-		<link rel="stylesheet" type="text/css" href="../css/style.css" />
-		<link rel="stylesheet" type="text/css" href="../css/button.css" />
-		<link rel="shortcut icon" type="image/x-icon" href="../img/logo.ico" />
-		<script src="https://kit.fontawesome.com/bf523026c9.js" crossorigin="anonymous"></script>
-	</head>
-    <style>
-		nav{
-		 
-		 padding-left:230px;
-		 margin-right: 5px;
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>public_workers</title>
+    <img src="img/flag3.png"  width="100%" height="118px">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+               
+                <div class="sidebar-brand-text mx-3">Nurse</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ URL('dashboard') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+                <a class="nav-link" href="{{ URL('letters21') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('transfers') }}">
+                <i class="fa fa-search"></i>
+                    <span>Swap Nurse</span></a>
+               <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('chances1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+            </li>
+
+            <!-- Divider -->
+            
+
+            <!-- Heading -->
+        
+
+          
+            <hr class="sidebar-divider">
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+        
+
+          
+
+            <!-- Divider -->
+          
+
+            <!-- Heading -->
+          
+
+            <!-- Nav Item - Pages Collapse Menu -->
          
-	}
-	</style>
-	
-	<body bgcolor="white">
-		<div id="main">
-			<div id="header" style="background-color:white;">
-			      <img src="img/new.png" width="85%">
-				
+
+            <!-- Nav Item - Charts -->
+          
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-				<div class="profile_info">
-					
-						<div class="user_info">
+
+            <!-- Sidebar Message -->
+           
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                  
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            
+                            <!-- Dropdown - Messages -->
+                           
+                        </li>
+
+                        <!-- Nav Item - Alerts -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              
+                                <!-- Counter - Alerts -->
+                               
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                              
+                                
+                                   
+                                  
+                                </a>
+                               
+                                   
+                                    <div>
+                                       
+                                </a>
+                              
+                           
+                            </div>
+                        </li>
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               
+                                <!-- Counter - Messages -->
+                             
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                               
+                           
+                               
+                             
+                               
+                              
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                                ({{ __('Nurse') }}) <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                           
+                            <!-- Dropdown - User Information -->
+                          
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a href="{{URL('Teachdash1')}}">My profile</a>
+                                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                                <x-responsive-nav-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                     
+                  
 						
-						</div>
-				</div>
-				<div id="navbar">
-				<div id="navbar1">
-								<nav  style="background-color:4B7BE5; padding-left:0px; margin-left:95px;">
-									<ul id="menu">
-										<li><a href="{{ URL('transfers') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">EXISTING REQUEST</a></li>
-					
-									
-										<li> <a class="#" href="{{ URL('letters1') }}" title="Send a request">Create New Request</a></li>
-										
-										<li><a href="{{ URL('letters') }}">REQUEST TO BE APPROVED</a></li>
-										<li><a href="{{ URL('letters3') }}">REQUEST FROM Health_Worker</a></li>
-										<div id="navbar2">
-										<li style="float: right;" width=100px>
-										<select id="one">
-									<figure class="user_avatar"><img src="../img/admin_profile.png" width="100%">
-										<option value="two"><strong>({{ __('Health_Worker') }}) </strong></option>
-											
-											<small style="font-size:15px">
-											
-											<option value="three"><i style="color: #888;"> {{Auth::user()->name}}</i></option>
-											</select>
-												<form method="POST" action="{{ route('logout') }}">
-																	@csrf
+                    
+                                   
+                               
+						<small style="font-size:15px">
+                        
+							<i style="color: #888;"></i>
+                            {{ __('LogOut') }}
+                            </x-responsive-nav-link> 
+                           </form>
+                            </div>
+                        </li>
 
-																	<x-responsive-nav-link :href="route('logout')"
-																			onclick="event.preventDefault();
-																						this.closest('form').submit();">					
-																	{{ __('LogOut') }}
-															</form>
-                                             
-												</x-responsive-nav-link> 
-											
-										</figure>
-										
-                                      </div>
-										</li>
-										
-									</ul>
-								</nav>
-													
-                </div>
-				</div>
-			</div>
-		
-			<div id="site_content" class="content">
-				
-				<div id="wait"></div>
-				<div id="content">
-					<h4>
-					
-				
-					</h4>
-					
+                    </ul>
 
-			
-			<div class="row">
-       
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                <div class="row g-4">
+            <!-- Sale & Revenue Start -->
+          
+              <input type="hidden" name="w" value=""></input>
+             
+                    
+                   
+
+  
+
+
+                    <!-- Page Heading -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="{{ URL('letters9') }}"> <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="{{ URL('transfers') }}">Total Requests</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa fa-file fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></a>
+                        </div>
+                        @foreach ($letters as $letter)
+               @if($letter->Employee_id==Auth::user()->Employee_id && $k<1)
+              <input type="hidden" name="w" value="{{++$k}}"></input>
+           
+                    @endif
+            @endforeach
+            @foreach ($chances as $chance)
+               @if($chance->hospital!="pending" && $chance->Tamisemi=="Approved BY Tamisemi_Director")
+              <input type="hidden" name="w" value="{{++$e}}"></input>
+           
+                    @endif
+            @endforeach
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="{{ URL('letters') }}"> <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="{{ URL('letters') }}">Onprogress Request</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $k }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa fa-file fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></a>
+                        </div>
+                        @foreach ($letters as $letter)
+                         
+                         @if($letter->author==Auth::user()->name)
+                      <input type=hidden name='hello' value="{{$i=$i+1;}}"></input>
+                         @endif
+                     @endforeach
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="{{ URL('letters3') }}"> <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="{{ URL('letters3') }}">Swap pending</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $i }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class='fas fa-exchange-alt'></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></a>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                        <a href="{{ URL('letters3') }}"> <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            <a href="{{ URL('chances1') }}">Chance Available</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $e }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa fa-file fa-3x text-primary"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></a>
+                        </div>
+                        <!-- <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <!-- <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Request Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <!-- <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <hr>
+                                   
+                                </div>
+                            </div>
+                        </div>  -->
+                        <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Administrative Office</h6>
+                                    <div class="dropdown no-arrow">
+                                        
+                                        
+                                    </div>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                <center><h6>ADMINISTRATIVE</h6></center>
+          
+               
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Medical_Doctor_in Charge:</h6>
+                    <p class="text-muted"></p>
+                  </div>
+                  <div class="col-6 mb-3">
+                  @foreach ($schools as $school)
+            <tr><input type="hidden" name="h1" value="{{$m=0}}"></input>
+                  @if((Auth::user()->schools==$school->name) &&($m<1))
+                  <input type="hidden" name="h1" value="{{$m++}}"></input>
+                
+                   <h6>{{$school->Headmaster}}</h6> 
+                   @break
+                 
+                  @endif
+                  @endforeach<br>
+                  </div>
+                  
+                  <div class="col-6 mb-6">
+                   <h6>District_Medical_Officer:</h6>
+                    <p class="text-muted"></p>
+                  </div>
+                  <div class="col-6 mb-3">
+                  @foreach ($districts as $district)
+            <tr><input type="hidden" name="h1" value="{{$m=0}}"></input>
+                  @if((Auth::user()->district==$district->name) &&($m<1))
+                  <input type="hidden" name="h1" value="{{$m++}}"></input>
+                
+                   <h6>{{$district->DEO}}</h6> 
+                   @break
+                 
+                  @endif
+                  @endforeach<br>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>District_Director</h6>
+                  
+                  </div>
+                  <div class="col-6 mb-3">
+                  @foreach ($districts as $district)
+            <tr><input type="hidden" name="h1" value="{{$m=0}}"></input>
+                  @if((Auth::user()->district==$district->name) &&($m<1))
+                  <input type="hidden" name="h1" value="{{$m++}}"></input>
+                
+                   <h6>{{$district->DED}}</h6> 
+                   @break
+                 
+                  @endif
+                  @endforeach<br>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Regional_Director</h6>
+                 
+
+                    </div>
+                    <div class="col-6 mb-3">
+                  @foreach ($regionals as $regional)
+            <tr><input type="hidden" name="h1" value="{{$m=0}}"></input>
+                  @if((Auth::user()->regional==$regional->name) &&($m<1))
+                  <input type="hidden" name="h1" value="{{$m++}}"></input>
+                
+                   <h6>{{$regional->RD}}</h6> 
+                   @break
+                 
+                  @endif
+                  @endforeach<br>
+                  </div>
+                   
+                    <div class="col-6 mb-3">
+                    <p class="text-muted"></p>
+
+                    </div>
+                    
+                  </div></div>
+                            </div>
+                   
+              
+
+                    
+            </div>
+        </div>
     </div>
-	     <table>
-			 <th>PERSONAL INFORMATION<th>
-          <tr>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <td><strong>Health_Worker Identification Nunmber:</strong></td>
-               <td> {{ Auth::user()->Employee_id }}</td>
-            </div>
-        </div>
-</tr>
+   
 
-<tr>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <td><strong>Full Name:</strong></td>
-               <td> {{ Auth::user()->name }}  {{ Auth::user()->name }}</td>
-            </div>
-        </div>
-</tr>
+    
 
-<tr>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <td><strong>Email:</strong></td>
-               <td> {{ Auth::user()->email }}</td>
-            </div>
-        </div>
-</tr>
-<tr>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <td><strong>Regional:</strong></td>
-               <td> {{ Auth::user()->regional }}</td>
-            </div>
-        </div>
-</tr>
-<tr>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <td><strong>District:</strong></td>
-               <td> {{ Auth::user()->district }}</td>
-            </div>
-        </div>
-</tr>
-<tr>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <td><strong>Ward:</strong></td>
-               <td> {{ Auth::user()->ward }}</td>
-            </div>
-        </div>
-</tr>
-<tr>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <td><strong>Hospital:</strong></td>
-               <td> {{ Auth::user()->schools }}</td>
-            </div>
-        </div>
-</tr>
-</table>     
-</div>
-			</div>    
-    </div>
-						
-				<br><br>
-				<center><p>Ofisi ya Rais, Tawala za Mikoa na Serikali za Mitaa. Copyright &copy; TAMISEMI <?php echo date("Y"); ?> All Rights Reserved.</p></center>
-			
-			<!-- JAVASCRIPTS -->
-			<script type="text/javascript" src="js/ajax.js"></script>
-			<script type="text/javascript" src="js/_crime.js"></script>
-	</body>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
 
 </html>

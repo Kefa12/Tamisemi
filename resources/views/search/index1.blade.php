@@ -119,6 +119,9 @@
                 @role('Teacher')
                 <div class="sidebar-brand-text mx-3">Teacher</div>
                 @endrole
+                @role('Health_Worker')
+                <div class="sidebar-brand-text mx-3">Nurse</div>
+                @endrole
                 @role('Weo')
                 <div class="sidebar-brand-text mx-3">Ward_officer</div>
                 @endrole
@@ -133,6 +136,27 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                     @role('Teacher')
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+                <a class="nav-link" href="{{ URL('letters21') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('transfers') }}">
+                <i class="fa fa-search"></i>
+                    <span>Swap teacher</span></a>
+               <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('chances1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                    @endrole
+                    @role('Health_Worker')
                     <hr class="sidebar-divider">
                     <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
@@ -417,7 +441,7 @@
         </div>
     @endif
     <div class="container-fluid">
-
+@role('Teacher')
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800"></h1>
    
@@ -457,7 +481,7 @@
 	
         @foreach ($letters as $letter)
           
-			@if(($letter->name!=Auth::user()->name) && ($i<10))
+			@if(($letter->name!=Auth::user()->name && $letter->chospital=="pending") && ($i<10))
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $letter->name }}</td>
@@ -499,6 +523,93 @@
    </table>
  </div>
 </div>
+@endrole
+@role('Health_Worker')
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"></h1>
+   
+    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Search other request</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr> <th>No</th>
+                                             <th>Name</th>
+			                                 <th>regional</th>
+			                                 <th>transfer district</th>
+			                                      <th>ward</th>
+                                             <th>current Hospital</th>
+                                             <th>Transfer Hospital</th>		
+                                                 <th>description</th>
+            
+                                         <th width="280px">Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr> 
+                                        <th>No</th>
+                                             <th>Name</th>
+			                                 <th>regional</th>
+			                                 <th>transfer district</th>
+			                                      <th>ward</th>
+                                             <th>current hospital</th>
+                                             <th>Transfer hospital</th>		
+                                                 <th>description</th>
+            
+                                         <th width="280px">Action</th>
+                                      </tr>
+                                    </tfoot>
+                                    <tbody>
+	
+        @foreach ($letters as $letter)
+          
+			@if(($letter->name!=Auth::user()->name)&&($letter->chospital!='pending'))
+            <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{ $letter->name }}</td>
+				<td>{{ $letter->regional }}</td>
+				<td>{{ $letter->tdistrict }}</td>
+				<td>{{ $letter->ward }}</td>
+                <td>{{ $letter->chospital }}</td>
+                <td>{{ $letter->thospital }}</td>			
+                <td>{{ $letter->description }}</td>
+                
+                <td>
+                    <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+                       
+					
+						
+                        <a href="{{ route('letters.edit', $letter->id) }}">
+                            <i class="fas fa-edit  fa-lg"></i>
+
+                        </a>
+					
+
+                        @csrf
+                        @method('DELETE')
+                        @role('admin')
+                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
+
+                        </button>
+                        @endrole
+                    </form>
+                </td>
+            </tr>
+			@endrole
+        @endforeach
+    </tbody>
+   </table>
+ </div>
+</div>
+@endrole
 
 
   

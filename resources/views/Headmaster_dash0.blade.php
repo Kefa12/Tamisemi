@@ -80,8 +80,12 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-               
-                <div class="sidebar-brand-text mx-3">Headmaster</div>
+            @role("Headmaster")
+            <div class="sidebar-brand-text mx-3">Headmaster</div>
+            @endrole
+            @role("Medical_Doctor_in-charge")
+                <div class="sidebar-brand-text mx-3">Doctor_in-charge</div>
+            @endrole
             </a>
 
             <!-- Divider -->
@@ -127,7 +131,23 @@
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress Chance</span></a>
                 @endrole
+                @role('Medical_Doctor_in-charge')
+                <a class="nav-link" href="{{ URL('districts') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('letters22') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Nurse</span></a>
+              
+               <a class="nav-link" href="{{ URL('letters31') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+             <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+                @endrole
             </li>
+            
 
             <!-- Divider -->
             
@@ -269,8 +289,12 @@
 						<strong>  {{Auth::user()->name}}</strong>
                         
 						<small style="font-size:15px">
-                        
+                            @role("Headmaster")
 							<i style="color: #888;">({{ __('Headmaster') }})</i>
+                            @endrole
+                            @role("Medical_Doctor_in-charge")
+							<i style="color: #888;">({{ __('Doctor_in-charge') }})</i>
+                            @endrole
                             {{ __('LogOut') }}
                             </x-responsive-nav-link> 
                            </form>
@@ -287,6 +311,7 @@
                 <div class="row g-4">
             <!-- Sale & Revenue Start -->
             <div class="card shadow mb-4">
+            @role("Headmaster")
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Teacher info</h6>
     </div>
@@ -361,6 +386,83 @@
                             </div>
                         </div>
                     </div>
+                    @endrole
+                    @role('Medical_Doctor_in-charge')
+                    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Nurse info</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+			<tr>
+            <th>No</th>
+            <th>Employee_id</th>
+			<th>name</th>
+			<th>email</th>
+			<th>Hospital</th>
+                    
+        </tr>
+        </thead>
+        <tfoot>
+            <tr>
+            <th>No</th>
+            <th>Employee_id</th>
+			<th>name</th>
+			<th>email</th>
+			<th>Hospital</th>
+           
+</tr>
+</tfoot>
+<tbody>
+	
+        @foreach ($users as $user)
+          @if($user->hospital==Auth::user()->hospital)
+            <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{$user->Employee_id }}</td>
+				<td>{{$user->name }}</td>
+				<td>{{$user->email }}</td>
+				<td>{{$user->hospital }}</td>
+               
+                
+                <td>
+                   
+                       
+					
+						
+                      
+					
+
+                        @csrf
+                        @method('DELETE')
+                        @role('admin')
+                        <a href="{{ route('chances.edit',$chance->id) }}">
+                            <i class="fas fa-edit  fa-lg"></i>
+
+                        </a>
+                        <a href="{{ route('chances.show',$chance->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
+
+                        </button>
+                        @endrole
+                    </form>
+                </td>
+            </tr>
+         
+		   @endif
+        @endforeach
+       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+ @endrole
 
                 </div>
             

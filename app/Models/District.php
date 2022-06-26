@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
     use HasFactory;
-    protected $guarded = [];}
+    protected $fillable = [
+       
+        'name',
+        'DMO',
+        'DEO',
+        'DED',
+        'description',
+        'regional_id',
+       
+       
+    ];
+}
+    

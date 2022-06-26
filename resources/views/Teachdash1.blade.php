@@ -80,8 +80,12 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-               
+               @role("Teacher")
                 <div class="sidebar-brand-text mx-3">Teacher</div>
+              @endrole
+              @role("Health_Worker")
+                <div class="sidebar-brand-text mx-3">Nurse</div>
+              @endrole
             </a>
 
             <!-- Divider -->
@@ -93,7 +97,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                     <hr class="sidebar-divider">
-                    <a class="nav-link" href="{{ URL('letters') }}">
+                    @role('Teacher')                    <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress</span></a>
                <a class="nav-link" href="{{ URL('letters1') }}">
@@ -108,6 +112,27 @@
                <a class="nav-link" href="{{ URL('chances1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a>
+                @endrole
+                @role('Health_Worker') 
+                <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+                <a class="nav-link" href="{{ URL('letters21') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('transfers') }}">
+                <i class="fa fa-search"></i>
+                    <span>Swap Nurse</span></a>
+               <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('chances1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                @endrole
             </li>
 
             <!-- Divider -->
@@ -229,7 +254,12 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @role("Teacher")
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ __('Teacher') }} </span>
+                                @endrole
+                                @role("Health_Worker")
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ __('Nurse') }} </span>
+                                @endrole
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">({{Auth::user()->name}})</span> <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -274,8 +304,14 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                @role('Teacher')
                 <td><strong>Teacher Identification Nunmber:</strong></td>
                <td> {{ Auth::user()->Employee_id }}</td>
+               @endrole
+               @role('Health_Worker')
+                <td><strong>Nurse Identification Nunmber:</strong></td>
+               <td> {{ Auth::user()->Employee_id }}</td>
+               @endrole
             </div>
         </div>
 </tr>
@@ -330,8 +366,13 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
+                @if(Auth::user()->hospital =='pending')
                 <td><strong>School:</strong></td>
                <td> {{ Auth::user()->schools }}</td>
+               @else
+               <td><strong>hospital:</strong></td>
+               <td> {{ Auth::user()->hospital }}</td>
+               @endif
             </div>
         </div>
 </tr>

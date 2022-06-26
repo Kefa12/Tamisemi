@@ -12,6 +12,8 @@ class Chance extends Model
       
         'name',
         'school',
+        'hospital',
+        'DMO',
         'district',
      
         'regional',

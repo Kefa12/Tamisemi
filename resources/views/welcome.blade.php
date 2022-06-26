@@ -58,7 +58,7 @@
           @else
           <li><a class="nav-link scrollto" href="{{ route('login') }}" >Login</a></li>
           @if (Route::has('register'))
-          <li><a class="nav-link scrollto " href="{{ url('registe') }}"  >Register</a></li>
+          <li><a class="nav-link scrollto " href="{{ url('welcome1') }}"  >Register</a></li>
           @endif
                       
                    
@@ -88,7 +88,7 @@
         <a href="{{ route('login') }}"  class="btn-get-started scrollto">Login</a>
         
         @if (Route::has('register'))
-        <a href="{{ url('registe') }}" class="btn-projects scrollto">Register</a>
+        <a href="{{ url('welcome1') }}" class="btn-projects scrollto">Register</a>
         
         @endif
 						

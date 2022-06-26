@@ -67,14 +67,14 @@ class ChanceController extends Controller
             'ward' => 'required',
             
            
-            'Headmaster' => 'required',
+           
             'WEO' => 'required',
             'DEO' => 'required',
             'DED' => 'required',
         ]);
         Chance::Create($request->all());
 
-        return redirect('letters')
+        return view('Health.show')
             ->with('success', 'chance request letter created successfully.');
     }
 

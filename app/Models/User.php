@@ -28,9 +28,11 @@ class User extends Authenticatable
         'password',
        
         'regional',
+        'hospital',
         'district',
         'ward',
         'schools',
+        
     ];
 
     /**

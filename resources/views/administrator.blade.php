@@ -99,7 +99,7 @@
                     <span>Request</span></a>
                     <a class="nav-link" href="{{ URL('letters25') }}">
                      <i class="fa fa-table me-2"></i>
-                    <span>Teacher</span></a>
+                    <span>public_workers</span></a>
                     <a class="nav-link" href="{{ URL('letters') }}">
                     <i class="fa fa-table me-2"></i>
                     <span>Onprogress Chance</span></a>

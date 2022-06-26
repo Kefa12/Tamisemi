@@ -71,6 +71,12 @@ Route::get('/DEOdash', function () {
 Route::get('/Dmdash', function () {
     return view('Dmdash');
 });
+Route::get('/MDCdash', function () {
+    return view('MDCdash');
+});
+Route::get('/DMO', function () {
+    return view('DMOdash');
+});
 Route::get('/Headmaster_dash', function () {
     return view('Headmaster_dash');
 });
@@ -97,15 +103,19 @@ Route::get('Register_DED',[App\Http\Controllers\DropDown::class, 'index44']);
 Route::get('Register_RD',[App\Http\Controllers\DropDown::class, 'index5']);
 Route::get('Register_TAMISEMI_Director',[App\Http\Controllers\DropDown::class, 'index6']);
 Route::get('register_health_worker',[App\Http\Controllers\DropDown::class, 'index8']);
+Route::get('Medical_Doctor',[App\Http\Controllers\DropDown::class, 'index9']);
+Route::get('DMO',[App\Http\Controllers\DropDown::class, 'index10']);
 Route::get('auth/register',[App\Http\Controllers\DropDown::class, 'index7']);
 
 Route::get('add', [App\Http\Controllers\FinalSearch::class, 'index']);
 Route::get('add1', [App\Http\Controllers\FinalSearch::class, 'index1']);
 Route::get('headmaster', [App\Http\Controllers\FinalSearch::class, 'headmaster']);
+Route::get('MDC', [App\Http\Controllers\FinalSearch::class, 'MDC']);
 Route::get('add2', [App\Http\Controllers\FinalSearch::class, 'index2']);
 Route::get('add3', [App\Http\Controllers\FinalSearch::class, 'index3']);
 Route::get('add4', [App\Http\Controllers\FinalSearch::class, 'index4']);
 Route::get('add5', [App\Http\Controllers\FinalSearch::class, 'index5']);
+Route::get('add10', [App\Http\Controllers\FinalSearch::class, 'add10']);
 Route::get('registe3', [App\Http\Controllers\auth\RegisteredUserController::class, 'store']);
 
 
@@ -125,6 +135,8 @@ Route::get('letters10', [App\Http\Controllers\LetterController::class, 'index10'
 Route::get('letters11', [App\Http\Controllers\LetterController::class, 'index11']);
 Route::get('letters14', [App\Http\Controllers\LetterController::class, 'index14']);
 Route::get('letters20', [App\Http\Controllers\LetterController::class, 'index12']);
+Route::get('letters30', [App\Http\Controllers\LetterController::class, 'index30']);
+Route::get('letters31', [App\Http\Controllers\LetterController::class, 'index31']);
 Route::get('letters21', [App\Http\Controllers\LetterController::class, 'index13']);
 Route::get('letters22', [App\Http\Controllers\LetterController::class, 'index22']);
 Route::get('letters23', [App\Http\Controllers\LetterController::class, 'index23']);

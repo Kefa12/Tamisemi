@@ -24,7 +24,7 @@ class DropDown extends Controller
     {
         $data['regional_rd'] = DB::table('regional_rd')->get();
 
-        return view("registe2",$data);
+        return view("registe3",$data);
        
        
        
@@ -83,6 +83,18 @@ class DropDown extends Controller
         $data['regional_rd'] = DB::table('regional_rd')->get();
 
         return view("register_health_worker",$data);     
+    }
+    function index9()
+    {
+        $data['regional_rd'] = DB::table('regional_rd')->get();
+
+        return view("Medical_Doctor",$data);     
+    }
+    function index10()
+    {
+        $data['regional_rd'] = DB::table('regional_rd')->get();
+
+        return view("DMO",$data);     
     }
     function getCity()
     {

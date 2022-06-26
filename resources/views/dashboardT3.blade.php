@@ -322,7 +322,7 @@
   <center><h1>Complete Request </h1></center>
    <div class="card shadow mb-4">
                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Search complete request</h6>
+                           <h6 class="m-0 font-weight-bold text-primary">Teacher complete request</h6>
                        </div>
                        <div class="card-body">
                            <div class="table-responsive">
@@ -337,7 +337,7 @@
                                                 <th>description</th>
                                                 <th>Approved_status</th>
            
-                                        <th width="280px">Action</th>
+                                     
                                      </tr>
                                    </thead>
                                    <tfoot>
@@ -351,27 +351,27 @@
                                                 <th>description</th>
                                                 <th width="280px">Approved_status</th>
            
-                                        <th width="280px">Action</th>
+                                       
                                      </tr>
                                    </tfoot>
                                    <tbody>
    
-      @foreach ($letters as $letter)
+     @foreach ($letter_backs as $letter_back)
           <tr>
-          @if($letter->Tamisemi!="pending")
+          @if($letter_back->chospital=='pending' && $letter_back->tschool!='no_define_school')
            <tr>
                <td>{{ ++$i }}</td>
-               <td>{{ $letter->name }}</td>
-               <td>{{ $letter->regional }}</td>
-               <td>{{ $letter->tdistrict }}</td>
-               <td>{{ $letter->ward }}</td>
-               <td>{{ $letter->cschool }}</td>			
-               <td>{{ $letter->description }}</td>
-               @if( $letter->Tamisemi== 'Rejected BY Tamisemi_Director')
+               <td>{{$letter_back->name }}</td>
+               <td>{{ $letter_back->regional }}</td>
+               <td>{{$letter_back->tdistrict }}</td>
+               <td>{{ $letter_back->ward }}</td>
+               <td>{{ $letter_back->cschool }}</td>			
+               <td>{{ $letter_back->description }}</td>
+               @if( $letter_back->Tamisemi== 'Rejected BY Tamisemi_Director')
                 
                 <td> <button type="submit" class="btn btn-danger" width="280px"><i> Rejected</i></button> </td>
              
-             @elseif(  $letter->Tamisemi== 'Approved BY Tamisemi_Director')
+             @elseif( $letter_back->Tamisemi== 'Approved BY Tamisemi_Director')
             
              <td><button type="submit" class="btn btn-primary" style="width: 180px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">Approved</i></button> </td>
             
@@ -384,6 +384,7 @@
                 
                
                <td>
+               @role('admin')
                <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
        <a href="{{ route('letters.show', $letter->id) }}" title="show">
@@ -393,6 +394,119 @@
         <i class="fas fa-edit  fa-lg"></i>
 
     </a>
+              @endrole
+                   
+
+                       @csrf
+                       @method('DELETE')
+                       @role('admin')
+                       <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                           <i class="fas fa-eye text-success  fa-lg"></i>
+                       </a>
+                       <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                           <i class="fas fa-trash fa-lg text-danger"></i>
+
+                       </button>
+                       @endrole
+                   </form>
+               </td>
+           </tr>
+           @endrole
+       @endforeach
+   </tbody>
+  </table>
+</div>
+</div>
+
+  
+
+
+                    <!-- Page Heading -->
+                   
+              
+
+                    
+            </div>
+        </div>
+    </div>
+    <h1 class="h3 mb-2 text-gray-800"></h1>
+  <center><h1>Complete Request </h1></center>
+   <div class="card shadow mb-4">
+                       <div class="card-header py-3">
+                           <h6 class="m-0 font-weight-bold text-primary">Nurse complete request</h6>
+                       </div>
+                       <div class="card-body">
+                           <div class="table-responsive">
+                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                   <thead>
+                                       <tr> <th>No</th>
+                                            <th>Name</th>
+                                            <th>regional</th>
+                                            <th>transfer district</th>
+                                                 <th>ward</th>
+                                            <th>current hospital</th>		
+                                                <th>description</th>
+                                                <th>Approved_status</th>
+           
+                                      
+                                     </tr>
+                                   </thead>
+                                   <tfoot>
+                                   <tr> 
+                                       <th>No</th>
+                                            <th>Name</th>
+                                            <th>regional</th>
+                                            <th>transfer district</th>
+                                                 <th>ward</th>
+                                            <th>current hospital</th>		
+                                                <th>description</th>
+                                                <th width="280px">Approved_status</th>
+           
+                                      
+                                     </tr>
+                                   </tfoot>
+                                   <tbody>
+   
+      @foreach ($letter_backs as $letter_back)
+          <tr>
+          @if($letter_back->tschool=='no_define_school')
+           <tr>
+               <td>{{ ++$i }}</td>
+               <td>{{ $letter_back->name }}</td>
+               <td>{{$letter_back->regional }}</td>
+               <td>{{$letter_back->tdistrict }}</td>
+               <td>{{$letter_back->ward }}</td>
+               <td>{{$letter_back->chospital }}</td>			
+               <td>{{$letter_back->description }}</td>
+               @if($letter_back->Tamisemi== 'Rejected BY Tamisemi_Director')
+                
+                <td> <button type="submit" class="btn btn-danger" width="280px"><i> Rejected</i></button> </td>
+             
+             @elseif( $letter_back->Tamisemi== 'Approved BY Tamisemi_Director')
+            
+             <td><button type="submit" class="btn btn-primary" style="width: 180px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">Approved</i></button> </td>
+            
+              @else
+             
+              <td><button type="submit" class="btn btn-success" width="280px"><i>pending</i></button> </td>
+             
+             
+              @endif
+                
+               
+               <td>
+                @role('admin')
+               <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+       <a href="{{ route('letters.show', $letter->id) }}" title="show">
+    <i class="fas fa-eye text-success  fa-lg"></i>
+</a>
+    <input type="hidden" name="status" value="yes"/>
+    <a href="{{route('letters.edit', $letter->id) }}">
+        <i class="fas fa-edit  fa-lg"></i>
+
+    </a>
+    @endrole
                    
 
                        @csrf

@@ -119,6 +119,9 @@
                 @role('Teacher')
                 <div class="sidebar-brand-text mx-3">Teacher</div>
                 @endrole
+                @role('Health_Worker')
+                <div class="sidebar-brand-text mx-3">Nurse</div>
+                @endrole
                 @role('Weo')
                 <div class="sidebar-brand-text mx-3">Ward_officer</div>
                 @endrole
@@ -133,6 +136,27 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                     @role('Teacher')
+                    <hr class="sidebar-divider">
+                    <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress</span></a>
+                <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Result</span></a>
+               <a class="nav-link" href="{{ URL('letters1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('transfers') }}">
+                <i class="fa fa-search"></i>
+                    <span>Swap teacher</span></a>
+               <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('chances1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+                    @endrole
+                    @role('Health_Worker')
                     <hr class="sidebar-divider">
                     <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
@@ -489,6 +513,7 @@
 
 
 <!-- DataTales Example -->
+@role('Teacher')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Chance available </h6>
@@ -521,7 +546,7 @@
 	
         @foreach ($chances as $chance)
           @if($chance->Tamisemi== 'Approved BY Tamisemi_Director')
-		
+		  @if($chance->hospital=="pending")
             <tr>
                 <td>{{ ++$i }}</td>
               
@@ -559,6 +584,7 @@
                 </td>
             </tr>
             @endif
+            @endif
 		
         @endforeach
        
@@ -569,6 +595,90 @@
                     </div>
 
                 </div>
+            @endrole
+            @role('Health_Worker')
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Chance available </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+			<tr>
+            <th>No</th>
+			<th>regional</th>
+			<th>district</th>
+			<th>ward</th>
+            <th>Hospital</th>		
+                  
+        </tr>
+        </thead>
+        <tfoot>
+            <tr>
+            <th>No</th>
+			<th>regional</th>
+			<th>district</th>
+			<th>ward</th>
+            <th>Hospital</th>		
+         
+</tr>
+</tfoot>
+<tbody>
+	
+        @foreach ($chances as $chance)
+          @if($chance->Tamisemi== 'Approved BY Tamisemi_Director')
+		  @if($chance->hospital!='pending')
+            <tr>
+                <td>{{ ++$i }}</td>
+              
+				<td>{{$chance->regional }}</td>
+				<td>{{$chance->district }}</td>
+				<td>{{$chance->ward }}</td>
+                <td>{{$chance->hospital }}</td>	
+              
+                
+                <td>
+                    <form action="{{ route('chances.destroy',$chance->id) }}" method="POST">
+
+                       
+					
+						
+                      
+					
+
+                        @csrf
+                        @method('DELETE')
+                        @role('admin')
+                        <a href="{{ route('chances.edit',$chance->id) }}">
+                            <i class="fas fa-edit  fa-lg"></i>
+
+                        </a>
+                        <a href="{{ route('chances.show',$chance->id) }}" title="show">
+                            <i class="fas fa-eye text-success  fa-lg"></i>
+                        </a>
+                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                            <i class="fas fa-trash fa-lg text-danger"></i>
+
+                        </button>
+                        @endrole
+                    </form>
+                </td>
+            </tr>
+            @endif
+         @endif
+		
+        @endforeach
+       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            @endrole
                 <!-- /.container-fluid -->
 
             </div>

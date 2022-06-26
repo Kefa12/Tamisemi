@@ -1,114 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-	<head>
-		<title>Welcome to the Tamisemi Workers Transfer Management System</title>
-		<link rel="shortcut icon" type="image/x-icon" href="img/logo1.png" />
-		<meta name="description"
-			content="The PWTMS public workers transfer management system helps teacher and public workers in health center.">
-		<meta name="keywords" content="teacher, nurse, transfer report,">
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/button.css" />
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-      <!-- Custom fonts for this template-->
-      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+  <title>Tamisemi Teacher Transfer</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- Favicons -->
+  <style>
+    .form-group{
+      padding-left:10px;
+      padding-right:10px;
+    }
+    </style>
+  <link href="assets/img/favicon.png" rel="icon">
+  
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-		<script src="https://kit.fontawesome.com/bf523026c9.js" crossorigin="anonymous"></script>
-	</head>
-	<style>
-	#header{
-		 background-image: url("img/Tamisemi11.png");
-		 
-		  background-repeat: no-repeat;
-		  width:100%;
-	}
-	.nav1{
-		  margin-top: 0;
-          color:white;
-		  background-color: red;
-	   		 
-		 
-		
-	}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
 
-	.img{
-		 margin:0%;
-		
-		  position:relative;		
-	}
-	.img1{
-		  position:absolute;
-		 
-		 color:black;
-		  font-size:67px;
-		  top:17px;
-		  left:50px;		
-	}
-	.img2{
-		  position:absolute;
-		
-		  color:black;
-		  font-size:67px;
-		  bottom:20px;
-		  left:50px;		
-	}
-	td{
-		  margin-top: 0;
-		  background-color:white;
-		 
-		 
-		
-	}
-	#nav1{
-		 
-		background-color: gray;		
-	}
-	#main{
-		  padding-left: 210px;
-		  padding-right: 210px;
-		background-color: white;		
-	}
-	</style>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-	<body>
-		<div id="main">
-			<div id="header">
-				
-					
-						
-					
-			
-			</div>
-			<nav style="background-color:#4B7BE5;">
-			     <div id="nav1">
-           <ul id="menu">
-		              <li><a href="{{ url('/') }}" >Home</a></li>
-                @if (Route::has('login'))
-                <li class="selected">
-                    @auth
-                        <a   href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a></li>
-                    @else
-                    <li><a href="{{ route('login') }}" >Log in</a></li>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
 
-                        @if (Route::has('register'))
-                        <li><a href="{{ url('registe') }}">Register</a></li>
-                        @endif
-						
-                        
-                                          @endauth
-               
-            @endif
-					
-				</ul>
-				</div>
-			</nav>
+  <!-- =======================================================
+  * Template Name: Reveal - v4.7.0
+  * Template URL: https://bootstrapmade.com/reveal-bootstrap-corporate-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+ 
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+      <div id="logo">
+      <h1><a href="index.html">PW<span>TMS</span></a></h1>
+         </div>
+
+      <nav id="navbar" class="navbar">
+        <ul >
+          <li><a class="nav-link scrollto active" href="{{ url('/') }}" style="color:black;">Home</a></li>
+          @if (Route::has('login'))
+          @auth
+          <li><a class="nav-link scrollto" href="{{ url('/dashboard') }}">Dashboard</a></li>
+          @else
+          <li><a class="nav-link scrollto" href="{{ route('login') }}" >Login</a></li>
+          @if (Route::has('register'))
+          <li><a class="nav-link scrollto " href="{{ url('welcome1') }}"  >Register</a></li>
+          @endif
+                      
+                   
+                       
+                      @endauth
+                 
+              @endif
+          
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
 
 			<!-- Pages Content -->
 	<div class="container register">                  
@@ -120,12 +91,14 @@
 
 								<!-- Validation Errors -->
 								<x-auth-validation-errors class="mb-4" :errors="$errors" />
+<div class="card bg-blue text-black" style="border-radius: 25px; border: 1px solid blue;">
 
-                <form method="GET" action="{{ url('registe3') }}">
+  <form method="GET" action="{{ url('registe3') }}">
               
-            @csrf
+  @csrf
             <center><h1>Registration form </h1>
-                            </center>
+            <img src="assets3/img/logo2.jpg" alt="no image" width=100></center>
+			          
 			                     <div class="row register-form">
                              
                              
@@ -194,7 +167,7 @@
 												                                             <h4 >Choose Regional</h4>
 																							 <select id="state" name="regional" class="form-control">
 																										  <option width="700"><h1 class="form-control">Choose Regional</h1></option>
-																												  @foreach($regionals as $row)
+																												  @foreach($regional_rd as $row)
 																										 <option value={{$row->id}}>{{$row->name}}</option>
 																													@endforeach   
 																							  </select>
@@ -231,8 +204,8 @@
 																		{{ __('Already registered?') }}
 																	</a>
 
-																	<button class="ml-4">
-																		{{ __('registe3') }}
+																	<button class="ml-4" style="background-color:blue; color:white;">
+																	<input type="hidden"  value="{{ __('registe3') }}"/>register
 																	</button>
 																</div>
 																</form>

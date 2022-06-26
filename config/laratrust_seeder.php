@@ -42,6 +42,12 @@ return [
         'Headmaster' => [
             'profile3' => 'r,u',
         ],
+        'Medical_Doctor_in-charge' => [
+            'profile7' => 'r,u',
+        ],
+        'DMO' => [
+            'profile3' => 'r,u',
+        ],
         'Teacher' => [
             'module_2_name' => 'c,r,u,d',
         ]

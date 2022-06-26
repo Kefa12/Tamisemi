@@ -1096,97 +1096,6 @@
             </div>
             
             @endrole
-            @role('DMO')
-            <h2>District Medical Officer Respond Request to Teacher {{ $letter->name }} </h2>
-     <form action="{{ route('letters.update', $letter->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <input type="text" class="form-control" style="height:50px" name="DEO_comment" value="{{ $letter->DEO_comment }}"
-                                                    ></input>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="Hidden" name="name" value="{{ $letter->name }}" class="form-control" placeholder="Name">
-                </div>
-            </div>
-            <input type="hidden" class="form-control" style="height:50px" name="DEO_date" value="{{ $date2 }}"
-                        placeholder="mwenge"></input>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                 
-                    <input type="Hidden" class="form-control" style="height:50px" name="cschool" value="{{ $letter->cschool }}"
-                        placeholder="mwenge"></input>
-                </div>
-                <div class="form-group">
-                 
-             </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                   
-                    <input type="Hidden" class="form-control" style="height:50px" name="cdistrict" value="{{ $letter->cdistrict}}"
-                        placeholder="iringa"></input>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="Hidden" class="form-control" style="height:50px" name="tdistrict" value="{{ $letter->tdistrict}}"
-                        placeholder="mbeya"></input>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="Hidden" class="form-control" style="height:50px" name="description" value="{{$letter->description}}"
-                        placeholder="description"></input>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                 
-                    <input type="Hidden" class="form-control" style="height:50px" name="ward"   value="{{$letter->ward}}"
-                        placeholder="ruanda"></input>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                   
-                    <input type="hidden" class="form-control" style="height:50px" name="DED" value="{{$letter->DED}}" 
-                        ></input>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="hidden" class="form-control" style="height:50px" name="ward1"    value="{{Auth::user()->ward}}"
-                        placeholder="ruanda"></input>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                 
-                    <input type="Hidden" class="form-control" style="height:50px" name="cschool1" value="{{ $letter->cschool }}"
-                        placeholder="mwenge"></textarea>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                  
-                    <input type="hidden" class="form-control" style="height:50px" name="regional"  value="{{ Auth::user()->regional}}"
-                        placeholder="mbeya"></input>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                   
-                    <input type="hidden" class="form-control" style="height:50px" name="schools" value="{{ $letter->cschool }}"
-                        placeholder="mwenge"></input>
-                </div>
-            </div>
-            
-            @endrole
             @role('Regional_Director')
             <h2>Regional Director Respond Request to Teacher {{ $letter->name }} </h2>
             <form action="{{ route('letters.update', $letter->id) }}" method="POST">
@@ -1330,10 +1239,6 @@
                        ></input>
         <input type="hidden" class="form-control" style="height:50px" name="statusi"    
                        ></input>
-    <input type="hidden" class="form-control" style="height:50px" name="name"  value="{{$letter->name}}"   
-                       ></input>
-    <input type="hidden" class="form-control" style="height:50px" name="author"  value="{{$letter->author}}"   
-                       ></input>
        
                 </div>
             </div>
@@ -1391,17 +1296,6 @@
                 <select name="MDC_approved" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="support BY MDC">support</option>
                         <option value="Not_support BY MDC">Not_support</option>
-                </select>
-                </div>
-            @endrole
-            @role('DMO')
-       <div class="col-xs-12 col-sm-12 col-md-12">
-            <input type="hidden" class="form-control" style="height:50px" name="status"    value="0"
-                       ></input>
-                <div class="form-group">Doctor_in_charge Approved
-                <select name="DMO_approved" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="support BY DMO">support</option>
-                        <option value="Not_support BY DMO">Not_support</option>
                 </select>
                 </div>
             @endrole
@@ -1472,9 +1366,6 @@
                        ></input>
             <input type="hidden" class="form-control" style="height:50px" name="DEO"    value="{{$letter->DEO}}"
                        ></input>
-            <input type="hidden" class="form-control" style="height:50px" name="DED"    value="{{$letter->DED}}"
-                       ></input>
-           
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="3"
                        ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -1570,11 +1461,6 @@
 </form>
             @endrole
             @role('Weo')
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">support / Not_support</button>
-            </div>
-            @endrole
-            @role('DMO')
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">support / Not_support</button>
             </div>
@@ -1784,19 +1670,11 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
               
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
-                    @if($letter->chospital=='pending')
                     <h6>School</h6>
-                    <input type="hidden" name="chospital" value="{{$letter->chospital}}"></input>
-                    <input type="hidden" name="thospital" value="{{$letter->thospital}}"></input>
                     <p class="text-muted">{{$letter->cschool}}</p>
-                    @else
-                    <h6>hospital</h6>
-                    <p class="text-muted">{{$letter->chospital}}</p>
-                    @endif
                   </div>
                   <div class="col-6 mb-3">
                     <h6>ward</h6>
-                    
                     <p class="text-muted">{{$letter->ward}}</p>
                   </div>
                   <div class="col-6 mb-3">
@@ -1813,21 +1691,12 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
               <div class="row pt-1">
                 <div class="col-6 mb-3">
                   <h6>District</h6>
-                  <input type="hidden" name="tdistrict" value="{{$letter->tdistrict}}" />
-                  <input type="hidden" name="tward" value="{{$letter->tward}}" />
-                  <input type="hidden" name="tregional" value="{{$letter->tregional}}" />
                   <p class="text-muted">{{$letter->tdistrict}}</p>
                 </div>
                 
                 <div class="col-6 mb-3">
-                   @if($letter->thospital=='pending')
-                    <h6>School</h6>
-                    <p class="text-muted">{{$letter->tschool}}</p>
-                    @else
-                    <h6>hospital</h6>
-                    <input type="hidden" name="thospital" value="{{$letter->thospital}}" />
-                    <p class="text-muted">{{$letter->thospital}}</p>
-                    @endif
+                  <h6>School</h6>
+                  <p class="text-muted">{{$letter->tschool}}</p>
                 </div>
               
               </div>
@@ -1836,7 +1705,6 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 <hr class="mt-0 mb-4">
                 <div class="row pt-1">
                   <div class="col-6 mb-3">
-                    @if($letter->chospital=='pending' && $letter->thospital=='pending')
                     <h6>Headmaster</h6>
                     @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
                 
@@ -1941,98 +1809,6 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                 <button type="submit" class="btn btn-primary">Approved / Rejected</button>
             </div>
 </form>
-@else
-<h6>Doctor_in_Charge</h6>
-                    @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
-                
-                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
-               
-               @elseif( $letter->Headmaster  == 'support BY HEADMASTER')
-              
-                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
-              
-                @else
-               
-                 <button type="submit" class="btn btn-success"><i>pending</i></button>
-               
-               
-                @endif
-                
-                  </div>
-                  <div class="col-6 mb-3">
-                   
-                  </div>
-                </div>
-                <div class="row pt-1">
-                <div class="col-6 mb-3">
-                    <h6>District_Medical_Officer</h6>
-                    @if( $letter->DEO == 'Not_support BY District_Education_Officer')
-                
-                    <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
-               
-               @elseif( $letter->DEO == 'support BY District_Education_Officer')
-              
-                 <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
-              
-                @else
-               
-                 <button type="submit" class="btn btn-success"><i>pending</i></button>
-               
-               
-                @endif
-                  </div>
-                  <div class="col-6 mb-3">
-                    <h6>District_Director</h6>
-                    @if( $letter->DED == 'Not_support BY District_Executive_Director')
-                
-                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
-           
-           @elseif( $letter->DED == 'support BY District_Executive_Director')
-          
-             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
-          
-            @else
-           
-             <button type="submit" class="btn btn-success"><i>pending</i></button>
-           
-           
-            @endif
-                  </div>
-                  <div class="col-6 mb-3">
-                    <h6>Regional_Director</h6>
-                    @if( $letter->Regional_Director== 'Not_support BY RD')
-                
-                <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
-           
-           @elseif( $letter->Regional_Director == 'support BY RD')
-          
-             <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
-          
-            @else
-           
-             <button type="submit" class="btn btn-success"><i>pending</i></button>
-           
-           
-            @endif
-                  </div>
-                </div>
-                <h6><b>Administrator</b></h6>
-                <hr class="mt-0 mb-4">
-  
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">Administrator Approved
-                <select name="Tamisemi" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="Approved BY Tamisemi_Director"><p style="color:blue;">APPROVED</p></option>
-                        <option value="Rejected BY Tamisemi_Director"><p style="color:red;">REJECTED</p></option>
-                </select>
-                </div>
-            </div>
-              
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Approved / Rejected</button>
-            </div>
-</form>
-@endif
           
                   </div>
                 </div>

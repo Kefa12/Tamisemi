@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\stud;
 use App\Models\School;
+use App\Models\Hospital;
 use App\Models\Ward;
 use App\Models\District;
 use App\Models\Regional;
@@ -347,6 +348,194 @@ class FinalSearch extends Controller
                         
            
     }
+    public function MDC(Request $request)
+    {
+        $request->validate([
+            'Employee_id' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'name1' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            
+            'regional' => ['required', 'string', 'max:255'],
+            'district' => ['required', 'string', 'max:255'],
+            'ward' => ['required', 'string', 'max:255'],
+            'hospital' => ['required', 'string', 'max:255'],
+            
+        ]);
+        $regionals1 = DB::table('regional_rd')->where('id',$request->regional)->value('name');
+        $districts1 = DB::table('district_dp')->where('id',$request->district)->value('name');
+        $wards1 = DB::table('ward_dp')->where('id',$request->ward)->value('name');
+        $schools1 = DB::table('hospital_dp')->where('id',$request->hospital)->value('name');
+
+
+        $user= new User();
+        $user->Employee_id= $request['Employee_id'];
+        $user->name= $request['name']; 
+        $user->name1= $request['name1']; 
+        $user->email= $request['email'];
+        $user->password= Hash::make($request['password']);
+      
+        $user->regional=  $regionals1;
+        $user->district= $districts1;
+        $user->ward=  $wards1;
+        $user->hospital=  $schools1;
+       
+        
+        $user->save();
+        $user->attachRole($request->user_id);
+        $user->attachRole($request->role_id);
+        $hospital= new Hospital();
+        $hospital->name=  $schools1; 
+           // 'name' => $request->school,
+           $hospital->Doctor= $request['name']; 
+            //'Headmaster' => $request->name,
+            $hospital->ward_id= $request['ward']; 
+            //'ward_id' => $request->ward,
+            $hospital->save();
+        
+        
+        $wards= new Ward();
+        $wards->name= $wards1; 
+           // 'name' => $request->school,
+           $wards->WEO= $request['name']; 
+            //'Headmaster' => $request->name,
+           $wards->district_id= $request->district; 
+            //'ward_id' => $request->ward,
+           $wards->save();
+
+            if($request->term){
+                $letters = Letter::where([
+                    ['cdistrict','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('cdistrict','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(10);
+                }elseif($request->term1){
+                    $letters = Letter::where([
+                        ['name','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term1)){
+                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(10);
+                    }elseif($request->term2){
+                        $letters = Letter::where([
+                        ['tdistrict','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term2)){
+                            $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(30);
+                    }else{
+                        $letters = Letter::where([
+                        ['tdistrict','!=', NULL],
+                        [function($query) use ($request) {
+                            if(($term=$request->term2)){
+                             $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                            }
+                        }]
+                     ])
+                         ->orderBy("id","desc")
+                         ->paginate(30);
+                    }
+                    $transfers = Transfer::where([
+                        ['tdistrict','!=', NULL],
+                        [function($query) use ($request) {
+                            if(($term=$request->term2)){
+                             $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                            }
+                        }]
+                     ])
+                         ->orderBy("id","desc")
+                         ->paginate(30);
+
+                         if($request->term){
+                            $letters = Letter::where([
+                                ['regional','!=', NULL],
+                               [function($query) use ($request) {
+                                   if(($term=$request->term)){
+                                    $query->orWhere('regional','LIKE','%'.$term.'%')->get();
+                                   }
+                               }]
+                            ])
+                                ->orderBy("id","desc")
+                                ->paginate(10);
+                            }elseif($request->term1){
+                                $letters = Letter::where([
+                                    ['regional','!=', NULL],
+                                   [function($query) use ($request) {
+                                       if(($term=$request->term1)){
+                                        $query->orWhere('regional','LIKE','%'.$term.'%')->get();
+                                       }
+                                   }]
+                                ])
+                                    ->orderBy("id","desc")
+                                    ->paginate(10);
+                                }elseif($request->term2){
+                                    $letters = Letter::where([
+                                    ['tdistrict','!=', NULL],
+                                   [function($query) use ($request) {
+                                       if(($term=$request->term2)){
+                                        $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                                       }
+                                   }]
+                                ])
+                                    ->orderBy("id","desc")
+                                    ->paginate(30);
+                                }else{
+                                    $letters = Letter::where([
+                                    ['tdistrict','!=', NULL],
+                                    [function($query) use ($request) {
+                                        if(($term=$request->term2)){
+                                         $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                                        }
+                                    }]
+                                 ])
+                                     ->orderBy("id","desc")
+                                     ->paginate(30);
+                                }
+                                $transfers = Transfer::where([
+                                    ['tdistrict','!=', NULL],
+                                    [function($query) use ($request) {
+                                        if(($term=$request->term2)){
+                                         $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                                        }
+                                    }]
+                                 ])
+                                     ->orderBy("id","desc")
+                                     ->paginate(30);
+                                     $i=0;
+                                     $chance = DB::table("chances")->count('id');
+                                     $data = DB::table("users")->count('id');
+                                     $data1 = DB::table("school_dp")->count('id');
+                                     $data2 = DB::table("letters")->count('id');
+                                     $data3 = Letter::where('Tamisemi','=','pending')->count();
+                                    
+                        if($request->status=="1")
+                            return view('reg.index', compact('letters','transfers'))
+                                ->with('i', (request()->input('page', 1) - 1) * 5);
+                        else
+                          return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance'))
+                              ->with('i', (request()->input('page', 1) - 1) * 5);
+       
+
+       return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance'))
+                         ->with('i', (request()->input('page', 1) - 1) * 5);
+                        
+           
+    }
+
     public function index2(Request $request)
     {
         $request->validate([
@@ -454,6 +643,120 @@ class FinalSearch extends Controller
                          ->with('i', (request()->input('page', 1) - 1) * 5);
            
     }
+    public function add10(Request $request)
+    {
+        $request->validate([
+            'Employee_id' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'name1' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            
+            'regional' => ['required', 'string', 'max:255'],
+            'district' => ['required', 'string', 'max:255'],
+          
+            
+        ]);
+        
+        $regionals1 = DB::table('regional_rd')->where('id',$request->regional)->value('name');
+        $districts1 = DB::table('district_dp')->where('id',$request->district)->value('name');
+        
+
+        $user= new User();
+        $user->Employee_id= $request['Employee_id'];
+        $user->name= $request['name']; 
+        $user->name1= $request['name1']; 
+        $user->email= $request['email'];
+        $user->password= Hash::make($request['password']);
+        $user->hospital="DMO";
+        $user->regional=  $regionals1;
+        $user->district=  $districts1;
+     
+       
+        
+        $user->save();
+        $user->attachRole($request->user_id);
+        $user->attachRole($request->role_id);
+        
+        
+        $districts =new District();
+        $districts->name= $districts1; 
+           // 'name' => $request->school,
+           $districts->DMO= $request['name']; 
+            //'Headmaster' => $request->name,
+          $districts->regional_id=$request['regional']; 
+            //'ward_id' => $request->ward,
+            $districts->save();
+
+            if($request->term){
+                $letters = Letter::where([
+                    ['cdistrict','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('cdistrict','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(10);
+                }elseif($request->term1){
+                    $letters = Letter::where([
+                        ['name','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term1)){
+                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(10);
+                    }elseif($request->term2){
+                        $letters = Letter::where([
+                        ['tdistrict','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term2)){
+                            $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(30);
+                    }else{
+                        $letters = Letter::where([
+                        ['tdistrict','!=', NULL],
+                        [function($query) use ($request) {
+                            if(($term=$request->term2)){
+                             $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                            }
+                        }]
+                     ])
+                         ->orderBy("id","desc")
+                         ->paginate(30);
+                    }
+                    $transfers = Transfer::where([
+                        ['tdistrict','!=', NULL],
+                        [function($query) use ($request) {
+                            if(($term=$request->term2)){
+                             $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                            }
+                        }]
+                     ])
+                         ->orderBy("id","desc")
+                         ->paginate(30);
+                         $i=0;
+                         $chance = DB::table("chances")->count('id');
+                         $data = DB::table("users")->count('id');
+                         $data1 = DB::table("school_dp")->count('id');
+                         $data2 = DB::table("letters")->count('id');
+                         $data3 = Letter::where('Tamisemi','=','pending')->count();
+                        
+           
+                         
+       
+
+       return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance'))
+                         ->with('i', (request()->input('page', 1) - 1) * 5);
+                    }
     public function index3(Request $request)
     {
         $request->validate([

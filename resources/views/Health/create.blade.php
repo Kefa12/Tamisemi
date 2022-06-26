@@ -84,9 +84,6 @@
                 @role('Teacher')
                 <div class="sidebar-brand-text mx-3">Teacher</div>
                 @endrole
-                @role('Health_Worker')
-                <div class="sidebar-brand-text mx-3">Nurse</div>
-                @endrole
                 @role('Weo')
                 <div class="sidebar-brand-text mx-3">Ward_officer</div>
                 @endrole
@@ -149,9 +146,7 @@
                 <a class="nav-link" href="{{ URL('letters22') }}">
                 <i class='fas fa-exchange-alt'></i>
                     <span>Teacher</span></a>
-                <a class="nav-link" href="{{ URL('letters3') }}">
-                <i class='fas fa-exchange-alt'></i>
-                    <span>Swapping</span></a>
+               
                <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a>
@@ -546,107 +541,6 @@
 </div>
                             </div>
             </center>
-            		<!-- JAVASCRIPTS -->
-		<script type="text/javascript" src="js/ajax.js"></script>
-		<script type="text/javascript" src="js/_crime.js"></script>
-		
-		<!-- jQuery -->
-    <script src="assets/js/jquery-3.5.1.min.js"></script>
-		
-		<!-- Bootstrap Core JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-		
-		<!-- Custom JS -->
-		<script src="assets/js/app.js"></script>
-		
-    </body>
-
-</html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-<script>
-
-	
-    // Get City List 
-    $(document).ready(function(){
-        $('#state').change(function(){
-           var state = $('#state').val();
-           $('#city').html('');
-           $('#stadium').html('');
-           $('#details').html('')
-            $.ajax({
-              url:'getCity/{id}',
-              type:'GET',
-              data:{myID:state},
-              dataType: "json",
-              success:function(data)
-              {
-               
-                $.each(data, function(key, city)
-                 {     
-                  // alert(city.city_name)
-                  $('#city').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
-                });
-              }
-          });
-        });
-      });
-    
-      // Get STADIUM and ADDRESS by CITY
-    
-      $(document).ready(function(){
-        $('#city').change(function(){
-           var city = $('#city').val();
-           $('#stadium').html('');
-           $('#details').html('');
-           $.ajax({
-              url:'getStadiumDetail/{id}',
-              type:'GET',
-              data:{id:city},
-              dataType: "json",
-              success:function(data)
-              {
-                $.each(data, function(key, city)
-                 {     
-                  $('#stadium').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
-                 
-                });
-              }
-          });
-        });
-      });
-      $(document).ready(function(){
-        $('#stadium').change(function(){
-           var city = $('#stadium').val();
-           $('#details').html('');
-           $.ajax({
-              url:'getStadiumDetail1/{id}',
-              type:'GET',
-              data:{id:city},
-              dataType: "json",
-              success:function(data)
-              {
-                $.each(data, function(key, city)
-                 {     
-                  $('#details').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
-                 
-                });
-              }
-          });
-        });
-      });
-    </script>
     @endrole
     @role('Health_Worker')
     <center> <div class="form1">
@@ -713,7 +607,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
    
-    <input type="hidden" value="pending" name="DMO" class="form-control" placeholder="request">
+    <input type="hidden" value="pending" name="DEO" class="form-control" placeholder="request">
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -758,7 +652,7 @@
                                                                                                <div class="form-group">
            
                                                                                 <h5 class="text-info  mb-4">
-                                                                                     <input type="hidden" name="stat" value="stat"/>
+                                                                                    
                                                                                         <strong>Reason For Transfer:</strong>
                                                                                         <input type="text"  style="width:250px;" name="description" class="form-control" placeholder="request">
                                                                                     
@@ -912,7 +806,7 @@
                             </div>
             </center>
     @endrole
-    @role('Headmaster')
+   
     <center> <div class="form1">
    <form action="{{ route('chances.store') }}" method="POST"  id="form1">
         @csrf
@@ -926,12 +820,12 @@
 </div>
 <div class="form-group">
   
-    <input type="hidden" name="position" class="form-control" placeholder="Name" value="Headmaster">
+    <input type="hidden" name="position" class="form-control" placeholder="Name" value="Doctor">
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
-    <input type="hidden" class="form-control" name="school" value="{{ Auth::user()->schools }}"
+    <input type="hidden" class="form-control" name="hospital" value="{{ Auth::user()->hospital }}"
         placeholder="Current_school"></input>
 </div>
 </div>
@@ -979,6 +873,10 @@
    
     <input type="hidden" value="pending" name="DEO" class="form-control" placeholder="request">
 </div>
+<div class="form-group">
+   
+    <input type="hidden" value="pending" name="DMO" class="form-control" placeholder="request">
+</div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
@@ -991,7 +889,7 @@
                                 <div class="card-body">
                                     <div class="text-center">
 
-                <center><h4>Request Add Teacher</h4>
+                <center><h4>Request Add nurse</h4>
                 <img src="assets/img/letter.png" alt="no image" width=56 height=56></center>
               <div class="form-group">
 												                                            
@@ -1017,9 +915,81 @@
             </center>
             </div>
         </div>    
+
+
+
+@role('Teacher')
+<script>
+    // Get City List 
+    $(document).ready(function(){
+        $('#state').change(function(){
+           var state = $('#state').val();
+           $('#city').html('');
+           $('#stadium').html('');
+           $('#details').html('')
+            $.ajax({
+              url:'getCity/{id}',
+              type:'GET',
+              data:{myID:state},
+              dataType: "json",
+              success:function(data)
+              {
+               
+                $.each(data, function(key, city)
+                 {     
+                  // alert(city.city_name)
+                  $('#city').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                });
+              }
+          });
+        });
+      });
+    
+      // Get STADIUM and ADDRESS by CITY
+    
+      $(document).ready(function(){
+        $('#city').change(function(){
+           var city = $('#city').val();
+           $('#stadium').html('');
+           $('#details').html('');
+           $.ajax({
+              url:'getStadiumDetail/{id}',
+              type:'GET',
+              data:{id:city},
+              dataType: "json",
+              success:function(data)
+              {
+                $.each(data, function(key, city)
+                 {     
+                  $('#stadium').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                 
+                });
+              }
+          });
+        });
+      });
+      $(document).ready(function(){
+        $('#stadium').change(function(){
+           var city = $('#stadium').val();
+           $('#details').html('');
+           $.ajax({
+              url:'getStadiumDetail1/{id}',
+              type:'GET',
+              data:{id:city},
+              dataType: "json",
+              success:function(data)
+              {
+                $.each(data, function(key, city)
+                 {     
+                  $('#details').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                 
+                });
+              }
+          });
+        });
+      });
+    </script> 
     @endrole
-
-
     @role('Health_Worker')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -1329,7 +1299,7 @@
 
 </body>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

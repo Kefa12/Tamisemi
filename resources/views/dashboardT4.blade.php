@@ -326,7 +326,7 @@
                                    <tbody>
    
         @foreach ($chances as $chance)
-          
+        @if($chance->school!='pending') 
            <tr>
            <td>{{ ++$i }}</td>
               <td>{{ $chance->name }}</td>
@@ -377,7 +377,7 @@
                    </form>
                </td>
            </tr>
-          
+        @endif
           
        @endforeach
    </tbody>
@@ -397,6 +397,122 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+              
+
+      
+   
+              <h1 class="h3 mb-2 text-gray-800"></h1>
+               
+               <div class="card shadow mb-4">
+                                   <div class="card-header py-3">
+                                       <h6 class="m-0 font-weight-bold text-primary">Chance for Teacher Transfer</h6>
+                                   </div>
+                                   <div class="card-body">
+                                       <div class="table-responsive">
+                                           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                               <thead>
+                                                   <tr> <th>No</th>
+                        <th>Doctor_in_Charge</th>
+                        <th>Hospital</th>
+                        <th>Disctrict</th>
+                        <th>Regional</th>
+                        <th>description</th> 
+                        <th>Approved_status</th> 
+                        <th width="280px">Action</th>
+                       
+                                                   
+                                                 </tr>
+                                               </thead>
+                                               <tfoot>
+                                               <tr> 
+                                                   <th>No</th>
+                                                        <th>Doctor_in_Charger</th>
+                                                        <th>Hospital</th>
+                                                        <th>district</th>
+                                                             <th>Regional</th>
+                                                        <th>descriptionn</th>
+                                                        <th>Approved_status</th>		
+                                                           
+                       
+                                                    <th width="280px">Action</th>
+                                                 </tr>
+                                               </tfoot>
+                                               <tbody>
+               
+                    @foreach ($chances as $chance)
+                      @if($chance->hospital!='pending')
+                       <tr>
+                       <td>{{ ++$i }}</td>
+                          <td>{{ $chance->name }}</td>
+                          <td>{{ $chance->hospital }}</td>
+                          <td>{{ $chance->district }}</td>
+                          <td>{{ $chance->regional }}</td>
+                          <td>{{ $chance->description }}</td>
+                         
+                           @if(  $chance->Tamisemi== 'Rejected BY Tamisemi_Director')
+                            
+                            <td> <button type="submit" class="btn btn-danger" width="280px"><i> Rejected</i></button> </td>
+                         
+                         @elseif(  $chance->Tamisemi== 'Approved BY Tamisemi_Director')
+                        
+                         <td><button type="submit" class="btn btn-primary" style="width: 180px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">Approved</i></button> </td>
+                        
+                          @else
+                         
+                          <td><button type="submit" class="btn btn-success" width="280px"><i>pending</i></button> </td>
+                         
+                         
+                          @endif
+                           <td>
+                           <form action="{{ route('chances.destroy', $chance->id) }}" method="POST">
+            
+                                                
+                                                 <input type='hidden' name="M" value="1"></input>
+                                                 <a href="{{route('chances.edit', $chance->id) }}">
+                                                 <i class="fas fa-edit  fa-lg"></i>
+            
+                                                  </a>
+                               
+            
+                                   @csrf
+                                   @method('DELETE')
+                                   @role('admin')
+                                   <a href="{{ route('chances.show', $chance->id) }}" title="show">
+                                    <i class="fas fa-eye text-success  fa-lg"></i>
+                                    </a>
+                                   <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                                       <i class="fas fa-eye text-success  fa-lg"></i>
+                                   </a>
+                                   <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                                       <i class="fas fa-trash fa-lg text-danger"></i>
+            
+                                   </button>
+                                   @endrole
+                               </form>
+                           </td>
+                       </tr>
+                       @endif
+                      
+                      
+                   @endforeach
+               </tbody>
+              </table>
+            </div>
+            </div>
+              
+            
+              
+            
+            
+                                <!-- Page Heading -->
+                               
+                          
+            
+                                
+                        </div>
+                    </div>
+                </div>
 
     
 

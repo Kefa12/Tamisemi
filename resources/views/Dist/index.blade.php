@@ -80,8 +80,15 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-               
+                @role('DEO')
                 <div class="sidebar-brand-text mx-3">District_officer</div>
+                @endrole
+                @role('DED')
+                <div class="sidebar-brand-text mx-3">District_Director</div>
+                @endrole
+                @role('Medical_Doctor_in-charge')
+                <div class="sidebar-brand-text mx-3">Doctor_in_Charge</div>
+                @endrole
             </a>
 
             <!-- Divider -->
@@ -93,6 +100,21 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                     <hr class="sidebar-divider">
+                    @role('Medical_Doctor_in-charge')
+                    <a class="nav-link" href="{{ URL('districts') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Request</span></a>
+                <a class="nav-link" href="{{ URL('letters22') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Nurse</span></a>
+              
+               <a class="nav-link" href="{{ URL('letters31') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a>
+             <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+                    @endrole
                     @role('Teacher')
                     <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
@@ -111,9 +133,7 @@
                     <span>Chance</span></a>
                 @endrole
                 @role('Headmaster')
-                <a class="nav-link" href="{{ URL('letters3') }}">
-                <i class='fas fa-exchange-alt'></i>
-                    <span>Swapping</span></a>
+             
                 <a class="nav-link" href="{{ URL('letters1') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a> 
@@ -146,8 +166,22 @@
                     <span>request</span></a>
                 <a class="nav-link" href="{{ URL('letters24') }}">
                 <i class='fa fa-table me-2'></i>
-                    <span>Teacher</span></a>
+                    <span>public_workers</span></a>
                 <a class="nav-link" href="{{ URL('letters') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Onprogress Chance</span></a>
+               <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
+                <i class="fa fa-table me-2"></i>
+                    <span>Chance</span></a> -->
+                @endrole
+                @role('DMO')
+                <a class="nav-link" href="{{ route('districts.index') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>request</span></a>
+                <a class="nav-link" href="{{ URL('letters24') }}">
+                <i class='fa fa-table me-2'></i>
+                    <span>Nurse</span></a>
+                    <a class="nav-link" href="{{ URL('letters') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Onprogress Chance</span></a>
                <!-- <a class="nav-link" href="{{ URL('chancess1') }}">
@@ -309,7 +343,8 @@
                 </nav>
             <!-- Navbar End -->
 
-
+   @role('DEO')
+  
             <!-- Sale & Revenue Start -->
             <div class="col-lg-12 margin-tb">
             <div class="pull-left">
@@ -379,7 +414,8 @@
             
         
             @if(($district->DEO==Auth::user()->name ||  $district->DED==Auth::user()->name)&& $letter->cdistrict==$district->name)
-                <td>{{ ++$i }}</td>
+           
+            <td>{{ ++$i }}</td>
                 <td>{{ $letter->name }}</td>
                 <td>{{ $letter->cschool }}</td>
                 <td>{{ $letter->cdistrict }}</td>
@@ -476,6 +512,586 @@
         @endforeach
     </tbody>
    </table>
+   @endrole
+   @role('Medical_Doctor_in-charge')
+  
+  <!-- Sale & Revenue Start -->
+ 
+
+
+
+
+
+
+         
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+  <p>{{ $message }}</p>
+</div>
+@endif
+<div class="container-fluid">
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"></h1>
+
+<div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Transfer Request</h6>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+<tr>
+  <th>No</th>
+  <th>Name</th>
+  <th>current hospital</th>
+  <th>current disctrict</th>
+  <th>transfer district</th>
+  <th>Request_mode</th>
+  <th>description</th>
+  <th>Doctor_in_Charge_Action</th>
+ 
+  
+  <th width="280px">Action</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+  <th>No</th>
+  <th>Name</th>
+  <th>current hospital</th>
+  <th>current disctrict</th>
+  <th>transfer district</th>
+  <th>description</th>
+  <th>Request_mode</th>
+  <th>Doctor_in_Charge_Action</th>
+  
+  <th width="280px">Action</th>
+</tr>
+</tfoot>
+<tbody>
+@foreach ($letters as $letter)
+
+  <tr>
+  
+
+  @if($letter->chospital==Auth::user()->hospital)
+      <td>{{ ++$i }}</td>
+      <td>{{ $letter->name }}</td>
+      <td>{{ $letter->chospital }}</td>
+      <td>{{ $letter->cdistrict }}</td>
+      <td>{{ $letter->thospital }}</td>
+      <td>{{ $letter->tdistrict }}</td>
+      @if($letter->author!='unknown')
+      <td>swap with {{ $letter->author }}</td>
+      @else
+      <td>no swapping</td>
+      @endif
+
+      <td>{{ $letter->description }}</td>
+      @if( $letter->MDC_approved == 'Not_support BY MDC')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+      @elseif( $letter->MDC_approved == 'support BY MDC')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+     
+      
+      <td>
+    
+          <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+              <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                  <i class="fas fa-eye text-success  fa-lg"></i>
+              </a>
+             
+              <a href="{{ route('letters.edit', $letter->id) }}">
+                  <i class="fas fa-edit  fa-lg"></i>
+
+              </a>
+ 
+     @endif
+    
+ 
+         
+              @csrf
+              @method('DELETE')
+              @role('Tamisemi_Director')
+              <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                  <i class="fas fa-trash fa-lg text-danger"></i>
+
+                  </button>
+                  @endrole
+          </form>
+      </td>
+  </tr>
+  
+  @endforeach
+
+</tbody>
+</table>
+@endrole
+@role('DMO')
+  
+  <!-- Sale & Revenue Start -->
+  <div class="col-lg-12 margin-tb">
+  <div class="pull-left">
+      <h2>Manage Request </h2>
+  </div>
+
+
+
+
+
+
+         
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+  <p>{{ $message }}</p>
+</div>
+@endif
+<div class="container-fluid">
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"></h1>
+
+<div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Search request</h6>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+<tr>
+<th>No</th>
+  <th>Name</th>
+  <th>current hospital</th>
+  <th>Transfer hospital</th>
+  <th>current district</th>
+  <th>transfer district</th>
+  <th>description</th>
+  <th>Doctor_in_Charge_Action</th>
+  <th>DMO_Action</th>
+  <th>DED_Action</th>
+  
+  <th width="280px">Action</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+  <th>No</th>
+  <th>Name</th>
+  <th>current hospital</th>
+  <th>Transfer hospital</th>
+  <th>current district</th>
+  <th>transfer district</th>
+  <th>description</th>
+  <th>Doctor_in_Charge_Action</th>
+  <th>DMO_Action</th>
+  <th>DED_Action</th>
+  
+  <th width="280px">Action</th>
+</tr>
+</tfoot>
+<tbody>
+@foreach ($letters as $letter)
+@foreach ($districts as $district)
+  <tr>
+  
+
+  @if(($district->DMO==Auth::user()->name && $letter->chospital!='pending' ||  $district->DED==Auth::user()->name)&& $letter->cdistrict==$district->name)
+      <td>{{ ++$i }}</td>
+      <td>{{ $letter->name }}</td>
+      <td>{{ $letter->chospital }}</td>
+      <td>{{ $letter->thospital }}</td>
+      <td>{{ $letter->cdistrict }}</td>
+      <td>{{ $letter->tdistrict }}</td>
+      <td>{{ $letter->description }}</td>
+      @if( $letter->MDC_approved == 'Not_support BY MDC')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+      @elseif( $letter->MDC_approved == 'support BY MDC')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+     
+      @if( $letter->DMO == 'Not_support BY DMO')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+     @elseif( $letter->DMO == 'support BY DMO')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+      <!-- @if( $letter->DED == 'Not_support BY District_Executive_Director')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+     @elseif( $letter->DED == 'support BY District_Executive_Director')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif -->
+      
+      
+      <td>
+    
+          <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+              <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                  <i class="fas fa-eye text-success  fa-lg"></i>
+              </a>
+             
+              <a href="{{ route('letters.edit', $letter->id) }}">
+                  <i class="fas fa-edit  fa-lg"></i>
+
+              </a>
+ 
+     @endif
+    
+ 
+         
+              @csrf
+              @method('DELETE')
+              @role('Tamisemi_Director')
+              <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                  <i class="fas fa-trash fa-lg text-danger"></i>
+
+                  </button>
+                  @endrole
+          </form>
+      </td>
+  </tr>
+  
+  @endforeach
+@endforeach
+</tbody>
+</table>
+@endrole
+@role('DED')
+  
+  <!-- Sale & Revenue Start -->
+  <div class="col-lg-12 margin-tb">
+  <div class="pull-left">
+      <h2>Manage Request </h2>
+  </div>
+
+
+
+
+
+
+         
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+  <p>{{ $message }}</p>
+</div>
+@endif
+<div class="container-fluid">
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"></h1>
+
+<div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Search request</h6>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+<tr>
+<th>No</th>
+  <th>Name</th>
+  <th>current school</th>
+  <th>Transfer school</th>
+  <th>current district</th>
+  <th>transfer district</th>
+  <th>description</th>
+  <th>Doctor_in_Charge_Action</th>
+  <th>DMO_Action</th>
+  <th>DED_Action</th>
+  
+  <th width="280px">Action</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+  <th>No</th>
+  <th>Name</th>
+  <th>current school</th>
+  <th>Transfer school</th>
+  <th>current district</th>
+  <th>transfer district</th>
+  <th>description</th>
+  <th>Doctor_in_Charge_Action</th>
+  <th>DMO_Action</th>
+  <th>DED_Action</th>
+  
+  <th width="280px">Action</th>
+</tr>
+</tfoot>
+<tbody>
+@foreach ($letters as $letter)
+@foreach ($districts as $district)
+  <tr>
+  
+
+  @if(($district->DED==Auth::user()->name && $letter->chospital!='pending' ||  $district->DED==Auth::user()->name)&& $letter->cdistrict==$district->name)
+  @if($letter->cschool!="pending" && $letter->cschool="no_define_school" && $letter->tschool!="pending") 
+  <td>{{ ++$i }}</td>
+      <td>{{ $letter->name }}</td>
+      <td>{{ $letter->cschool }}</td>
+      <td>{{ $letter->tschool }}</td>
+      <td>{{ $letter->cdistrict }}</td>
+      <td>{{ $letter->tdistrict }}</td>
+      <td>{{ $letter->description }}</td>
+      @if( $letter->MDC_approved == 'Not_support BY MDC')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+      @elseif( $letter->MDC_approved == 'support BY MDC')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+     
+      @if( $letter->DMO == 'Not_support BY DMO')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+     @elseif( $letter->DMO == 'support BY DMO')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+      @if( $letter->DED == 'Not_support BY District_Executive_Director')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+     @elseif( $letter->DED == 'support BY District_Executive_Director')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+      
+      
+      <td>
+    
+          <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+              <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                  <i class="fas fa-eye text-success  fa-lg"></i>
+              </a>
+             
+              <a href="{{ route('letters.edit', $letter->id) }}">
+                  <i class="fas fa-edit  fa-lg"></i>
+
+              </a>
+ 
+     @endif
+    
+ 
+         
+              @csrf
+              @method('DELETE')
+              @role('Tamisemi_Director')
+              <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                  <i class="fas fa-trash fa-lg text-danger"></i>
+
+                  </button>
+                  @endrole
+          </form>
+      </td>
+  </tr>
+  @endif
+  @endforeach
+@endforeach
+</tbody>
+</table>
+<h1 class="h3 mb-2 text-gray-800"></h1>
+
+<div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Nurse request</h6>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+<tr>
+<th>No</th>
+  <th>Name</th>
+  <th>current hospital</th>
+  <th>Transfer hospital</th>
+  <th>current district</th>
+  <th>transfer district</th>
+  <th>description</th>
+  <th>Doctor_in_Charge_Action</th>
+  <th>DMO_Action</th>
+  <th>DED_Action</th>
+  
+  <th width="280px">Action</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+  <th>No</th>
+  <th>Name</th>
+  <th>current hospital</th>
+  <th>Transfer hospital</th>
+  <th>current district</th>
+  <th>transfer district</th>
+  <th>description</th>
+  <th>Doctor_in_Charge_Action</th>
+  <th>DMO_Action</th>
+  <th>DED_Action</th>
+  
+  <th width="280px">Action</th>
+</tr>
+</tfoot>
+<tbody>
+@foreach ($letters as $letter)
+@foreach ($districts as $district)
+  <tr>
+  
+
+  @if(($district->DMO==Auth::user()->name && $letter->chospital!='pending' ||  $district->DED==Auth::user()->name)&& $letter->cdistrict==$district->name)
+  @if($letter->chospital!="pending" && $letter->chospital="no_define_school" && $letter->thospital!="pending") 
+  
+      <td>{{ ++$i }}</td>
+      <td>{{ $letter->name }}</td>
+      <td>{{ $letter->chospital }}</td>
+      <td>{{ $letter->thospital }}</td>
+      <td>{{ $letter->cdistrict }}</td>
+      <td>{{ $letter->tdistrict }}</td>
+      <td>{{ $letter->description }}</td>
+      @if( $letter->MDC_approved == 'Not_support BY MDC')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+      @elseif( $letter->MDC_approved == 'support BY MDC')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+     
+      @if( $letter->DMO == 'Not_support BY DMO')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+     @elseif( $letter->DMO == 'support BY DMO')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+      @if( $letter->DED == 'Not_support BY District_Executive_Director')
+      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+      <button type="submit" class="btn btn-danger"> Not_support</button>
+      </div></td>
+     @elseif( $letter->DED == 'support BY District_Executive_Director')
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-primary">support</button>
+      </div></td>
+      @else
+       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+       <button type="submit" class="btn btn-success">PENDING</button>
+      </div></td>
+     
+      @endif
+      
+      
+      <td>
+    
+          <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
+
+              <a href="{{ route('letters.show', $letter->id) }}" title="show">
+                  <i class="fas fa-eye text-success  fa-lg"></i>
+              </a>
+             
+              <a href="{{ route('letters.edit', $letter->id) }}">
+                  <i class="fas fa-edit  fa-lg"></i>
+
+              </a>
+ 
+     @endif
+    
+ 
+         
+              @csrf
+              @method('DELETE')
+              @role('Tamisemi_Director')
+              <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                  <i class="fas fa-trash fa-lg text-danger"></i>
+
+                  </button>
+                  @endrole
+          </form>
+      </td>
+  </tr>
+  @endif
+  
+  @endforeach
+@endforeach
+</tbody>
+</table>
+@endrole
  </div>
 </div>
 

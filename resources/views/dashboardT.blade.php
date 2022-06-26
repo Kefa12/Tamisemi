@@ -125,6 +125,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Add User:</h6>
                         <a class="collapse-item" href="{{ url('Register_Headmaster') }}">HeadMaster</a>
+                        <a class="collapse-item" href="{{ url('Medical_Doctor') }}">Medical_Doctor_in_Charge</a>
+                        <a class="collapse-item" href="{{ url('DMO') }}">District_Medical_officer</a>
                         <a class="collapse-item" href="{{ url('Register_WEO') }}">Ward_Education_Officer</a>
                         <a class="collapse-item" href="{{ url('Register_DEO') }}">District_Education_Officer</a>
                         <a class="collapse-item" href="{{ url('Register_DED') }}">District_Excutive_Director</a>
@@ -305,6 +307,9 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                Schools</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data1 }}</div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                               Hospital</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $data4 }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-school fa-3x text-primary"></i>

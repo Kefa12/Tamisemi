@@ -61,7 +61,7 @@ class DashboardController extends Controller
        
             return view('Dmdash', compact('districts','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
-        }elseif(Auth::user()->hasRole('District_Medical_Officer')){
+        }elseif(Auth::user()->hasRole('DMO')){
             $letters = Letter::where([
                 ['name','!=', NULL],
                [function($query) use ($request) {
@@ -84,12 +84,26 @@ class DashboardController extends Controller
             ])
                 ->orderBy("id","desc")
                 ->paginate(10);
+
+                $chances = Chance::where([
+                    ['name','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(20);
+
+                $chance = DB::table("chances")->count('id');
+                // $data = Letter::where('school','=','pending')->count();
          $data=0;
                 $k=0;
                 $c=0;
                 $chance=0;
        
-            return view('DEOdash', compact('districts','letters','k','c','chance','data','chances'))
+            return view('DMOdash', compact('districts','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Regional_Director')){
             $chances = Chance::where([
@@ -192,6 +206,7 @@ class DashboardController extends Controller
                          $chance = DB::table("chances")->count('id');
                          $data = DB::table("users")->count('id');
                          $data1 = DB::table("school_dp")->count('id');
+                         $data4 = DB::table("hospital_dp")->count('id');
                          $data2 = DB::table("letters")->count('id');
                          $data3 = Letter::where('Tamisemi','=','pending')->count();
                         
@@ -199,7 +214,7 @@ class DashboardController extends Controller
                 return view('reg.index', compact('letters','transfers'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
             else
-              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance'))
+              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
                   ->with('i', (request()->input('page', 1) - 1) * 5);
           
         
@@ -394,8 +409,131 @@ class DashboardController extends Controller
         return view('Headmaster_dash', compact('schools','letters','districts','chance','wards','data','k','chances','c','roles'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Health_Worker')){
+            if($request->term){
+                $letters = Letter::where([
+                    ['ward','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('ward','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(10);
+                }elseif($request->term1){
+                    $letters = Letter::where([
+                        ['regional','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term1)){
+                            $query->orWhere('regional','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(10);
+                    }elseif($request->term2){
+                        $letters = Letter::where([
+                        ['tdistrict','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term2)){
+                            $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(30);
+                    }else{
+                        $letters = Letter::where([
+                        ['tdistrict','!=', NULL],
+                        [function($query) use ($request) {
+                            if(($term=$request->term2)){
+                             $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                            }
+                        }]
+                     ])
+                         ->orderBy("id","desc")
+                         ->paginate(30);
+                    }
+                    $transfers = Transfer::where([
+                        ['tdistrict','!=', NULL],
+                        [function($query) use ($request) {
+                            if(($term=$request->term2)){
+                             $query->orWhere('tdistrict','LIKE','%'.$term.'%')->get();
+                            }
+                        }]
+                     ])
+                         ->orderBy("id","desc")
+                         ->paginate(30);
+                    $regionals = Regional::where([
+                            ['name','!=', NULL],
+                           [function($query) use ($request) {
+                               if(($term=$request->term)){
+                                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                               }
+                           }]
+                        ])
+                            ->orderBy("id","desc")
+                            ->paginate(10);
+    
+                     $districts = District::where([
+                                ['name','!=', NULL],
+                               [function($query) use ($request) {
+                                   if(($term=$request->term)){
+                                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                                   }
+                               }]
+                            ])
+                                ->orderBy("id","desc")
+                                ->paginate(10);
+    
+                     $wards = Ward::where([
+                                    ['name','!=', NULL],
+                                   [function($query) use ($request) {
+                                       if(($term=$request->term)){
+                                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                                       }
+                                   }]
+                                ])
+                                    ->orderBy("id","desc")
+                                    ->paginate(10);
+                                    
+                    $schools = School::where([
+                                        ['name','!=', NULL],
+                                       [function($query) use ($request) {
+                                           if(($term=$request->term)){
+                                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                                           }
+                                       }]
+                                    ])
+                                        ->orderBy("id","desc")
+                                        ->paginate(20);
+                        $chances = Chance::where([
+                                            ['name','!=', NULL],
+                                           [function($query) use ($request) {
+                                               if(($term=$request->term)){
+                                                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                                               }
+                                           }]
+                                        ])
+                                            ->orderBy("id","desc")
+                                            ->paginate(20); 
+                        
+                        
+    
+                         $data = Letter::where('chospital','!=','pending')->count('Employee_id');
+                          $i=0;
+                          $s=0;
+                          $e=0;
 
-            return view('HealthDash');
+                       
+                             
+                         // $chance = DB::table("chances")->count('id');
+                          $chance = Chance::where('Tamisemi','=','Approved by Tamisemi_Director')->count();
+                        
+                        
+                        $k=0;
+                return view('HealthDash', compact('letters','transfers','data','i','k','regionals','districts','wards','schools','s','chance','chances','e'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Weo')){
             
             $letters = Letter::where([
@@ -482,7 +620,7 @@ class DashboardController extends Controller
        
             return view('DEOdash', compact('districts','letters','k','c','chance','data','chances'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
-        }elseif(Auth::user()->hasRole('District_Medical_Officer')){
+        }elseif(Auth::user()->hasRole('Medical_Doctor')){
             $letters = Letter::where([
                 ['name','!=', NULL],
                [function($query) use ($request) {
@@ -509,7 +647,82 @@ class DashboardController extends Controller
             return view('Dist.index', compact('districts','letters'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         }elseif(Auth::user()->hasRole('Medical_Doctor_in-charge')){
-            return view('MDCdash');
+            $districts = District::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(10);
+         
+            $letters = Letter::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+       
+           
+            $schools = School::where([
+                ['name','!=', NULL],
+               [function($query) use ($request) {
+                   if(($term=$request->term)){
+                    $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                   }
+               }]
+            ])
+                ->orderBy("id","desc")
+                ->paginate(20);
+             $chances = Chance::where([
+                    ['name','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(20);
+                $roles = Role::where([
+                        ['id','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term)){
+                            $query->orWhere('id','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(20);
+    
+                
+                $wards = Ward::where([
+                    ['name','!=', NULL],
+                   [function($query) use ($request) {
+                       if(($term=$request->term)){
+                        $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                       }
+                   }]
+                ])
+                    ->orderBy("id","desc")
+                    ->paginate(10);
+
+                   $data=0;
+                    $k=0;
+                    $c=0;
+                    $chance=0;
+       
+            // return view('Masters.index', compact('schools','letters','districts','wards'))
+            //     ->with('i', (request()->input('page', 1) - 1) * 5);
+            return view('MDCdash', compact('schools','letters','districts','chance','wards','data','k','chances','c','roles'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
+           
         }
         
   

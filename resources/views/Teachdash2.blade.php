@@ -310,7 +310,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="{{ URL('letters') }}">Onprogress Request</div>
+                                            <a href="#">Onprogress Request</div>
+                                            <!-- <a href="{{ URL('letters') }}">Onprogress Request</div> -->
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $k }}</div>
                                         </div>
                                         <div class="col-auto">
@@ -332,7 +333,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="{{ URL('letters3') }}">Swap pending</div>
+                                            <a href="#">Swap pending</div>
+                                            <!-- <a href="{{ URL('letters3') }}">Swap pending</div> -->
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $i }}</div>
                                         </div>
                                         <div class="col-auto">
@@ -348,7 +350,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            <a href="{{ URL('chances1') }}">Chance Available</div>
+                                            <a href="#">Chance Available</div>
+                                            <!-- <a href="{{ URL('chances1') }}">Chance Available</div> -->
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $chance }}</div>
                                         </div>
                                         <div class="col-auto">

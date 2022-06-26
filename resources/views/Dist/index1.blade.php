@@ -123,6 +123,7 @@
         @endforeach
         @endforeach
     </table>
+    
 
     {!! $districts->links() !!}
 

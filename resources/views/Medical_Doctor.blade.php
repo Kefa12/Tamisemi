@@ -59,6 +59,7 @@
 
     <title>public_workers</title>
     <img src="img/flag3.png"  width="100%" height="118px">
+
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -189,7 +190,7 @@
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           
+                                <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
                            
@@ -282,195 +283,136 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                
+<div class="container register">                  
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                              
+                                	
+							<x-auth-card>
+							
 
-      
-    
-      
-	
+								<!-- Validation Errors -->
+								<x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-  <h1 class="h3 mb-2 text-gray-800"></h1>
-   
-    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Search other request</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr> <th>No</th>
-                                             <th>Name</th>
-			                                 <th>regional</th>
-			                                 <th>transfer district</th>
-			                                      <th>ward</th>
-                                             <th>current school</th>		
-                                                 <th>description</th>
-            
-                                         <th width="280px">Action</th>
-                                      </tr>
-                                    </thead>
-                                    <tfoot>
-                                    <tr> 
-                                        <th>No</th>
-                                             <th>Name</th>
-			                                 <th>regional</th>
-			                                 <th>transfer district</th>
-			                                      <th>ward</th>
-                                             <th>current school</th>		
-                                                 <th>description</th>
-            
-                                         <th width="280px">Action</th>
-                                      </tr>
-                                    </tfoot>
-                                    <tbody>
-	
-        @foreach ($letters as $letter)
-          
-			@if(($letter->Tamisemi=='pending' && $letter->cschool!='PENDIND' && $letter->cschool!='no_define_school'))
-            <tr>
-                <td>{{ ++$i }}</td>
-                <td>{{ $letter->name }}</td>
-				<td>{{ $letter->regional }}</td>
-				<td>{{ $letter->tdistrict }}</td>
-				<td>{{ $letter->ward }}</td>
-                <td>{{ $letter->cschool }}</td>			
-                <td>{{ $letter->description }}</td>
-                
-                <td>
-                    <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
-                         <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                            <i class="fas fa-eye text-success  fa-lg"></i>
-                        </a>
-                     
-                        <a href="{{ route('letters.edit', $letter->id) }}">
-                            <i class="fas fa-edit  fa-lg"></i>
-
-                        </a>
-					
-
-                        @csrf
-                        @method('DELETE')
-                        @role('admin')
-                        <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                            <i class="fas fa-eye text-success  fa-lg"></i>
-                        </a>
-                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                            <i class="fas fa-trash fa-lg text-danger"></i>
-
-                        </button>
-                        @endrole
-                    </form>
-                </td>
-            </tr>
-			@endrole
-        @endforeach
-    </tbody>
-   </table>
- </div>
-</div>
+                                <form method="GET" action="{{ URL('MDC') }}">
               
-           </div>
-        </div>
-    </div>
+            @csrf
+            <center><h1>Register Doctor_in_Charge</h1>
+                             <img src="assets3/img/logo2.jpg" alt="no image" width=180></center>
+			                     <div class="row register-form">
+                             
+                             
+											  <div class="col-md-6">
+													 <div class="form-group">
+												
 
-<h1 class="h3 mb-2 text-gray-800"></h1>
-   
-   <div class="card shadow mb-4">
-                       <div class="card-header py-3">
-                       <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Nurse request</h6>
-                       </div>
-                       <div class="card-body">
-                           <div class="table-responsive">
-                               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                   <thead>
-                                       <tr> <th>No</th>
-                                            <th>Name</th>
-                                            <th>regional</th>
-                                            <th>transfer district</th>
-                                                 <th>ward</th>
-                                            <th>current Hospital</th>		
-                                                <th>description</th>
-           
-                                        <th width="280px">Action</th>
-                                     </tr>
-                                   </thead>
-                                   <tfoot>
-                                   <tr> 
-                                       <th>No</th>
-                                            <th>Name</th>
-                                            <th>regional</th>
-                                            <th>transfer district</th>
-                                                 <th>ward</th>
-                                            <th>current hospital</th>		
-                                                <th>description</th>
-           
-                                        <th width="280px">Action</th>
-                                     </tr>
-                                   </tfoot>
-                                   <tbody>
-   
-       @foreach ($letters as $letter)
-         
-           @if(($letter->Tamisemi=='pending' && $letter->chospital!='pending' || $letter->cschool=='no_define_school'))
-           <tr>
-               <td>{{ ++$i }}</td>
-               <td>{{ $letter->name }}</td>
-               <td>{{ $letter->regional }}</td>
-               <td>{{ $letter->tdistrict }}</td>
-               <td>{{ $letter->ward }}</td>
-               <td>{{ $letter->chospital }}</td>			
-               <td>{{ $letter->description }}</td>
-               
-               <td>
-                   <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
-                        <!-- <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                           <i class="fas fa-eye text-success  fa-lg"></i>
-                       </a> -->
-                    
-                       <a href="{{ route('letters.edit', $letter->id) }}">
-                           <i class="fas fa-edit  fa-lg"></i>
+														<input id="Employee_id"  class="form-control" type="text" name="Employee_id" placeholder="Employee_id *" :value="old('first_name')" required autofocus />
+													   </div>
+													  <div class="form-group">
+												
 
-                       </a>
-                   
+														<input id="name"  class="form-control" type="text" placeholder="First Name *"  name="name" :value="old('first_name')" required autofocus />
+													</div>
+													 <div class="form-group">
+												
 
-                       @csrf
-                       @method('DELETE')
-                       @role('admin')
-                       <a href="{{ route('letters.show', $letter->id) }}" title="show">
-                           <i class="fas fa-eye text-success  fa-lg"></i>
-                       </a>
-                       <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                           <i class="fas fa-trash fa-lg text-danger"></i>
+														<input id="name1"  class="form-control" type="text" placeholder="Last Name *" name="name1" :value="old('second_name')" required autofocus />
+													</div>
+													 <div class="form-group">
+													 
+													
 
-                       </button>
-                       @endrole
-                   </form>
-               </td>
-           </tr>
-           @endrole
-       @endforeach
-   </tbody>
-  </table>
-</div>
-</div>
+														  <input id=""phone_number""  class="form-control" type="text" placeholder="phone_number *" name=""phone_number"" :value="old('Phone')" required />
+												      </div>
+													 <div class="form-group">
+													 
+														
 
+														  <input id="email"  class="form-control" type="text" placeholder="Email *" name="email" :value="old('Phone')" required />
+												      </div>
+													 <div class="form-group">
+															
 
-  
+																		<input id="password"  class="form-control"
+																							type="password"
+																							  name="password"
+																							  placeholder="Password *"
+																								 required autocomplete="new-password" />
+													  </div>
+											        <div class="form-group">
+														
 
+														   <input id="password_confirmation"  class="form-control"
+																	 type="password"
+																	 placeholder="Confirm-Password *"
+																	  name="password_confirmation" required />
+											      </div>
+												   <div class="form-group">
+														
+															<select name="role_id"  class="form-control">
+																  
+																   <option value="Medical_Doctor_in-charge">Doctor_in_Charge</option>
+																  
+														
+														   </select>
+												   </div>
+												  </div>
+												  <div class="col-md-6">
+												  
+											     
+												   <div class="form-group">
+												                                              <h5 class="text-info  mb-4">Choose Regional</h5>
+																							 <select id="state" name="regional" class="form-control">
+																										  <option width="700"><h1 class="form-control">Choose Regional</h1></option>
+																												  @foreach($regional_rd as $row)
+																										 <option value={{$row->id}}>{{$row->name}}</option>
+																													@endforeach   
+																							  </select>
+												   </div> 
+													<div class="form-group">
+																										  <h5 class="text-info  mb-4">Choose District</h5>
+																											   <select  id="city" name="district" width="700px" class="form-control" disabled >
+																													<option  width="700px">City List</option>
+																											   </select>
+																					</div>
+																				<div class="form-group">
+																						   <h5 class="text-info  mb-4">Choose Ward</h5>
+																							 <select  id="stadium"  name="ward"  class="form-control" disabled>
+																							 </select>
+																				  </div>
+																	<div class="form-group">
+																									   <h5 class="text-info  mb-4">Choose Hospital</h5>
+																												<select  id="details" name="hospital" class="form-control" disabled>
+																												</select>
+																	</div>
+																							   </div>
+																	</td>
 
-                    <!-- Page Heading -->
-                   
-              
+														  </tr>
+														  <table>
+													  
+													   
 
-                    
-            </div>
-        </div>
-    </div>
+															
+														 
 
-    
+																<div class="form-group">
+                                <button class="ml-4" style="background-color:blue; color:white;">
+              <input type="hidden"    value="{{ __('Medical_Doctor') }}"/>Register
+                                </button>
+                               
+
+                                
+																</div>
+                               
+																</form>
+														</x-auth-card>
+                                                     </div>
+													</div>
+											</div>		
+										 </div>
+                     </div>
+             
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -488,14 +430,80 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-    
-      <!-- Page level plugins -->
-      <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    // Get City List 
+    $(document).ready(function(){
+        $('#state').change(function(){
+           var state = $('#state').val();
+           $('#city').html('');
+           $('#stadium').html('');
+           $('#details').html('')
+            $.ajax({
+              url:'getCity/{id}',
+              type:'GET',
+              data:{myID:state},
+              dataType: "json",
+              success:function(data)
+              {
+               
+                $.each(data, function(key, city)
+                 {     
+                  // alert(city.city_name)
+                  $('#city').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                });
+              }
+          });
+        });
+      });
+    
+      // Get STADIUM and ADDRESS by CITY
+    
+      $(document).ready(function(){
+        $('#city').change(function(){
+           var city = $('#city').val();
+           $('#stadium').html('');
+           $('#details').html('');
+           $.ajax({
+              url:'getStadiumDetail/{id}',
+              type:'GET',
+              data:{id:city},
+              dataType: "json",
+              success:function(data)
+              {
+                $.each(data, function(key, city)
+                 {     
+                  $('#stadium').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                 
+                });
+              }
+          });
+        });
+      });
+      $(document).ready(function(){
+        $('#stadium').change(function(){
+           var city = $('#stadium').val();
+           $('#details').html('');
+           $.ajax({
+              url:'getStadiumDetail4/{id}',
+              type:'GET',
+              data:{id:city},
+              dataType: "json",
+              success:function(data)
+              {
+                $.each(data, function(key, city)
+                 {     
+                  $('#details').prop('disabled', false).css('background','aliceblue').append('<option value="'+city.id+'">'+city.name+'</option>');
+                 
+                });
+              }
+          });
+        });
+      });
+    </script>    
