@@ -1028,7 +1028,7 @@ class LetterController extends Controller
                     ->with('success', 'not support swapping.');
         }
        
-            if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->author=="unknown" || $request->Tamisemi=="Approved BY Tamisemi_Director" && $request->Teacher_approved=="pending" || $request->Tamisemi=="Approved BY Tamisemi_Director" && $request->Teacher_approved=="Not_support BY TEACHER"){
+            if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->author=="unknown"){
                 letter_back::create([
                     'Employee_id' =>   $request->Employee_id,
                     'name' =>  $request->name,
@@ -1096,6 +1096,213 @@ class LetterController extends Controller
             // $users->update();
             return redirect()->route('dashboard')
             ->with('success', 'request approved.');
+        }
+        if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->Teacher_approved!="support BY TEACHER"){
+            letter_back::create([
+                'Employee_id' =>   $request->Employee_id,
+                'name' =>  $request->name,
+                'tschool' => $request->schools,
+                'cschool' => $request->cschool1,
+                'chospital' => $request->chospital,
+                'cdistrict' => $request->cdistrict,
+                'thospital' => $request->thospital,
+                'tward' => $request->tward,
+                'tdistrict' => $request->tdistrict,
+                'tregional' => $request->tregional,
+                'regional' => $request->regional,
+                'ward' => $request->ward,
+                'description' => $request->description,
+                'Message' => $request->Message,
+                'author' => $request->author,
+                'Tamisemi' => $request->Tamisemi,
+                'Teacher_approved' => $request->Teacher_approved,
+                'Headmaster' => $request->tHeadmaster,
+                'Transfer_Headmaster' => $request->Headmaster,
+                'WEO' => $request->WEO,
+                'DEO' => $request->DEO,
+               
+                'DED' => $request->DED,
+            ]); 
+      
+        $request1= $request->regional;
+    
+        $request2=  $request->cdistrict;
+       
+        $request3= $request->ward;
+      
+       
+        $request4=$request->tschool;
+     
+      
+        // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
+        if($request->tschool !="" ){
+            DB::table('users')
+            ->where('Employee_id', $request->Employee_id)
+            ->update(['schools' =>  $request->tschool]);
+          
+            }
+            if($request->thospital !="" ){
+                DB::table('users')
+                ->where('Employee_id', $request->Employee_id)
+                ->update(['hospital' =>$request->thospital]);
+            }
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['regional' =>  $request->tregional]);
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['district' =>   $request->tdistrict]);
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['ward' =>  $request->tward]);
+          $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
+        
+        //$users = User::find($request->Employee_id);
+        // $users->schools = $request4;
+        // $users->district = $request->tdistrict;
+        // $users->regional = $request->tregional;
+      
+        // $users->update();
+        return redirect()->route('dashboard')
+        ->with('success', 'request approved.');
+        }
+        if($request->author!="unknown" && $request->Tamisemi=="Approved BY Tamisemi_Director" && $request->Teacher_approved=="pending" ){
+            letter_back::create([
+                'Employee_id' =>   $request->Employee_id,
+                'name' =>  $request->name,
+                'tschool' => $request->schools,
+                'cschool' => $request->cschool1,
+                'chospital' => $request->chospital,
+                'cdistrict' => $request->cdistrict,
+                'thospital' => $request->thospital,
+                'tward' => $request->tward,
+                'tdistrict' => $request->tdistrict,
+                'tregional' => $request->tregional,
+                'regional' => $request->regional,
+                'ward' => $request->ward,
+                'description' => $request->description,
+                'Message' => $request->Message,
+                'author' => $request->author,
+                'Tamisemi' => $request->Tamisemi,
+                'Teacher_approved' => $request->Teacher_approved,
+                'Headmaster' => $request->tHeadmaster,
+                'Transfer_Headmaster' => $request->Headmaster,
+                'WEO' => $request->WEO,
+                'DEO' => $request->DEO,
+               
+                'DED' => $request->DED,
+            ]); 
+      
+        $request1= $request->regional;
+    
+        $request2=  $request->cdistrict;
+       
+        $request3= $request->ward;
+      
+       
+        $request4=$request->tschool;
+     
+      
+        // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
+        if($request->tschool !="" ){
+            DB::table('users')
+            ->where('Employee_id', $request->Employee_id)
+            ->update(['schools' =>  $request->tschool]);
+          
+            }
+            if($request->thospital !="" ){
+                DB::table('users')
+                ->where('Employee_id', $request->Employee_id)
+                ->update(['hospital' =>$request->thospital]);
+            }
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['regional' =>  $request->tregional]);
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['district' =>   $request->tdistrict]);
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['ward' =>  $request->tward]);
+          $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
+        
+        //$users = User::find($request->Employee_id);
+        // $users->schools = $request4;
+        // $users->district = $request->tdistrict;
+        // $users->regional = $request->tregional;
+      
+        // $users->update();
+        return redirect()->route('dashboard')
+        ->with('success', 'request approved.');
+       
+        }else if($request->author!="unknown" && $request->Tamisemi=="Approved BY Tamisemi_Director" && $request->Teacher_approved=="Not_support BY TEACHER"){
+            letter_back::create([
+                'Employee_id' =>   $request->Employee_id,
+                'name' =>  $request->name,
+                'tschool' => $request->schools,
+                'cschool' => $request->cschool1,
+                'chospital' => $request->chospital,
+                'cdistrict' => $request->cdistrict,
+                'thospital' => $request->thospital,
+                'tward' => $request->tward,
+                'tdistrict' => $request->tdistrict,
+                'tregional' => $request->tregional,
+                'regional' => $request->regional,
+                'ward' => $request->ward,
+                'description' => $request->description,
+                'Message' => $request->Message,
+                'author' => $request->author,
+                'Tamisemi' => $request->Tamisemi,
+                'Teacher_approved' => $request->Teacher_approved,
+                'Headmaster' => $request->tHeadmaster,
+                'Transfer_Headmaster' => $request->Headmaster,
+                'WEO' => $request->WEO,
+                'DEO' => $request->DEO,
+               
+                'DED' => $request->DED,
+            ]); 
+      
+        $request1= $request->regional;
+    
+        $request2=  $request->cdistrict;
+       
+        $request3= $request->ward;
+      
+       
+        $request4=$request->tschool;
+     
+      
+        // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
+        if($request->tschool !="" ){
+            DB::table('users')
+            ->where('Employee_id', $request->Employee_id)
+            ->update(['schools' =>  $request->tschool]);
+          
+            }
+            if($request->thospital !="" ){
+                DB::table('users')
+                ->where('Employee_id', $request->Employee_id)
+                ->update(['hospital' =>$request->thospital]);
+            }
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['regional' =>  $request->tregional]);
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['district' =>   $request->tdistrict]);
+          DB::table('users')
+          ->where('Employee_id', $request->Employee_id)
+          ->update(['ward' =>  $request->tward]);
+          $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
+        
+        //$users = User::find($request->Employee_id);
+        // $users->schools = $request4;
+        // $users->district = $request->tdistrict;
+        // $users->regional = $request->tregional;
+      
+        // $users->update();
+        return redirect()->route('dashboard')
+        ->with('success', 'request approved.');
         }else if($request->Tamisemi=="Rejected BY Tamisemi_Director"){
                 letter_back::create([
                  
