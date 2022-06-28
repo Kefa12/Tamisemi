@@ -116,7 +116,7 @@ Route::get('add3', [App\Http\Controllers\FinalSearch::class, 'index3']);
 Route::get('add4', [App\Http\Controllers\FinalSearch::class, 'index4']);
 Route::get('add5', [App\Http\Controllers\FinalSearch::class, 'index5']);
 Route::get('add10', [App\Http\Controllers\FinalSearch::class, 'add10']);
-Route::get('registe3', [App\Http\Controllers\auth\RegisteredUserController::class, 'store']);
+Route::get('registe3', [App\Http\Controllers\Auth\RegisteredUserController::class, 'store']);
 
 
 Route::get('/dashboardT', [App\Http\Controllers\TransferController::class, 'index2']);
