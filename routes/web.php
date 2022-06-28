@@ -117,6 +117,7 @@ Route::get('add4', [App\Http\Controllers\FinalSearch::class, 'index4']);
 Route::get('add5', [App\Http\Controllers\FinalSearch::class, 'index5']);
 Route::get('add10', [App\Http\Controllers\FinalSearch::class, 'add10']);
 Route::get('registe3', [App\Http\Controllers\Auth\RegisteredUserController::class, 'store']);
+Route::get('registe22', [App\Http\Controllers\Auth\RegisteredUserController::class, 'store2']);
 
 
 Route::get('/dashboardT', [App\Http\Controllers\TransferController::class, 'index2']);
@@ -142,6 +143,7 @@ Route::get('letters22', [App\Http\Controllers\LetterController::class, 'index22'
 Route::get('letters23', [App\Http\Controllers\LetterController::class, 'index23']);
 Route::get('letters24', [App\Http\Controllers\LetterController::class, 'index24']);
 Route::get('letters25', [App\Http\Controllers\LetterController::class, 'index25']);
+
 Route::get('DEL', [App\Http\Controllers\LetterController::class, 'DEL']);
 Route::get('chances1', [App\Http\Controllers\ChanceController::class, 'index']);
 Route::get('/letters', function () {

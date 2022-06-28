@@ -90,6 +90,12 @@ class DropDown extends Controller
 
         return view("Medical_Doctor",$data);     
     }
+    function index90()
+    {
+        $data['regional_rd'] = DB::table('regional_rd')->get();
+
+        return view("auth.register",$data);     
+    }
     function index10()
     {
         $data['regional_rd'] = DB::table('regional_rd')->get();

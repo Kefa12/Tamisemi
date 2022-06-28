@@ -94,7 +94,7 @@
 <div class="card bg-blue text-black" style="border-radius: 25px; border: 1px solid blue;">
 
 
-                <form method="POST" action="{{ route('register') }}">
+                <form method="GET" action="{{ URL('registe22') }}">
               
             @csrf
             <center><h1>Registration form </h1>
@@ -213,7 +213,7 @@
 																	</a>
 
 																	<button class="ml-4" style="background-color:blue; color:white; width:150px;">
-																		{{ __('Register') }}
+																	<input type="hidden"	value="{{ __('register22') }}"/>Register
 																	</button>
 																</div>
 																</form>

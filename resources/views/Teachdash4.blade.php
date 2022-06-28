@@ -169,7 +169,7 @@
                     <span>Request</span></a>
                 <a class="nav-link" href="{{ URL('transfers') }}">
                 <i class="fa fa-search"></i>
-                    <span>Swap teacher</span></a>
+                    <span>Swap Nurse</span></a>
                <a class="nav-link" href="{{ URL('letters3') }}">
                 <i class='fas fa-exchange-alt'></i>
                     <span>Swapping</span></a>

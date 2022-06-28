@@ -639,6 +639,7 @@ class LetterController extends Controller
         return view('administrator1', compact('schools','letters','districts','wards','chances','letter_back','T_users','H_users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    
     public function index3(Request $request, Letter $letter)
     {
         //

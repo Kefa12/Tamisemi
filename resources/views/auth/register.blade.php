@@ -194,7 +194,7 @@
 												                                             <h4 >Choose Regional</h4>
 																							 <select id="state" name="regional" class="form-control">
 																										  <option width="700"><h1 class="form-control">Choose Regional</h1></option>
-																												  @foreach($regionals as $row)
+																												  @foreach($regional_rd as $row)
 																										 <option value={{$row->id}}>{{$row->name}}</option>
 																													@endforeach   
 																							  </select>
