@@ -90,6 +90,9 @@
                 @role('Weo')
                 <div class="sidebar-brand-text mx-3">Ward_officer</div>
                 @endrole
+                @role('Headmaster')
+                <div class="sidebar-brand-text mx-3">Headmaster</div>
+                @endrole
             </a>
 
             <!-- Divider -->

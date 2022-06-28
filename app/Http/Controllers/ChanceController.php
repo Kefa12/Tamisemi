@@ -32,6 +32,7 @@ class ChanceController extends Controller
             ->paginate(10);
 
             $i=0;
+            
             return view('Teachdash4', compact('chances',"i"));
     }
 
@@ -73,8 +74,18 @@ class ChanceController extends Controller
             'DED' => 'required',
         ]);
         Chance::Create($request->all());
+        $chances = Chance::where([
+            ['name','!=', NULL],
+           [function($query) use ($request) {
+               if(($term=$request->term)){
+                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+               }
+           }]
+        ])
+            ->orderBy("id","desc")
+            ->paginate(10);
 
-        return view('Health.show')
+        return view('Health.show', compact('chances'))
             ->with('success', 'chance request letter created successfully.');
     }
 

@@ -1205,10 +1205,7 @@
             <th>Message from Teacher</th>
             <th>Teacher Name</th>
             <th>Teacher_Action</th>
-            <th>HeadMaster_Action</th>
-           
-            
-            <th width="280px">Action</th>
+   
         </tr>
         </thead>
                                     <tfoot>
@@ -1223,10 +1220,10 @@
             <th>Message from Teacher</th>
             <th>Teacher Name</th>
             <th>Teacher_Action</th>
-            <th>HeadMaster_Action</th>
+         
            
             
-            <th width="280px">Action</th>
+          
         </tr>
                             </tfoot>
                             <tbody>
@@ -1259,26 +1256,14 @@
                 </div></td>
                
                 @endif
-                @if( $letter->Transfer_Headmaster == 'Not_support BY HEADMASTER')
-                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-danger"> Not_support</button>
-                </div></td>
-               @elseif( $letter->Transfer_Headmaster == 'support BY HEADMASTER')
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-primary">support</button>
-                </div></td>
-                @else
-                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                 <button type="submit" class="btn btn-success">PENDING</button>
-                </div></td>
-               
-                @endif
+           
                
                
                
                 
                 
                 <td>
+                    @role('admin')
               
                     <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
@@ -1290,6 +1275,7 @@
                             <i class="fas fa-edit  fa-lg"></i>
 
                         </a>
+                    @endrole
                       
            
         @endif 

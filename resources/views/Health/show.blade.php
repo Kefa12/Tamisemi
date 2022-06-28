@@ -125,6 +125,9 @@
                 @role('Weo')
                 <div class="sidebar-brand-text mx-3">Ward_officer</div>
                 @endrole
+                @role('Headmaster')
+                <div class="sidebar-brand-text mx-3">Headmaster</div>
+                @endrole
                 @role('Medical_Doctor_in-Charge')
                 <div class="sidebar-brand-text mx-3">Doctor_in_Charge</div>
                 @endrole
@@ -1731,7 +1734,7 @@
                 
                 <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
            
-           @elseif( $letter->DED == 'support BY District_Executive_Director')
+           @elseif( $chance->DED == 'support BY District_Executive_Director')
           
              <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
           
@@ -1763,11 +1766,11 @@
             
   </div>
               
-            
+            @role('Tamisemi_Director')
             <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
             
             
-                @role('Tamisemi_Director')
+           
                 <a href="{{ route('letters.edit', $letter->id) }}">
                     <i class="fas fa-edit  fa-lg"></i>
 

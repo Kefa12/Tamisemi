@@ -119,6 +119,9 @@
                 @role('Teacher')
                 <div class="sidebar-brand-text mx-3">Teacher</div>
                 @endrole
+                @role('Headmaster')
+                <div class="sidebar-brand-text mx-3">Headmaster</div>
+                @endrole
                 @role('Health_Worker')
                 <div class="sidebar-brand-text mx-3">Nurse</div>
                 @endrole
@@ -1064,6 +1067,7 @@
                   <form action="{{ URL('DEL') }}" method="GET">
                   <input type='hidden' name="del" value="{{ $letter->id}}"/>
                   <input type='hidden' name="author" value="{{ $letter->author}}"/>
+                  <input type='hidden' name="id" value="{{ $letter->id}}"/>
                   <input type='hidden' name="name" value="{{ $letter->name}}"/>
                   <input type='hidden' name="Employee_id" value="{{ $letter->Employee_id}}"/>
                   <input type='hidden' name="regional" value="{{ $letter->regional}}"/>
@@ -1122,7 +1126,7 @@
     
      @if(($letter->name==Auth::user()->name))
       
-     <h1><span style="color:blue">Congratration!</span> Successfully transfer request<h1>
+     <h1><span style="color:blue"><h1>
      @endif
 @endif
  @endforeach
@@ -2440,7 +2444,7 @@
                 
                 <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
            
-           @elseif( $letter->DED == 'support BY District_Executive_Director')
+           @elseif( $chance->DED == 'support BY District_Executive_Director')
           
              <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
           
@@ -2472,11 +2476,11 @@
             
   </div>
               
+          @role('Tamisemi_Director')
+            <form action="{{ route(' $chances.destroy', $chance->id) }}" method="POST">
             
-            <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
             
-            
-                @role('Tamisemi_Director')
+              
                 <a href="{{ route('letters.edit', $letter->id) }}">
                     <i class="fas fa-edit  fa-lg"></i>
 
@@ -2616,7 +2620,7 @@
                 
                 <button type="submit" class="btn btn-danger"><i> Not_support</i></button>
            
-           @elseif( $letter->DED == 'support BY District_Executive_Director')
+           @elseif( $chance->DED == 'support BY District_Executive_Director')
           
              <button type="submit" class="btn btn-primary" style="width: 87px; height:34px;" ><i style="width: 87px; height:34px; padding:0px 0px 0px 0px;">support</i></button>
           
@@ -2648,11 +2652,11 @@
             
   </div>
               
-            
+  @role('Tamisemi_Dir')
             <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
             
             
-                @role('Tamisemi_Director')
+               
                 <a href="{{ route('letters.edit', $letter->id) }}">
                     <i class="fas fa-edit  fa-lg"></i>
 

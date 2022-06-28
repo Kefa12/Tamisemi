@@ -1358,8 +1358,7 @@
            
             @role('Headmaster')
             @if($letter->Headmaster=='Not_support BY HEADMASTER'  || $letter->Headmaster=='support BY HEADMASTER' || $letter->Headmaster=='pending' || $letter->Transfer_Headmaster=='Not_support BY HEADMASTER' || $letter->Transfer_Headmaster=='pending' || $letter->Transfer_Headmaster=='support BY HEADMASTER')
-            @if($letter->Headmaster!='support BY HEADMASTER')
-            <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="col-xs-12 col-sm-12 col-md-12">
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="0"
                        ></input>
                 <div class="form-group">Headmaster Approved
@@ -1369,19 +1368,6 @@
                 </select>
                 </div>
             </div>  
-            @endif
-            @if($letter->Transfer_Headmaster=='support BY HEADMASTER')
-            <div class="col-xs-12 col-sm-12 col-md-12">
-            <input type="hidden" class="form-control" style="height:50px" name="status"    value="0"
-                       ></input>
-                <div class="form-group">Headmaster Approved
-                <select name="Transfer_Headmaster" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="support BY HEADMASTER">support</option>
-                        <option value="Not_support BY HEADMASTER">Not_support</option>
-                </select>
-                </div>
-            </div>
-            @endif
             @endif
             @endrole
             @role('Medical_Doctor_in-charge')

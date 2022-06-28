@@ -907,8 +907,7 @@ class LetterController extends Controller
      */
     public function update(Request $request, Letter $letter)
     {
-        // 
-         
+        //    
         $request->validate([
             'cschool1' => 'required',
             'cdistrict' => 'required',
@@ -922,213 +921,6 @@ class LetterController extends Controller
            
           
         ]); 
-        $letter->update($request->all());
-        if( $request->Health_approved=='Not_support BY nurse'){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-         
-
-            DB::table('letters')
-            ->where('name',$request->author)
-            ->update(['Health_approved' =>  $request->Health_approved]);
-
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['Health_approved' =>  $request->Health_approved]);
-
-          
-
-            // $exist2=$request->cschool1;
-       
-       
-        return redirect()->route('letters.index')
-        ->with('success', 'request updated');
-           
-            
-          
-        }else if(( $request->Health_approved=='support BY nurse')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-
-            $exist3 = DB::table('users')->where('name',$request->name)->value('Employee_id');
-            $exist4 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',$request->author)
-            ->update(['author' =>  $request->name]);
-
-            DB::table('letters')
-            ->where('name',$request->author)
-            ->update(['Health_approved' =>  $request->Health_approved]);
-
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['Health_approved' =>  $request->Health_approved]);
-
-          
-
-            // $exist2=$request->cschool1;
-        DB::table('letters')
-        ->where('name',  $request->author)
-        ->update(['tregional' => $request->regional]);
-        DB::table('letters')
-        ->where('name',  $request->author)
-        ->update(['tdistrict' =>  $request->cdistrict]);
-
-       
-        DB::table('letters')
-        ->where('name',  $request->author)
-        ->update(['tward' =>  $request->ward1]);
-        DB::table('letters')
-        ->where('name',  $request->author)
-        ->update(['author' =>  $request->name]);
-       
-        return redirect()->route('letters.index')
-        ->with('success', 'request updated');
-
-           
-
-           
-            
-           
-            
-            
-        }
-        if(( $request->MDC_approved=='Not_support BY MDC')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['MDC_approved' =>  $request->MDC_approved]);
-            return redirect('dashboard');
-        }
-           
-            
-          
-       if(( $request->MDC_approved=='support BY MDC')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['MDC_approved' =>  $request->MDC_approved]);
-           return redirect('dashboard');
-           
-            
-            
-        }
-        if(( $request->DMO_approved=='Not_support BY DMO')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['DMO' =>  $request->DMO_approved]);
-            return redirect('dashboard');
-        }
-           
-            
-          
-       if(( $request->DMO_approved=='support BY DMO')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['DMO' =>  $request->DMO_approved]);
-           return redirect('dashboard');
-           
-            
-            
-        }
-        if(( $request->DED=='support BY District_Executive_Director')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['DED' =>  $request->DED]);
-           return redirect('dashboard');       
-        }
-        if(( $request->DED=='Not_support BY District_Executive_Director')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['DED' =>  $request->DED]);
-           return redirect('dashboard');       
-        }
-        if(( $request->Regional_Director=='support BY RD')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['Regional_Director' =>  $request->Regional_Director]);
-           return redirect('dashboard');       
-        }
-        if(( $request->Regional_Director=='Not_support BY RD')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['Regional_Director' =>  $request->Regional_Director]);
-           return redirect('dashboard');       
-        }
-        if(( $request->Headmaster=='support BY HEADMASTER')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['Headmaster' =>  $request->Headmaster]);
-           return redirect('dashboard');       
-        }
-        if(( $request->Headmaster=='Not_support BY HEADMASTER')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['Headmaster' =>  $request->Headmaster]);
-           return redirect('dashboard');       
-        }
-        if(( $request->DEO=='support BY District_Education_Officer')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['Headmaster' =>  $request->Headmaster]);
-           return redirect('dashboard');       
-        }
-        if(( $request->DEO=='Not_support BY District_Education_Officer')){
-            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-            $exist2=$request->chospital;
-            
-            DB::table('letters')
-            ->where('name',  $request->name)
-            ->update(['Headmaster' =>  $request->DEO]);
-           return redirect('dashboard');       
-        }
       
         if($request->Teacher_approved=="support BY TEACHER" && $request->statusi=='m'){
           
@@ -1234,11 +1026,9 @@ class LetterController extends Controller
                 
                     return redirect()->route('letters.index')
                     ->with('success', 'not support swapping.');
-        }else{
-          $letter->update($request->all());
         }
        
-            if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->author=="unknown"){
+            if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->author=="unknown" || $request->Tamisemi=="Approved BY Tamisemi_Director" && $request->Teacher_approved=="pending" || $request->Tamisemi=="Approved BY Tamisemi_Director" && $request->Teacher_approved=="Not_support BY TEACHER"){
                 letter_back::create([
                     'Employee_id' =>   $request->Employee_id,
                     'name' =>  $request->name,
@@ -1273,34 +1063,29 @@ class LetterController extends Controller
           
            
             $request4=$request->tschool;
-            $a=$request->thospital;
+         
           
             // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
-             if($request->thospital !="" && $request->chospital!="" ){
-             DB::table('users')
-             ->where('Employee_id', $request->Employee_id)
-             ->update(['hospital' =>$request->thospital]);
-             }else{
+            if($request->tschool !="" ){
                 DB::table('users')
                 ->where('Employee_id', $request->Employee_id)
-                ->update(['schools' =>  $request4]);
-             }
-          
-            
+                ->update(['schools' =>  $request->tschool]);
               
-           
+                }
+                if($request->thospital !="" ){
+                    DB::table('users')
+                    ->where('Employee_id', $request->Employee_id)
+                    ->update(['hospital' =>$request->thospital]);
+                }
               DB::table('users')
               ->where('Employee_id', $request->Employee_id)
-              ->update(['regional' => $request->tregional]);
+              ->update(['regional' =>  $request->tregional]);
               DB::table('users')
               ->where('Employee_id', $request->Employee_id)
-              ->update(['district' =>  $request->tdistrict]);
-              if($request->tward==""){
+              ->update(['district' =>   $request->tdistrict]);
               DB::table('users')
               ->where('Employee_id', $request->Employee_id)
               ->update(['ward' =>  $request->tward]);
-              }
-             
               $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
             
             //$users = User::find($request->Employee_id);
@@ -1309,8 +1094,11 @@ class LetterController extends Controller
             // $users->regional = $request->tregional;
           
             // $users->update();
-            }else if($request->Tamisemi=="Rejected BY Tamisemi_Director" && $request->author=="unknown"){
+            return redirect()->route('dashboard')
+            ->with('success', 'request approved.');
+        }else if($request->Tamisemi=="Rejected BY Tamisemi_Director"){
                 letter_back::create([
+                 
                     'Employee_id' =>   $request->Employee_id,
                     'name' =>  $request->name,
                     'tschool' => $request->schools,
@@ -1337,12 +1125,16 @@ class LetterController extends Controller
                 ]); 
           
          
+               // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request->ward,$request->tschool,$request->Employee_id]);
          
+                $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
+             
           
-            DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request->ward,$request->tschool,$request->Employee_id]);
+            // DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
          
-              $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
-            }else{
+           return redirect()->route('letters.index')
+              ->with('success', 'request rejected.');
+            }else if($request->Tamisemi=="Approved BY Tamisemi_Director" && $request->Teacher_approved=="support BY TEACHER"){
                 letter_back::create([
                     'Employee_id' =>   $request->Employee_id,
                     'name' =>  $request->name,
@@ -1392,18 +1184,79 @@ class LetterController extends Controller
                 $request2=  $request->tdistrict;
                
                 $request3= $request->tward;
-              
+                DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
+             
                
                 $request4=$request->tschool;
                 $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
+                return redirect()->route('letters.index')
+                ->with('success', 'request approved.');
                
+           
+             
+               ;
+
+            }else if($request->Tamisemi=="Approved BY Tamisemi_Director" || $request->Tamisemi=="Rejected BY Tamisemi_Director"  ){
+                letter_back::create([
+                    'Employee_id' =>   $request->Employee_id,
+                    'name' =>  $request->name,
+                    'tschool' => $request->schools,
+                    'cschool' => $request->cschool1,
+                    'cdistrict' => $request->cdistrict,
+                    'tward' => $request->tward,
+                    'tdistrict' => $request->tdistrict,
+                    'tregional' => $request->tregional,
+                    'regional' => $request->regional,
+                    'ward' => $request->ward,
+                    'description' => $request->description,
+                    'Message' => $request->Message,
+                    'author' => $request->author,
+                    'Tamisemi' => $request->Tamisemi,
+                    'Teacher_approved' => $request->Teacher_approved,
+                    'Headmaster' => $request->tHeadmaster,
+                    'Transfer_Headmaster' => $request->Headmaster,
+                    'WEO' => $request->WEO,
+                    'DEO' => $request->DEO,
+                   
+                    'DED' => $request->DED,
+                ]); 
+            
+              
+                DB::table('users')
+                ->where('name', $request->author)
+                ->update(['schools' => $request->schools]);
+                DB::table('users')
+                ->where('name', $request->author)
+                ->update(['regional' => $request->regional]);
+                DB::table('users')
+                ->where('name', $request->author)
+                ->update(['district' =>  $request->cdistrict]);
+                DB::table('users')
+                ->where('name', $request->author)
+                ->update(['ward' =>  $request->ward]);
+                DB::table('letters')
+                ->where('name', $request->author)
+                ->update(['Tamisemi' =>  $request->Tamisemi]);
+                DB::table('letters')
+                ->where('name', $request->name)
+                ->update(['Tamisemi' =>  $request->Tamisemi]);
+                $request1= $request->tregional;
+        
+                $request2=  $request->tdistrict;
+               
+                $request3= $request->tward;
+              
+               
+                $request4=$request->tschool;
+                 $letter=Letter::where('Employee_id',$request->Employee_id)->delete();
+                 $letter=Letter::where('name',$request->author)->delete();
            
              
                 DB::update('update users set regional = ?,district=?,ward=?,schools=? where Employee_id = ?',[$request->tregional, $request->tdistrict,$request3,$request->tschool,$request->Employee_id]);
              
                  ;
 
-            }
+            }else
             $request1= $request->tregional;
         
             $request2=  $request->tdistrict;
@@ -1412,6 +1265,322 @@ class LetterController extends Controller
           
            
             $request4=$request->tschool;
+            // $letter->update($request->all());
+                if( $request->Health_approved=='Not_support BY nurse'){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                 
+        
+                    DB::table('letters')
+                    ->where('name',$request->author)
+                    ->update(['Health_approved' =>  $request->Health_approved]);
+        
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['Health_approved' =>  $request->Health_approved]);
+        
+                  
+        
+                    // $exist2=$request->cschool1;
+               
+               
+                return redirect()->route('letters.index')
+                ->with('success', 'request updated');
+                   
+                    
+                  
+                }else if(( $request->Health_approved=='support BY nurse')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+        
+                    $exist3 = DB::table('users')->where('name',$request->name)->value('Employee_id');
+                    $exist4 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',$request->author)
+                    ->update(['author' =>  $request->name]);
+
+
+        
+                    DB::table('letters')
+                    ->where('name',$request->author)
+                    ->update(['Health_approved' =>  $request->Health_approved]);
+        
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['Health_approved' =>  $request->Health_approved]);
+        
+                  
+        
+                    // $exist2=$request->cschool1;
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['tregional' => $request->regional]);
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['tdistrict' =>  $request->cdistrict]);
+        
+               
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['tward' =>  $request->ward1]);
+                
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['author' =>  $request->name]);
+               
+                return redirect()->route('letters.index')
+                ->with('success', 'request updated');
+        
+                   
+        
+                   
+                    
+                   
+                    
+                    
+                }
+                if(( $request->MDC_approved=='Not_support BY MDC')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['MDC_approved' =>  $request->MDC_approved]);
+                    return redirect('dashboard');
+                }
+                   
+                    
+                  
+               if(( $request->MDC_approved=='support BY MDC')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['MDC_approved' =>  $request->MDC_approved]);
+                   return redirect('dashboard');
+                   
+                    
+                    
+                }
+                if(( $request->DMO_approved=='Not_support BY DMO')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['DMO' =>  $request->DMO_approved]);
+                    return redirect('dashboard');
+                }
+                   
+                    
+                  
+               if(( $request->DMO_approved=='support BY DMO')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['DMO' =>  $request->DMO_approved]);
+                   return redirect('dashboard');
+                   
+                    
+                    
+                }
+                if(( $request->DED=='support BY District_Executive_Director')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['DED' =>  $request->DED]);
+                   return redirect('dashboard');       
+                }
+                if(( $request->DED=='Not_support BY District_Executive_Director')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['DED' =>  $request->DED]);
+                   return redirect('dashboard');       
+                }
+                if(( $request->Regional_Director=='support BY RD')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['Regional_Director' =>  $request->Regional_Director]);
+                   return redirect('dashboard');       
+                }
+                if(( $request->Regional_Director=='Not_support BY RD')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['Regional_Director' =>  $request->Regional_Director]);
+                   return redirect('dashboard');       
+                }
+                if(( $request->Headmaster=='support BY HEADMASTER')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['Headmaster' =>  $request->Headmaster]);
+                   return redirect('dashboard');       
+                }
+                if(( $request->Headmaster=='Not_support BY HEADMASTER')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['Headmaster' =>  $request->Headmaster]);
+                   return redirect('dashboard');       
+                }
+                if(( $request->DEO=='support BY District_Education_Officer')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['Headmaster' =>  $request->Headmaster]);
+                   return redirect('dashboard');       
+                }
+                if(( $request->DEO=='Not_support BY District_Education_Officer')){
+                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                    $exist2=$request->chospital;
+                    
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['Headmaster' =>  $request->DEO]);
+                   return redirect('dashboard');       
+                }
+              
+                if($request->Teacher_approved=="support BY TEACHER" && $request->statusi=='m'){
+                  
+                   $letter->update($request->all());
+                   $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+                   $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+                   if($exist1==NULL){
+                   Letter::create([
+                    'Employee_id' =>   $exist,
+                    'name' =>  $request->author,
+                    'cschool' => $request->schools,
+                    'tschool' => $request->cschool1,
+                    'cdistrict' => $request->tdistrict,
+                    'ward' => $request->tward,
+                    'tdistrict' => $request->cdistrict,
+                    'tregional' => $request->regional,
+                    'regional' => $request->tregional,
+                    'tward' => $request->ward,
+                    'description' => $request->description,
+                    'Message' => $request->Message,
+                    'author' => $request->name,
+                    'Teacher_approved' => $request->Teacher_approved,
+                    'Headmaster' => $request->tHeadmaster,
+                    'Transfer_Headmaster' => $request->Headmaster,
+                    'WEO' => $request->WEO,
+                    'DEO' => $request->DEO,
+                   
+                    'DED' => $request->DED,
+                 ]);
+                
+                 return redirect()->route('letters.index')
+                 ->with('success', 'request created.');
+          
+        
+            }else{
+                $exist2=$request->cschool1;
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['tregional' => $request->regional]);
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['tdistrict' =>  $request->cdistrict]);
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['Teacher_approved' =>  $request->Teacher_approved]);
+               
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['tward' =>  $request->ward1]);
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['author' =>  $request->name]);
+                DB::table('letters')
+                ->where('name',  $request->author)
+                ->update(['tschool' =>  $exist2]);
+                return redirect()->route('letters.index')
+                ->with('success', 'request updated');
+            }
+                }else if($request->Teacher_approved=="Not_support BY TEACHER" && $request->statusi=='m'){
+                    $districts = District::where([
+                        ['name','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term)){
+                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(10);
+                 
+                    $letters = Letter::where([
+                        ['name','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term)){
+                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(20);
+               
+                   
+                    $schools = School::where([
+                        ['name','!=', NULL],
+                       [function($query) use ($request) {
+                           if(($term=$request->term)){
+                            $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                           }
+                       }]
+                    ])
+                        ->orderBy("id","desc")
+                        ->paginate(20);
+                        $wards = Ward::where([
+                            ['name','!=', NULL],
+                           [function($query) use ($request) {
+                               if(($term=$request->term)){
+                                $query->orWhere('name','LIKE','%'.$term.'%')->get();
+                               }
+                           }]
+                        ])
+                            ->orderBy("id","desc")
+                            ->paginate(10);
+                        
+                            return redirect()->route('letters.index')
+                            ->with('success', 'not support swapping.');
+                }
        
 
            
@@ -1490,7 +1659,7 @@ class LetterController extends Controller
          } 
         
         }
-    
+   
     
    
     
@@ -1592,7 +1761,7 @@ class LetterController extends Controller
         ]); 
         $exist = DB::table('letters')->where('author',$request->author)->value('Employee_id');
         DB::table('letters')
-        ->where('Employee_id', $exist )
+        ->where('author', $request->name )
         ->update(['author' =>  'unknown']);
       
         $letter=Letter::where('id',$request->del)->delete();  
