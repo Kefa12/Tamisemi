@@ -533,10 +533,10 @@
        
      
 <tbody>
-	 
+<input type="hidden" name="n" value="{{$n=0}}"></input>
         @foreach ($letter_back as $letter_backs)
-        <input type="hidden" name="n" value="{{$n=0}}"></input>
-     
+      
+        @if($n<1)
 		@if($letter_backs->Employee_id==auth::user()->Employee_id && $n<1)
         @if($letter_backs->Tamisemi=="Approved BY Tamisemi_Director")
         <span style="color:blue;"><b>congratulation!</b></span><b> You have successfully transfer from {{$letter_backs->regional}}>>{{$letter_backs->cdistrict}}>>{{$letter_backs->ward }}>>{{$letter_backs->cschool }} to <br/>
@@ -549,6 +549,7 @@
         <span style="color:blue;"><b>Request Result not yet publish!</b></span>
        
         <input type="hidden" name="n" value="{{++$n}}"></input>
+        @endif
        
         
             <!-- <tr>

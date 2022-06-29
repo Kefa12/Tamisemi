@@ -22,6 +22,8 @@ class Chance extends Model
         'author',
         'ward',
         'position',
+        'amount',
+        'amount1',
       
      
      

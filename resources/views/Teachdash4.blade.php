@@ -627,9 +627,9 @@
 </tfoot>
 <tbody>
 	
-        @foreach ($chances as $chance)
-          @if($chance->Tamisemi== 'Approved BY Tamisemi_Director')
-		  @if($chance->hospital!='pending')
+@foreach ($chances as $chance)
+          @if($chance->position=='Headmaster' && ($chance->Tamisemi!='Rejected BY Tamisemi_Director' || $chance->Tamisemi!='pending')) 
+          
             <tr>
                 <td>{{ ++$i }}</td>
               
@@ -666,7 +666,7 @@
                     </form>
                 </td>
             </tr>
-            @endif
+         
          @endif
 		
         @endforeach

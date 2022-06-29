@@ -305,8 +305,8 @@
                     @endif
             @endforeach
             @foreach ($chances as $chance)
-               @if($chance->hospital!="pending" && $chance->Tamisemi=="Approved BY Tamisemi_Director")
-              <input type="hidden" name="w" value="{{++$e}}"></input>
+               @if($chance->hospital!="pending" && $chance->Tamisemi=="Approved BY Tamisemi_Director" && $chance->school=="pending")
+              <input type="hidden" name="w" value="{{$e++}}"></input>
            
                     @endif
             @endforeach

@@ -2388,6 +2388,14 @@
 
                   </div>
                 </div>
+                
+                  <h6>Number of Teacher.</h6>
+                  <p class="text-muted">{{$chance->amount1}}</p>
+                  <h6>Amount need.</h6>
+                  <p class="text-muted">{{$chance->amount}}</p>
+
+                 
+                
               
 
                 <div class="row pt-1">

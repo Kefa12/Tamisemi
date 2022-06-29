@@ -922,8 +922,16 @@
      
         <div>
         <div class="col-xs-12 col-sm-12 col-md-12">
+        <input type='hidden' name="s" value="{{$k=0}}"/>
+            @foreach($users as $user)
+              @if($user->schools==Auth::user()->schools)
+              <input type='hidden' name="1" value="{{$k++}}"/>
+              @endif
+            @endforeach
+            <input type='hidden' name="1" value="{{$k}}"/>
 
 <div class="form-group">
+    <input type='hidden' name="amount1" value="{{$k}}"/>
   
     <input type="hidden" name="name" class="form-control" placeholder="Name" value="{{ Auth::user()->name }}">
 </div>
@@ -999,10 +1007,12 @@
               <div class="form-group">
 												                                            
                                                                                 <h5 class="text-info  mb-4">
+                                                                                        <strong>Amount:</strong>
+                                                                                        <input type="text"  style="width:250px;" name="amount" class="form-control" placeholder="12">
                                                                                     
                                                                                         <strong>Reason:</strong>
                                                                                         <input type="text"  style="width:250px;" name="description" class="form-control" placeholder="request">
-                                                                                    
+                                                                                       
                                                                                    
                                                                                 
           

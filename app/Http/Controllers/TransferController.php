@@ -397,10 +397,25 @@ class TransferController extends Controller
     }
     function index6()
     {
+        $users =DB::table('users')->get();
+           
         $data['regional_rd'] = DB::table('regional_rd')->get();
-
+         
+        
         $data3 = Letter::where('Tamisemi','=','pending')->count();
+        
         return view('Letters.create',$data);     
+
+    }
+    function index60()
+    {
+        $users =DB::table('users')->get();
+           
+        $data['regional_rd'] = DB::table('regional_rd')->get();
+         
+        return view('Letters.create', compact('users'));
+        // $data3 = Letter::where('Tamisemi','=','pending')->count();
+        // return view('Letters.create',  'users');     
 
     }
     function getCity()

@@ -189,7 +189,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
            
             <div class="col-md-8">
               <div class="card-body p-4">
-                <h6>Transfer Request Details</h6>
+                <h6>Chance Request Details</h6>
                 <hr class="mt-0 mb-4">
                 <h6><b>Current_status</b></h6>
               
@@ -218,6 +218,10 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                     <p class="text-muted">{{$chance->regional}}</p>
                   </div>
                 </div>
+                <h6>Number of Teacher.</h6>
+                  <p class="text-muted">{{$chance->amount1}}</p>
+                  <h6>Amount need.</h6>
+                  <p class="text-muted">{{$chance->amount}}</p>
               
               
              
@@ -1867,7 +1871,7 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
            
             <div class="col-md-8">
               <div class="card-body p-4">
-                <h6>Transfer Request Details</h6>
+                <h6>Chance Request Details</h6>
                 <hr class="mt-0 mb-4">
                 <h6><b>Current_status</b></h6>
               
@@ -1895,6 +1899,10 @@ background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 1
                     <p class="text-muted">{{$chance->regional}}</p>
                   </div>
                 </div>
+                <h6>Number of Teacher.</h6>
+                  <p class="text-muted">{{$chance->amount1}}</p>
+                  <h6>Amount need.</h6>
+                  <p class="text-muted">{{$chance->amount}}</p>
               
               
              

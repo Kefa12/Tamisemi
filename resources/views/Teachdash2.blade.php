@@ -344,9 +344,10 @@
                                 </div>
                             </div></a>
                         </div>
-                        @foreach($chances as $chance)
-                @if($chance->school!='pending' && $chance->Tamisemi=='Approved BY Tamisemi_Director')
-                  <input type="hidden" value="{{$e++}}"></input>
+                       
+                        @foreach ($chances as $chance)
+          @if($chance->position=='Headmaster' && $chance->Tamisemi=='Approved BY Tamisemi_Director') 
+           <input type="hidden" value="{{$e++}}"></input>
                 @endif
               @endforeach
                         <div class="col-xl-3 col-md-6 mb-4">
