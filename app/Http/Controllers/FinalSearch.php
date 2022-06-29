@@ -116,9 +116,19 @@ class FinalSearch extends Controller
                      ])
                          ->orderBy("id","desc")
                          ->paginate(30);
-           
-                return view('dashboardT', compact('letters','transfers'))
+                         $chance = DB::table("chances")->count('id');
+                         $data = DB::table("users")->count('id');
+                         $data1 = DB::table("school_dp")->count('id');
+                         $data4 = DB::table("hospital_dp")->count('id');
+                         $data2 = DB::table("letters")->count('id');
+                         $data3 = Letter::where('Tamisemi','=','pending')->count();
+                        
+            if($request->status=="1")
+                return view('reg.index', compact('letters','transfers'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
+            else
+              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
+                  ->with('i', (request()->input('page', 1) - 1) * 5);
     
            
     }
@@ -223,10 +233,19 @@ class FinalSearch extends Controller
                      ])
                          ->orderBy("id","desc")
                          ->paginate(30);
-       
-
-       return view('dashboardT', compact('letters','transfers'))
-                         ->with('i', (request()->input('page', 1) - 1) * 5);
+                         $chance = DB::table("chances")->count('id');
+                         $data = DB::table("users")->count('id');
+                         $data1 = DB::table("school_dp")->count('id');
+                         $data4 = DB::table("hospital_dp")->count('id');
+                         $data2 = DB::table("letters")->count('id');
+                         $data3 = Letter::where('Tamisemi','=','pending')->count();
+                        
+            if($request->status=="1")
+                return view('reg.index', compact('letters','transfers'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
+            else
+              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
+                  ->with('i', (request()->input('page', 1) - 1) * 5);
                         
            
     }
@@ -342,9 +361,19 @@ class FinalSearch extends Controller
                          ->orderBy("id","desc")
                          ->paginate(30);
        
-
-       return view('dashboardT', compact('letters','transfers'))
-                         ->with('i', (request()->input('page', 1) - 1) * 5);
+                         $chance = DB::table("chances")->count('id');
+                         $data = DB::table("users")->count('id');
+                         $data1 = DB::table("school_dp")->count('id');
+                         $data4 = DB::table("hospital_dp")->count('id');
+                         $data2 = DB::table("letters")->count('id');
+                         $data3 = Letter::where('Tamisemi','=','pending')->count();
+                        
+            if($request->status=="1")
+                return view('reg.index', compact('letters','transfers'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
+            else
+              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
+                  ->with('i', (request()->input('page', 1) - 1) * 5);
                         
            
     }
@@ -518,6 +547,7 @@ class FinalSearch extends Controller
                                      $i=0;
                                      $chance = DB::table("chances")->count('id');
                                      $data = DB::table("users")->count('id');
+                                     $data4 = DB::table("hospital_dp")->count('id');
                                      $data1 = DB::table("school_dp")->count('id');
                                      $data2 = DB::table("letters")->count('id');
                                      $data3 = Letter::where('Tamisemi','=','pending')->count();
@@ -526,12 +556,11 @@ class FinalSearch extends Controller
                             return view('reg.index', compact('letters','transfers'))
                                 ->with('i', (request()->input('page', 1) - 1) * 5);
                         else
-                          return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance'))
+                          return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
                               ->with('i', (request()->input('page', 1) - 1) * 5);
        
 
-       return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance'))
-                         ->with('i', (request()->input('page', 1) - 1) * 5);
+    
                         
            
     }
@@ -637,10 +666,19 @@ class FinalSearch extends Controller
                      ])
                          ->orderBy("id","desc")
                          ->paginate(30);
-       
-
-       return view('dashboardT', compact('letters','transfers'))
-                         ->with('i', (request()->input('page', 1) - 1) * 5);
+                         $chance = DB::table("chances")->count('id');
+                         $data = DB::table("users")->count('id');
+                         $data1 = DB::table("school_dp")->count('id');
+                         $data4 = DB::table("hospital_dp")->count('id');
+                         $data2 = DB::table("letters")->count('id');
+                         $data3 = Letter::where('Tamisemi','=','pending')->count();
+                        
+            if($request->status=="1")
+                return view('reg.index', compact('letters','transfers'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
+            else
+              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
+                  ->with('i', (request()->input('page', 1) - 1) * 5);
            
     }
     public function add10(Request $request)
@@ -750,12 +788,19 @@ class FinalSearch extends Controller
                          $data2 = DB::table("letters")->count('id');
                          $data3 = Letter::where('Tamisemi','=','pending')->count();
                         
-           
-                         
-       
-
-       return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance'))
-                         ->with('i', (request()->input('page', 1) - 1) * 5);
+                         $chance = DB::table("chances")->count('id');
+                         $data = DB::table("users")->count('id');
+                         $data1 = DB::table("school_dp")->count('id');
+                         $data4 = DB::table("hospital_dp")->count('id');
+                         $data2 = DB::table("letters")->count('id');
+                         $data3 = Letter::where('Tamisemi','=','pending')->count();
+                        
+            if($request->status=="1")
+                return view('reg.index', compact('letters','transfers'))
+                    ->with('i', (request()->input('page', 1) - 1) * 5);
+            else
+              return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
+                  ->with('i', (request()->input('page', 1) - 1) * 5);
                     }
     public function index3(Request $request)
     {
@@ -856,10 +901,19 @@ class FinalSearch extends Controller
                  ])
                      ->orderBy("id","desc")
                      ->paginate(30);
-   
-
-   return view('dashboardT', compact('letters','transfers'))
-                     ->with('i', (request()->input('page', 1) - 1) * 5);
+                     $chance = DB::table("chances")->count('id');
+                     $data = DB::table("users")->count('id');
+                     $data1 = DB::table("school_dp")->count('id');
+                     $data4 = DB::table("hospital_dp")->count('id');
+                     $data2 = DB::table("letters")->count('id');
+                     $data3 = Letter::where('Tamisemi','=','pending')->count();
+                    
+        if($request->status=="1")
+            return view('reg.index', compact('letters','transfers'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
+        else
+          return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
+              ->with('i', (request()->input('page', 1) - 1) * 5);
     
            
     }
@@ -948,10 +1002,19 @@ class FinalSearch extends Controller
                  ])
                      ->orderBy("id","desc")
                      ->paginate(30);
-   
-
-   return view('dashboardT', compact('letters','transfers'))
-                     ->with('i', (request()->input('page', 1) - 1) * 5);
+                     $chance = DB::table("chances")->count('id');
+                     $data = DB::table("users")->count('id');
+                     $data1 = DB::table("school_dp")->count('id');
+                     $data4 = DB::table("hospital_dp")->count('id');
+                     $data2 = DB::table("letters")->count('id');
+                     $data3 = Letter::where('Tamisemi','=','pending')->count();
+                    
+        if($request->status=="1")
+            return view('reg.index', compact('letters','transfers'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
+        else
+          return view('dashboardT', compact('letters','transfers','data','data1','data2','data3','chance','data4'))
+              ->with('i', (request()->input('page', 1) - 1) * 5);
            
     }
     public function index5(Request $request)

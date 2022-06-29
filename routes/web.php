@@ -126,7 +126,8 @@ Route::get('form', [App\Http\Controllers\TransferController::class, 'index2']);
 Route::get('form1', [App\Http\Controllers\TransferController::class, 'index3']);
 Route::get('form2', [App\Http\Controllers\TransferController::class, 'index4']);
 
-Route::get('letters1', [App\Http\Controllers\TransferController::class, 'index60']);
+Route::get('letters1', [App\Http\Controllers\TransferController::class, 'index6']);
+Route::get('letters111', [App\Http\Controllers\TransferController::class, 'index60']);
 Route::get('letters2', [App\Http\Controllers\LetterController::class, 'store2']);
 Route::get('letters3', [App\Http\Controllers\LetterController::class, 'index2']);
 Route::get('letters4', [App\Http\Controllers\LetterController::class, 'update']);
