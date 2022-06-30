@@ -492,7 +492,7 @@
         @endrole
             @role('Headmaster')
             <h2>Headmster Respond Request to Teacher {{ $letter->name }} </h2>
-            <form action="{{ route('letters.update', $letter->id) }}" method="POST">
+            <form action="{{ URL('letters70'), $letter->id}}" method="GET">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                             <script>
@@ -780,7 +780,7 @@
             @endrole
             @role('Weo')
             <h2>Ward Education Officer Respond Request to Teacher {{ $letter->name }} </h2>
-            <form action="{{ route('letters.update', $letter->id) }}" method="POST">
+            <form action="{{ URL('letters73'), $letter->id}}" method="GET">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                             
@@ -792,6 +792,8 @@
         <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                <input type="Hidden" name="name" value="{{ $letter->name }}" class="form-control" placeholder="Name">
+               
                    
                     <input type="hidden" class="form-control" style="height:50px" name="W_date" value="{{ $date2 }}"
                         placeholder="mwenge"></input>
@@ -914,7 +916,7 @@
 
             @role('DED')
             <h2>District Director Respond Request to Teacher {{ $letter->name }} </h2>
-            <form action="{{ route('letters.update', $letter->id) }}" method="POST">
+            <form action="{{ URL('letters72'), $letter->id}}" method="GET">
 
         @csrf
         @method('PUT')
@@ -1007,7 +1009,7 @@
             @endrole
             @role('DEO')
             <h2>District Education Officer Respond Request to Teacher {{ $letter->name }} </h2>
-     <form action="{{ route('letters.update', $letter->id) }}" method="POST">
+     <form action="{{ URL('letters71'), $letter->id}}" method="GET">
         @csrf
         @method('PUT')
         <input type="text" class="form-control" style="height:50px" name="DEO_comment" value="{{ $letter->DEO_comment }}"
@@ -1359,7 +1361,7 @@
             @role('Headmaster')
             @if($letter->Headmaster=='Not_support BY HEADMASTER'  || $letter->Headmaster=='support BY HEADMASTER' || $letter->Headmaster=='pending' || $letter->Transfer_Headmaster=='Not_support BY HEADMASTER' || $letter->Transfer_Headmaster=='pending' || $letter->Transfer_Headmaster=='support BY HEADMASTER')
           <div class="col-xs-12 col-sm-12 col-md-12">
-            <input type="hidden" class="form-control" style="height:50px" name="status"    value="0"
+            <input type="hidden" class="form-control" style="height:50px" name="status"    value="nn"
                        ></input>
                 <div class="form-group">Headmaster Approved
                 <select name="Headmaster" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
@@ -1433,6 +1435,7 @@
                        
             <input type="hidden" class="form-control" style="height:50px" name="WEO"    value="{{$letter->WEO}}"
                        ></input>
+           
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="2"
                        ></input>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -1447,7 +1450,7 @@
           
             @endif
            
-            @if($letter->DED=='Not_support BY District_Executive_Director' || $letter->DED=='pending') 
+            @if($letter->DED=='Not_support BY District_Executive_Director' || $letter->DED=='pending' || $letter->DED=='support BY District_Executive_Director') 
             @role('DED')
             <input type="hidden" class="form-control" style="height:50px" name="Message"    value="SEND A REQUEST TRANSFER FOR EXACHANGE"
                        ></input>
@@ -1459,8 +1462,7 @@
                        ></input>
             <input type="hidden" class="form-control" style="height:50px" name="DEO"    value="{{$letter->DEO}}"
                        ></input>
-            <input type="hidden" class="form-control" style="height:50px" name="DED"    value="{{$letter->DED}}"
-                       ></input>
+          
            
             <input type="hidden" class="form-control" style="height:50px" name="status"    value="3"
                        ></input>

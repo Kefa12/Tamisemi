@@ -1603,30 +1603,21 @@ class LetterController extends Controller
                     
                     
                 }
-                if(( $request->DED=='support BY District_Executive_Director')){
-                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-                    $exist2=$request->chospital;
-                    
-                    DB::table('letters')
-                    ->where('name',  $request->name)
-                    ->update(['DED' =>  $request->DED]);
-                   return redirect('dashboard');       
-                }
-                if(( $request->DED=='Not_support BY District_Executive_Director')){
-                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-                    $exist2=$request->chospital;
-                    
-                    DB::table('letters')
-                    ->where('name',  $request->name)
-                    ->update(['DED' =>  $request->DED]);
-                   return redirect('dashboard');       
-                }
+                
                 if(( $request->Regional_Director=='support BY RD')){
                     $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
                     $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
                     $exist2=$request->chospital;
+                    $date2 = date('Y-m-d H:i:s');
+            
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['RD_date'=> $date2]);
+                    if( $request->RD_comment!=''){
+                        DB::table('letters')
+                        ->where('name',  $request->name)
+                        ->update(['RD_comment' => $request->RD_comment]);
+                        }
                     
                     DB::table('letters')
                     ->where('name',  $request->name)
@@ -1637,32 +1628,24 @@ class LetterController extends Controller
                     $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
                     $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
                     $exist2=$request->chospital;
+                    $date2 = date('Y-m-d H:i:s');
+            
+                    DB::table('letters')
+                    ->where('name',  $request->name)
+                    ->update(['RD_date'=> $date2]);
+                    if( $request->RD_comment!=''){
+                        DB::table('letters')
+                        ->where('name',  $request->name)
+                        ->update(['RD_comment' => $request->RD_comment]);
+                        }
                     
                     DB::table('letters')
                     ->where('name',  $request->name)
                     ->update(['Regional_Director' =>  $request->Regional_Director]);
                    return redirect('dashboard');       
                 }
-                if(( $request->Headmaster=='support BY HEADMASTER')){
-                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-                    $exist2=$request->chospital;
-                    
-                    DB::table('letters')
-                    ->where('name',  $request->name)
-                    ->update(['Headmaster' =>  $request->Headmaster]);
-                   return redirect('dashboard');       
-                }
-                if(( $request->Headmaster=='Not_support BY HEADMASTER')){
-                    $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
-                    $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
-                    $exist2=$request->chospital;
-                    
-                    DB::table('letters')
-                    ->where('name',  $request->name)
-                    ->update(['Headmaster' =>  $request->Headmaster]);
-                   return redirect('dashboard');       
-                }
+           
+            
                 if(( $request->DEO=='support BY District_Education_Officer')){
                     $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
                     $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
@@ -1670,7 +1653,7 @@ class LetterController extends Controller
                     
                     DB::table('letters')
                     ->where('name',  $request->name)
-                    ->update(['Headmaster' =>  $request->Headmaster]);
+                    ->update(['DEO' =>  $request->DEO]);
                    return redirect('dashboard');       
                 }
                 if(( $request->DEO=='Not_support BY District_Education_Officer')){
@@ -1680,7 +1663,7 @@ class LetterController extends Controller
                     
                     DB::table('letters')
                     ->where('name',  $request->name)
-                    ->update(['Headmaster' =>  $request->DEO]);
+                    ->update(['DEO' =>  $request->DEO]);
                    return redirect('dashboard');       
                 }
               
@@ -1921,6 +1904,283 @@ class LetterController extends Controller
       
         return redirect()->route('letters.index')
         ->with('success', 'request letter created successfully.');
+          
+           
+       
+    }
+    public function update70(Request $request, Letter $letter)
+    {
+        //
+       
+        $request->validate([
+            'name' => 'required',
+            'cschool1' => 'required',
+            'cdistrict' => 'required',
+            'tdistrict' => 'required',
+            'regional' => 'required',
+            'description' => 'required',
+            'Message' => 'required',
+            'author' => 'required',
+           
+            'schools' => 'required',
+            'Teacher_approved'=>'required',
+            'Headmaster' => 'required',
+            'tHeadmaster' => 'required',
+           
+            'DEO' => 'required',
+            'DED' => 'required',
+        ]);
+
+        $date2 = date('Y-m-d H:i:s');
+        if(( $request->Headmaster=='support BY HEADMASTER')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+
+            $date2 = date('Y-m-d H:i:s');
+            if( $request->T_comment!=''){
+                DB::table('letters')
+                ->where('name',  $request->name)
+                ->update(['T_comment' => $request->T_comment]);
+                }
+
+           
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['T_date' =>    $date2]);
+
+           return redirect('dashboard');       
+        }
+        if(( $request->Headmaster=='Not_support BY HEADMASTER')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            
+            if( $request->T_comment!=''){
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['T_comment' => $request->T_comment]);
+            }
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['T_date' =>    $date2]);
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['Headmaster' =>  $request->Headmaster]);
+           return redirect('dashboard');       
+        }
+        return redirect('dashboard'); 
+    
+          
+           
+       
+    }
+    public function update71(Request $request, Letter $letter)
+    {
+        //
+       
+        $request->validate([
+            'name' => 'required',
+            'cschool1' => 'required',
+            'cdistrict' => 'required',
+            'tdistrict' => 'required',
+            'regional' => 'required',
+            'description' => 'required',
+            'Message' => 'required',
+          
+           
+            'schools' => 'required',
+        
+            'Headmaster' => 'required',
+            'tHeadmaster' => 'required',
+           
+            'DEO' => 'required',
+            'DED' => 'required',
+        ]);
+        if(( $request->DEO=='support BY District_Education_Officer')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            $date2 = date('Y-m-d H:i:s');
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['DEO_date'=> $date2]);
+           
+
+              
+           DB::table('letters')
+           ->where('name',  $request->name)
+           ->update(['DEO' =>  $request->DEO]);
+           if( $request->DEO_comment!=''){
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['DEO_comment' => $request->DEO_comment]);
+            }
+          return redirect('dashboard');
+        }
+        if(( $request->DEO=='Not_support BY District_Education_Officer')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            $date2 = date('Y-m-d H:i:s');
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['DEO_date'=> $date2]);
+            if( $request->DEO_comment!=''){
+                DB::table('letters')
+                ->where('name',  $request->name)
+                ->update(['DEO_comment' => $request->DEO_comment]);
+                }
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['DEO' =>  $request->DEO]);
+           
+           return redirect('dashboard');       
+        }
+        return redirect('dashboard'); 
+    
+          
+           
+       
+    }
+    public function update72(Request $request, Letter $letter)
+    {
+        //
+       
+        $request->validate([
+            'name' => 'required',
+            'cschool1' => 'required',
+            'cdistrict' => 'required',
+            'tdistrict' => 'required',
+            'regional' => 'required',
+            'description' => 'required',
+            'Message' => 'required',
+          
+           
+            'schools' => 'required',
+        
+            'Headmaster' => 'required',
+            'tHeadmaster' => 'required',
+           
+            'DEO' => 'required',
+            'DED' => 'required',
+        ]);
+        if(( $request->DED=='support BY District_Executive_Director')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            $date2 = date('Y-m-d H:i:s');
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['DED_date'=> $date2]);
+            if( $request->DED_comment!=''){
+                DB::table('letters')
+                ->where('name',  $request->name)
+                ->update(['DED_comment' => $request->DED_comment]);
+                }
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['DED' =>  $request->DED]);
+           return redirect('dashboard');       
+        }
+        if(( $request->DED=='Not_support BY District_Executive_Director')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            $date2 = date('Y-m-d H:i:s');
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['DED_date'=> $date2]);
+            if( $request->DED_comment!=''){
+                DB::table('letters')
+                ->where('name',  $request->name)
+                ->update(['DED_comment' => $request->DED_comment]);
+                }
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['DED' =>  $request->DED]);
+           return redirect('dashboard');       
+        }
+        return redirect('dashboard'); 
+    
+          
+           
+       
+    }
+    public function update73(Request $request, Letter $letter)
+    {
+        //
+       
+        $request->validate([
+            'name' => 'required',
+            'cschool1' => 'required',
+            'cdistrict' => 'required',
+            'tdistrict' => 'required',
+            'regional' => 'required',
+            'description' => 'required',
+            'Message' => 'required',
+          
+           
+            'schools' => 'required',
+        
+            'Headmaster' => 'required',
+            'tHeadmaster' => 'required',
+           
+            'DEO' => 'required',
+            'DED' => 'required',
+        ]);
+        if(( $request->WEO=='support BY WEO')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            $date2 = date('Y-m-d H:i:s');
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['W_date'=> $date2]);
+            if( $request->W_comment!=''){
+                DB::table('letters')
+                ->where('name',  $request->name)
+                ->update(['W_comment' => $request->W_comment]);
+                }
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['WEO' =>  $request->WEO]);
+           return redirect('dashboard');       
+        }
+        if(( $request->WEO=='Not_support BY WEO')){
+            $exist = DB::table('users')->where('name',$request->author)->value('Employee_id');
+            $exist1 = DB::table('letters')->where('Employee_id', $exist)->value('Employee_id');
+            $exist2=$request->chospital;
+            $date2 = date('Y-m-d H:i:s');
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['W_date'=> $date2]);
+            if( $request->W_comment!=''){
+                DB::table('letters')
+                ->where('name',  $request->name)
+                ->update(['W_comment' => $request->W_comment]);
+                }
+            
+            DB::table('letters')
+            ->where('name',  $request->name)
+            ->update(['WEO' =>  $request->WEO]);
+           return redirect('dashboard');       
+        }
+        return redirect('dashboard'); 
+    
           
            
        

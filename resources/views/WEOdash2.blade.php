@@ -310,8 +310,8 @@
 			<th>name</th>
 			<th>email</th>
 			<th>schools</th>
-            <th>role</th>		
-            <th>description</th>          
+            <th>ward</th>		
+                 
         </tr>
         </thead>
         <tfoot>
@@ -321,8 +321,8 @@
 			<th>name</th>
 			<th>email</th>
 			<th>schools</th>
-            <th>role</th>		
-            <th>description</th> 
+            <th>Ward</th>		
+           
 </tr>
 </tfoot>
 <tbody>
@@ -335,7 +335,7 @@
 				<td>{{$user->name }}</td>
 				<td>{{$user->email }}</td>
 				<td>{{$user->schools }}</td>
-                <td>{{$user->role_id }}</td>	
+                <td>{{$user->ward }}</td>	
                 <td>{{$user->description }}</td>
                 
                 <td>

@@ -139,10 +139,12 @@
                 <i class="fa fa-table me-2"></i>
                     <span>Request</span></a>
                 <a class="nav-link" href="{{ URL('letters22') }}">
-                <i class='fas fa-exchange-alt'></i>
+                <i class='fa fa-table me-2'></i>
                     <span>Teacher</span></a>
-                
-               <a class="nav-link" href="{{ URL('letters1') }}">
+                <a class="nav-link" href="{{ URL('letters3') }}">
+                <i class='fas fa-exchange-alt'></i>
+                    <span>Swapping</span></a>
+               <a class="nav-link" href="{{ URL('letters111') }}">
                 <i class="fa fa-table me-2"></i>
                     <span>Chance</span></a>
              <a class="nav-link" href="{{ URL('letters') }}">

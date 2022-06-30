@@ -332,7 +332,7 @@
                                             <th>Name</th>
                                             <th>regional</th>
                                             <th>transfer district</th>
-                                                 <th>ward</th>
+                                            
                                             <th>current school</th>		
                                                 <th>description</th>
                                                 <th>Approved_status</th>
@@ -346,7 +346,7 @@
                                             <th>Name</th>
                                             <th>regional</th>
                                             <th>transfer district</th>
-                                                 <th>ward</th>
+                                             
                                             <th>current school</th>		
                                                 <th>description</th>
                                                 <th width="280px">Approved_status</th>
@@ -364,7 +364,7 @@
                <td>{{$letter_back->name }}</td>
                <td>{{ $letter_back->regional }}</td>
                <td>{{$letter_back->tdistrict }}</td>
-               <td>{{ $letter_back->ward }}</td>
+            
                <td>{{ $letter_back->cschool }}</td>			
                <td>{{ $letter_back->description }}</td>
                @if( $letter_back->Tamisemi== 'Rejected BY Tamisemi_Director')

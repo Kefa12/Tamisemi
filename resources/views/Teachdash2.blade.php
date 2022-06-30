@@ -346,7 +346,7 @@
                         </div>
                        
                         @foreach ($chances as $chance)
-          @if($chance->position=='Headmaster' && $chance->Tamisemi=='Approved BY Tamisemi_Director') 
+          @if($chance->school!='pending' && $chance->Tamisemi=='Approved BY Tamisemi_Director') 
            <input type="hidden" value="{{$e++}}"></input>
                 @endif
               @endforeach

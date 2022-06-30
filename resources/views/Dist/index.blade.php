@@ -548,6 +548,7 @@
   <th>Name</th>
   <th>current hospital</th>
   <th>current disctrict</th>
+  <th>Transfer Hospital</th>
   <th>transfer district</th>
   <th>Request_mode</th>
   <th>description</th>
@@ -563,6 +564,7 @@
   <th>Name</th>
   <th>current hospital</th>
   <th>current disctrict</th>
+  <th>transfer hospital</th>
   <th>transfer district</th>
   <th>description</th>
   <th>Request_mode</th>
@@ -611,9 +613,9 @@
     
           <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-              <a href="{{ route('letters.show', $letter->id) }}" title="show">
+              <!-- <a href="{{ route('letters.show', $letter->id) }}" title="show">
                   <i class="fas fa-eye text-success  fa-lg"></i>
-              </a>
+              </a> -->
              
               <a href="{{ route('letters.edit', $letter->id) }}">
                   <i class="fas fa-edit  fa-lg"></i>
@@ -684,7 +686,7 @@
   <th>description</th>
   <th>Doctor_in_Charge_Action</th>
   <th>DMO_Action</th>
-  <th>DED_Action</th>
+
   
   <th width="280px">Action</th>
 </tr>
@@ -700,7 +702,7 @@
   <th>description</th>
   <th>Doctor_in_Charge_Action</th>
   <th>DMO_Action</th>
-  <th>DED_Action</th>
+
   
   <th width="280px">Action</th>
 </tr>
@@ -768,9 +770,9 @@
     
           <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-              <a href="{{ route('letters.show', $letter->id) }}" title="show">
+              <!-- <a href="{{ route('letters.show', $letter->id) }}" title="show">
                   <i class="fas fa-eye text-success  fa-lg"></i>
-              </a>
+              </a> -->
              
               <a href="{{ route('letters.edit', $letter->id) }}">
                   <i class="fas fa-edit  fa-lg"></i>
@@ -841,6 +843,7 @@
   <th>description</th>
   <th>Transfer_mode</th>
   <th>Headmaster</th>
+  <th>WEO_Action</th>
   <th>DEO_Action</th>
   <th>DED_Action</th>
   
@@ -858,6 +861,7 @@
   <th>description</th>
   <th>Transfer_mode</th>
   <th>Headmater</th>
+  <th>WEO_Action</th>
   <th>DEO_Action</th>
   <th>DED_Action</th>
   
@@ -884,35 +888,48 @@
                 @else
                 <td>No swaping</td>
                 @endif
-      @if( $letter->MDC_approved == 'Not_support BY MDC')
-      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-      <button type="submit" class="btn btn-danger"> Not_support</button>
-      </div></td>
-      @elseif( $letter->MDC_approved == 'support BY MDC')
-       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-       <button type="submit" class="btn btn-primary">support</button>
-      </div></td>
-      @else
-       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-       <button type="submit" class="btn btn-success">PENDING</button>
-      </div></td>
-     
-      @endif
-     
-      @if( $letter->DMO == 'Not_support BY DMO')
-      <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-      <button type="submit" class="btn btn-danger"> Not_support</button>
-      </div></td>
-     @elseif( $letter->DMO == 'support BY DMO')
-       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-       <button type="submit" class="btn btn-primary">support</button>
-      </div></td>
-      @else
-       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
-       <button type="submit" class="btn btn-success">PENDING</button>
-      </div></td>
-     
-      @endif
+                @if( $letter->Headmaster == 'Not_support BY HEADMASTER')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter->Headmaster == 'support BY HEADMASTER')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
+                @if( $letter->WEO == 'Not_support BY WEO')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter->WEO == 'support BY WEO')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
+                @if( $letter->DEO == 'Not_support BY District_Education_Officer')
+                <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-danger"> Not_support</button>
+                </div></td>
+               @elseif( $letter->DEO == 'support BY District_Education_Officer')
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-primary">support</button>
+                </div></td>
+                @else
+                 <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                 <button type="submit" class="btn btn-success">PENDING</button>
+                </div></td>
+               
+                @endif
       @if( $letter->DED == 'Not_support BY District_Executive_Director')
       <td><div class="col-xs-12 col-sm-12 col-md-12 text-center">
       <button type="submit" class="btn btn-danger"> Not_support</button>
@@ -933,9 +950,9 @@
     
           <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-              <a href="{{ route('letters.show', $letter->id) }}" title="show">
+              <!-- <a href="{{ route('letters.show', $letter->id) }}" title="show">
                   <i class="fas fa-eye text-success  fa-lg"></i>
-              </a>
+              </a> -->
              
               <a href="{{ route('letters.edit', $letter->id) }}">
                   <i class="fas fa-edit  fa-lg"></i>
@@ -1068,9 +1085,9 @@
     
           <form action="{{ route('letters.destroy', $letter->id) }}" method="POST">
 
-              <a href="{{ route('letters.show', $letter->id) }}" title="show">
+              <!-- <a href="{{ route('letters.show', $letter->id) }}" title="show">
                   <i class="fas fa-eye text-success  fa-lg"></i>
-              </a>
+              </a> -->
              
               <a href="{{ route('letters.edit', $letter->id) }}">
                   <i class="fas fa-edit  fa-lg"></i>
